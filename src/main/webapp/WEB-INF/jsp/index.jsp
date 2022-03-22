@@ -38,7 +38,7 @@
 
 <body>
     <div class="page-wrapper">
-        <%@ include file="header.jsp" %>
+        <%@ include file="includes/header.jsp" %>
         <main class="main">
             <div class="intro-slider-container mb-5">
                 <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl"
@@ -3443,7 +3443,7 @@
             </div>
         </div>
     </div>
-       <%@ include file="footer.jsp" %>
+       <%@ include file="includes/footer.jsp" %>
     <!-- Plugins JS File -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
