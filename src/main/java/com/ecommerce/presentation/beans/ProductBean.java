@@ -3,7 +3,7 @@ package com.ecommerce.presentation.beans;
 
 public class ProductBean {
 
-    private  int id;
+    private  long id;
     private String name;
     private  int price;
     private int quantity;
@@ -21,11 +21,11 @@ public class ProductBean {
         this.quantity = quantity;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

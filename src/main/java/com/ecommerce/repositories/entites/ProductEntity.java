@@ -1,8 +1,15 @@
 package com.ecommerce.repositories.entites;
 
-public class ProductEntity {
 
-    private  int id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
+public class ProductEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
+    private  long id;
     private String name;
     private  int price;
     private int quantity;
@@ -20,11 +27,11 @@ public class ProductEntity {
         this.quantity = quantity;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
