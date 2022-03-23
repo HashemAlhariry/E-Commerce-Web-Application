@@ -1,22 +1,17 @@
 package com.ecommerce.repositories.impl;
 
 
-import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.ProductRepository;
-import java.util.List;
+import com.ecommerce.repositories.entites.ProductEntity;
 
-public enum ProductRepositoryImpl implements ProductRepository {
-
-    Instance;
-
-    public void insertProduct(ProductBean productBean){
-    }
-
-    @Override
-    public List<ProductBean> getAllProduct() {
-
-       
-        return null;
+public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity,Integer> implements ProductRepository {
+    private static final ProductRepositoryImpl INSTANCE =new ProductRepositoryImpl();
+    private ProductRepositoryImpl(){
 
     }
+
+    public  static ProductRepositoryImpl getInstance(){
+        return INSTANCE;
+    }
+
 }
