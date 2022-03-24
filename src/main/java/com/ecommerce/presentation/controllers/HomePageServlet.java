@@ -33,7 +33,7 @@ public class HomePageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ProductEntity>newArrivals = productService.getLast10();
         List<ProductBean>newArrivalsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(newArrivals);
-        req.setAttribute("newArrivals",newArrivals);
+        req.setAttribute("newArrivals",newArrivalsBeans);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "index.jsp");
         requestDispatcher.forward(req, resp);
     }
