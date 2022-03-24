@@ -1,6 +1,8 @@
 package com.ecommerce.repositories;
 
 
-public interface ProductRepository {
+import com.ecommerce.repositories.entites.ProductEntity;
+
+public interface ProductRepository extends Repository<ProductEntity,Long> {
 
 }

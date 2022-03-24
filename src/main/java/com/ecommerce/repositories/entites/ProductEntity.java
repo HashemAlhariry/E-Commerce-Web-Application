@@ -14,6 +14,9 @@ public class ProductEntity {
     private  int price;
     private int quantity;
 
+    public  ProductEntity(){
+
+    }
     public ProductEntity(String name, int price, int quantity) {
         this.name = name;
         this.price = price;
