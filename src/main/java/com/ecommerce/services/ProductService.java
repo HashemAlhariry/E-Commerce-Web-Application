@@ -11,4 +11,6 @@ public interface ProductService {
     ProductEntity findById(Long id);
     List<ProductEntity> findAll();
     ProductEntity update(ProductEntity entity);
+
+    List<ProductEntity>getLast10();
 }

@@ -5,6 +5,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
+@NamedQueries({
+        @NamedQuery(name = "reversed ids",query = "select p from ProductEntity p ORDER BY p.id DESC ")
+       // LIMIT 5  ORDER BY c.name DESC
+})
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
