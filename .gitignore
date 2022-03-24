@@ -1,5 +1,7 @@
 ## A complete .gitignore file for Java.
 
+
+src/main/resources/META-INF/persistence.xml
 ##############################
 ## Java
 ##############################

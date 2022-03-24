@@ -7,7 +7,7 @@ public class ProductBean {
     private String name;
     private  int price;
     private int quantity;
-
+    public  ProductBean(){}
     public ProductBean(String name, int price, int quantity) {
         this.name = name;
         this.price = price;
@@ -51,5 +51,15 @@ public class ProductBean {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }

@@ -1,7 +1,9 @@
 package com.ecommerce;
 
+import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
-import com.ecommerce.repositories.impl.ProductRepositoryImpl;
+import com.ecommerce.services.impls.ProductServiceImpl;
+import com.ecommerce.utils.mappers.ProductMapper;
 
 public class MainTest {
     public static void main(String[] args) {
@@ -32,6 +34,13 @@ public class MainTest {
 
 
 
-        ProductRepositoryImpl.getInstance().save(new ProductEntity("p1",20,3));
+//        ProductEntity productEntity=ProductRepositoryImpl.getInstance().save(new ProductEntity("p1",20,3));
+//        productEntity.setPrice(50);
+//        ProductRepositoryImpl.getInstance().update(productEntity);
+//        System.out.println(productEntity.getId()+"  ; ; ; ;");
+        ProductEntity productEntity=new ProductServiceImpl().findById(1L);
+
+        ProductBean productBean=ProductMapper.INSTANCE.productEntityToBean(productEntity);
+        System.out.println(productBean);
     }
 }
