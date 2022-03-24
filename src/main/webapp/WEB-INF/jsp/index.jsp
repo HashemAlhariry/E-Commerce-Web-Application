@@ -114,7 +114,7 @@
 
                 <div class="cat-blocks-container">
                     <div class="row">
-                        <div class="col-6 col-sm-4 col-lg-2">
+                        <div class="col-6 col-sm-6 col-lg-4">
                             <a href="category.html" class="cat-block">
                                 <figure>
                                     <span>
@@ -126,19 +126,7 @@
                             </a>
                         </div><!-- End .col-sm-4 col-lg-2 -->
 
-                        <div class="col-6 col-sm-4 col-lg-2">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/2.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Digital Cameras</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
-
-                        <div class="col-6 col-sm-4 col-lg-2">
+                        <div class="col-6 col-sm-6 col-lg-4">
                             <a href="category.html" class="cat-block">
                                 <figure>
                                     <span>
@@ -150,31 +138,7 @@
                             </a>
                         </div><!-- End .col-sm-4 col-lg-2 -->
 
-                        <div class="col-6 col-sm-4 col-lg-2">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/4.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Televisions</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
-
-                        <div class="col-6 col-sm-4 col-lg-2">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/5.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Audio</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
-
-                        <div class="col-6 col-sm-4 col-lg-2">
+                        <div class="col-6 col-sm-6 col-lg-4">
                             <a href="category.html" class="cat-block">
                                 <figure>
                                     <span>
@@ -1733,27 +1697,27 @@
                         }
                     }'>
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/1.png" alt="Brand Name">
+                        <img src="assets/images/brands/oppo.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/2.png" alt="Brand Name">
+                        <img src="assets/images/brands/samsung.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/3.png" alt="Brand Name">
+                        <img src="assets/images/brands/Xiaomi.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/4.png" alt="Brand Name">
+                        <img src="assets/images/brands/iphone.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/5.png" alt="Brand Name">
+                        <img src="assets/images/brands/Dell.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/6.png" alt="Brand Name">
+                        <img src="assets/images/brands/Motorola.png" alt="Brand Name">
                     </a>
                 </div><!-- End .owl-carousel -->
             </div><!-- End .container -->
@@ -2153,7 +2117,7 @@
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="assets/images/popup/newsletter/img-1.jpg" class="newsletter-img" alt="newsletter">
+                        <img src="assets/images/popup/newsletter/banner-4.jpg" class="newsletter-img" alt="newsletter">
                     </div>
                 </div>
             </div>
