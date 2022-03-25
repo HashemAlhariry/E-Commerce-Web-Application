@@ -3,6 +3,8 @@ package com.ecommerce.repositories;
 
 import com.ecommerce.repositories.entites.ProductEntity;
 
-public interface ProductRepository extends Repository<ProductEntity,Long> {
+import java.util.List;
 
+public interface ProductRepository extends Repository<ProductEntity,Long> {
+    List<ProductEntity> getLast10();
 }

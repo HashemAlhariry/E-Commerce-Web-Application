@@ -1,9 +1,9 @@
 package com.ecommerce;
 
-import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
-import com.ecommerce.services.impls.ProductServiceImpl;
-import com.ecommerce.utils.mappers.ProductMapper;
+import com.ecommerce.repositories.impl.ProductRepositoryImpl;
+
+import java.util.List;
 
 public class MainTest {
     public static void main(String[] args) {
@@ -38,9 +38,15 @@ public class MainTest {
 //        productEntity.setPrice(50);
 //        ProductRepositoryImpl.getInstance().update(productEntity);
 //        System.out.println(productEntity.getId()+"  ; ; ; ;");
-        ProductEntity productEntity=new ProductServiceImpl().findById(1L);
+//        ProductEntity productEntity=new ProductServiceImpl().findById(1L);
+//
+//        ProductBean productBean=ProductMapper.INSTANCE.productEntityToBean(productEntity);
+//        System.out.println(productBean);
 
-        ProductBean productBean=ProductMapper.INSTANCE.productEntityToBean(productEntity);
-        System.out.println(productBean);
+        List<ProductEntity>productEntities = ProductRepositoryImpl.getInstance().getLast10();
+        for(ProductEntity productEntity:productEntities){
+            System.out.println(productEntity.getId());
+        }
+        System.out.println(productEntities.size());
     }
 }

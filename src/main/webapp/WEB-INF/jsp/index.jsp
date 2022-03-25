@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,7 +114,7 @@
 
                 <div class="cat-blocks-container">
                     <div class="row">
-                        <div class="col-6 col-sm-4 col-lg-2">
+                        <div class="col-6 col-sm-6 col-lg-4">
                             <a href="category.html" class="cat-block">
                                 <figure>
                                     <span>
@@ -125,19 +126,7 @@
                             </a>
                         </div><!-- End .col-sm-4 col-lg-2 -->
 
-                        <div class="col-6 col-sm-4 col-lg-2">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/2.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Digital Cameras</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
-
-                        <div class="col-6 col-sm-4 col-lg-2">
+                        <div class="col-6 col-sm-6 col-lg-4">
                             <a href="category.html" class="cat-block">
                                 <figure>
                                     <span>
@@ -149,31 +138,7 @@
                             </a>
                         </div><!-- End .col-sm-4 col-lg-2 -->
 
-                        <div class="col-6 col-sm-4 col-lg-2">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/4.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Televisions</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
-
-                        <div class="col-6 col-sm-4 col-lg-2">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/5.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Audio</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
-
-                        <div class="col-6 col-sm-4 col-lg-2">
+                        <div class="col-6 col-sm-6 col-lg-4">
                             <a href="category.html" class="cat-block">
                                 <figure>
                                     <span>
@@ -227,6 +192,48 @@
                                     }
                                 }
                             }'>
+                            <c:forEach var="product" items="${newArrivals}">
+
+
+                                <div class="product product-2">
+                                    <figure class="product-media">
+                                        <span class="product-label label-circle label-top">Top</span>
+                                        <a href="product.html">
+                                            <img src="assets/images/demos/demo-4/products/product-1.jpg" alt="Product image"
+                                                 class="product-image">
+                                        </a>
+
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                        </div><!-- End .product-action -->
+
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
+                                                cart</span></a>
+                                            <a href="popup/quickView.html" class="btn-product btn-quickview"
+                                               title="Quick view"><span>quick view</span></a>
+                                        </div><!-- End .product-action -->
+                                    </figure><!-- End .product-media -->
+
+                                    <div class="product-body">
+                                        <div class="product-cat">
+                                            <a href="#">Laptops</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title"><a href="product.html"><c:out value="${product.name}"/></a>
+                                        </h3><!-- End .product-title -->
+                                        <div class="product-price">
+                                            <c:out value="${product.price}"/>
+                                        </div><!-- End .product-price -->
+                                        <div class="ratings-container">
+                                            <div class="ratings">
+                                                <div class="ratings-val" style="width: 100%;"></div>
+                                                <!-- End .ratings-val -->
+                                            </div><!-- End .ratings -->
+                                            <span class="ratings-text">( 4 Reviews )</span>
+                                        </div><!-- End .rating-container -->
+                                    </div><!-- End .product-body -->
+                                </div><!-- End .product -->
+                            </c:forEach>
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <span class="product-label label-circle label-top">Top</span>
@@ -1690,27 +1697,27 @@
                         }
                     }'>
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/1.png" alt="Brand Name">
+                        <img src="assets/images/brands/oppo.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/2.png" alt="Brand Name">
+                        <img src="assets/images/brands/samsung.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/3.png" alt="Brand Name">
+                        <img src="assets/images/brands/Xiaomi.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/4.png" alt="Brand Name">
+                        <img src="assets/images/brands/iphone.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/5.png" alt="Brand Name">
+                        <img src="assets/images/brands/Dell.png" alt="Brand Name">
                     </a>
 
                     <a href="#" class="brand">
-                        <img src="assets/images/brands/6.png" alt="Brand Name">
+                        <img src="assets/images/brands/Motorola.png" alt="Brand Name">
                     </a>
                 </div><!-- End .owl-carousel -->
             </div><!-- End .container -->
@@ -2110,7 +2117,7 @@
                         </div>
                     </div>
                     <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="assets/images/popup/newsletter/img-1.jpg" class="newsletter-img" alt="newsletter">
+                        <img src="assets/images/popup/newsletter/banner-4.jpg" class="newsletter-img" alt="newsletter">
                     </div>
                 </div>
             </div>

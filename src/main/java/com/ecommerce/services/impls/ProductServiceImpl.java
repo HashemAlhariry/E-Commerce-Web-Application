@@ -9,7 +9,15 @@ import com.ecommerce.services.ProductService;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    private  final ProductRepository productRepository= ProductRepositoryImpl.getInstance();
+    private static final ProductServiceImpl INSTANCE = new ProductServiceImpl();
+    private final ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+
+    private ProductServiceImpl() {
+    }
+
+    public static ProductServiceImpl getInstance(){
+        return INSTANCE;
+    }
 
     @Override
     public ProductEntity save(ProductEntity entity) {
@@ -34,5 +42,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductEntity update(ProductEntity entity) {
         return null;
+    }
+
+    @Override
+    public List<ProductEntity> getLast10() {
+        return productRepository.getLast10();
     }
 }
