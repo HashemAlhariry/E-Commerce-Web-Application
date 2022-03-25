@@ -41,7 +41,7 @@
                             <i class="icon-bars"></i>
                         </button>
                         
-                        <a href="" class="logo">
+                        <a href="home" class="logo">
                             <img src="assets/images/demos/demo-3/logo-footer.png" alt="Molla Logo" width="105" height="25">
                         </a>
                     </div><!-- End .header-left -->
@@ -166,7 +166,7 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li class="megamenu-container active">
-                                    <a href="" class="our-sf-with-ul">Home</a>
+                                    <a href="home" class="our-sf-with-ul">Home</a>
 
 
                                 </li>

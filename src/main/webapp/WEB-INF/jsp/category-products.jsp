@@ -80,51 +80,57 @@
         					</div><!-- End .toolbox-sort -->
         				</div><!-- End .toolbox-right -->
         			</div><!-- End .toolbox -->
+                    <c:if test="${empty categorizedProducts}">
+                        <h1 class="error-title text-center ">There is no product yet</h1><!-- End .error-title -->
+                    </c:if>
+                    <c:if test="${!empty categorizedProducts}">
+                        <div class="products">
+                            <div class="row">
 
-                    <div class="products">
-                        <div class="row">
-                            <c:forEach var="product" items="${categorizedProducts}">
-                                <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                    <div class="product">
-                                        <figure class="product-media">
-                                            <a href="product.html">
-                                                <img src="assets/images/products/product-2.jpg" alt="Product image" class="product-image">
-                                            </a>
+                                <c:forEach var="product" items="${categorizedProducts}">
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="product">
+                                            <figure class="product-media">
+                                                <a href="product.html">
+                                                    <img src="assets/images/products/product-2.jpg" alt="Product image" class="product-image">
+                                                </a>
 
-                                            <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                            </div><!-- End .product-action -->
+                                                <div class="product-action-vertical">
+                                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                </div><!-- End .product-action -->
 
-                                            <div class="product-action action-icon-top">
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                            </div><!-- End .product-action -->
-                                        </figure><!-- End .product-media -->
+                                                <div class="product-action action-icon-top">
+                                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
 
-                                        <div class="product-body">
-                                            <div class="product-cat">
-                                                <a href="#">${product.category.categoryName}</a>
-                                            </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $${product.price}
-                                            </div><!-- End .product-price -->
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 11 Reviews )</span>
-                                            </div><!-- End .rating-container -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product -->
-                                </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                            </c:forEach>
-                        </div><!-- End .row -->
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">${product.category.categoryName}</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    $${product.price}
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                    <span class="ratings-text">( 11 Reviews )</span>
+                                                </div><!-- End .rating-container -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                </c:forEach>
+                            </div><!-- End .row -->
 
-                        <div class="load-more-container text-center">
-                            <a href="#" class="btn btn-outline-darker btn-load-more">More Products <i class="icon-refresh"></i></a>
-                        </div><!-- End .load-more-container -->
-                    </div><!-- End .products -->
+                            <div class="load-more-container text-center">
+                                <a href="#" class="btn btn-outline-darker btn-load-more">More Products <i class="icon-refresh"></i></a>
+                            </div><!-- End .load-more-container -->
+                        </div><!-- End .products -->
+                    </c:if>
+
 
                     <div class="sidebar-filter-overlay"></div><!-- End .sidebar-filter-overlay -->
                 </div><!-- End .container -->
