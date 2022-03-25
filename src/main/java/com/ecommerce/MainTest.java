@@ -1,12 +1,18 @@
 package com.ecommerce;
 
+import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
+import com.ecommerce.utils.mappers.ProductMapper;
 
 import java.util.List;
 
 public class MainTest {
     public static void main(String[] args) {
+
+        ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+
+        System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
 //        TestEntity test = new TestEntity();
 //        test.setId(1);
 //        test.setName("asd");

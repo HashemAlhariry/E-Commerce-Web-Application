@@ -13,4 +13,5 @@ public interface ProductService {
     ProductEntity update(ProductEntity entity);
 
     List<ProductEntity>getLast10();
+
 }

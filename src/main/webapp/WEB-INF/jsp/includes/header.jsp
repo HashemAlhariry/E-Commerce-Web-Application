@@ -171,7 +171,7 @@
 
                                 </li>
                                 <li>
-                                    <a href="category.html" class="our-sf-with-ul">Shop</a>
+                                    <a href="shop" class="our-sf-with-ul">Shop</a>
                                 </li>
 
                                 <li>
