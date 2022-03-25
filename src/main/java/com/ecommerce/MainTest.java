@@ -44,21 +44,21 @@ public class MainTest {
 //        ProductBean productBean=ProductMapper.INSTANCE.productEntityToBean(productEntity);
 //        System.out.println(productBean);
 
-//        CategoryEntity categoryEntity = new CategoryEntity();
-//        categoryEntity.setCategoryName("Salt");
-//
-//
-//        ProductEntity productEntityC = new ProductEntity();
-//        productEntityC.setPrice(123);
-//        productEntityC.setName("Osa");
-//        productEntityC.setCategory(categoryEntity);
-//
-//        ProductEntity productEntity2 = new ProductEntity();
-//        productEntity2.setPrice(123);
-//        productEntity2.setName("Oso");
-//        productEntity2.setCategory(categoryEntity);
-//        ProductRepositoryImpl.getInstance().save(productEntity2);
-//        ProductRepositoryImpl.getInstance().save(productEntityC);
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setCategoryName("Salt");
+
+
+        ProductEntity productEntityC = new ProductEntity();
+        productEntityC.setPrice(123);
+        productEntityC.setName("Osa");
+        productEntityC.setCategory(categoryEntity);
+
+        ProductEntity productEntity2 = new ProductEntity();
+        productEntity2.setPrice(123);
+        productEntity2.setName("Oso");
+        productEntity2.setCategory(categoryEntity);
+        ProductRepositoryImpl.getInstance().save(productEntity2);
+        ProductRepositoryImpl.getInstance().save(productEntityC);
 
         List<ProductEntity>productEntities = ProductRepositoryImpl.getInstance().findAllByCategoryId(3);
         for(ProductEntity productEntity:productEntities){

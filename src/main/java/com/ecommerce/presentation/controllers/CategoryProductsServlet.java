@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "category-product", urlPatterns = {"/category-boxed"})
+@WebServlet(name = "category-product", urlPatterns = {"/categorized-product"})
 
 public class CategoryProductsServlet extends HttpServlet {
     ServletContext servletContext;
@@ -31,12 +31,19 @@ public class CategoryProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int categoryId = (int) req.getAttribute("categoryId");
-        List<ProductEntity> categoryProducts = productService.findAllByCategoryId(categoryId);
-        List<ProductBean>categorizedProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(categoryProducts);
-        req.setAttribute("categorizedProducts",categorizedProductsBeans);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "category.jsp");
-        requestDispatcher.forward(req, resp);
+        if(req.getParameterValues("categoryId")!=null){
+            int categoryId =  Integer.parseInt(req.getParameter("categoryId"));
+            List<ProductEntity> categoryProducts = productService.findAllByCategoryId(categoryId);
+            List<ProductBean>categorizedProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(categoryProducts);
+            req.setAttribute("categorizedProducts",categorizedProductsBeans);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "category-products.jsp");
+            requestDispatcher.forward(req, resp);
+        }
+        //TODO if not entered id
+        else{
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "404.jsp");
+            requestDispatcher.forward(req, resp);
+        }
     }
 
     @Override
