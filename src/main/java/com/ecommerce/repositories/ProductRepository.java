@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProductRepository extends Repository<ProductEntity,Long> {
     List<ProductEntity> getLast10();
+    List<ProductEntity> findAllByCategoryId(int id);
 }

@@ -6,7 +6,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "products")
 @NamedQueries({
-        @NamedQuery(name = "reversed ids",query = "select p from ProductEntity p ORDER BY p.id DESC ")
+        @NamedQuery(name = "reversed ids",query = "select p from ProductEntity p ORDER BY p.id DESC "),
+        @NamedQuery(name = "findAllByCategoryId",query = "select p from ProductEntity p   where  p.category.id = :category_id")
+
 })
 public class ProductEntity {
     @Id
@@ -20,7 +22,7 @@ public class ProductEntity {
     private double rating;
     private double salePercentage;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private CategoryEntity category;
 
 

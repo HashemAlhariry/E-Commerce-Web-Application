@@ -13,4 +13,6 @@ public interface ProductService {
     ProductEntity update(ProductEntity entity);
 
     List<ProductEntity>getLast10();
+    List<ProductEntity> findAllByCategoryId(int id);
+
 }

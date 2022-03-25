@@ -48,4 +48,9 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> getLast10() {
         return productRepository.getLast10();
     }
+
+    @Override
+    public List<ProductEntity> findAllByCategoryId(int id) {
+        return productRepository.findAllByCategoryId(id);
+    }
 }
