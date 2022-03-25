@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Table(name = "products")
 @NamedQueries({
         @NamedQuery(name = "reversed ids",query = "select p from ProductEntity p ORDER BY p.id DESC ")
-       // LIMIT 5  ORDER BY c.name DESC
 })
 public class ProductEntity {
     @Id
@@ -17,6 +16,13 @@ public class ProductEntity {
     private String name;
     private  int price;
     private int quantity;
+    private String description;
+    private double rating;
+    private double salePercentage;
+
+    @ManyToOne
+    private CategoryEntity category;
+
 
     public  ProductEntity(){
 
@@ -32,6 +38,16 @@ public class ProductEntity {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public ProductEntity(String name, int price, int quantity, String description, double rating, double salePercentage, CategoryEntity category) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.rating = rating;
+        this.salePercentage = salePercentage;
+        this.category = category;
     }
 
     public long getId() {
@@ -64,5 +80,37 @@ public class ProductEntity {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public double getSalePercentage() {
+        return salePercentage;
+    }
+
+    public void setSalePercentage(double salePercentage) {
+        this.salePercentage = salePercentage;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity categoryEntity) {
+        this.category = categoryEntity;
     }
 }
