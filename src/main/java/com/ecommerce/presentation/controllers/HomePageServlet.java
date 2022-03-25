@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "home", urlPatterns = {""})
+@WebServlet(name = "home", urlPatterns = {"","/index"})
 public class HomePageServlet extends HttpServlet {
 
     ServletContext servletContext;
