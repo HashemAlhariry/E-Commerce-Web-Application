@@ -152,8 +152,8 @@
                             <div class="dropdown-menu">
                                 <nav class="side-nav">
                                     <ul class="menu-vertical sf-arrows">
-                                        <li class="item-lead"><a href="#">Laptops</a></li> <!-- href to shop categorized by laptops sent in paramters-->
-                                        <li class="item-lead"><a href="#">Mobile Phones</a></li> <!-- href to shop categorized by Mobiles sent in paramters-->
+                                        <li class="item-lead"><a href="#">Computer & Laptop</a></li> <!-- href to shop categorized by laptops sent in paramters-->
+                                        <li class="item-lead"><a href="#">Smart Phones</a></li> <!-- href to shop categorized by Mobiles sent in paramters-->
                                         <li class="item-lead"><a href="#">Smart Watches</a></li> <!-- href to shop categorized by watches sent in paramters-->
 <%--                                        <li><a href="#">Beds</a></li>--%>
                                     </ul><!-- End .menu-vertical -->
