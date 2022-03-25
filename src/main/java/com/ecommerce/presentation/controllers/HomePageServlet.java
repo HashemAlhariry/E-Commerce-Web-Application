@@ -1,9 +1,15 @@
 package com.ecommerce.presentation.controllers;
 
+import com.ecommerce.presentation.beans.CategoryBean;
 import com.ecommerce.presentation.beans.ProductBean;
+import com.ecommerce.repositories.entites.CategoryEntity;
 import com.ecommerce.repositories.entites.ProductEntity;
+import com.ecommerce.services.CategoryServices;
 import com.ecommerce.services.ProductService;
+import com.ecommerce.services.impls.CategoryServicesImpl;
+import com.ecommerce.services.impls.ProductServiceImpl;
 import com.ecommerce.utils.CommonString;
+import com.ecommerce.utils.mappers.CategoryMapper;
 import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
@@ -22,18 +28,22 @@ public class HomePageServlet extends HttpServlet {
 
     ServletContext servletContext;
     ProductService productService;
-
+    CategoryServices categoryService;
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService=(ProductService) servletContext.getAttribute("productService");
+        productService= ProductServiceImpl.getInstance();
+        categoryService= CategoryServicesImpl.getInstance();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ProductEntity>newArrivals = productService.getLast10();
         List<ProductBean>newArrivalsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(newArrivals);
+        List<CategoryEntity>currentCategory = categoryService.findAll();
+        List<CategoryBean>currentCategoryBeans = CategoryMapper.INSTANCE.listEntitiesToBeans(currentCategory);
         req.setAttribute("newArrivals",newArrivalsBeans);
+        req.setAttribute("currentCategories",currentCategoryBeans);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "index.jsp");
         requestDispatcher.forward(req, resp);
     }

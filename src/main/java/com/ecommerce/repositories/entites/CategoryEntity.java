@@ -9,13 +9,23 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int categoryId;
     private String categoryName;
+    private String categoryImage;
+
+    public String getCategoryImage() {
+        return categoryImage;
+    }
+
+    public void setCategoryImage(String categoryImage) {
+        this.categoryImage = categoryImage;
+    }
 
     public CategoryEntity() {
     }
 
-    public CategoryEntity(int categoryId, String categoryName) {
+    public CategoryEntity(int categoryId, String categoryName ,String categoryImage) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
+        this.categoryImage = categoryImage;
     }
     public CategoryEntity( String categoryName) {
         this.categoryName = categoryName;

@@ -1,7 +1,9 @@
 package com.ecommerce;
 
+import com.ecommerce.repositories.CategoryRepository;
 import com.ecommerce.repositories.entites.CategoryEntity;
 import com.ecommerce.repositories.entites.ProductEntity;
+import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 
 import java.util.List;
@@ -44,19 +46,28 @@ public class MainTest {
 //        ProductBean productBean=ProductMapper.INSTANCE.productEntityToBean(productEntity);
 //        System.out.println(productBean);
 
-        CategoryEntity categoryEntity = new CategoryEntity();
-        categoryEntity.setCategoryName("Salt");
+        CategoryEntity categoryEntity1 = new CategoryEntity();
+        categoryEntity1.setCategoryName("Computer & Laptop");
+        categoryEntity1.setCategoryImage("assets/images/demos/demo-4/cats/1.png");
 
+        CategoryEntity categoryEntity2 = new CategoryEntity();
+        categoryEntity2.setCategoryName("Smart Watches");
+        categoryEntity2.setCategoryImage("assets/images/demos/demo-4/cats/6.png");
+
+        CategoryEntity categoryEntity3 = new CategoryEntity();
+        categoryEntity3.setCategoryName("Smart Phones");
+        categoryEntity3.setCategoryImage("assets/images/demos/demo-4/cats/3.png");
+        CategoryRepositoryImpl.getInstance().save(categoryEntity3);
 
         ProductEntity productEntityC = new ProductEntity();
         productEntityC.setPrice(123);
         productEntityC.setName("Osa");
-        productEntityC.setCategory(categoryEntity);
+        productEntityC.setCategory(categoryEntity1);
 
         ProductEntity productEntity2 = new ProductEntity();
         productEntity2.setPrice(123);
         productEntity2.setName("Oso");
-        productEntity2.setCategory(categoryEntity);
+        productEntity2.setCategory(categoryEntity2);
         ProductRepositoryImpl.getInstance().save(productEntity2);
         ProductRepositoryImpl.getInstance().save(productEntityC);
 

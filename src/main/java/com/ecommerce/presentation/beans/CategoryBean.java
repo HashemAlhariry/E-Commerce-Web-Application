@@ -3,6 +3,7 @@ package com.ecommerce.presentation.beans;
 public class CategoryBean {
     private int categoryId;
     private String categoryName;
+    private String categoryImage;
 
     public CategoryBean(int categoryId, String categoryName) {
         this.categoryId = categoryId;
@@ -29,6 +30,9 @@ public class CategoryBean {
         this.categoryName = categoryName;
     }
 
+    public String getCategoryImage() {return categoryImage;}
+
+    public void setCategoryImage(String categoryImage) {this.categoryImage = categoryImage;}
     @Override
     public String toString() {
         return "CategoryEntity{" +

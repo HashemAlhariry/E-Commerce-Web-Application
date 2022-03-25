@@ -3,6 +3,7 @@ package com.ecommerce.presentation.controllers;
 import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.services.ProductService;
+import com.ecommerce.services.impls.ProductServiceImpl;
 import com.ecommerce.utils.CommonString;
 import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.RequestDispatcher;
@@ -26,7 +27,7 @@ public class CategoryProductsServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService=(ProductService) servletContext.getAttribute("productService");
+        productService= ProductServiceImpl.getInstance();
     }
 
     @Override

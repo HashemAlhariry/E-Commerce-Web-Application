@@ -13,7 +13,6 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext servletContext=sce.getServletContext();
-        servletContext.setAttribute("productService", ProductServiceImpl.getInstance());
     }
     @Override
     public void contextDestroyed(ServletContextEvent sce) {

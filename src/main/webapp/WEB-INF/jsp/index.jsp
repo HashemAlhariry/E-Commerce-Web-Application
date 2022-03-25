@@ -117,41 +117,20 @@
 
                 <div class="cat-blocks-container">
                     <div class="row">
-                        <div class="col-6 col-sm-6 col-lg-4">
-                            <a href="category.html" class="cat-block">
-                                <figure>
+                        <c:forEach var="category" items="${currentCategories}">
+                            <div class="col-6 col-sm-6 col-lg-4">
+                                <a href="categorized-product?categoryId=${category.categoryId}" id="${category.categoryId}" class="cat-block">
+                                    <figure>
                                     <span>
-                                        <img src="assets/images/demos/demo-4/cats/1.png" alt="Category image">
+                                        <img src="${category.categoryImage}" alt="${category.categoryName}">
                                     </span>
-                                </figure>
+                                    </figure>
 
-                                <h3 class="cat-block-title">Computer & Laptop</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
+                                    <h3 class="cat-block-title">${category.categoryName}</h3><!-- End .cat-block-title -->
+                                </a>
+                            </div><!-- End .col-sm-4 col-lg-2 -->
 
-                        <div class="col-6 col-sm-6 col-lg-4">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/3.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Smart Phones</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
-
-                        <div class="col-6 col-sm-6 col-lg-4">
-                            <a href="category.html" class="cat-block">
-                                <figure>
-                                    <span>
-                                        <img src="assets/images/demos/demo-4/cats/6.png" alt="Category image">
-                                    </span>
-                                </figure>
-
-                                <h3 class="cat-block-title">Smart Watches</h3><!-- End .cat-block-title -->
-                            </a>
-                        </div><!-- End .col-sm-4 col-lg-2 -->
+                        </c:forEach>
                     </div><!-- End .row -->
                 </div><!-- End .cat-blocks-container -->
             </div><!-- End .container -->
