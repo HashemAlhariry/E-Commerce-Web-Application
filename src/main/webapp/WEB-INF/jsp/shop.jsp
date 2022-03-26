@@ -1,4 +1,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,12 +33,13 @@
     <link rel="stylesheet" href="assets/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="assets/css/plugins/magnific-popup/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/plugins/nouislider/nouislider.css">
+	<link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
+	<link rel="stylesheet" href="assets/css/demos/demo-4.css">
 </head>
 
 <body>
     <div class="page-wrapper">
-        <%@ include file="includes/header.jsp" %><!-- End .header -->
-
+		<%@ include file="includes/header.jsp" %>
         <main class="main">
         	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
         		<div class="container">
@@ -76,16 +79,8 @@
 										</div>
                 					</div><!-- End .toolbox-sort -->
                 					<div class="toolbox-layout">
-                						<a href="category-list.html" class="btn-layout">
-                							<svg width="16" height="10">
-                								<rect x="0" y="0" width="4" height="4" />
-                								<rect x="6" y="0" width="10" height="4" />
-                								<rect x="0" y="6" width="4" height="4" />
-                								<rect x="6" y="6" width="10" height="4" />
-                							</svg>
-                						</a>
 
-                						<a href="category-2cols.html" class="btn-layout">
+                						<a onclick="" class="btn-layout"  id="productsView2">
                 							<svg width="10" height="10">
                 								<rect x="0" y="0" width="4" height="4" />
                 								<rect x="6" y="0" width="4" height="4" />
@@ -94,7 +89,7 @@
                 							</svg>
                 						</a>
 
-                						<a href="category.html" class="btn-layout">
+                						<a onclick="" class="btn-layout"  id="productsView3">
                 							<svg width="16" height="10">
                 								<rect x="0" y="0" width="4" height="4" />
                 								<rect x="6" y="0" width="4" height="4" />
@@ -105,7 +100,7 @@
                 							</svg>
                 						</a>
 
-                						<a href="category-4cols.html" class="btn-layout active">
+                						<a   class="btn-layout active" id="productsView4" >
                 							<svg width="22" height="10">
                 								<rect x="0" y="0" width="4" height="4" />
                 								<rect x="6" y="0" width="4" height="4" />
@@ -124,7 +119,7 @@
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
                                     <c:forEach items="${allProducts}" var="product">
-                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
                                                     <span class="product-label label-new">New</span>
@@ -286,7 +281,6 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
-
     <div class="mobile-menu-container">
         <div class="mobile-menu-wrapper">
             <span class="mobile-menu-close"><i class="icon-close"></i></span>
@@ -569,8 +563,7 @@
             </div><!-- End .modal-content -->
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
-
-    <!-- Plugins JS File -->
+	<!-- Plugins JS File -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.hoverIntent.min.js"></script>
@@ -583,8 +576,41 @@
     <script src="assets/js/nouislider.min.js"></script>
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+
+
+	<script>
+		$(document).ready(function(){
+			$("#productsView4").click(function(){
+
+				$("[id=productsView]").attr('class', 'col-6 col-md-4 col-lg-4 col-xl-3');
+				$('#productsView3').attr('class','btn-layout');
+				$('#productsView2').attr('class','btn-layout');
+				$("#productsView4").attr('class','btn-layout active');
+
+			});
+			$("#productsView3").click(function(){
+
+				$("[id=productsView]").attr('class', 'col-6 col-md-4 col-lg-4');
+				$('#productsView4').attr('class','btn-layout');
+				$('#productsView2').attr('class','btn-layout');
+				$("#productsView3").attr('class','btn-layout active');
+
+			});
+			$("#productsView2").click(function(){
+
+				$("[id=productsView]").attr('class', 'col-6');
+				$('#productsView3').attr('class','btn-layout');
+				$('#productsView4').attr('class','btn-layout');
+				$("#productsView2").attr('class','btn-layout active');
+
+			});
+		});
+	</script>
+
 </body>
 
 
 <!-- molla/category-4cols.html  22 Nov 2019 10:02:55 GMT -->
 </html>
+
+
