@@ -1,5 +1,9 @@
-   <header class="header header-intro-clearance header-4">
-            <div class="header-top">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<header class="header header-intro-clearance header-4">
+
+    <div class="header-top">
                 <div class="container">
                     <div class="header-left">
                         <a href="tel:#"><i class="icon-phone"></i>Call: +20 114 905 6691</a>
@@ -41,7 +45,7 @@
                             <i class="icon-bars"></i>
                         </button>
                         
-                        <a href="" class="logo">
+                        <a href="index" class="logo">
                             <img src="assets/images/demos/demo-3/logo-footer.png" alt="Molla Logo" width="105" height="25">
                         </a>
                     </div><!-- End .header-left -->
@@ -165,28 +169,35 @@
                     <div class="header-center">
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
-                                <li class="megamenu-container active">
-                                    <a href="" class="our-sf-with-ul">Home</a>
-
-
+                                <li>
+                                    <a href="index" class="our-sf-with-ul">Home</a>
                                 </li>
+
                                 <li>
                                     <a href="shop" class="our-sf-with-ul">Shop</a>
                                 </li>
 
                                 <li>
                                     <a href="#" class="sf-with-ul">Pages</a>
-
                                     <ul>
+
                                         <li>
                                             <a href="about.html" class="our-sf-with-ul">About</a>
                                         </li>
+
                                         <li>
                                             <a href="contact.html" class="our-sf-with-ul">Contact</a>
 
                                         </li>
-                                        <li><a href="faq.html">FAQs</a></li>
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
+
+                                        <li>
+                                            <a href="faq.html">FAQs</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="coming-soon.html">Coming Soon</a>
+                                        </li>
+
                                     </ul>
                                 </li>
 
