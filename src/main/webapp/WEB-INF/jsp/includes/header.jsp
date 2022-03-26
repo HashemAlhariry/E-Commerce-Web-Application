@@ -172,7 +172,7 @@
             <div class="header-center">
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
-                        <li class="megamenu-container active">
+                        <li class="megamenu-container ">
                             <a href="home" class="our-sf-with-ul">Home</a>
 
 
@@ -180,7 +180,7 @@
 
                                 <li>
                                     <a href="shop" class="our-sf-with-ul">Shop</a>
-                        </li>
+                                </li>
 
                                 <li>
                                     <a href="#" class="sf-with-ul">Pages</a>
