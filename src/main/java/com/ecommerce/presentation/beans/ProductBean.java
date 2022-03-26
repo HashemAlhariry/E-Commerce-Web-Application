@@ -106,6 +106,10 @@ public class ProductBean {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
+                ", description='" + description + '\'' +
+                ", rating=" + rating +
+                ", salePercentage=" + salePercentage +
+                ", category=" + category +
                 '}';
     }
 }
