@@ -39,7 +39,8 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
 
     @Override
     public List<T> findAll() {
-        return (List<T>) entityManager.createQuery("from " + clazz.getName()).getResultList();
+        List<T> resultList = (List<T>) entityManager.createQuery("FROM "+clazz.getSimpleName()).getResultList();
+        return resultList;
     }
 
     @Override
