@@ -29,4 +29,11 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
         query.setParameter("category_id", id);
         return  query.getResultList();
     }
+
+    @Override
+    public List<ProductEntity> findProductByName(String productName) {
+        TypedQuery<ProductEntity> query = entityManager.createNamedQuery("findProductByName" , ProductEntity.class);
+        query.setParameter("product_name", productName);
+        return  query.getResultList();
+    }
 }

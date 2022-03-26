@@ -14,5 +14,6 @@ public interface ProductService {
 
     List<ProductEntity>getLast10();
     List<ProductEntity> findAllByCategoryId(int id);
+    List<ProductEntity> findProductByName(String productName);
 
 }

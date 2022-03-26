@@ -53,4 +53,7 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> findAllByCategoryId(int id) {
         return productRepository.findAllByCategoryId(id);
     }
+
+    @Override
+    public List<ProductEntity> findProductByName(String productName) {return productRepository.findProductByName(productName);}
 }
