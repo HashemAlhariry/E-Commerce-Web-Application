@@ -67,19 +67,19 @@
             <div class="header-right">
 
                 <div class="wishlist">
-                    <a href="wishlist.html" title="Wishlist">
+                    <a href="wishlist" title="Wishlist">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
                             <span class="wishlist-count badge" id="wishListItemsNumber">0</span>
                         </div>
                         <p>Wishlist</p>
                     </a>
-                </div><!-- End .compare-dropdown -->
+                </div>
 
 
                 <div class="dropdown cart-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" data-display="static">
+                    <a href="cart" class="dropdown-toggle" role="button"  aria-haspopup="false"
+                       aria-expanded="false" data-display="static"> <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
                             <span class="cart-count" id="cartItemsNumber">0</span>

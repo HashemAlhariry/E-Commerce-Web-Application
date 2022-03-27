@@ -144,7 +144,7 @@
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
@@ -1008,6 +1008,11 @@
             }
 
 
+
+        }
+        function addToCart(product){
+            console.log(${allProducts[0].id});
+            console.log(product);
 
         }
 	</script>
