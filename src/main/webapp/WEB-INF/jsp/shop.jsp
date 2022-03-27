@@ -28,13 +28,13 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="assets/css/plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/plugins/nouislider/nouislider.css">
-	<link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
-	<link rel="stylesheet" href="assets/css/demos/demo-4.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery.countdown.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
+    <link rel="stylesheet" href="assets/css/demos/demo-4.css">
 </head>
 
 <body>
@@ -1015,7 +1015,6 @@
 </body>
 
 
-<!-- molla/category-4cols.html  22 Nov 2019 10:02:55 GMT -->
 </html>
 
 
