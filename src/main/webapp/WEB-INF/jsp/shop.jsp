@@ -936,6 +936,9 @@
 
 	<script>
 		$(document).ready(function(){
+
+
+
 			$("#productsView4").click(function(){
 
 				$("[id=productsView]").attr('class', 'col-6 col-md-4 col-lg-4 col-xl-3');
@@ -1010,10 +1013,46 @@
 
 
         }
-        function addToCart(product){
-            console.log(${allProducts[0].id});
-            console.log(product);
+        function addToCart(productId){
+                //get all available id in local storage
+                //update list
+                //save list to local storage
+                var checker=true;
+                var localStorageContent = localStorage.getItem("cartItems");
 
+                if (localStorageContent == null) {
+                    cartItems = [];
+                } else {
+                    cartItems = JSON.parse(localStorageContent);
+                }
+
+                cartItem = new CartItem(productId,1);
+
+                for(var i =0;i<cartItems.length;i++){
+                    if(cartItems[i].id === productId){
+                        cartItems[i].quantity++;
+                        checker=false;
+                    }
+                }
+
+                if(checker && productId>=0){
+                    cartItems.push(cartItem);
+                }
+
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                console.log(JSON.parse(localStorage.getItem("cartItems")));
+                console.log(cartItems);
+                console.log(cartItems);
+
+               document.getElementById("cartItemsNumber").textContent =  cartItems.length;
+
+
+
+        }
+
+        function CartItem(id, quantity) {
+            this.id = id;
+            this.quantity = quantity;
         }
 	</script>
 

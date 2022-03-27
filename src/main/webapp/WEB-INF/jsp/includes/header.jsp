@@ -78,15 +78,15 @@
 
 
                 <div class="dropdown cart-dropdown">
-                    <a href="cart" class="dropdown-toggle" role="button"  aria-haspopup="false"
-                       aria-expanded="false" data-display="static"> <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
-                        <div class="icon">
-                            <i class="icon-shopping-cart"></i>
-                            <span class="cart-count" id="cartItemsNumber">0</span>
-                        </div>
-                        <p>Cart</p>
-                    </a>
 
+                        <a   onclick="post('cart','post')" id="cartIcon" class="dropdown-toggle" role="button"  aria-haspopup="false"
+                           aria-expanded="false" data-display="static"> <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
+                            <div class="icon">
+                                <i class="icon-shopping-cart"></i>
+                                <span class="cart-count" id="cartItemsNumber">0</span>
+                            </div>
+                            <p>Cart</p>
+                        </a>
                     <%--                            <div class="dropdown-menu dropdown-menu-right">--%>
                     <%--                                <div class="dropdown-cart-products">--%>
                     <%--                                    <div class="product">--%>
@@ -218,3 +218,95 @@
     </div><!-- End .header-bottom -->
 </header>
 <!-- End .header -->
+
+<script src=http://code.jquery.com/jquery-latest.min.js ></script>
+<script>
+
+    window.onload = (event) => {
+        addToCart(-1);
+    };
+
+
+    function addToCart(productId){
+
+        //get all available id in local storage
+        //update list
+        //save list to local storage
+        var checker=true;
+        var localStorageContent = localStorage.getItem("cartItems");
+
+        if (localStorageContent == null) {
+            cartItems = [];
+        } else {
+            cartItems = JSON.parse(localStorageContent);
+        }
+
+        cartItem = new CartItem(productId,1);
+
+        for(var i =0;i<cartItems.length;i++){
+            if(cartItems[i].id === productId){
+                cartItems[i].quantity++;
+                checker=false;
+            }
+        }
+
+        if(checker && productId>=0){
+            cartItems.push(cartItem);
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        console.log(JSON.parse(localStorage.getItem("cartItems")));
+        console.log(cartItems);
+        console.log(cartItems);
+        document.getElementById("cartItemsNumber").textContent =  cartItems.length;
+
+    }
+
+    function CartItem(id, quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
+
+    function setRedirect(){
+        var Json = localStorage.getItem("cartItems");
+        document.cookie= "Cart=" + Json;
+    }
+
+    function post(path,method='post') {
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less verbose if you use one.
+        const form = document.createElement('form');
+        form.method = method;
+        form.action = path;
+
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = 'cart';
+        hiddenField.value =  localStorage.getItem("cartItems");
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+
+    }
+
+    /*
+    $('#cartIcon').click(function () {
+
+        var jsonData = localStorage.getItem("cartItems");
+        $.ajax({
+            url: 'cart',
+            type: 'GET',
+            contentType: 'application/x-www-form-urlencoded',
+            data: {
+                "jsonObject" : jsonData
+            },
+            dataType: 'json',
+            success: function () {
+
+            }
+        });
+    });
+     */
+
+</script>
