@@ -139,7 +139,7 @@
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
@@ -188,6 +188,7 @@
                                                 <div class="product product-7 text-center">
                                                     <figure class="product-media">
                                                         <span class="product-label label-new">New</span>
+
                                                         <a href="shop">
                                                             <c:choose>
                                                                 <c:when test="${product.category.categoryId==5}">
@@ -199,7 +200,7 @@
                                                             </c:choose>
                                                         </a>
 
-                                                        <div class="product-action-vertical">
+                                                        <div class="product-action-vertical" >
                                                             <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                             <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                         </div><!-- End .product-action-vertical -->
@@ -1042,7 +1043,6 @@
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
                 console.log(JSON.parse(localStorage.getItem("cartItems")));
                 console.log(cartItems);
-                console.log(cartItems);
 
                document.getElementById("cartItemsNumber").textContent =  cartItems.length;
 
@@ -1054,6 +1054,38 @@
             this.id = id;
             this.quantity = quantity;
         }
+
+        function addToWishList(productId){
+
+            //get all available id in local storage
+            //update list
+            //save list to local storage
+
+            var localStorageContent = localStorage.getItem("wishlistItems");
+            if (localStorageContent == null) {
+                WishListItems = [];
+            } else {
+                WishListItems = JSON.parse(localStorageContent);
+            }
+
+            WishListItem = new WishListItem(productId);
+
+            if(productId>=0){
+                WishListItems.push(WishListItem);
+            }
+
+            localStorage.setItem('wishlistItems', JSON.stringify(WishListItems));
+            console.log(JSON.parse(localStorage.getItem("wishlistItems")));
+            console.log(WishListItems);
+
+            document.getElementById("wishListItemsNumber").textContent =  WishListItems.length;
+
+        }
+
+        function WishListItem(id){
+            this.id=id;
+        }
+
 	</script>
 
 </body>

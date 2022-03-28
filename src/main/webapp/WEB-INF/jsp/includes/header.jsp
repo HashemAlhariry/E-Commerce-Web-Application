@@ -76,7 +76,6 @@
                     </a>
                 </div>
 
-
                 <div class="dropdown cart-dropdown">
 
                         <a   onclick="post('cart','post')" id="cartIcon" class="dropdown-toggle" role="button"  aria-haspopup="false"
@@ -223,7 +222,10 @@
 <script>
 
     window.onload = (event) => {
+
         addToCart(-1);
+        addToWishList(-1);
+
     };
 
 
@@ -232,6 +234,7 @@
         //get all available id in local storage
         //update list
         //save list to local storage
+
         var checker=true;
         var localStorageContent = localStorage.getItem("cartItems");
 
@@ -290,6 +293,39 @@
 
     }
 
+
+    function addToWishList(productId){
+
+        //get all available id in local storage
+        //update list
+        //save list to local storage
+
+        var localStorageContent = localStorage.getItem("wishlistItems");
+
+        if (localStorageContent == null) {
+            WishListItems = [];
+        } else {
+            WishListItems = JSON.parse(localStorageContent);
+        }
+
+        WishListItem = new WishListItem(productId);
+
+
+        if(productId>=0){
+            WishListItems.push(WishListItem);
+        }
+
+        localStorage.setItem('wishlistItems', JSON.stringify(WishListItems));
+        console.log(JSON.parse(localStorage.getItem("wishlistItems")));
+        console.log(WishListItems);
+
+        document.getElementById("wishListItemsNumber").textContent =  WishListItems.length;
+
+    }
+
+    function WishListItem(id){
+        this.id=id;
+    }
     /*
     $('#cartIcon').click(function () {
 
