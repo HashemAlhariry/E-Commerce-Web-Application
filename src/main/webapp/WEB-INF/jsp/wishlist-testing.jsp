@@ -1,6 +1,6 @@
 <script>
     window.onload = (event) => {
-        post('cart','post');
+        post('wishlist','post');
     };
 
     function post(path,method='post') {
@@ -12,9 +12,11 @@
         form.action = path;
 
         const hiddenField = document.createElement('input');
+
         hiddenField.type = 'hidden';
-        hiddenField.name = 'cart';
-        hiddenField.value =  localStorage.getItem("cartItems");
+        hiddenField.name = 'wishlist';
+
+        hiddenField.value =  localStorage.getItem("wishlistItems");
 
         form.appendChild(hiddenField);
         document.body.appendChild(form);

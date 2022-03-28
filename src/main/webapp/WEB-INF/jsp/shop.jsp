@@ -164,9 +164,11 @@
                                                     </div><!-- End .rating-container -->
 
                                                     <div class="product-nav product-nav-thumbs">
+
                                                         <a href="#" class="active">
                                                             <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
                                                         </a>
+
                                                         <a href="#">
                                                             <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
                                                         </a>
@@ -1014,6 +1016,8 @@
 
 
         }
+
+
         function addToCart(productId){
                 //get all available id in local storage
                 //update list
@@ -1049,18 +1053,18 @@
 
 
         }
-
         function CartItem(id, quantity) {
             this.id = id;
             this.quantity = quantity;
         }
+
 
         function addToWishList(productId){
 
             //get all available id in local storage
             //update list
             //save list to local storage
-
+            var check=true;
             var localStorageContent = localStorage.getItem("wishlistItems");
             if (localStorageContent == null) {
                 WishListItems = [];
@@ -1068,10 +1072,17 @@
                 WishListItems = JSON.parse(localStorageContent);
             }
 
-            WishListItem = new WishListItem(productId);
 
-            if(productId>=0){
-                WishListItems.push(WishListItem);
+
+            for(let i =0;i<WishListItems.length;i++){
+                if(WishListItems[i]===productId){
+                    check = false;
+                }
+            }
+
+
+            if( check && productId>=0){
+                WishListItems.push(productId);
             }
 
             localStorage.setItem('wishlistItems', JSON.stringify(WishListItems));
@@ -1082,9 +1093,6 @@
 
         }
 
-        function WishListItem(id){
-            this.id=id;
-        }
 
 	</script>
 

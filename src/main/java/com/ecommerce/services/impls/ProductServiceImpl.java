@@ -1,11 +1,14 @@
 package com.ecommerce.services.impls;
 
 
+import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 import com.ecommerce.services.ProductService;
+import com.ecommerce.utils.mappers.ProductMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
@@ -53,4 +56,16 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> findAllByCategoryId(int id) {
         return productRepository.findAllByCategoryId(id);
     }
+
+    @Override
+    public List<ProductBean> getAllProductBeans(List<Long> ids) {
+        List<ProductBean> productBeans = new ArrayList<>();
+        for (Long id:ids) {
+            ProductEntity productEntity = productRepository.findById(id);
+           ProductBean productBean=  ProductMapper.INSTANCE.productEntityToBean(productEntity);
+           productBeans.add(productBean);
+        }
+        return productBeans;
+    }
+
 }

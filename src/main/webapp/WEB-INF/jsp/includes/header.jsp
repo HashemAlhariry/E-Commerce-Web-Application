@@ -67,7 +67,7 @@
             <div class="header-right">
 
                 <div class="wishlist">
-                    <a href="wishlist" title="Wishlist">
+                    <a onclick= "postWishList('wishlist','post')" title="Wishlist" id="wishList">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
                             <span class="wishlist-count badge" id="wishListItemsNumber">0</span>
@@ -78,7 +78,7 @@
 
                 <div class="dropdown cart-dropdown">
 
-                        <a   onclick="post('cart','post')" id="cartIcon" class="dropdown-toggle" role="button"  aria-haspopup="false"
+                        <a  onclick="post('cart','post')" id="cartIcon" class="dropdown-toggle" role="button"  aria-haspopup="false"
                            aria-expanded="false" data-display="static"> <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
                             <div class="icon">
                                 <i class="icon-shopping-cart"></i>
@@ -308,11 +308,9 @@
             WishListItems = JSON.parse(localStorageContent);
         }
 
-        WishListItem = new WishListItem(productId);
-
 
         if(productId>=0){
-            WishListItems.push(WishListItem);
+            WishListItems.push(productId);
         }
 
         localStorage.setItem('wishlistItems', JSON.stringify(WishListItems));
@@ -323,9 +321,27 @@
 
     }
 
-    function WishListItem(id){
-        this.id=id;
+
+    function postWishList(path,method='post') {
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less verbose if you use one.
+        const form = document.createElement('form');
+        form.method = method;
+        form.action = path;
+
+        const hiddenField = document.createElement('input');
+
+        hiddenField.type = 'hidden';
+        hiddenField.name = 'wishlist';
+
+        hiddenField.value =  localStorage.getItem("wishlistItems");
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+
     }
+
     /*
     $('#cartIcon').click(function () {
 
