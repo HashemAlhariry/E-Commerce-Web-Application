@@ -1,5 +1,6 @@
 package com.ecommerce.utils.mappers;
 
+import com.ecommerce.presentation.beans.CartItemBean;
 import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 import org.mapstruct.Mapper;
@@ -19,5 +20,7 @@ public interface ProductMapper {
     List<ProductEntity> listBeansToEntities(List<ProductBean> productBeans);
 
     List<ProductBean> listEntitiesToBeans(List<ProductEntity> productEntities);
+
+//    CartItemBean productEntityToCartItemBean(ProductEntity producEntity , int viewCartId);
 
 }

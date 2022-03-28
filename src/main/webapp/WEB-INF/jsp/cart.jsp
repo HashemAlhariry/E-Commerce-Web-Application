@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +73,8 @@
 									</thead>
 
 									<tbody>
-										<tr>
+                                        <c:forEach items="${cartItemBeans}" var="cartItem" >
+										    <tr>
 											<td class="product-col">
 												<div class="product">
 													<figure class="product-media">
@@ -81,42 +84,20 @@
 													</figure>
 
 													<h3 class="product-title">
-														<a href="#">Beige knitted elastic runner shoes</a>
+														<a href="#">${cartItem.productBean.name}</a>
 													</h3><!-- End .product-title -->
 												</div><!-- End .product -->
 											</td>
-											<td class="price-col">$84.00</td>
+											<td class="price-col">${cartItem.productBean.price} EGP</td>
 											<td class="quantity-col">
                                                 <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                    <input type="number" class="form-control" value="1" min="1" max="${cartItem.productBean.quantity}" step="1" data-decimals="0" required>
                                                 </div><!-- End .cart-product-quantity -->
                                             </td>
-											<td class="total-col">$84.00</td>
+											<td class="total-col">${(cartItem.productBean.price)*(cartItem.requiredQuantity)} EGP</td>
 											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
 										</tr>
-										<tr>
-											<td class="product-col">
-												<div class="product">
-													<figure class="product-media">
-														<a href="#">
-															<img src="assets/images/products/table/product-2.jpg" alt="Product image">
-														</a>
-													</figure>
-
-													<h3 class="product-title">
-														<a href="#">Blue utility pinafore denim dress</a>
-													</h3><!-- End .product-title -->
-												</div><!-- End .product -->
-											</td>
-											<td class="price-col">$76.00</td>
-											<td class="quantity-col">
-                                                <div class="cart-product-quantity">
-                                                    <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                                </div><!-- End .cart-product-quantity -->                                 
-                                            </td>
-											<td class="total-col">$76.00</td>
-											<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-										</tr>
+                                        </c:forEach>
 									</tbody>
 								</table><!-- End .table table-wishlist -->
 
@@ -504,6 +485,9 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
 </body>
+<script>
+
+</script>
 
 
 <!-- molla/cart.html  22 Nov 2019 09:55:06 GMT -->
