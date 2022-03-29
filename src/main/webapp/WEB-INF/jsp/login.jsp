@@ -65,7 +65,7 @@
 							    <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
 							    	<form action="#">
 							    		<div class="form-group">
-							    			<label for="singin-email-2">Username or email address *</label>
+							    			<label for="singin-email-2">email address *</label>
 							    			<input type="text" class="form-control" id="singin-email-2" name="singin-email" required>
 							    		</div><!-- End .form-group -->
 
@@ -108,17 +108,43 @@
 							    </div><!-- .End .tab-pane -->
 							    <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
 							    	<form action="#">
+                                        <div class="form-group">
+                                            <label for="register-name-2">name *</label>
+                                            <input type="text" class="form-control" id="register-name-2" name="register-name" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-birthday-2">birthday date *</label>
+                                            <input type="date" class="form-control" id="register-birthday-2" name="register-birthday" required>
+                                        </div><!-- End .form-group -->
+
 							    		<div class="form-group">
-							    			<label for="register-email-2">Your email address *</label>
+							    			<label for="register-email-2">email *</label>
 							    			<input type="email" class="form-control" id="register-email-2" name="register-email" required>
 							    		</div><!-- End .form-group -->
+
 
 							    		<div class="form-group">
 							    			<label for="register-password-2">Password *</label>
 							    			<input type="password" class="form-control" id="register-password-2" name="register-password" required>
 							    		</div><!-- End .form-group -->
 
-							    		<div class="form-footer">
+                                        <div class="form-group">
+                                            <label for="register-jop-2">job *</label>
+                                            <input type="text" class="form-control" id="register-jop-2" name="register-job" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-address-2">address *</label>
+                                            <input type="text" class="form-control" id="register-address-2" name="register-address" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-credit limit-2">credit limit *</label>
+                                            <input type="text" class="form-control" id="register-credit limit-2" name="register-credit limit" required>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer">
 							    			<button type="submit" class="btn btn-outline-primary-2">
 			                					<span>SIGN UP</span>
 			            						<i class="icon-long-arrow-right"></i>
