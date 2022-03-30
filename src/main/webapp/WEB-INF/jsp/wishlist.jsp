@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
     <link rel="stylesheet" href="assets/css/demos/demo-4.css">
 
+    <script src="assets/js/amazonya/cookie-checker.js"></script>
+
 </head>
 
 <body>

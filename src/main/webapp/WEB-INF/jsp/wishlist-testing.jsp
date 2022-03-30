@@ -1,6 +1,12 @@
+
 <script>
     window.onload = (event) => {
-        post('wishlist','post');
+        if(!navigator.cookieEnabled) {
+            window.location.href = "un-enabled-cookie";
+        }else{
+            post('wishlist','post');
+        }
+
     };
 
     function post(path,method='post') {
