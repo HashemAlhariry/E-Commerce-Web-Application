@@ -46,6 +46,7 @@
 <body>
     <div class="page-wrapper">
         <%@ include file="includes/header.jsp" %>
+
         <main class="main">
             <div class="intro-slider-container mb-5">
                 <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl"
@@ -1777,6 +1778,7 @@
             </div><!-- End .icon-boxes-container -->
         </main><!-- End .main -->
 
+        <%@ include file="includes/footer.jsp" %><!-- End .footer -->
 
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
@@ -1946,7 +1948,7 @@
 <%--            </div>--%>
 <%--        </div>--%>
 <%--    </div>--%>
-       <%@ include file="includes/footer.jsp" %>
+
     <!-- Plugins JS File -->
 
 

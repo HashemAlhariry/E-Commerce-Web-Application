@@ -28,13 +28,13 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="assets/css/plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/plugins/nouislider/nouislider.css">
-	<link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
-	<link rel="stylesheet" href="assets/css/demos/demo-4.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery.countdown.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
+    <link rel="stylesheet" href="assets/css/demos/demo-4.css">
 </head>
 
 <body>
@@ -117,7 +117,7 @@
                 			</div><!-- End .toolbox -->
 
                             <div class="products mb-3">
-                                <div class="row justify-content-center">
+                                <div class="row justify-content-center" id="productsContainer">
                                     <c:forEach items="${allProducts}" var="product">
                                         <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                             <div class="product product-7 text-center">
@@ -125,18 +125,261 @@
                                                     <span class="product-label label-new">New</span>
                                                     <a href="shop">
                                                         <c:choose>
-                                                            <c:when test="${product.category.categoryId==3}">
+                                                            <c:when test="${product.category.categoryId==5}">
                                                                 <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
                                                             </c:when>
 
-                                                            <c:when test="${product.category.categoryId==2}">
+                                                            <c:when test="${product.category.categoryId==3}">
                                                                 <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img src="assets/images/products/product-4.jpg" alt="Product image" class="product-image">
+                                                                <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </a>
+
+                                                    <div class="product-action-vertical">
+                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    </div><!-- End .product-action-vertical -->
+
+                                                    <div class="product-action">
+                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    </div><!-- End .product-action -->
+                                                </figure><!-- End .product-media -->
+
+                                                <div class="product-body">
+                                                    <div class="product-cat">
+                                                        <a href="#">${product.category.categoryName}</a>
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                        ${product.price} EGP
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                        <span class="ratings-text">( 2 Reviews )</span>
+                                                    </div><!-- End .rating-container -->
+
+                                                    <div class="product-nav product-nav-thumbs">
+
+                                                        <a href="#" class="active">
+                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                        </a>
+
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                        </a>
+
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                        </a>
+                                                    </div><!-- End .product-nav -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product -->
+                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                    </c:forEach>
+
+                                </div>
+                                <div class="row justify-content-center" id="watchAndLapContainer" hidden>
+                                    <c:forEach items="${allProducts}" var="product">
+                                        <c:if test="${(product.category.categoryId==1)or(product.category.categoryId==5)}">
+                                            <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                                <div class="product product-7 text-center">
+                                                    <figure class="product-media">
+                                                        <span class="product-label label-new">New</span>
+
+                                                        <a href="shop">
+                                                            <c:choose>
+                                                                <c:when test="${product.category.categoryId==5}">
+                                                                    <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </a>
+
+                                                        <div class="product-action-vertical" >
+                                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                        </div><!-- End .product-action-vertical -->
+
+                                                        <div class="product-action">
+                                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        </div><!-- End .product-action -->
+                                                    </figure><!-- End .product-media -->
+
+                                                    <div class="product-body">
+                                                        <div class="product-cat">
+                                                            <a href="#">${product.category.categoryName}</a>
+                                                        </div><!-- End .product-cat -->
+                                                        <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
+                                                        <div class="product-price">
+                                                                ${product.price} EGP
+                                                        </div><!-- End .product-price -->
+                                                        <div class="ratings-container">
+                                                            <div class="ratings">
+                                                                <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                            </div><!-- End .ratings -->
+                                                            <span class="ratings-text">( 2 Reviews )</span>
+                                                        </div><!-- End .rating-container -->
+
+                                                        <div class="product-nav product-nav-thumbs">
+                                                            <a href="#" class="active">
+                                                                <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                            </a>
+
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                        </div><!-- End .product-nav -->
+                                                    </div><!-- End .product-body -->
+                                                </div><!-- End .product -->
+                                            </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                        </c:if>
+                                    </c:forEach>
+
+                                </div>
+                                <div class="row justify-content-center" id="mobAndLapContainer"hidden>
+                                    <c:forEach items="${allProducts}" var="product">
+                                        <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==5)}">
+                                            <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                                <div class="product product-7 text-center">
+                                                    <figure class="product-media">
+                                                        <span class="product-label label-new">New</span>
+                                                        <a href="shop">
+                                                            <c:choose>
+                                                                <c:when test="${product.category.categoryId==5}">
+                                                                    <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </a>
+
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                        </div><!-- End .product-action-vertical -->
+
+                                                        <div class="product-action">
+                                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        </div><!-- End .product-action -->
+                                                    </figure><!-- End .product-media -->
+
+                                                    <div class="product-body">
+                                                        <div class="product-cat">
+                                                            <a href="#">${product.category.categoryName}</a>
+                                                        </div><!-- End .product-cat -->
+                                                        <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
+                                                        <div class="product-price">
+                                                                ${product.price} EGP
+                                                        </div><!-- End .product-price -->
+                                                        <div class="ratings-container">
+                                                            <div class="ratings">
+                                                                <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                            </div><!-- End .ratings -->
+                                                            <span class="ratings-text">( 2 Reviews )</span>
+                                                        </div><!-- End .rating-container -->
+
+                                                        <div class="product-nav product-nav-thumbs">
+                                                            <a href="#" class="active">
+                                                                <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                            </a>
+
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                        </div><!-- End .product-nav -->
+                                                    </div><!-- End .product-body -->
+                                                </div><!-- End .product -->
+                                            </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                        </c:if>
+                                    </c:forEach>
+
+                                </div>
+                                <div class="row justify-content-center" id="mobAndWatchContainer" hidden>
+                                    <c:forEach items="${allProducts}" var="product">
+                                        <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==1)}">
+                                            <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                                <div class="product product-7 text-center">
+                                                    <figure class="product-media">
+                                                        <span class="product-label label-new">New</span>
+                                                        <a href="shop">
+                                                            <c:choose>
+                                                                <c:when test="${product.category.categoryId==1}">
+                                                                    <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </a>
+
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                        </div><!-- End .product-action-vertical -->
+
+                                                        <div class="product-action">
+                                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        </div><!-- End .product-action -->
+                                                    </figure><!-- End .product-media -->
+
+                                                    <div class="product-body">
+                                                        <div class="product-cat">
+                                                            <a href="#">${product.category.categoryName}</a>
+                                                        </div><!-- End .product-cat -->
+                                                        <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
+                                                        <div class="product-price">
+                                                                ${product.price} EGP
+                                                        </div><!-- End .product-price -->
+                                                        <div class="ratings-container">
+                                                            <div class="ratings">
+                                                                <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                            </div><!-- End .ratings -->
+                                                            <span class="ratings-text">( 2 Reviews )</span>
+                                                        </div><!-- End .rating-container -->
+
+                                                        <div class="product-nav product-nav-thumbs">
+                                                            <a href="#" class="active">
+                                                                <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                            </a>
+
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                        </div><!-- End .product-nav -->
+                                                    </div><!-- End .product-body -->
+                                                </div><!-- End .product -->
+                                            </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                        </c:if>
+                                    </c:forEach>
+
+                                </div>
+                                <div class="row justify-content-center" id="laptopsContainer" hidden>
+                                    <c:forEach items="${allProducts}" var="product">
+                                        <c:if test="${product.category.categoryId==5}">
+                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                            <div class="product product-7 text-center">
+                                                <figure class="product-media">
+                                                    <span class="product-label label-new">New</span>
+                                                    <a href="shop">
+                                                        <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
+                                                        </a>
 
                                                     <div class="product-action-vertical">
                                                         <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
@@ -178,9 +421,120 @@
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
                                         </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                        </c:if>
                                     </c:forEach>
 
                                 </div><!-- End .row -->
+                                <div class="row justify-content-center" id="mobileContainer" hidden>
+                                    <c:forEach items="${allProducts}" var="product">
+                                        <c:if test="${product.category.categoryId==3}">
+                                            <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                                <div class="product product-7 text-center">
+                                                    <figure class="product-media">
+                                                        <span class="product-label label-new">New</span>
+                                                        <a href="shop">
+                                                            <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
+                                                        </a>
+
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                        </div><!-- End .product-action-vertical -->
+
+                                                        <div class="product-action">
+                                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        </div><!-- End .product-action -->
+                                                    </figure><!-- End .product-media -->
+
+                                                    <div class="product-body">
+                                                        <div class="product-cat">
+                                                            <a href="#">${product.category.categoryName}</a>
+                                                        </div><!-- End .product-cat -->
+                                                        <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
+                                                        <div class="product-price">
+                                                                ${product.price} EGP
+                                                        </div><!-- End .product-price -->
+                                                        <div class="ratings-container">
+                                                            <div class="ratings">
+                                                                <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                            </div><!-- End .ratings -->
+                                                            <span class="ratings-text">( 2 Reviews )</span>
+                                                        </div><!-- End .rating-container -->
+
+                                                        <div class="product-nav product-nav-thumbs">
+                                                            <a href="#" class="active">
+                                                                <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                            </a>
+
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                        </div><!-- End .product-nav -->
+                                                    </div><!-- End .product-body -->
+                                                </div><!-- End .product -->
+                                            </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                        </c:if>
+                                    </c:forEach>
+
+                                </div>
+                                <div class="row justify-content-center" id="watchContainer" hidden>
+                                    <c:forEach items="${allProducts}" var="product">
+                                        <c:if test="${product.category.categoryId==1}">
+                                            <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                                <div class="product product-7 text-center">
+                                                    <figure class="product-media">
+                                                        <span class="product-label label-new">New</span>
+                                                        <a href="shop">
+                                                            <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
+                                                        </a>
+
+                                                        <div class="product-action-vertical">
+                                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                        </div><!-- End .product-action-vertical -->
+
+                                                        <div class="product-action">
+                                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        </div><!-- End .product-action -->
+                                                    </figure><!-- End .product-media -->
+
+                                                    <div class="product-body">
+                                                        <div class="product-cat">
+                                                            <a href="#">${product.category.categoryName}</a>
+                                                        </div><!-- End .product-cat -->
+                                                        <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
+                                                        <div class="product-price">
+                                                                ${product.price} EGP
+                                                        </div><!-- End .product-price -->
+                                                        <div class="ratings-container">
+                                                            <div class="ratings">
+                                                                <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                            </div><!-- End .ratings -->
+                                                            <span class="ratings-text">( 2 Reviews )</span>
+                                                        </div><!-- End .rating-container -->
+
+                                                        <div class="product-nav product-nav-thumbs">
+                                                            <a href="#" class="active">
+                                                                <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                            </a>
+
+                                                            <a href="#">
+                                                                <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                            </a>
+                                                        </div><!-- End .product-nav -->
+                                                    </div><!-- End .product-body -->
+                                                </div><!-- End .product -->
+                                            </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                        </c:if>
+                                    </c:forEach>
+
+                                </div>
                             </div><!-- End .products -->
 
 
@@ -222,28 +576,33 @@
 											<div class="filter-items filter-items-count">
 												<div class="filter-item">
 													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" id="cat-1">
-														<label class="custom-control-label" for="cat-1">Computer & Laptop</label>
+														<input type="checkbox" class="custom-control-input" id="laptopCatCheckBox">
+														<label class="custom-control-label" for="laptopCatCheckBox">Computer & Laptop</label>
 													</div><!-- End .custom-checkbox -->
 													<span class="item-count" id="categoryProductsNumber">3</span>
 												</div><!-- End .filter-item -->
 
 												<div class="filter-item">
 													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" id="cat-2">
-														<label class="custom-control-label" for="cat-2">Smart Phones</label>
+														<input type="checkbox" class="custom-control-input" id="mobileCatCheckBox">
+														<label class="custom-control-label" for="mobileCatCheckBox">Smart Phones</label>
 													</div><!-- End .custom-checkbox -->
 													<span class="item-count">0</span>
 												</div><!-- End .filter-item -->
 
 												<div class="filter-item">
 													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" id="cat-3">
-														<label class="custom-control-label" for="cat-3">Smart Watches</label>
+														<input type="checkbox" class="custom-control-input" id="watchCatCheckBox">
+														<label class="custom-control-label" for="watchCatCheckBox">Smart Watches</label>
 													</div><!-- End .custom-checkbox -->
 													<span class="item-count">4</span>
 												</div><!-- End .filter-item -->
 											</div><!-- End .filter-items -->
+                                            <div style="margin-top: 25px;">
+                                                <center>
+                                                    <a class="btn btn-outline-primary btn-round" id="categoryFilterbutton" onclick="filterByCategory()">Filter</a>
+                                                </center>
+                                            </div>
 										</div><!-- End .widget-body -->
 									</div><!-- End .collapse -->
         						</div><!-- End .widget -->
@@ -580,6 +939,9 @@
 
 	<script>
 		$(document).ready(function(){
+
+
+
 			$("#productsView4").click(function(){
 
 				$("[id=productsView]").attr('class', 'col-6 col-md-4 col-lg-4 col-xl-3');
@@ -605,12 +967,138 @@
 
 			});
 		});
+        function filterByCategory(){
+            var laptops = document.getElementById("laptopCatCheckBox").checked;
+            var mobiles = document.getElementById("mobileCatCheckBox").checked;
+            var watches = document.getElementById("watchCatCheckBox").checked;
+            var productView = document.getElementById("productsView");
+
+            $("#productsContainer").hide();
+            $("#laptopsContainer").hide();
+            $("#mobileContainer").hide();
+            $("#watchContainer").hide();
+            $("#mobAndWatchContainer").hide();
+            $("#mobAndLapContainer").hide();
+            $("#watchAndLapContainer").hide();
+
+            if((laptops && mobiles && watches)||(!laptops && !mobiles && !watches)){
+                $("#productsContainer").show();
+            }
+            else{
+                if (laptops){
+                    if(mobiles){
+                        $("#mobAndLapContainer").attr("hidden",false);
+                        $("#mobAndLapContainer").show();
+                    }
+                    else if(watches){
+                        $("#watchAndLapContainer").attr("hidden",false);
+                        $("#watchAndLapContainer").show();
+                    }
+                    else{
+                        $("#laptopsContainer").attr("hidden",false);
+                        $("#laptopsContainer").show();
+                    }
+                }else if(mobiles){
+                    if(watches){
+                        $("#mobAndWatchContainer").attr("hidden",false);
+                        $("#mobAndWatchContainer").show();
+                    }
+                    else{
+                        $("#mobileContainer").attr("hidden",false);
+                        $("#mobileContainer").show();
+                    }
+                }else{
+                    $("#watchContainer").attr("hidden",false);
+                    $("#watchContainer").show();
+                }
+            }
+
+
+
+        }
+
+
+        function addToCart(productId){
+                //get all available id in local storage
+                //update list
+                //save list to local storage
+                var checker=true;
+                var localStorageContent = localStorage.getItem("cartItems");
+
+                if (localStorageContent == null) {
+                    cartItems = [];
+                } else {
+                    cartItems = JSON.parse(localStorageContent);
+                }
+
+                cartItem = new CartItem(productId,1);
+
+                for(var i =0;i<cartItems.length;i++){
+                    if(cartItems[i].id === productId){
+                        cartItems[i].quantity++;
+                        checker=false;
+                    }
+                }
+
+                if(checker && productId>=0){
+                    cartItems.push(cartItem);
+                }
+
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                console.log(JSON.parse(localStorage.getItem("cartItems")));
+                console.log(cartItems);
+
+               document.getElementById("cartItemsNumber").textContent =  cartItems.length;
+
+
+
+        }
+        function CartItem(id, quantity) {
+            this.id = id;
+            this.quantity = quantity;
+        }
+
+
+        function addToWishList(productId){
+
+            //get all available id in local storage
+            //update list
+            //save list to local storage
+            var check=true;
+            var localStorageContent = localStorage.getItem("wishlistItems");
+            if (localStorageContent == null) {
+                WishListItems = [];
+            } else {
+                WishListItems = JSON.parse(localStorageContent);
+            }
+
+
+
+            for(let i =0;i<WishListItems.length;i++){
+                if(WishListItems[i]===productId){
+                    check = false;
+                }
+            }
+
+
+            if( check && productId>=0){
+                WishListItems.push(productId);
+            }
+
+            localStorage.setItem('wishlistItems', JSON.stringify(WishListItems));
+            console.log(JSON.parse(localStorage.getItem("wishlistItems")));
+            console.log(WishListItems);
+
+            document.getElementById("wishListItemsNumber").textContent =  WishListItems.length;
+
+        }
+
+
 	</script>
 
 </body>
 
 
-<!-- molla/category-4cols.html  22 Nov 2019 10:02:55 GMT -->
 </html>
 
 
