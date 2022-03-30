@@ -15,7 +15,7 @@ public class MainTest {
 
         ProductRepository productRepository = ProductRepositoryImpl.getInstance();
 
-        System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
+   //     System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
 //        TestEntity test = new TestEntity();
 //        test.setId(1);
 //        test.setName("asd");
@@ -52,34 +52,34 @@ public class MainTest {
 //        ProductBean productBean=ProductMapper.INSTANCE.productEntityToBean(productEntity);
 //        System.out.println(productBean);
 
-        CategoryEntity categoryEntity1 = new CategoryEntity();
-        categoryEntity1.setCategoryName("Computer & Laptop");
-        categoryEntity1.setCategoryImage("assets/images/demos/demo-4/cats/1.png");
+//        CategoryEntity categoryEntity1 = new CategoryEntity();
+//        categoryEntity1.setCategoryName("Computer & Laptop");
+//        categoryEntity1.setCategoryImage("assets/images/demos/demo-4/cats/1.png");
+//
+//        CategoryEntity categoryEntity2 = new CategoryEntity();
+//        categoryEntity2.setCategoryName("Smart Watches");
+//        categoryEntity2.setCategoryImage("assets/images/demos/demo-4/cats/6.png");
+//
+//        CategoryEntity categoryEntity3 = new CategoryEntity();
+//        categoryEntity3.setCategoryName("Smart Phones");
+//        categoryEntity3.setCategoryImage("assets/images/demos/demo-4/cats/3.png");
+//        CategoryRepositoryImpl.getInstance().save(categoryEntity3);
+//
+//        ProductEntity productEntityC = new ProductEntity();
+//        productEntityC.setPrice(123);
+//        productEntityC.setName("Osa");
+//        productEntityC.setCategory(categoryEntity1);
+//
+//        ProductEntity productEntity2 = new ProductEntity();
+//        productEntity2.setPrice(123);
+//        productEntity2.setName("Oso");
+//        productEntity2.setCategory(categoryEntity2);
+//        ProductRepositoryImpl.getInstance().save(productEntity2);
+//        ProductRepositoryImpl.getInstance().save(productEntityC);
 
-        CategoryEntity categoryEntity2 = new CategoryEntity();
-        categoryEntity2.setCategoryName("Smart Watches");
-        categoryEntity2.setCategoryImage("assets/images/demos/demo-4/cats/6.png");
-
-        CategoryEntity categoryEntity3 = new CategoryEntity();
-        categoryEntity3.setCategoryName("Smart Phones");
-        categoryEntity3.setCategoryImage("assets/images/demos/demo-4/cats/3.png");
-        CategoryRepositoryImpl.getInstance().save(categoryEntity3);
-
-        ProductEntity productEntityC = new ProductEntity();
-        productEntityC.setPrice(123);
-        productEntityC.setName("Osa");
-        productEntityC.setCategory(categoryEntity1);
-
-        ProductEntity productEntity2 = new ProductEntity();
-        productEntity2.setPrice(123);
-        productEntity2.setName("Oso");
-        productEntity2.setCategory(categoryEntity2);
-        ProductRepositoryImpl.getInstance().save(productEntity2);
-        ProductRepositoryImpl.getInstance().save(productEntityC);
-
-        List<ProductEntity>productEntities = ProductRepositoryImpl.getInstance().findAllByCategoryId(3);
+        List<ProductEntity>productEntities = ProductRepositoryImpl.getInstance().findProductByName("s");
         for(ProductEntity productEntity:productEntities){
-            System.out.println(productEntity.getId());
+            System.out.println(productEntity.getName());
         }
         System.out.println(productEntities.size());
     }

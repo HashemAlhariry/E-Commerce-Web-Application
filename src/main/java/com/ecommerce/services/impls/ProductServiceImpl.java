@@ -68,4 +68,7 @@ public class ProductServiceImpl implements ProductService {
         return productBeans;
     }
 
+
+    @Override
+    public List<ProductEntity> findProductByName(String productName) {return productRepository.findProductByName(productName);}
 }

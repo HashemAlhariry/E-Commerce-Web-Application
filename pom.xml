@@ -151,8 +151,8 @@
                 <version>2.2</version>
                 <configuration>
                     <username>admin</username>
-                    <password>admin</password>
-                    <url>http://localhost:9595/manager/text</url>
+                    <password>admin1234</password>
+                    <url>http://localhost:9191/manager/text</url>
                     <path>/amazonya</path>
 
 

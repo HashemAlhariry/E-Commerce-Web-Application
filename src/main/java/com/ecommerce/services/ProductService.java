@@ -16,5 +16,6 @@ public interface ProductService {
     List<ProductEntity> findAllByCategoryId(int id);
     List<ProductBean> getAllProductBeans(List<Long> ids);
 
+    List<ProductEntity> findProductByName(String productName);
 
 }
