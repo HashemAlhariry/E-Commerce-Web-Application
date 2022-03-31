@@ -26,7 +26,7 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
-                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            <li><a href="login-signup" data-toggle="modal">Sign in / Sign up</a></li>
                             <%--<li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>--%>
 
                         </ul>
@@ -172,7 +172,7 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         <li class="megamenu-container ">
-                            <a href="home" class="our-sf-with-ul">Home</a>
+                            <a href="login-signup" class="our-sf-with-ul">Home</a>
 
 
                                 </li>
