@@ -33,15 +33,10 @@ public class SignUpServlet extends HttpServlet {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateOfBirth = LocalDate.parse(birthDate, dateTimeFormatter);
 
-        SignUpBean signUpBean = new SignUpBean
+        // ORM LAYER
+        SignUpBean signUpBean = new SignUpBean(firstName,String.valueOf(dateOfBirth),email,password,job,address,creditLimit);
 
-        signUpBean.setUserName(firstName);
-        signUpBean.setUserBirthDay(String.valueOf(dateOfBirth));
-        signUpBean.setUserEmail(email);
-        signUpBean.setUserPassword(password);
-        signUpBean.setUserJob(job);
-        signUpBean.setUserAddress(address);
-        signUpBean.setUserCreditLimit(creditLimit);
+
 
     }
 }

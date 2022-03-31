@@ -22,6 +22,8 @@ public class SignUpBean {
     }
 
 
+
+
     public String getUserName() {
         return userName;
     }
