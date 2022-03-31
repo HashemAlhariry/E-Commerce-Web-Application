@@ -10,6 +10,7 @@ public class LoginBean {
         this.userPassword = userPassword;
     }
 
+
     public String getUserEmail() {
         return userEmail;
     }

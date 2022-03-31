@@ -65,13 +65,13 @@
 							    <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
 							    	<form action="#">
 							    		<div class="form-group">
-							    			<label for="singin-email-2">email address *</label>
-							    			<input type="text" class="form-control" id="singin-email-2" name="singin-email" required>
+							    			<label for="signup-email-2">email address *</label>
+							    			<input type="text" class="form-control" id="signup-email-2" name="signup-email" required>
 							    		</div><!-- End .form-group -->
 
 							    		<div class="form-group">
-							    			<label for="singin-password-2">Password *</label>
-							    			<input type="password" class="form-control" id="singin-password-2" name="singin-password" required>
+							    			<label for="signup-password-2">Password *</label>
+							    			<input type="password" class="form-control" id="signup-password-2" name="signup-password" required>
 							    		</div><!-- End .form-group -->
 
 							    		<div class="form-footer">
