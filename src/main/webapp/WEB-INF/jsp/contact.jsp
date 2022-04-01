@@ -43,12 +43,15 @@
             <div class="col-md-9 col-lg-8">
                 <div class="soon-content text-center">
                     <div class="soon-content-wrapper">
-                        <img src="assets/images/logo-icon.png" alt="Logo" class="soon-logo mx-auto">
+<%--                        <img src="assets/images/logo-icon.png" alt="Logo" class="soon-logo mx-auto">--%>
                         <h1 class="soon-title">Contact Us </h1><!-- End .soon-title -->
-                        <div class="coming-countdown countdown-separator"></div><!-- End .coming-countdown -->
+<%--                        <div class="coming-countdown countdown-separator"></div><!-- End .coming-countdown -->--%>
                         <hr class="mt-2 mb-3 mt-md-3">
-                        <p>You can contact us through social media</p>
-
+                        <p>You can contact us through our phone number</p>
+                        <p>+20 01155786595</p>
+                        <p>+20 01199326595</p>
+                        <br>
+                        <p> Or by social media account </p></br>
                         <div class="social-icons justify-content-center mb-0">
                             <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
                             <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
@@ -71,21 +74,21 @@
 <script src="assets/js/jquery.countdown.min.js"></script>
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
-<script>
-    $(function() {
-        "use strict";
-        if ($.fn.countdown) {
-            $('.coming-countdown').countdown({
-                until: new Date(2021, 7, 20), // 7th month = August / Months 0 - 11 (January  - December)
-                format: 'DHMS',
-                padZeroes: true
-            });
+<%--<script>--%>
+<%--    $(function() {--%>
+<%--        "use strict";--%>
+<%--        if ($.fn.countdown) {--%>
+<%--            $('.coming-countdown').countdown({--%>
+<%--                until: new Date(2021, 7, 20), // 7th month = August / Months 0 - 11 (January  - December)--%>
+<%--                format: 'DHMS',--%>
+<%--                padZeroes: true--%>
+<%--            });--%>
 
-            // Pause
-            // $('.coming-countdown').countdown('pause');
-        }
-    });
-</script>
+<%--            // Pause--%>
+<%--            // $('.coming-countdown').countdown('pause');--%>
+<%--        }--%>
+<%--    });--%>
+<%--</script>--%>
 </body>
 
 
