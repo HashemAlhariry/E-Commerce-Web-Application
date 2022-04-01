@@ -1,11 +1,11 @@
 package com.ecommerce.presentation.beans;
 
-public class LoginBean {
+public class LoginUserBean {
 
     private String userEmail;
     private String userPassword;
 
-    public LoginBean ( String userEmail, String userPassword ) {
+    public LoginUserBean(String userEmail, String userPassword ) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
     }
