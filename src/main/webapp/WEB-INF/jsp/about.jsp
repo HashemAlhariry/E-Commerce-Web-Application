@@ -272,7 +272,7 @@
                         </blockquote><!-- End .testimonial -->
 
                         <blockquote class="testimonial text-center">
-                            <img src="assets/images/testimonials/user-2.jpg" alt="user">
+
                             <p>“ Impedit, ratione sequi, sunt incidunt magnam et. Delectus obcaecati optio eius error libero perferendis nesciunt atque dolores magni recusandae! Doloremque quidem error eum quis similique doloribus natus qui ut ipsum.Velit quos ipsa exercitationem, vel unde obcaecati impedit eveniet non. ”</p>
 
                             <cite>

@@ -62,27 +62,27 @@
                     <div class="col-lg-6 mb-3 mb-lg-0">
 <%--                        <h2 class="title">QA part </h2><!-- End .title -->--%>
                         <br>
-                        <p>How can i get data set regarding smart home and green house gas emssion from smart homes?</p>
+    <p><b>How can i get data set regarding smart home and green house gas emssion from smart homes?</b></p>
                         <p>I strongly recommend you use secondary data and, after that, justify why you opted for secondary research. Ojo Ademola, on one of his questions on Secondary Research, made such a justification. Kindly check it out!</p>
                         </br>
 
                         <br>
-                        <p>Why does my laptop fan turn on?</p>
+    <p><b>Why does my laptop fan turn on?</b></p>
                         <p>Laptops are designed to be compact. Their sleek design makes them easily portable but also creates challenges when managing heat. Because the components inside a laptop are tightly packed together, they can heat up easily. Airflow inside the laptop is essential to keep the components from overheating.</p>
                         </br>
 
                         <br>
-                        <p>Why has my laptop gotten slower?</p>
+    <p><b>Why has my laptop gotten slower?</b></p>
                         <p>It seems inevitable. Over time, computers get slower. Sometimes it just feels that way since other devices get faster, but it is also possible that your laptop has actually gotten slower since you first started using it. Below are a few reasons why the slowdown may have occurred, along with possible solutions.</p>
                         </br>
 
                         <br>
-                        <p>What Is A Smartwatch?</p>
+    <p><b>What Is A Smartwatch?</b></p>
                         <p>Smartwatch of today is basically a smartphone that you wear on your wrist like a normal watch. While early models could perform basic tasks, 2010s smartwatches have more general functionality closer to smartphones, including mobile apps, a mobile operating system and WiFi/Bluetooth connectivity.</p>
                    </br>
 
                         <br>
-                        <p>Do You Really Need A Smartwatch?</p>
+    <p><b>Do You Really Need A Smartwatch?</b></p>
                         <p>If you have survived this long without one, then no, you don’t need one. The same question can apply to a normal watch. Do you need to wear a watch that only tells the time in the age when we are surrounded by screens ranging from monitors to mobile phones and you can know what the time is in a second. Still, plenty of people wear watches as status symbols, as fashion accessories or just because they look great. All of these are valid reasons for a person to wear a watch.</p>
                      </br>
                     </div>

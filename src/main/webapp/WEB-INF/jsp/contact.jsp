@@ -62,17 +62,22 @@
 <%--                    <div class="col-lg-6 mb-3 mb-lg-0">--%>
                                     <%--                        <h2 class="title">QA part </h2><!-- End .title -->--%>
                 <div>
-                <p><h3>You can contact us through our phone number</h3></p>
-                    <p><h4>+20 01155786595</h4></p>
-                    <p><h4>+20 01199326595</h4></p>
-                   <p><h3>Or by social media account </h3></p>
-                <div class="social-icons justify-content-center mb-0">
-                                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-                                <a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>
-                </div><!-- End .soial-icons -->
+                <p>You can contact us through our phone number</p>
+                    <p>+20 01155786595</p>
+                    <p>+20 01199326595</p>
+<%--                   <p>Or by social media account</p>--%>
+<%--                <div class="social-icons justify-content-center mb-0">--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>--%>
+<%--                </div><!-- End .soial-icons -->--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
                 </div><!-- End .soon-content -->
             </div><!-- End .col-md-9 col-lg-8 -->
         </div><!-- End .row -->
