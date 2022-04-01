@@ -48,7 +48,7 @@ public class CartPageServlet extends HttpServlet {
         if(viewCartItems.size()>0){
             cartItemBeans = cartService.getCartItemBeans(viewCartItems);
             System.out.println(cartItemBeans);
-         }
+        }
         request.setAttribute("cartItemBeans",cartItemBeans);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
         requestDispatcher.forward(request, response);
