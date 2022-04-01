@@ -43,9 +43,13 @@ public class ProductEntity {
     private int totalPurchasesNumber;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    @ElementCollection
+    @CollectionTable(
+            name = "product_images",
+            joinColumns = @JoinColumn(name = "product_id")
+    )
     @Size(min = 1)
-    private Set<Image> images = new HashSet<>();
+    private Set<String> images = new HashSet<>();
 
     @Temporal(TemporalType.DATE)
     private Date creationDate;
@@ -57,7 +61,7 @@ public class ProductEntity {
     public  ProductEntity(){
 
     }
-    public ProductEntity(String name, int price, int quantity, String description , Set<Image> images) {
+    public ProductEntity(String name, int price, int quantity, String description , Set<String> images) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
