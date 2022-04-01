@@ -262,18 +262,18 @@
                                     }
                                 }
                             }'>
-                        <blockquote class="testimonial text-center">
-<%--                            <img src="assets/images/testimonials/userEntity-1.jpg" alt="userEntity">--%>
-                            <p>“ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque aliquet nibh nec urna. <br>In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. ”</p>
-                            <cite>
-                                Jenson Gregory
-                                <span>Customer</span>
-                            </cite>
-                        </blockquote><!-- End .testimonial -->
+                            <blockquote class="testimonial text-center">
 
-                        <blockquote class="testimonial text-center">
+                                <p>“ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque aliquet nibh nec urna. <br>In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. ”</p>
+                                <cite>
+                                    Jenson Gregory
+                                    <span>Customer</span>
+                                </cite>
+                            </blockquote><!-- End .testimonial -->
 
-                            <p>“ Impedit, ratione sequi, sunt incidunt magnam et. Delectus obcaecati optio eius error libero perferendis nesciunt atque dolores magni recusandae! Doloremque quidem error eum quis similique doloribus natus qui ut ipsum.Velit quos ipsa exercitationem, vel unde obcaecati impedit eveniet non. ”</p>
+                            <blockquote class="testimonial text-center">
+
+                                <p>“ Impedit, ratione sequi, sunt incidunt magnam et. Delectus obcaecati optio eius error libero perferendis nesciunt atque dolores magni recusandae! Doloremque quidem error eum quis similique doloribus natus qui ut ipsum.Velit quos ipsa exercitationem, vel unde obcaecati impedit eveniet non. ”</p>
 
                             <cite>
                                 Victoria Ventura
