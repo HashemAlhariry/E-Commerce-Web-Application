@@ -10,16 +10,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Melody Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../vendors/iconfonts/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="assets/admin/vendors/iconfonts/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="assets/admin/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="assets/admin/images/favicon.png" />
   <link rel="shortcut icon" href="http://www.urbanui.com/" />
 
 </head>
@@ -37,12 +37,12 @@
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title">
-              Form wizard
+              Add New Product
             </h3>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+                <li class="breadcrumb-item"><a href="#">Product</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add</li>
               </ol>
             </nav>
           </div>
@@ -50,25 +50,23 @@
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">jquery-steps wizard</h4>
+                  <h4 class="card-title">Add</h4>
                   <form id="example-form" action="#">
                     <div>
                       <h3>Product Details</h3>
                       <section>
-                        <h4>Account</h4>
+                        <h4>Product Details</h4>
                         <div class="form-group">
-                          <label>Email address</label>
-                          <input type="email" class="form-control" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
+                          <label>Name</label>
+                          <input type="text" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Name" required>
                         </div>
                         <div class="form-group">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text bg-primary text-white">L.E</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest EGP)">
                             <div class="input-group-append">
                               <span class="input-group-text">.00</span>
                             </div>
@@ -102,11 +100,9 @@
                         <div class="form-group">
                           <label>Single select box using select 2</label>
                           <select class="js-example-basic-single w-100">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AM">America</option>
-                            <option value="CA">Canada</option>
-                            <option value="RU">Russia</option>
+                            <option value="AL">Mobile</option>
+                            <option value="WY">LapTop</option>
+                            <option value="AM">Smart Watches</option>
                           </select>
                         </div>
                       </section>
@@ -145,19 +141,19 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../vendors/js/vendor.bundle.addons.js"></script>
+  <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
+  <script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/misc.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <script src="assets/admin/js/off-canvas.js"></script>
+  <script src="assets/admin/js/hoverable-collapse.js"></script>
+  <script src="assets/admin/js/misc.js"></script>
+  <script src="assets/admin/js/settings.js"></script>
+  <script src="assets/admin/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../js/wizard.js"></script>
-  <script src="../../js/dropify.js"></script>
+  <script src="assets/admin/js/wizard.js"></script>
+  <script src="assets/admin/js/dropify.js"></script>
 
   <!-- End custom js for this page-->
 </body>
