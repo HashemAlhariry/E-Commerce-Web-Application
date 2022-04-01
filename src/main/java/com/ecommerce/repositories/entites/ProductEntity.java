@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +31,7 @@ public class ProductEntity {
     private String name;
 
     @Column(nullable = false)
-    private  int price;
+    private BigDecimal price=BigDecimal.ZERO;
 
     @Column(nullable = false)
     private int quantity;
@@ -61,7 +63,7 @@ public class ProductEntity {
     public  ProductEntity(){
 
     }
-    public ProductEntity(String name, int price, int quantity, String description , Set<String> images) {
+    public ProductEntity(String name, BigDecimal price, int quantity, String description , Set<String> images) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -70,7 +72,7 @@ public class ProductEntity {
     }
 
 
-    public ProductEntity(String name, int price, int quantity, String description, double rating, double salePercentage, CategoryEntity category) {
+    public ProductEntity(String name, BigDecimal price, int quantity, String description, double rating, double salePercentage, CategoryEntity category) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
