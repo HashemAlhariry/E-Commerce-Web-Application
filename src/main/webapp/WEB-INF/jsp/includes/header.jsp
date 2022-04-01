@@ -185,20 +185,20 @@
                                     <ul>
 
                                         <li>
-                                            <a href="about.html" class="our-sf-with-ul">About</a>
+                                            <a href="aboutUs" class="our-sf-with-ul">About</a>
                                         </li>
 
                                         <li>
-                                            <a href="contact.html" class="our-sf-with-ul">Contact</a>
+                                            <a href="contactUs" class="our-sf-with-ul">Contact</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="faq.html">FAQs</a>
+                                            <a href="qs">FAQs</a>
                                         </li>
 
                                         <li>
-                                            <a href="coming-soon.html">Coming Soon</a>
+                                            <a href="comingsoon">Coming Soon</a>
                                         </li>
 
                                     </ul>

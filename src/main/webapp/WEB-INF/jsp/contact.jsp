@@ -51,21 +51,37 @@
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
         <div class="container">
-            <div class="page-header page-header-big text-center" style="background-image: url('https://memberpress.com/wp-content/uploads/2020/12/coming-soon-page.jpg')">
-<%--                <h1 class="page-title text-white">Coming Soon <span class="text-white"></span></h1>--%>
+            <div class="page-header page-header-big text-center" style="background-image: url('https://www.strathfield.nsw.gov.au/wp-content/uploads/2020/04/header-contact.jpg')">
+<%--                <h1 class="page-title text-white">Contact Us <span class="text-white"></span></h1>--%>
             </div><!-- End .page-header -->
         </div><!-- End .container -->
 
         <div class="page-content pb-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 mb-3 mb-lg-0">
-                        <%--                        <h2 class="title">QA part </h2><!-- End .title -->--%>
-                            <p><h3>We are currently working on an awesome new site. Stay tuned for more information.
-                                Subscribe to our newsletter to stay updated on our progress.</h3></p>
-                            <br>
-                        <p><h4>Thank you </h4></p>
-                        </br>
+<%--                    <div class="col-lg-6 mb-3 mb-lg-0">--%>
+                                    <%--                        <h2 class="title">QA part </h2><!-- End .title -->--%>
+                <div>
+                <p>You can contact us through our phone number</p>
+                    <p>+20 01155786595</p>
+                    <p>+20 01199326595</p>
+<%--                   <p>Or by social media account</p>--%>
+<%--                <div class="social-icons justify-content-center mb-0">--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>--%>
+<%--                                <a href="#" class="social-icon" target="_blank" title="Pinterest"><i class="icon-pinterest"></i></a>--%>
+<%--                </div><!-- End .soial-icons -->--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+                </div><!-- End .soon-content -->
+            </div><!-- End .col-md-9 col-lg-8 -->
+        </div><!-- End .row -->
+</div><!-- End .container -->
                     </div>
                 </div>
 

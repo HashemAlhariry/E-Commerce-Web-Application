@@ -51,8 +51,8 @@
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
         <div class="container">
-            <div class="page-header page-header-big text-center" style="background-image: url('https://memberpress.com/wp-content/uploads/2020/12/coming-soon-page.jpg')">
-<%--                <h1 class="page-title text-white">Coming Soon <span class="text-white"></span></h1>--%>
+            <div class="page-header page-header-big text-center" style="background-image: url('data:image/jpeg;base64,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')">
+                <h1 class="page-title text-white">QS<span class="text-white"></span></h1>
             </div><!-- End .page-header -->
         </div><!-- End .container -->
 
@@ -60,16 +60,32 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 mb-3 mb-lg-0">
-                        <%--                        <h2 class="title">QA part </h2><!-- End .title -->--%>
-                            <p><h3>We are currently working on an awesome new site. Stay tuned for more information.
-                                Subscribe to our newsletter to stay updated on our progress.</h3></p>
-                            <br>
-                        <p><h4>Thank you </h4></p>
+<%--                        <h2 class="title">QA part </h2><!-- End .title -->--%>
+                        <br>
+    <p><b>How can i get data set regarding smart home and green house gas emssion from smart homes?</b></p>
+                        <p>I strongly recommend you use secondary data and, after that, justify why you opted for secondary research. Ojo Ademola, on one of his questions on Secondary Research, made such a justification. Kindly check it out!</p>
                         </br>
-                    </div>
-                </div>
 
-                <div>
+                        <br>
+    <p><b>Why does my laptop fan turn on?</b></p>
+                        <p>Laptops are designed to be compact. Their sleek design makes them easily portable but also creates challenges when managing heat. Because the components inside a laptop are tightly packed together, they can heat up easily. Airflow inside the laptop is essential to keep the components from overheating.</p>
+                        </br>
+
+                        <br>
+    <p><b>Why has my laptop gotten slower?</b></p>
+                        <p>It seems inevitable. Over time, computers get slower. Sometimes it just feels that way since other devices get faster, but it is also possible that your laptop has actually gotten slower since you first started using it. Below are a few reasons why the slowdown may have occurred, along with possible solutions.</p>
+                        </br>
+
+                        <br>
+    <p><b>What Is A Smartwatch?</b></p>
+                        <p>Smartwatch of today is basically a smartphone that you wear on your wrist like a normal watch. While early models could perform basic tasks, 2010s smartwatches have more general functionality closer to smartphones, including mobile apps, a mobile operating system and WiFi/Bluetooth connectivity.</p>
+                   </br>
+
+                        <br>
+    <p><b>Do You Really Need A Smartwatch?</b></p>
+                        <p>If you have survived this long without one, then no, you don’t need one. The same question can apply to a normal watch. Do you need to wear a watch that only tells the time in the age when we are surrounded by screens ranging from monitors to mobile phones and you can know what the time is in a second. Still, plenty of people wear watches as status symbols, as fashion accessories or just because they look great. All of these are valid reasons for a person to wear a watch.</p>
+                     </br>
+                    </div>
                 </div>
             </div><!-- End .col-lg-6 -->
 
@@ -526,65 +542,65 @@
                                     </div><!-- End .row -->
                                 </div><!-- End .form-choice -->
                             </div><!-- .End .tab-pane -->
-                            <%--                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">--%>
-                            <%--                                <form action="#">--%>
-                            <%--                                    <div class="form-group">--%>
-                            <%--                                        <label for="register-email">Your email address *</label>--%>
-                            <%--                                        <input type="email" class="form-control" id="register-email" name="register-email" required>--%>
-                            <%--                                    </div><!-- End .form-group -->--%>
+<%--                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">--%>
+<%--                                <form action="#">--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="register-email">Your email address *</label>--%>
+<%--                                        <input type="email" class="form-control" id="register-email" name="register-email" required>--%>
+<%--                                    </div><!-- End .form-group -->--%>
 
-                            <%--                                    <div class="form-group">--%>
-                            <%--                                        <label for="register-password">Password *</label>--%>
-                            <%--                                        <input type="password" class="form-control" id="register-password" name="register-password" required>--%>
-                            <%--                                    </div><!-- End .form-group -->--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="register-password">Password *</label>--%>
+<%--                                        <input type="password" class="form-control" id="register-password" name="register-password" required>--%>
+<%--                                    </div><!-- End .form-group -->--%>
 
-                            <%--                                    <div class="form-footer">--%>
-                            <%--                                        <button type="submit" class="btn btn-outline-primary-2">--%>
-                            <%--                                            <span>SIGN UP</span>--%>
-                            <%--                                            <i class="icon-long-arrow-right"></i>--%>
-                            <%--                                        </button>--%>
+<%--                                    <div class="form-footer">--%>
+<%--                                        <button type="submit" class="btn btn-outline-primary-2">--%>
+<%--                                            <span>SIGN UP</span>--%>
+<%--                                            <i class="icon-long-arrow-right"></i>--%>
+<%--                                        </button>--%>
 
-                            <%--                                        <div class="custom-control custom-checkbox">--%>
-                            <%--                                            <input type="checkbox" class="custom-control-input" id="register-policy" required>--%>
-                            <%--                                            <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>--%>
-                            <%--                                        </div><!-- End .custom-checkbox -->--%>
-                            <%--                                    </div><!-- End .form-footer -->--%>
-                            <%--                                </form>--%>
-                            <%--                                <div class="form-choice">--%>
-                            <%--                                    <p class="text-center">or sign in with</p>--%>
-                            <%--                                    <div class="row">--%>
-                            <%--                                        <div class="col-sm-6">--%>
-                            <%--                                            <a href="#" class="btn btn-login btn-g">--%>
-                            <%--                                                <i class="icon-google"></i>--%>
-                            <%--                                                Login With Google--%>
-                            <%--                                            </a>--%>
-                            <%--                                        </div><!-- End .col-6 -->--%>
-                            <%--                                        <div class="col-sm-6">--%>
-                            <%--                                            <a href="#" class="btn btn-login  btn-f">--%>
-                            <%--                                                <i class="icon-facebook-f"></i>--%>
-                            <%--                                                Login With Facebook--%>
-                            <%--                                            </a>--%>
-                            <%--                                        </div><!-- End .col-6 -->--%>
-                            <%--                                    </div><!-- End .row -->--%>
-                            <%--                                </div><!-- End .form-choice -->--%>
-                            <%--                            </div><!-- .End .tab-pane -->--%>
-                            <%--                        </div><!-- End .tab-content -->--%>
-                            <%--                    </div><!-- End .form-tab -->--%>
-                        </div><!-- End .form-box -->
-                    </div><!-- End .modal-body -->
-                </div><!-- End .modal-content -->
-            </div><!-- End .modal-dialog -->
-        </div><!-- End .modal -->
+<%--                                        <div class="custom-control custom-checkbox">--%>
+<%--                                            <input type="checkbox" class="custom-control-input" id="register-policy" required>--%>
+<%--                                            <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>--%>
+<%--                                        </div><!-- End .custom-checkbox -->--%>
+<%--                                    </div><!-- End .form-footer -->--%>
+<%--                                </form>--%>
+<%--                                <div class="form-choice">--%>
+<%--                                    <p class="text-center">or sign in with</p>--%>
+<%--                                    <div class="row">--%>
+<%--                                        <div class="col-sm-6">--%>
+<%--                                            <a href="#" class="btn btn-login btn-g">--%>
+<%--                                                <i class="icon-google"></i>--%>
+<%--                                                Login With Google--%>
+<%--                                            </a>--%>
+<%--                                        </div><!-- End .col-6 -->--%>
+<%--                                        <div class="col-sm-6">--%>
+<%--                                            <a href="#" class="btn btn-login  btn-f">--%>
+<%--                                                <i class="icon-facebook-f"></i>--%>
+<%--                                                Login With Facebook--%>
+<%--                                            </a>--%>
+<%--                                        </div><!-- End .col-6 -->--%>
+<%--                                    </div><!-- End .row -->--%>
+<%--                                </div><!-- End .form-choice -->--%>
+<%--                            </div><!-- .End .tab-pane -->--%>
+<%--                        </div><!-- End .tab-content -->--%>
+<%--                    </div><!-- End .form-tab -->--%>
+                </div><!-- End .form-box -->
+            </div><!-- End .modal-body -->
+        </div><!-- End .modal-content -->
+    </div><!-- End .modal-dialog -->
+</div><!-- End .modal -->
 
-        <!-- Plugins JS File -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/jquery.hoverIntent.min.js"></script>
-        <script src="assets/js/jquery.waypoints.min.js"></script>
-        <script src="assets/js/superfish.min.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <!-- Main JS File -->
-        <script src="assets/js/main.js"></script>
+<!-- Plugins JS File -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.hoverIntent.min.js"></script>
+<script src="assets/js/jquery.waypoints.min.js"></script>
+<script src="assets/js/superfish.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<!-- Main JS File -->
+<script src="assets/js/main.js"></script>
 </body>
 
 
