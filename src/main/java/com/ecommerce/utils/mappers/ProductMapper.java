@@ -1,6 +1,5 @@
 package com.ecommerce.utils.mappers;
 
-import com.ecommerce.presentation.beans.CartItemBean;
 import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 import org.mapstruct.Mapper;

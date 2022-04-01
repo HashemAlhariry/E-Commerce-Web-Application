@@ -8,7 +8,6 @@ import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 import com.ecommerce.services.CartService;
 import com.ecommerce.utils.mappers.ProductMapper;
-import com.ecommerce.utils.mappers.ProductMapperImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.List;
 public class CartServiceImpl implements CartService {
     private static final CartServiceImpl INSTANCE = new CartServiceImpl();
     private final ProductRepository productRepository = ProductRepositoryImpl.getInstance();
-    private final ProductMapper productMapper = new ProductMapperImpl();
+    private final ProductMapper productMapper = ProductMapper.INSTANCE;
     public static CartServiceImpl getInstance(){
         return INSTANCE;
     }
