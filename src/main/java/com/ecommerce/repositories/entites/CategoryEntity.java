@@ -1,6 +1,6 @@
 package com.ecommerce.repositories.entites;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "category")

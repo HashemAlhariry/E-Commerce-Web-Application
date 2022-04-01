@@ -3,7 +3,7 @@ package com.ecommerce.repositories.impl;
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.repositories.Repository;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 

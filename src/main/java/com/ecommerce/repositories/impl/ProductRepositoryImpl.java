@@ -4,7 +4,7 @@ package com.ecommerce.repositories.impl;
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
 
-import javax.persistence.TypedQuery;
+import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> implements ProductRepository {
