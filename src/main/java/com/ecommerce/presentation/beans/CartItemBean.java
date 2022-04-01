@@ -1,5 +1,9 @@
 package com.ecommerce.presentation.beans;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class CartItemBean {
     private ProductBean productBean;
     private int requiredQuantity;
@@ -17,29 +21,7 @@ public class CartItemBean {
     }
     public CartItemBean(){}
 
-    public ProductBean getProductBean() {
-        return productBean;
-    }
 
-    public void setProductBean(ProductBean productBean) {
-        this.productBean = productBean;
-    }
-
-    public int getRequiredQuantity() {
-        return requiredQuantity;
-    }
-
-    public void setRequiredQuantity(int requiredQuantity) {
-        this.requiredQuantity = requiredQuantity;
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
 
     @Override
     public String toString() {

@@ -1,14 +1,13 @@
 package com.ecommerce.repositories.entites;
 
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,8 +52,7 @@ public class ProductEntity {
     @Size(min = 1)
     private Set<String> images = new HashSet<>();
 
-    @Temporal(TemporalType.DATE)
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private CategoryEntity category;
@@ -82,4 +80,21 @@ public class ProductEntity {
         this.category = category;
     }
 
+    @Override
+    public String toString() {
+        return "ProductEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", description='" + description + '\'' +
+                ", rating=" + rating +
+                ", salePercentage=" + salePercentage +
+                ", state=" + state +
+                ", totalPurchasesNumber=" + totalPurchasesNumber +
+                ", images=" + images +
+                ", creationDate=" + creationDate +
+                ", category=" + category +
+                '}';
+    }
 }

@@ -1,9 +1,12 @@
 package com.ecommerce.repositories.entites;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "category")
+@Getter @Setter
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,22 +31,6 @@ public class CategoryEntity {
         this.categoryImage = categoryImage;
     }
     public CategoryEntity( String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
 
