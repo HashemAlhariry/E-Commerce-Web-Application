@@ -1,31 +1,33 @@
 package com.ecommerce.presentation.beans;
 
 
+import java.math.BigDecimal;
+
 public class ProductBean {
 
     private  long id;
     private String name;
-    private  int price;
+    private BigDecimal price;
     private int quantity;
     private String description;
     private double rating;
     private double salePercentage;
     private CategoryBean category;
     public  ProductBean(){}
-    public ProductBean(String name, int price, int quantity) {
+    public ProductBean(String name, BigDecimal price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public ProductBean(int id, String name, int price, int quantity) {
+    public ProductBean(int id, String name, BigDecimal price, int quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public ProductBean(String name, int price, int quantity, String description, double rating, double salePercentage, CategoryBean category) {
+    public ProductBean(String name, BigDecimal price, int quantity, String description, double rating, double salePercentage, CategoryBean category) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -51,11 +53,11 @@ public class ProductBean {
         this.name = name;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

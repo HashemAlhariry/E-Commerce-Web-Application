@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,14 +48,14 @@ public class CartPageServlet extends HttpServlet {
         List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
         System.out.println(viewCartItems.size());
         List<CartItemBean> cartItemBeans = new ArrayList<>();
-        double subtotal=0;
+        BigDecimal subtotal=BigDecimal.ZERO;
         if(viewCartItems.size()>0){
             cartItemBeans = cartService.getCartItemBeans(viewCartItems);
             System.out.println(cartItemBeans);
 
         }
         for (CartItemBean cartItem: cartItemBeans) {
-            subtotal+=cartItem.getProductBean().getPrice();
+            subtotal = cartItem.getProductBean().getPrice().add(subtotal);
         }
 
         request.setAttribute("cartItemBeans",cartItemBeans);

@@ -31,7 +31,9 @@ public class ShopPageServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductEntity> allProducts = productService.findAll();
+        System.out.println(allProducts);
         List<ProductBean> allProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(allProducts);
+        System.out.println(allProductsBeans);
         request.setAttribute("allProducts",allProductsBeans);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "shop.jsp");
         requestDispatcher.forward(request, response);
