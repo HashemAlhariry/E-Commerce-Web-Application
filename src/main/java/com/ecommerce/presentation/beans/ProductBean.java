@@ -1,18 +1,39 @@
 package com.ecommerce.presentation.beans;
 
+import com.ecommerce.repositories.entites.ProductState;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
+@Getter @Setter
 public class ProductBean {
 
-    private  long id;
+    private long id;
+
     private String name;
-    private BigDecimal price;
+
+    private BigDecimal price=BigDecimal.ZERO;
+
     private int quantity;
+
     private String description;
     private double rating;
     private double salePercentage;
+
+    private ProductState state;
+    private int totalPurchasesNumber;
+
+
+    private Set<String> images = new HashSet<>();
+
+    private LocalDate creationDate;
+
     private CategoryBean category;
+
     public  ProductBean(){}
     public ProductBean(String name, BigDecimal price, int quantity) {
         this.name = name;
@@ -37,70 +58,6 @@ public class ProductBean {
         this.category = category;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
-    public double getSalePercentage() {
-        return salePercentage;
-    }
-
-    public void setSalePercentage(double salePercentage) {
-        this.salePercentage = salePercentage;
-    }
-
-    public CategoryBean getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryBean category) {
-        this.category = category;
-    }
-
     @Override
     public String toString() {
         return "ProductBean{" +
@@ -111,6 +68,10 @@ public class ProductBean {
                 ", description='" + description + '\'' +
                 ", rating=" + rating +
                 ", salePercentage=" + salePercentage +
+                ", state=" + state +
+                ", totalPurchasesNumber=" + totalPurchasesNumber +
+                ", images=" + images +
+                ", creationDate=" + creationDate +
                 ", category=" + category +
                 '}';
     }

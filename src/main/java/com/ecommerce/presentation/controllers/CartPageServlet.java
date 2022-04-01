@@ -55,7 +55,7 @@ public class CartPageServlet extends HttpServlet {
 
         }
         for (CartItemBean cartItem: cartItemBeans) {
-            subtotal = cartItem.getProductBean().getPrice().add(subtotal);
+            subtotal=subtotal.add(cartItem.getProductBean().getPrice());
         }
 
         request.setAttribute("cartItemBeans",cartItemBeans);
