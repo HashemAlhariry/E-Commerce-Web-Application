@@ -40,7 +40,9 @@ public class CartPageServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         CartService cartService = CartServiceImpl.getInstance();
+
         String jsonString = request.getParameter("cart");
+        if(jsonString!=null){
         ObjectMapper jacksonMapper = new ObjectMapper();
         List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
         System.out.println(viewCartItems.size());
@@ -50,12 +52,15 @@ public class CartPageServlet extends HttpServlet {
             cartItemBeans = cartService.getCartItemBeans(viewCartItems);
             System.out.println(cartItemBeans);
 
-         }
+        }
         for (CartItemBean cartItem: cartItemBeans) {
             subtotal+=cartItem.getProductBean().getPrice();
         }
+
         request.setAttribute("cartItemBeans",cartItemBeans);
         request.setAttribute("subTotal",subtotal);
+        }
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
         requestDispatcher.forward(request, response);
     }
