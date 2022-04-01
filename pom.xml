@@ -20,6 +20,7 @@
         <mysql.version>8.0.28</mysql.version>
         <jakarta.jakartaee.version>9.0.0</jakarta.jakartaee.version>
         <org.apache.taglibs.version>1.2.5</org.apache.taglibs.version>
+        <org.projectlombok.version>1.18.22</org.projectlombok.version>
 
     </properties>
 
@@ -27,14 +28,16 @@
         <!-- Hibernate ORM -->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${org.hibernate.version}</version>
+            <artifactId>hibernate-core-jakarta</artifactId>
+            <version>5.6.5.Final</version>
         </dependency>
+
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${org.hibernate.version}</version>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>3.0.2</version>
         </dependency>
+
 
         <!-- JDBC Driver -->
         <dependency>
@@ -100,6 +103,14 @@
             <version>2.13.1</version>
         </dependency>
 
+        <!-- lombok for getters and setters -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
 
 
     </dependencies>
@@ -115,11 +126,17 @@
                     <source>11</source>
                     <target>11</target>
                     <!-- MAP STRUCT -->
+
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

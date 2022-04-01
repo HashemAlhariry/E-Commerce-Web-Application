@@ -1,18 +1,38 @@
 package com.ecommerce;
 
 import com.ecommerce.repositories.ProductRepository;
-import com.ecommerce.repositories.entites.CategoryEntity;
+import com.ecommerce.repositories.entites.Image;
 import com.ecommerce.repositories.entites.ProductEntity;
-import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
+import com.ecommerce.repositories.entites.Role;
+import com.ecommerce.repositories.entites.UserEntity;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
-import com.ecommerce.utils.mappers.ProductMapper;
 
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Set;
 
 public class MainTest {
     public static void main(String[] args) {
 
         ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("amazonya");
+        EntityManager em = emf.createEntityManager();
+        Image image1 = new Image("imagepath1");
+        UserEntity userEntity = new UserEntity("osos","hashem@osos","marwa","shoubra el kheima",new Date(), Role.CUSTOMER, BigDecimal.valueOf(2000L));
+
+
+        ProductEntity product = new ProductEntity("Dell", 20000 , 3, "ana laptop osama", Set.of(image1));
+        image1.setProduct(product);
+        em.getTransaction().begin();
+        em.persist(userEntity);
+        em.getTransaction().commit();
+        em.clear();
+        em.close();
+
    //     System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
 //        TestEntity test = new TestEntity();
 //        test.setId(1);
@@ -75,10 +95,5 @@ public class MainTest {
 //        ProductRepositoryImpl.getInstance().save(productEntity2);
 //        ProductRepositoryImpl.getInstance().save(productEntityC);
 
-        List<ProductEntity>productEntities = ProductRepositoryImpl.getInstance().findProductByName("s");
-        for(ProductEntity productEntity:productEntities){
-            System.out.println(productEntity.getName());
-        }
-        System.out.println(productEntities.size());
     }
 }

@@ -41,17 +41,19 @@ public class CartPageServlet extends HttpServlet {
 
         CartService cartService = CartServiceImpl.getInstance();
         String jsonString = request.getParameter("cart");
-        ObjectMapper jacksonMapper = new ObjectMapper();
-        List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
-        System.out.println(viewCartItems.size());
         List<CartItemBean> cartItemBeans = new ArrayList<>();
-        if(viewCartItems.size()>0){
-            cartItemBeans = cartService.getCartItemBeans(viewCartItems);
-            System.out.println(cartItemBeans);
-         }
+        if(jsonString != null){
+            ObjectMapper jacksonMapper = new ObjectMapper();
+            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
+            System.out.println(viewCartItems.size());
+
+            if(viewCartItems.size()>0){
+                cartItemBeans = cartService.getCartItemBeans(viewCartItems);
+                System.out.println(cartItemBeans);
+            }
+        }
         request.setAttribute("cartItemBeans",cartItemBeans);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
-        requestDispatcher.forward(request, response);
+        doPost(request,response);
     }
 
 }
