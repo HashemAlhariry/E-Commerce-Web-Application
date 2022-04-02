@@ -20,6 +20,8 @@
         const hiddenField = document.createElement('input');
         hiddenField.type = 'hidden';
         hiddenField.name = 'cart';
+        const localStorageContent = localStorage.getItem("cartItems");
+        console.log(localStorageContent);
         hiddenField.value =  localStorage.getItem("cartItems");
 
         form.appendChild(hiddenField);
