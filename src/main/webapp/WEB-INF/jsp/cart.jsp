@@ -60,125 +60,135 @@
 
         <div class="page-content">
             <div class="cart" id="cart">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <table class="table table-cart table-mobile">
-                                <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                <c:forEach items="${cartItemBeans}" var="cartItem" >
-                                    <tr id="productRow${cartItem.productBean.id}">
-                                        <td class="product-col">
-                                            <div class="product">
-                                                <figure class="product-media">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/table/product-1.jpg" alt="Product image">
-                                                    </a>
-                                                </figure>
-
-                                                <h3 class="product-title">
-                                                    <a href="#">${cartItem.productBean.name}</a>
-                                                </h3><!-- End .product-title -->
-                                            </div><!-- End .product -->
-                                        </td>
-                                        <td class="price-col">${cartItem.productBean.price} EGP</td>
-                                        <td class="quantity-col">
-                                            <div class="cart-product-quantity">
-                                                <input type="number" id="${cartItem.productBean.id}" name="quantityInput" class="form-control" value="${cartItem.requiredQuantity}" min="1" max="${cartItem.productBean.quantity}" step="1" data-decimals="0" required>
-                                            </div><!-- End .cart-product-quantity -->
-                                        </td>
-                                        <td class="total-col" style="font-size: small">${(cartItem.productBean.price)*(cartItem.requiredQuantity)} EGP</td>
-                                        <td class="remove-col"><button class="btn-remove" onclick="removeProduct(${cartItem.productBean.id},${cartItem.productBean.price})"><i class="icon-close"></i></button></td>
+                <c:if test="${!empty(cartItemBeans) }">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <table class="table table-cart table-mobile">
+                                    <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
                                     </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table><!-- End .table table-wishlist -->
+                                    </thead>
 
-                            <div class="cart-bottom">
-                                <div class="cart-discount">
-                                    <form action="#">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" required placeholder="coupon code">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
-                                            </div><!-- .End .input-group-append -->
-                                        </div><!-- End .input-group -->
-                                    </form>
-                                </div><!-- End .cart-discount -->
-
-                                <a href="#" onclick="updateCart()" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
-                            </div><!-- End .cart-bottom -->
-                        </div><!-- End .col-lg-9 -->
-                        <aside class="col-lg-3">
-                            <div class="summary summary-cart">
-                                <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
-
-                                <table class="table table-summary">
                                     <tbody>
-                                    <tr class="summary-subtotal">
-                                        <td >Subtotal:</td>
+                                    <c:forEach items="${cartItemBeans}" var="cartItem" >
+                                        <tr id="productRow${cartItem.productBean.id}">
+                                            <td class="product-col">
+                                                <div class="product">
+                                                    <figure class="product-media">
+                                                        <a href="#">
+                                                            <img src="assets/images/products/table/product-1.jpg" alt="Product image">
+                                                        </a>
+                                                    </figure>
 
-                                        <td id="subTotalValue">${subTotal} EGP</td>
-
-                                    </tr><!-- End .summary-subtotal -->
-                                    <tr class="summary-shipping">
-                                        <td>Shipping:</td>
-                                        <td>&nbsp;</td>
-                                    </tr>
-
-                                    <tr class="summary-shipping-row">
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
-                                                <label class="custom-control-label" for="free-shipping">Free Shipping</label>
-                                            </div><!-- End .custom-control -->
-                                        </td>
-                                        <td>0</td>
-                                    </tr><!-- End .summary-shipping-row -->
-
-                                    <tr class="summary-shipping-row">
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="standart-shipping" name="shipping" class="custom-control-input">
-                                                <label class="custom-control-label" for="standart-shipping">Standart:</label>
-                                            </div><!-- End .custom-control -->
-                                        </td>
-                                        <td>10</td>
-                                    </tr><!-- End .summary-shipping-row -->
-
-                                    <tr class="summary-shipping-row">
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="express-shipping" name="shipping" class="custom-control-input">
-                                                <label class="custom-control-label" for="express-shipping">Express:</label>
-                                            </div><!-- End .custom-control -->
-                                        </td>
-                                        <td>20</td>
-                                    </tr><!-- End .summary-shipping-row -->
-
-                                    <tr class="summary-total">
-                                        <td>Total:</td>
-                                        <td id="totalValue">${subTotal}</td>
-                                    </tr><!-- End .summary-total -->
+                                                    <h3 class="product-title">
+                                                        <a href="#">${cartItem.productBean.name}</a>
+                                                    </h3><!-- End .product-title -->
+                                                </div><!-- End .product -->
+                                            </td>
+                                            <td class="price-col">${cartItem.productBean.price} EGP</td>
+                                            <td class="quantity-col">
+                                                <div class="cart-product-quantity">
+                                                    <input type="number" id="${cartItem.productBean.id}" name="quantityInput" class="form-control" value="${cartItem.requiredQuantity}" min="1" max="${cartItem.productBean.quantity}" step="1" data-decimals="0" required>
+                                                </div><!-- End .cart-product-quantity -->
+                                            </td>
+                                            <td class="total-col" style="font-size: small">${(cartItem.productBean.price)*(cartItem.requiredQuantity)} EGP</td>
+                                            <td class="remove-col"><button class="btn-remove" onclick="removeProduct(${cartItem.productBean.id},${cartItem.productBean.price})"><i class="icon-close"></i></button></td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
-                                </table><!-- End .table table-summary -->
+                                </table><!-- End .table table-wishlist -->
 
-                                <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
-                            </div><!-- End .summary -->
+                                <div class="cart-bottom">
+                                    <div class="cart-discount">
+                                        <form action="#">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" required placeholder="coupon code">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
+                                                </div><!-- .End .input-group-append -->
+                                            </div><!-- End .input-group -->
+                                        </form>
+                                    </div><!-- End .cart-discount -->
 
-                            <a href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
-                        </aside><!-- End .col-lg-3 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
+                                    <a onclick="updateCart()" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
+                                </div><!-- End .cart-bottom -->
+                            </div><!-- End .col-lg-9 -->
+                            <aside class="col-lg-3">
+                                <div class="summary summary-cart">
+                                    <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+
+                                    <table class="table table-summary">
+                                        <tbody>
+                                        <tr class="summary-subtotal">
+                                            <td >Subtotal:</td>
+
+                                            <td id="subTotalValue">${subTotal} EGP</td>
+
+                                        </tr><!-- End .summary-subtotal -->
+                                        <tr class="summary-shipping">
+                                            <td>Shipping:</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+
+                                        <tr class="summary-shipping-row">
+                                            <td>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
+                                                    <label class="custom-control-label" for="free-shipping">Free Shipping</label>
+                                                </div><!-- End .custom-control -->
+                                            </td>
+                                            <td>0</td>
+                                        </tr><!-- End .summary-shipping-row -->
+
+                                        <tr class="summary-shipping-row">
+                                            <td>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="standart-shipping" name="shipping" class="custom-control-input">
+                                                    <label class="custom-control-label" for="standart-shipping">Standart:</label>
+                                                </div><!-- End .custom-control -->
+                                            </td>
+                                            <td>10</td>
+                                        </tr><!-- End .summary-shipping-row -->
+
+                                        <tr class="summary-shipping-row">
+                                            <td>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="express-shipping" name="shipping" class="custom-control-input">
+                                                    <label class="custom-control-label" for="express-shipping">Express:</label>
+                                                </div><!-- End .custom-control -->
+                                            </td>
+                                            <td>20</td>
+                                        </tr><!-- End .summary-shipping-row -->
+
+                                        <tr class="summary-total">
+                                            <td>Total:</td>
+                                            <td id="totalValue">${subTotal}</td>
+                                        </tr><!-- End .summary-total -->
+                                        </tbody>
+                                    </table><!-- End .table table-summary -->
+
+                                    <a href="checkout.html" id="checkoutButton" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
+                                </div><!-- End .summary -->
+
+                                <a href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
+                            </aside><!-- End .col-lg-3 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .container -->
+                </c:if>
+                <c:if test="${cartItemBeans.size()==0}" >
+                    <div class="text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+                        <div class="container">
+                            <h1 class="page-title">Cart is Empty</h1>
+                                <a href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>Start SHOPPING</span><i class="icon-refresh"></i></a>
+                        </div><!-- End .container -->
+                    </div>
+                </c:if>
             </div><!-- End .cart -->
         </div><!-- End .page-content -->
     </main><!-- End .main -->
@@ -488,7 +498,7 @@
     function removeProduct(productId , productPrice){
         console.log(productId+" awl marra ");
         var localStorageContent = localStorage.getItem("cartItems");
-        cartItems = JSON.parse(localStorageContent);
+        let cartItems = JSON.parse(localStorageContent);
         for(var i=0 ; i<cartItems.length ; i++){
             if (cartItems[i].id === productId){
                 var quantity = cartItems[i].quantity;
@@ -508,6 +518,10 @@
                 document.getElementById("productRow"+productId).remove();
                 break;
             }
+        }
+        if(cartItems.length === 0){
+            console.log(cartItems.length)
+            document.getElementById("checkoutButton").style.visibility= 'hidden';
         }
         document.getElementById("cartItemsNumber").textContent =  cartItems.length;
 
