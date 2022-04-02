@@ -65,7 +65,7 @@
 							</ul>
 							<div class="tab-content">
 							    <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-							    	<form action="#">
+							    	<form action="Post">
 							    		<div class="form-group">
 							    			<label for="signup-email-2">email address *</label>
 							    			<input type="text" class="form-control" id="signup-email-2" name="signup-email" required>

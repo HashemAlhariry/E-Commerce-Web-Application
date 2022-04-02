@@ -11,6 +11,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
+
+@NamedQueries({
+        @NamedQuery(name = "User.findByEmail",
+                query = "SELECT u from UserEntity u where u.email=:email"),
+})
+
 @Getter
 @Setter
 public class UserEntity {

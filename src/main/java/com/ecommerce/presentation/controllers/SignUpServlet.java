@@ -22,7 +22,6 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         System.out.println("from Reegistration");
 
-
         String firstName = req.getParameter("register-name");
         String birthDate = req.getParameter("register-birthday");
         String email = req.getParameter("register-email");
@@ -33,10 +32,19 @@ public class SignUpServlet extends HttpServlet {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateOfBirth = LocalDate.parse(birthDate, dateTimeFormatter);
 
-        // ORM LAYER
         SignUpBean signUpBean = new SignUpBean(firstName,String.valueOf(dateOfBirth),email,password,job,address,creditLimit);
 
+        signUpBean.setUserName(firstName);
+        signUpBean.setUserEmail(email);
+        signUpBean.setUserPassword(password);
+        signUpBean.setUserAddress(address);
+        signUpBean.setUserBirthDay(String.valueOf(dateOfBirth));
+        signUpBean.setUserCreditLimit(creditLimit);
+        signUpBean.setUserJob(job);
 
+
+//        SignUpBean signUpBean = userService.registerUser(userRegistrationDto);
+//        req.getSession().setAttribute("userDto", signUpBean);
 
     }
 }
