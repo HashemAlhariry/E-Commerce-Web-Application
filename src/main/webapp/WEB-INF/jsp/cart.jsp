@@ -51,15 +51,15 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    <li class="breadcrumb-item"><a href="home">Home</a></li>
+                    <li class="breadcrumb-item"><a href="shop">Shop</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
 
         <div class="page-content">
-            <div class="cart">
+            <div class="cart" id="cart">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-9">
@@ -76,7 +76,7 @@
 
                                 <tbody>
                                 <c:forEach items="${cartItemBeans}" var="cartItem" >
-                                    <tr>
+                                    <tr id="productRow${cartItem.productBean.id}">
                                         <td class="product-col">
                                             <div class="product">
                                                 <figure class="product-media">
@@ -93,11 +93,11 @@
                                         <td class="price-col">${cartItem.productBean.price} EGP</td>
                                         <td class="quantity-col">
                                             <div class="cart-product-quantity">
-                                                <input type="number" class="form-control" value="1" min="1" max="${cartItem.productBean.quantity}" step="1" data-decimals="0" required>
+                                                <input type="number" id="${cartItem.productBean.id}" name="quantityInput" class="form-control" value="${cartItem.requiredQuantity}" min="1" max="${cartItem.productBean.quantity}" step="1" data-decimals="0" required>
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
-                                        <td class="total-col">${(cartItem.productBean.price)*(cartItem.requiredQuantity)} EGP</td>
-                                        <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+                                        <td class="total-col" style="font-size: small">${(cartItem.productBean.price)*(cartItem.requiredQuantity)} EGP</td>
+                                        <td class="remove-col"><button class="btn-remove" onclick="removeProduct(${cartItem.productBean.id},${cartItem.productBean.price})"><i class="icon-close"></i></button></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -115,7 +115,7 @@
                                     </form>
                                 </div><!-- End .cart-discount -->
 
-                                <a href="#" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
+                                <a href="#" onclick="updateCart()" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
                             </div><!-- End .cart-bottom -->
                         </div><!-- End .col-lg-9 -->
                         <aside class="col-lg-3">
@@ -125,9 +125,9 @@
                                 <table class="table table-summary">
                                     <tbody>
                                     <tr class="summary-subtotal">
-                                        <td>Subtotal:</td>
+                                        <td >Subtotal:</td>
 
-                                        <td>$${subTotal}</td>
+                                        <td id="subTotalValue">${subTotal} EGP</td>
 
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
@@ -142,7 +142,7 @@
                                                 <label class="custom-control-label" for="free-shipping">Free Shipping</label>
                                             </div><!-- End .custom-control -->
                                         </td>
-                                        <td>$0.00</td>
+                                        <td>0</td>
                                     </tr><!-- End .summary-shipping-row -->
 
                                     <tr class="summary-shipping-row">
@@ -152,7 +152,7 @@
                                                 <label class="custom-control-label" for="standart-shipping">Standart:</label>
                                             </div><!-- End .custom-control -->
                                         </td>
-                                        <td>$10.00</td>
+                                        <td>10</td>
                                     </tr><!-- End .summary-shipping-row -->
 
                                     <tr class="summary-shipping-row">
@@ -162,17 +162,12 @@
                                                 <label class="custom-control-label" for="express-shipping">Express:</label>
                                             </div><!-- End .custom-control -->
                                         </td>
-                                        <td>$20.00</td>
+                                        <td>20</td>
                                     </tr><!-- End .summary-shipping-row -->
-
-                                    <tr class="summary-shipping-estimate">
-                                        <td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
-                                        <td>&nbsp;</td>
-                                    </tr><!-- End .summary-shipping-estimate -->
 
                                     <tr class="summary-total">
                                         <td>Total:</td>
-                                        <td>$160.00</td>
+                                        <td id="totalValue">${subTotal}</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
@@ -180,7 +175,7 @@
                                 <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
                             </div><!-- End .summary -->
 
-                            <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
+                            <a href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
                         </aside><!-- End .col-lg-3 -->
                     </div><!-- End .row -->
                 </div><!-- End .container -->
@@ -490,6 +485,77 @@
 <script src="assets/js/main.js"></script>
 </body>
 <script>
+    function removeProduct(productId , productPrice){
+        console.log(productId+" awl marra ");
+        var localStorageContent = localStorage.getItem("cartItems");
+        cartItems = JSON.parse(localStorageContent);
+        for(var i=0 ; i<cartItems.length ; i++){
+            if (cartItems[i].id === productId){
+                var quantity = cartItems[i].quantity;
+                cartItems.splice(i,1);
+                var oldSubTotal = parseInt(document.getElementById("subTotalValue").textContent);
+                var subTotal = oldSubTotal - (productPrice * quantity);
+                document.getElementById("subTotalValue").textContent = subTotal.toString()+" EGP";
+                var oldTotal = parseInt(document.getElementById("totalValue").textContent);
+                var total = oldTotal - (productPrice * quantity);
+                if(subTotal ===0){
+                    document.getElementById("totalValue").textContent = "0 EGP";
+                }
+                else{
+                    document.getElementById("totalValue").textContent = total.toString()+" EGP";
+                }
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                document.getElementById("productRow"+productId).remove();
+                break;
+            }
+        }
+        document.getElementById("cartItemsNumber").textContent =  cartItems.length;
+
+    }
+    const radioButtons = document.querySelectorAll('input[name="shipping"]');
+    for (const radioButton of radioButtons) {
+        radioButton.addEventListener('change', changeTotal);
+    }
+    function changeTotal(e){
+        if(this.checked){
+            const subTotal = parseInt(document.getElementById("subTotalValue").textContent);
+            const shippingValue = parseInt(this.parentElement.parentElement.nextElementSibling.innerText);
+            const total = subTotal + shippingValue;
+            document.getElementById("totalValue").textContent = total.toString()+" EGP";
+
+        }
+    }
+    function updateCart(){
+        const quantityInputs = document.querySelectorAll('input[name="quantityInput"]');
+        let subTotal = 0
+        for (const quantityInput of quantityInputs){
+            var localStorageContent = localStorage.getItem("cartItems");
+            let cartItems = JSON.parse(localStorageContent);
+            for(var i=0 ; i<cartItems.length ; i++){
+                if (cartItems[i].id === parseInt(quantityInput.id)){
+                    cartItems[i].quantity = quantityInput.value;
+                    break;
+                }
+            }
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            console.log(quantityInput.parentElement.parentElement.previousElementSibling.textContent.split(" ")[0]);
+            let productPrice = parseInt(quantityInput.parentElement.parentElement.previousElementSibling.textContent.split(" ")[0]);
+            let productTotalPrice = productPrice * quantityInput.value;
+            subTotal += productTotalPrice;
+            quantityInput.parentElement.parentElement.nextElementSibling.textContent = productTotalPrice+ " EGP";
+            //console.log(quantityInput.parentElement.previousElementSibling.textContent);
+        }
+        document.getElementById("subTotalValue").textContent = subTotal + " EGP";
+        const radioButtons = document.querySelectorAll('input[name="shipping"]');
+        for (const radioButton of radioButtons) {
+            console.log(radioButton.checked);
+            if(radioButton.checked){
+                const shippingValue = parseInt(radioButton.parentElement.parentElement.nextElementSibling.innerText);
+                subTotal += shippingValue;
+            }
+        }
+        document.getElementById("totalValue").textContent = subTotal.toString()+" EGP";
+    }
 
 </script>
 
