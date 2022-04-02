@@ -1,5 +1,6 @@
 package com.ecommerce.presentation.beans;
 
+import com.ecommerce.repositories.entites.OrderState;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,10 +13,10 @@ public class OrderBean {
     private String address;
     private Date dateTime;
     private String phoneNumber;
-    private int state;
+    private OrderState state;
     private BigDecimal totalPrice;
 
-    public OrderBean(String address, Date dateTime, String phoneNumber, int state, BigDecimal totalPrice) {
+    public OrderBean(String address, Date dateTime, String phoneNumber, OrderState state, BigDecimal totalPrice) {
         this.address = address;
         this.dateTime = dateTime;
         this.phoneNumber = phoneNumber;

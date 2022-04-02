@@ -9,21 +9,21 @@ import java.math.BigDecimal;
 public class OrderDetailsBean {
 
     private int orderId;
-    private int productId;
+    private ProductBean product;
     private int userId;
     private BigDecimal price;
     private int quantity;
 
-    public OrderDetailsBean(int orderId, int productId, int userId, BigDecimal price, int quantity) {
+    public OrderDetailsBean(int orderId, ProductBean product, int userId, BigDecimal price, int quantity) {
         this.orderId = orderId;
-        this.productId = productId;
+        this.product = product;
         this.userId = userId;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public OrderDetailsBean(int productId, int userId, BigDecimal price, int quantity) {
-        this.productId = productId;
+    public OrderDetailsBean(ProductBean product, int userId, BigDecimal price, int quantity) {
+        this.product = product;
         this.userId = userId;
         this.price = price;
         this.quantity = quantity;

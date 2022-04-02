@@ -37,7 +37,7 @@ public class Util {
                 totalQuantity=cartItemBean.getProductBean().getQuantity();
             }
             OrderDetailsBean orderDetailsBean=new OrderDetailsBean(
-                    (int) cartItemBean.getProductBean().getId(),
+                    cartItemBean.getProductBean(),
                     userId,
                     cartItemBean.getProductBean().getPrice(),
                     totalQuantity);

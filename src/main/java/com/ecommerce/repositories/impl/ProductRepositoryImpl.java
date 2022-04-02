@@ -37,4 +37,5 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
         query.setParameter("product_name", productName);
         return  query.getResultList();
     }
+
 }

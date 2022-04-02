@@ -38,5 +38,14 @@ public class OrderDetailsEntity implements Serializable {
 
     }
 
+    public OrderDetailsEntity(BigDecimal price, int quantity, UserEntity user, ProductEntity product, OrderEntity order,OrderDetailsID id) {
+        this.price = price;
+        this.quantity = quantity;
+        this.user = user;
+        this.product = product;
+        this.order = order;
+        this.id=id;
+    }
+
 
 }
