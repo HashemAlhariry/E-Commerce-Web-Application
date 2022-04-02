@@ -56,17 +56,17 @@
                                       enctype="multipart/form-data">
                                     <fieldset>
                                         <div class="form-group">
-                                            <label for="pname">Name</label>
-                                            <input id="pname" class="form-control" name="name" minlength="5" type="text"
+                                            <label for="name">Name</label>
+                                            <input id="name" class="form-control" name="name" minlength="5" type="text"
                                                    required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="pprice">Price</label>
-                                            <input id="pprice" class="form-control" name="price" type="number" required>
+                                            <label for="price">Price</label>
+                                            <input id="price" class="form-control" name="price" type="number" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="pquantity">Quantity</label>
-                                            <input id="pquantity" class="form-control" name="quantity" type="number"
+                                            <label for="quantity">Quantity</label>
+                                            <input id="quantity" class="form-control" name="quantity" type="number"
                                                    required>
                                         </div>
 
@@ -86,32 +86,6 @@
                                             <textarea id="description" class="form-control" rows="5"
                                                       name="description"></textarea>
                                         </div>
-
-
-                                        <!--
-                                        <div class="form-group">
-                                          <label for="img">Image</label>
-                                          <input id="img" name="img" type="file"  class="dropify" data-max-file-size="3mb" accept="image/png, image/jpeg" multiple />
-                                        </div>
-                                        -->
-                                        <!--
-                                        <div class="row">
-                                          <div class="col-lg-4 grid-margin stretch-card">
-                                            <div class="card">
-                                              <div class="card-body">
-                                                <h4 class="card-title d-flex">Dropify
-                                                  <small class="ml-auto align-self-end">
-                                                    <a href="dropify.html" class="font-weight-light" target="_blank">More dropify examples</a>
-                                                  </small>
-                                                </h4>
-                                                <div class="dropify-wrapper"><div class="dropify-message"><span class="file-icon"></span> <p>Drag and drop a file here or click</p><p class="dropify-error">Ooops, something wrong appended.</p></div><div class="dropify-loader"></div><div class="dropify-errors-container"><ul></ul></div><input type="file" class="dropify"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p><p class="dropify-infos-message">Drag and drop or click to replace</p></div></div></div></div>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                          </div>-->
-
-
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-2 grid-margin stretch-card">
@@ -173,9 +147,7 @@
                                             </div>
                                         </div>
 
-
-                                        <input class="btn btn-primary" type="submit" value="Submit">
-                                        <input class="btn btn-primary" type="button" id="testBtn" value="Test">
+                                        <input class="btn btn-primary" type="button" id="submitBtn" value="Submit">
 
                                     </fieldset>
                                 </form>
@@ -230,30 +202,25 @@
 <script>
     $('#testBtn').click(function () {
 
-        if($('#productForm').valid()){
+        if ($('#productForm').valid()) {
             var data = new FormData();
-
-            data.append('name',$('#name').val());
-            data.append('price',$('#price').val());
-            data.append('quantity',$('#quantity').val());
-            data.append('category',$('#category').val());
-            data.append('description',$('#description').val());
-            addImgInp(data,'img1');
-            // addImgInp(data,'img2');
-            // addImgInp(data,'img3');
-            // addImgInp(data,'img4');
-            // addImgInp(data,'img5');
-            // addImgInp(data,'img6');
-
-            for (var value of data.values()) {
-                console.log(value);
-            }
-            // console.log(data);
+            console.log('===' + $('#name').val());
+            data.append('name', $('#name').val());
+            data.append('price', $('#price').val());
+            data.append('quantity', $('#quantity').val());
+            data.append('category', $('#category').val());
+            data.append('description', $('#description').val());
+            addImgInp(data, 'img1');
+            addImgInp(data, 'img2');
+            addImgInp(data, 'img3');
+            addImgInp(data, 'img4');
+            addImgInp(data, 'img5');
+            addImgInp(data, 'img6');
             sendData(data);
         }
     });
 
-    function sendData(form_data){
+    function sendData(form_data) {
         $.ajax({
             type: "POST",
             enctype: 'multipart/form-data',
@@ -280,9 +247,11 @@
         });
     }
 
-    function addImgInp(data,id){
-        let img = $('#'+id);
-        data.append(id,img.prop('files')[0],img.val().split('\\').pop());
+    function addImgInp(data, id) {
+        let img = $('#' + id);
+        if (img && img.get(0).files.length !== 0) {
+            data.append(id, img.prop('files')[0], img.val().split('\\').pop());
+        }
     }
 </script>
 <!-- End custom js for this page-->

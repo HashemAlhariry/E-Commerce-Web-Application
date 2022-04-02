@@ -16,8 +16,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.ValidationException;
+import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
