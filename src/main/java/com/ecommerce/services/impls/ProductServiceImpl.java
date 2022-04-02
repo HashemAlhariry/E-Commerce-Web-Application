@@ -35,23 +35,23 @@ public class ProductServiceImpl implements ProductService {
     public ProductEntity save(AddProductBean addProductBean) throws IOException, CustomValidationException {
 
 
-        ProductEntity productEntity = new ProductEntity();
         Set<String> images = saveImages(addProductBean.getImages());
         if (images.isEmpty()) {
             throw new CustomValidationException("Images must be 1 at least");
         }
         CategoryEntity category = categoryRepository.findById(addProductBean.getCategoryId());
+        if (category == null) {
+            throw new CustomValidationException("Category not found");
+        }
+        ProductEntity productEntity= ProductMapper.INSTANCE.addProductBeanToEntity(addProductBean);
 
-        productEntity.setName(addProductBean.getName());
-        productEntity.setDescription(addProductBean.getDescription());
-        productEntity.setPrice(addProductBean.getPrice());
-        productEntity.setQuantity(addProductBean.getQuantity());
-        productEntity.setCategory(category);
         productEntity.setImages(images);
         productEntity.setCreationDate(LocalDate.now());
+        productEntity.setCategory(category);
         productRepository.save(productEntity);
         return productEntity;
     }
+
 
     private Set<String> saveImages(Collection<Part> imageParts) throws IOException {
         Set<String> imageNames = new HashSet<>();

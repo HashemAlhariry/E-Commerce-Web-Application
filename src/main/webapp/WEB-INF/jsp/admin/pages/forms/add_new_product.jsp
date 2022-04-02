@@ -200,11 +200,10 @@
 <script src="assets/admin/js/bt-maxLength.js"></script>
 
 <script>
-    $('#testBtn').click(function () {
+    $('#submitBtn').click(function () {
 
         if ($('#productForm').valid()) {
             var data = new FormData();
-            console.log('===' + $('#name').val());
             data.append('name', $('#name').val());
             data.append('price', $('#price').val());
             data.append('quantity', $('#quantity').val());
@@ -234,15 +233,12 @@
 
                 $("#result").text(data);
                 console.log("SUCCESS : ", data);
-                $("#btnSubmit").prop("disabled", false);
 
             },
             error: function (e) {
 
                 $("#result").text(e.responseText);
                 console.log("ERROR : ", e);
-                $("#btnSubmit").prop("disabled", false);
-
             }
         });
     }
