@@ -1,11 +1,8 @@
 package com.ecommerce.presentation.controllers;
 
-import com.ecommerce.presentation.beans.ProductBean;
-import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.services.ProductService;
 import com.ecommerce.services.impls.ProductServiceImpl;
 import com.ecommerce.utils.CommonString;
-import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
@@ -16,11 +13,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
+@WebServlet(name = "admin-delete-product", urlPatterns = {"/admin-delete-product"})
 
-@WebServlet(name = "admin-product-view", urlPatterns = {"/admin-product"})
-
-public class AdminProductView extends HttpServlet {
+public class AdminDeleteProductServlet extends HttpServlet {
 
     private ServletContext servletContext;
     ProductService productService;
@@ -28,23 +23,22 @@ public class AdminProductView extends HttpServlet {
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService= ProductServiceImpl.getInstance();
-
+        productService = ProductServiceImpl.getInstance();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<ProductEntity> allProducts = productService.findAll();
-        System.out.println(allProducts);
-        List<ProductBean> allProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(allProducts);
-        System.out.println(allProductsBeans);
-        req.setAttribute("allProducts",allProductsBeans);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/tables/products_view.jsp");
-        requestDispatcher.forward(req, resp);
+        System.out.println("delete id request param = "+req.getParameter("productId"));
+        Long idNumber=Long.parseLong(req.getParameter("productId"));
+        System.out.println("long number"+idNumber);
+
+        productService.delete(productService.findById(idNumber));
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
+
 }

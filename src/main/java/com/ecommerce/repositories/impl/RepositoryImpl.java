@@ -34,6 +34,7 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
 
     @Override
     public T findById(I id) {
+        System.out.println("inside Repository");
         return entityManager.find(clazz, id);
     }
 

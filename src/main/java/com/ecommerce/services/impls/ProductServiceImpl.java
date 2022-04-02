@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public boolean delete(ProductEntity entity) {
-        return false;
+        return productRepository.delete(entity);
     }
 
     @Override

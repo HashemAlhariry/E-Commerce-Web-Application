@@ -57,18 +57,16 @@
                       <section>
                         <h4>Account</h4>
                         <div class="form-group">
-                          <label>Email address</label>
-                          <input type="email" class="form-control" aria-describedby="emailHelp"
+                          <label>Name</label>
+                          <input type="text" value="${editProduct.name}" class="form-control" aria-describedby="emailHelp"
                             placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
                         </div>
                         <div class="form-group">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text bg-primary text-white">L.E</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input type="text" value="${editProduct.price}" class="form-control" aria-label="Amount (to the nearest dollar)">
                             <div class="input-group-append">
                               <span class="input-group-text">.00</span>
                             </div>
@@ -76,7 +74,7 @@
                         </div>
                         <div class="form-group">
                           <label>Description</label>
-                          <textarea class="form-control" rows="3"></textarea>
+                          <textarea class="form-control" rows="3">${editProduct.description}</textarea>
                         </div>
                       </section>
                       <h3>Imgaes</h3>

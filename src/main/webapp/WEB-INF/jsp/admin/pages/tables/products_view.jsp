@@ -45,16 +45,63 @@
               </ol>
             </nav>
           </div>
-          <div class="row grid-margin">
+          <div class="row">
             <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <div id="js-grid"></div>
-                </div>
+              <div class="table-responsive">
+                <table id="order-listing" class="table">
+                  <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Publish Date</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Sale Percentage</th>
+                    <th>Category Name</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach items="${allProducts}" var="product">
+                  <tr id="${product.id}">
+                    <td>${product.id}</td>
+                    <td>${product.creationDate}</td>
+                    <td>${product.name}</td>
+                    <td>${product.quantity}</td>
+                    <td>${product.salePercentage}</td>
+                    <td>${product.category.categoryName}</td>
+                    <td>${product.price}</td>
+                    <td>
+                      <c:choose>
+                        <c:when test="${product.state=='NEW'}">
+                          <label class="badge badge-primary">NEW</label>
+                        </c:when>
+                        <c:when test="${product.state=='OUT_OF_STOCK'}">
+                          <label class="badge badge-danger">OUT OF STOCK</label>
+                        </c:when>
+                        <c:when test="${product.state=='ON_SALE'}">
+                          <label class="badge badge-success">ON SALE</label>
+                        </c:when>
+                        <c:when test="${product.state=='BEST_SELLER'}">
+                          <label class="badge badge-warning">BEST SELLER</label>
+                        </c:when>
+                        <c:when test="${product.state=='ARCHIVED'}">
+                          <label class="badge badge-secondary">ARCHIVED</label>
+                        </c:when>
+                      </c:choose>
+                    </td>
+                    <td>
+                      <button  class="btn btn-outline-primary" onclick="updateProduct(${product.id})">Edit</button>
+                      <button class="btn btn-outline-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                    </td>
+                  </tr>
+                  </c:forEach>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-        </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
@@ -87,6 +134,37 @@
   <script src="assets/admin/js/js-grid.js"></script>
   <script src="assets/admin/js/db.js"></script>
   <!-- End custom js for this page-->
+    <script>
+      var req = null;
+      function updateProduct(id)
+      {
+        var productId = document.getElementById(id).innerHTML;
+        var url = "admin-edit-product?productId="+id;
+        window.location.href = url;
+      }
+      function deleteProduct(id)
+      {
+        var trElement = document.getElementById(id);
+        trElement.remove();
+        deleteBean(id);
+      }
+
+      function deleteBean(id){
+        if (window.XMLHttpRequest)
+          req = new XMLHttpRequest();
+        else if (window.ActiveXObject)
+          req = new ActiveXObject(Microsoft.XMLHTTP);
+        req.onreadystatechange = handleReq;
+        req.open( "GET", "admin-delete-product?productId="+id, true);
+        req.send(null);
+      }
+      function handleReq() {
+        if (req.readyState == 4 && req.status == 200) {
+              // xmlvalue = req.responseText;
+        }
+      }
+
+    </script>
 </body>
 
 
