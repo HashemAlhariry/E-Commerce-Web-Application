@@ -8,6 +8,7 @@ import com.ecommerce.repositories.CategoryRepository;
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.CategoryEntity;
 import com.ecommerce.repositories.entites.ProductEntity;
+import com.ecommerce.repositories.entites.ProductState;
 import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 import com.ecommerce.services.ProductService;
@@ -43,11 +44,12 @@ public class ProductServiceImpl implements ProductService {
         if (category == null) {
             throw new CustomValidationException("Category not found");
         }
-        ProductEntity productEntity= ProductMapper.INSTANCE.addProductBeanToEntity(addProductBean);
+        ProductEntity productEntity = ProductMapper.INSTANCE.addProductBeanToEntity(addProductBean);
 
         productEntity.setImages(images);
         productEntity.setCreationDate(LocalDate.now());
         productEntity.setCategory(category);
+        productEntity.setState(ProductState.NEW);
         productRepository.save(productEntity);
         return productEntity;
     }

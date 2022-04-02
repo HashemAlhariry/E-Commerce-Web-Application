@@ -198,61 +198,8 @@
 -->
 <script src="assets/admin/js/form-validation.js"></script>
 <script src="assets/admin/js/bt-maxLength.js"></script>
-
-<script>
-    $('#submitBtn').click(function () {
-
-        if ($('#productForm').valid()) {
-            var data = new FormData();
-            data.append('name', $('#name').val());
-            data.append('price', $('#price').val());
-            data.append('quantity', $('#quantity').val());
-            data.append('category', $('#category').val());
-            data.append('description', $('#description').val());
-            addImgInp(data, 'img1');
-            addImgInp(data, 'img2');
-            addImgInp(data, 'img3');
-            addImgInp(data, 'img4');
-            addImgInp(data, 'img5');
-            addImgInp(data, 'img6');
-            sendData(data);
-        }
-    });
-
-    function sendData(form_data) {
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: "admin-add-product",
-            data: form_data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-                let resp= JSON.parse(data);
-                if(resp.state === 'success'){
-                    console.log("SUCCESS : ", data);
-                }else {
-                    console.log("FAILED : ", data);
-                }
-
-            },
-            error: function (e) {
-
-                $("#result").text(e.responseText);
-                console.log("ERROR : ", e);
-            }
-        });
-    }
-
-    function addImgInp(data, id) {
-        let img = $('#' + id);
-        if (img && img.get(0).files.length !== 0) {
-            data.append(id, img.prop('files')[0], img.val().split('\\').pop());
-        }
-    }
-</script>
+<script src="assets/admin/js/alerts.js"></script>
+<script src="assets/admin/app-js/add-new-prod.js"></script>
 <!-- End custom js for this page-->
 </body>
 
