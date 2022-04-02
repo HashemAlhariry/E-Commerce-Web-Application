@@ -25,6 +25,7 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
 
     @Override
     public List<ProductEntity> findAllByCategoryId(int id) {
+
         TypedQuery<ProductEntity> query = entityManager.createNamedQuery("findAllByCategoryId", ProductEntity.class);
         query.setParameter("category_id", id);
         return  query.getResultList();

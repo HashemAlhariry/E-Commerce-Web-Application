@@ -1,38 +1,24 @@
 package com.ecommerce;
 
-import com.ecommerce.repositories.ProductRepository;
-import com.ecommerce.repositories.entites.ProductEntity;
-import com.ecommerce.repositories.entites.Role;
-import com.ecommerce.repositories.entites.UserEntity;
-import com.ecommerce.repositories.impl.ProductRepositoryImpl;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Set;
-
 public class MainTest {
     public static void main(String[] args) {
 
-        ProductRepository productRepository = ProductRepositoryImpl.getInstance();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("amazonya");
-        EntityManager em = emf.createEntityManager();
+    //        ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("amazonya");
+//        EntityManager em = emf.createEntityManager();
 //        Image image1 = new Image("imagepath1");
-        UserEntity userEntity = new UserEntity("osos","hashem@osos","marwa","shoubra el kheima", LocalDate.now(), Role.CUSTOMER, BigDecimal.valueOf(2000L));
-
-
-        ProductEntity product = new ProductEntity("Dell", new BigDecimal(20000) , 3, "ana laptop osama", Set.of("image1"));
+//        UserEntity userEntity = new UserEntity("osos","hashem@osos","marwa","shoubra el kheima", LocalDate.now(), Role.CUSTOMER, BigDecimal.valueOf(2000L));
+//
+//
+//        ProductEntity product = new ProductEntity("Dell", new BigDecimal(20000) , 3, "ana laptop osama", Set.of("image1"));
 //        image1.setProduct(product);
-        em.getTransaction().begin();
-        em.persist(userEntity);
-        em.persist(product);
-        em.getTransaction().commit();
-        em.clear();
-        em.close();
-
-   //     System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
+//        em.getTransaction().begin();
+//        em.persist(userEntity);
+//        em.persist(product);
+//        em.getTransaction().commit();
+//        em.clear();
+//        em.close();
+//        System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
 //        TestEntity test = new TestEntity();
 //        test.setId(1);
 //        test.setName("asd");
