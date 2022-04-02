@@ -230,9 +230,12 @@
             cache: false,
             timeout: 600000,
             success: function (data) {
-
-                $("#result").text(data);
-                console.log("SUCCESS : ", data);
+                let resp= JSON.parse(data);
+                if(resp.state === 'success'){
+                    console.log("SUCCESS : ", data);
+                }else {
+                    console.log("FAILED : ", data);
+                }
 
             },
             error: function (e) {
