@@ -10,18 +10,16 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.HttpConstraint;
-import jakarta.servlet.annotation.HttpMethodConstraint;
-import jakarta.servlet.annotation.ServletSecurity;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-@WebServlet(name = "admin-edit-product", urlPatterns = {"/admin-edit-product"})
-//@ServletSecurity(httpMethodConstraints = {@HttpMethodConstraint(value = "Get" , rolesAllowed = "admin"),@HttpMethodConstraint(value = "Post" , rolesAllowed = "admin")})
-public class AdminEditProductServlet extends HttpServlet {
+import java.util.List;
+@WebServlet(name = "admin-update-product", urlPatterns = {"/admin-update-product"})
+
+public class AdminUpdateProductServlet extends HttpServlet {
 
     private ServletContext servletContext;
     ProductService productService;
@@ -29,19 +27,14 @@ public class AdminEditProductServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService = ProductServiceImpl.getInstance();
+        productService= ProductServiceImpl.getInstance();
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long idNumber=Long.parseLong(req.getParameter("productId"));
-        System.out.println("long number"+idNumber);
-        System.out.println( productService.findById(idNumber));
-        ProductEntity productEntity = productService.findById(idNumber);
-        ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(productEntity);
-        System.out.println(productBean.toString());
-        req.setAttribute("editProduct",productBean);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/forms/edit_product.jsp");
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/tables/products_view.jsp");
         requestDispatcher.forward(req, resp);
     }
 

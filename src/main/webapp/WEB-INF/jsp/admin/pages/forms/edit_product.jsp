@@ -1,3 +1,6 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +60,7 @@
                       <section>
                         <h4>Account</h4>
                         <div class="form-group">
-                          <label>Name</label>
+                          <label>Name </label>
                           <input type="text" value="${editProduct.name}" class="form-control" aria-describedby="emailHelp"
                             placeholder="Enter email">
                         </div>
@@ -119,6 +122,7 @@
                         </div>
                       </section>
                     </div>
+                    <input class="btn" type="submit" value="update">
                   </form>
                 </div>
               </div>
