@@ -77,7 +77,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text bg-primary text-white">L.E</span>
                             </div>
-                            <input id="productPrice" type="text" name="productPrice" value="${editProduct.price}" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input id="productPrice" type="number" name="productPrice" value="${editProduct.price}" class="form-control" aria-label="Amount (to the nearest dollar)">
                           </div>
                         </div>
                         <div class="form-group">

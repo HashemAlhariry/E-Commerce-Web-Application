@@ -4,7 +4,7 @@
     $(function() {
     $(".signupForm").validate({
         rules: {
-            // productQuantity: "required",
+            productState: "required",
             productName: {
                 required: true,
                 minlength: 2
@@ -14,32 +14,30 @@
                 minlength: 1,
                 min:0
             },
-            confirm_password: {
+            productPrice: {
                 required: true,
-                minlength: 5,
-                equalTo: "#password"
+                minlength: 1,
+                min:0
             },
-            email: {
-                required: true,
-                email: true
-            },
-            topic: {
-                required: "#newsletter:checked",
-                minlength: 2
+            productCategory: {
+                required: "required"
             },
             agree: "required"
         },
         messages: {
-            // productQuantity: "Please enter your productQuantity",
-            productPrice: "Please enter Price",
+            productCategory: "Please select Product Category",
+            productState: "Please select Product State",
             productName: {
                 required: "Please enter a username",
                 minlength: "Your username must consist of at least 2 characters"
             },
             productQuantity: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long",
+                required: "Please provide a Quantity",
                 min : "the quantity should be greater than 0 or equal ;)"
+            },
+            productPrice: {
+                required: "Please provide a Price",
+                min : "the Price should be greater than 0 or equal ;)"
             },
             confirm_password: {
                 required: "Please provide a password",

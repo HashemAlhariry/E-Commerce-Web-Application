@@ -42,22 +42,24 @@ public class AdminUpdateProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductBean productBean = new ProductBean();
 
         Long productID = Long.parseLong(req.getParameter("productId"));
         ProductEntity productEntity = productService.findById(productID);
+
         int categoryId = Integer.parseInt(req.getParameter("productCategory"));
         CategoryEntity categoryEntity = categoryServices.findById(categoryId);
-        productEntity.setCategory(categoryEntity);
+
         BigDecimal bigDecimalPrice = BigDecimalParser.parse(req.getParameter("productPrice"));
-        System.out.println("bigdecimal"+bigDecimalPrice);
-        productBean.setPrice(bigDecimalPrice);
+
+        productEntity.setCategory(categoryEntity);
         productEntity.setPrice(bigDecimalPrice);
         productEntity.setState(ProductState.valueOf(req.getParameter("productState")));
         productEntity.setName(req.getParameter("productName"));
-        System.out.println("start Update");
+        productEntity.setQuantity(Integer.parseInt(req.getParameter("productQuantity")));
+        productEntity.setDescription(req.getParameter("productDescription"));
+
         productService.update(productEntity);
-        System.out.println("finish Update");
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin-edit-product");
         requestDispatcher.forward(req, resp);
     }
