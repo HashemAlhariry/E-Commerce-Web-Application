@@ -1,19 +1,8 @@
 package com.ecommerce;
 
 import com.ecommerce.repositories.ProductRepository;
-import com.ecommerce.repositories.entites.ProductEntity;
-import com.ecommerce.repositories.entites.Role;
-import com.ecommerce.repositories.entites.UserEntity;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
-import com.ecommerce.services.ProductService;
 import com.ecommerce.services.impls.ProductServiceImpl;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Set;
 
 public class MainTest {
     public static void main(String[] args) {
@@ -69,7 +58,7 @@ public class MainTest {
 
 
 
-        OrderDetailsRepositoryImpl orderDetailsRepository =  OrderDetailsRepositoryImpl.getInstance();
+  //      OrderDetailsRepositoryImpl orderDetailsRepository =  OrderDetailsRepositoryImpl.getInstance();
 
 
     }
