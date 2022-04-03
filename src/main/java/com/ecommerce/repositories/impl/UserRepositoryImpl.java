@@ -2,7 +2,6 @@ package com.ecommerce.repositories.impl;
 
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.repositories.UserRepository;
-import com.ecommerce.repositories.entites.Role;
 import com.ecommerce.repositories.entites.UserEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -24,8 +23,6 @@ public class UserRepositoryImpl implements UserRepository {
         // update later to get user from DB Directly
         entityManager.getTransaction().begin();
         List<UserEntity> resultList = (ArrayList<UserEntity>) entityManager.createNamedQuery("user.findByEmail").setParameter("email", email).getResultList();
-        entityManager.getTransaction().commit();
-        entityManager.close();
 
         for (UserEntity user : resultList) {
             if (user.getEmail().equals(email))

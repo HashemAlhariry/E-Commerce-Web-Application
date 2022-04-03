@@ -7,23 +7,32 @@ import lombok.Setter;
 @Getter
 public class LoginUserBean {
 
-    private String userEmail;
-    private String userPassword;
+    private String email;
+    private String pass;
 
     public LoginUserBean(String userEmail, String userPassword ) {
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
+        this.email = userEmail;
+        this.pass = userPassword;
     }
 
     public LoginUserBean() {
 
     }
 
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
     @Override
     public String toString() {
-        return "LoginSignUpBean{" +
-                ", email=" + userEmail + '\'' +
-                ", password='" + userPassword + '\'' +
+        return "LoginUserBean{" +
+                "email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
                 '}';
     }
 }
