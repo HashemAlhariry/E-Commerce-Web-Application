@@ -15,12 +15,14 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
+@WebServlet(name = "admin-order-view", urlPatterns = {"/admin-order-view"})
 
 public class AdminViewOrdersServlet extends HttpServlet {
 
@@ -37,11 +39,11 @@ public class AdminViewOrdersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<OrderEntity> allOrders = orderService.findAll();
-        System.out.println(allOrders);
-        List<OrderBean> allProductsBeans = OrderMapper.INSTANCE.listEntitiesToBeans(allOrders);
-        System.out.println(allProductsBeans);
-        req.setAttribute("allProducts",allProductsBeans);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/tables/products_view.jsp");
+        System.out.println(allOrders.toString());
+        List<OrderBean> allOrdersBeans = OrderMapper.INSTANCE.listEntitiesToBeans(allOrders);
+        System.out.println(allOrdersBeans);
+        req.setAttribute("allOrders",allOrdersBeans);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/tables/orders_view.jsp");
         requestDispatcher.forward(req, resp);
     }
 

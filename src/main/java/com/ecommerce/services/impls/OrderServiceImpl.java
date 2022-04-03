@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderEntity> findAll() {
-        return null;
+        return orderRepository.findAll();
     }
 
     @Override
