@@ -62,11 +62,14 @@
                             <th>Phone Number</th>
                             <th>State</th>
                             <th>Total Price</th>
+                            <th>View More</th>
+
                         </tr>
                       </thead>
                       <tbody>
                       <c:forEach items="${allOrders}" var="order">
                           <tr id="${order.id}">
+                              <td>${order.id}</td>
                               <td>${order.address}</td>
                               <td>${order.dateTime}</td>
                               <td>${order.phoneNumber}</td>
