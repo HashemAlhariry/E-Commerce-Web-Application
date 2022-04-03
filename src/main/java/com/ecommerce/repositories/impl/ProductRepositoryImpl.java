@@ -4,6 +4,7 @@ package com.ecommerce.repositories.impl;
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
 
+import com.ecommerce.repositories.entites.ProductState;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
@@ -35,6 +36,14 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
         TypedQuery<ProductEntity> query = entityManager.createNamedQuery("findProductByName" , ProductEntity.class);
         query.setParameter("product_name", productName);
         return  query.getResultList();
+    }
+    @Override
+    public boolean delete(ProductEntity entity) {
+        entity.setState(ProductState.ARCHIVED);
+        entityManager.getTransaction().begin();
+        entity=entityManager.merge(entity);
+        entityManager.getTransaction().commit();
+        return true;
     }
 
 }
