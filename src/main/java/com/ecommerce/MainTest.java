@@ -23,7 +23,7 @@ public class MainTest {
         UserEntity userEntity = new UserEntity("osos","hashem@osos","marwa","shoubra el kheima", LocalDate.now(), Role.CUSTOMER, BigDecimal.valueOf(2000L));
 
 
-        ProductEntity product = new ProductEntity("Dell", 20000 , 3, "ana laptop osama", Set.of("image1"));
+        ProductEntity product = new ProductEntity("Dell", new BigDecimal(20000) , 3, "ana laptop osama", Set.of("image1"));
 //        image1.setProduct(product);
         em.getTransaction().begin();
         em.persist(userEntity);

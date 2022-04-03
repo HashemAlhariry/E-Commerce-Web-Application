@@ -1,5 +1,9 @@
 package com.ecommerce.presentation.beans;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class CategoryBean {
     private int categoryId;
     private String categoryName;
@@ -14,30 +18,12 @@ public class CategoryBean {
     }
     public CategoryBean(){}
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public String getCategoryImage() {return categoryImage;}
-
-    public void setCategoryImage(String categoryImage) {this.categoryImage = categoryImage;}
     @Override
     public String toString() {
-        return "CategoryEntity{" +
+        return "CategoryBean{" +
                 "categoryId=" + categoryId +
                 ", categoryName='" + categoryName + '\'' +
+                ", categoryImage='" + categoryImage + '\'' +
                 '}';
     }
 }

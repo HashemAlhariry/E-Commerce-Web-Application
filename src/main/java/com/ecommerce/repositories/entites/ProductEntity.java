@@ -1,12 +1,13 @@
 package com.ecommerce.repositories.entites;
 
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,7 +30,7 @@ public class ProductEntity {
     private String name;
 
     @Column(nullable = false)
-    private  int price;
+    private BigDecimal price=BigDecimal.ZERO;
 
     @Column(nullable = false)
     private int quantity;
@@ -51,8 +52,7 @@ public class ProductEntity {
     @Size(min = 1)
     private Set<String> images = new HashSet<>();
 
-    @Temporal(TemporalType.DATE)
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private CategoryEntity category;
@@ -61,7 +61,7 @@ public class ProductEntity {
     public  ProductEntity(){
 
     }
-    public ProductEntity(String name, int price, int quantity, String description , Set<String> images) {
+    public ProductEntity(String name, BigDecimal price, int quantity, String description , Set<String> images) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -70,7 +70,7 @@ public class ProductEntity {
     }
 
 
-    public ProductEntity(String name, int price, int quantity, String description, double rating, double salePercentage, CategoryEntity category) {
+    public ProductEntity(String name, BigDecimal price, int quantity, String description, double rating, double salePercentage, CategoryEntity category) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -80,4 +80,21 @@ public class ProductEntity {
         this.category = category;
     }
 
+    @Override
+    public String toString() {
+        return "ProductEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", description='" + description + '\'' +
+                ", rating=" + rating +
+                ", salePercentage=" + salePercentage +
+                ", state=" + state +
+                ", totalPurchasesNumber=" + totalPurchasesNumber +
+                ", images=" + images +
+                ", creationDate=" + creationDate +
+                ", category=" + category +
+                '}';
+    }
 }

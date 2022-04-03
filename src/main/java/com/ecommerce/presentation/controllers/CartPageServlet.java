@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,20 +41,29 @@ public class CartPageServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         CartService cartService = CartServiceImpl.getInstance();
-        String jsonString = request.getParameter("cart");
-        List<CartItemBean> cartItemBeans = new ArrayList<>();
-        if(jsonString != null){
-            ObjectMapper jacksonMapper = new ObjectMapper();
-            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
-            System.out.println(viewCartItems.size());
 
-            if(viewCartItems.size()>0){
-                cartItemBeans = cartService.getCartItemBeans(viewCartItems);
-                System.out.println(cartItemBeans);
-            }
+        String jsonString = request.getParameter("cart");
+        if(jsonString!=null){
+        ObjectMapper jacksonMapper = new ObjectMapper();
+        List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
+        System.out.println(viewCartItems.size());
+        List<CartItemBean> cartItemBeans = new ArrayList<>();
+        BigDecimal subtotal=BigDecimal.ZERO;
+        if(viewCartItems.size()>0){
+            cartItemBeans = cartService.getCartItemBeans(viewCartItems);
+            System.out.println(cartItemBeans);
+
         }
+        for (CartItemBean cartItem: cartItemBeans) {
+            subtotal=subtotal.add(cartItem.getProductBean().getPrice());
+        }
+
         request.setAttribute("cartItemBeans",cartItemBeans);
-        doPost(request,response);
+        request.setAttribute("subTotal",subtotal);
+        }
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
+        requestDispatcher.forward(request, response);
     }
 
 }

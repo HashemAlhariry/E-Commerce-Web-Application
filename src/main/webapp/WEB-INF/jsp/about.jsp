@@ -37,220 +37,222 @@
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <%@ include file="includes/header.jsp" %>
+<div class="page-wrapper">
+    <%@ include file="includes/header.jsp" %>
 
-        <main class="main">
-            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
-                <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">About us</li>
-                    </ol>
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
+    <main class="main">
+        <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
             <div class="container">
-	        	<div class="page-header page-header-big text-center" style="background-image: url('assets/images/about-header-bg.jpg')">
-        			<h1 class="page-title text-white">About us<span class="text-white">Who we are</span></h1>
-	        	</div><!-- End .page-header -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About us</li>
+                </ol>
+            </div><!-- End .container -->
+        </nav><!-- End .breadcrumb-nav -->
+        <div class="container">
+            <div class="page-header page-header-big text-center" style="background-image: url('https://www.bkacontent.com/wp-content/uploads/2020/06/about-us.jpg')">
+<%--                <h1 class="page-title text-white">About us<span class="text-white">Who we are</span></h1>--%>
+            </div><!-- End .page-header -->
+        </div><!-- End .container -->
+
+        <div class="page-content pb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-3 mb-lg-0">
+                        <h2 class="title">Our Vision</h2><!-- End .title -->
+                        <br>
+                        <p>E-commerce (electronic commerce) is the activity of electronically buying or selling of products on online services or over the Internet. E-commerce draws on technologies such as mobile commerce, electronic funds transfer, supply chain management, Internet marketing, online transaction processing, electronic data interchange (EDI), inventory management systems, and automated data collection systems. E-commerce is in turn driven by the technological advances of the semiconductor industry, and is the largest sector of the electronics industry. </p>
+                        </br>
+                        <h2 class="title">Our mission</h2><!-- End .title -->
+
+                        <br>
+                        <p> Even though Israel is a small country it is always in the news.  The news continues to report on Jews moving to Israel, on the technology invented there, but also on conflict, wars and tensions with surrounding people.  Why? A look at Israel’s history in the book of Genesis in the Bible reveals that 4000 years ago a man, who is now very well known, went on a camping trip in that part of the world.  The Bible says that his story affects our future.</p>
+                    </br>
+                    </div>
+                    </div>
+                    </div><!-- End .col-lg-6 -->
+
             </div><!-- End .container -->
 
-            <div class="page-content pb-0">
+<%--            <div class="bg-light-2 pt-6 pb-5 mb-6 mb-lg-8">--%>
+<%--                <div class="container">--%>
+<%--                    <div class="row">--%>
+<%--                        <div class="col-lg-5 mb-3 mb-lg-0">--%>
+<%--                            <h2 class="title">Who We Are</h2><!-- End .title -->--%>
+<%--                            <p class="lead text-primary mb-3">Pellentesque odio nisi, euismod pharetra a ultricies <br>in diam. Sed arcu. Cras consequat</p><!-- End .lead text-primary -->--%>
+<%--                            <p class="mb-2">Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue. </p>--%>
+
+<%--                            <a href="blog.html" class="btn btn-sm btn-minwidth btn-outline-primary-2">--%>
+<%--                                <span>VIEW OUR NEWS</span>--%>
+<%--                                <i class="icon-long-arrow-right"></i>--%>
+<%--                            </a>--%>
+<%--                        </div><!-- End .col-lg-5 -->--%>
+
+<%--                        <div class="col-lg-6 offset-lg-1">--%>
+<%--                            <div class="about-images">--%>
+<%--                                <img src="assets/images/about/img-1.jpg" alt="" class="about-img-front">--%>
+<%--                                <img src="assets/images/about/img-2.jpg" alt="" class="about-img-back">--%>
+<%--                            </div><!-- End .about-images -->--%>
+<%--                        </div><!-- End .col-lg-6 -->--%>
+<%--                    </div><!-- End .row -->--%>
+<%--                </div><!-- End .container -->--%>
+            </div><!-- End .bg-light-2 pt-6 pb-6 -->
+
+<%--            <div class="container">--%>
+<%--                <div class="row">--%>
+<%--                    <div class="col-lg-5">--%>
+<%--                        <div class="brands-text">--%>
+<%--                            <h2 class="title">The world's premium design brands in one destination.</h2><!-- End .title -->--%>
+<%--                            <p>Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nis</p>--%>
+<%--                        </div><!-- End .brands-text -->--%>
+<%--                    </div><!-- End .col-lg-5 -->--%>
+<%--                    <div class="col-lg-7">--%>
+<%--                        <div class="brands-display">--%>
+<%--                            <div class="row justify-content-center">--%>
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/1.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/2.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/3.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/4.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/5.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/6.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/7.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/8.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+
+<%--                                <div class="col-6 col-sm-4">--%>
+<%--                                    <a href="#" class="brand">--%>
+<%--                                        <img src="assets/images/brands/9.png" alt="Brand Name">--%>
+<%--                                    </a>--%>
+<%--                                </div><!-- End .col-sm-4 -->--%>
+<%--                            </div><!-- End .row -->--%>
+<%--                        </div><!-- End .brands-display -->--%>
+<%--                    </div><!-- End .col-lg-7 -->--%>
+<%--                </div><!-- End .row -->--%>
+
+                <hr class="mt-4 mb-6">
+
+                <h2 class="title text-center mb-4">Meet Our Team</h2><!-- End .title text-center mb-2 -->
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="member member-anim text-center">
+                            <figure class="member-media">
+                                <img src="assets/images/team/member-1.jpg" alt="member photo">
+
+                                <figcaption class="member-overlay">
+                                    <div class="member-overlay-content">
+                                        <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
+                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <div class="social-icons social-icons-simple">
+                                            <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                            <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                        </div><!-- End .soial-icons -->
+                                    </div><!-- End .member-overlay-content -->
+                                </figcaption><!-- End .member-overlay -->
+                            </figure><!-- End .member-media -->
+                            <div class="member-content">
+                                <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
+                            </div><!-- End .member-content -->
+                        </div><!-- End .member -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-md-4">
+                        <div class="member member-anim text-center">
+                            <figure class="member-media">
+                                <img src="assets/images/team/member-2.jpg" alt="member photo">
+
+                                <figcaption class="member-overlay">
+                                    <div class="member-overlay-content">
+                                        <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
+                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <div class="social-icons social-icons-simple">
+                                            <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                            <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                        </div><!-- End .soial-icons -->
+                                    </div><!-- End .member-overlay-content -->
+                                </figcaption><!-- End .member-overlay -->
+                            </figure><!-- End .member-media -->
+                            <div class="member-content">
+                                <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
+                            </div><!-- End .member-content -->
+                        </div><!-- End .member -->
+                    </div><!-- End .col-md-4 -->
+
+                    <div class="col-md-4">
+                        <div class="member member-anim text-center">
+                            <figure class="member-media">
+                                <img src="assets/images/team/member-3.jpg" alt="member photo">
+
+                                <figcaption class="member-overlay">
+                                    <div class="member-overlay-content">
+                                        <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
+                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <div class="social-icons social-icons-simple">
+                                            <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                            <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                        </div><!-- End .soial-icons -->
+                                    </div><!-- End .member-overlay-content -->
+                                </figcaption><!-- End .member-overlay -->
+                            </figure><!-- End .member-media -->
+                            <div class="member-content">
+                                <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
+                            </div><!-- End .member-content -->
+                        </div><!-- End .member -->
+                    </div><!-- End .col-md-4 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+
+            <div class="mb-2"></div><!-- End .mb-2 -->
+
+            <div class="about-testimonials bg-light-2 pt-6 pb-6">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 mb-3 mb-lg-0">
-                            <h2 class="title">Our Vision</h2><!-- End .title -->
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. </p>
-                        </div><!-- End .col-lg-6 -->
-                        
-                        <div class="col-lg-6">
-                            <h2 class="title">Our Mission</h2><!-- End .title -->
-                            <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. <br>Praesent elementum hendrerit tortor. Sed semper lorem at felis. </p>
-                        </div><!-- End .col-lg-6 -->
-                    </div><!-- End .row -->
+                    <h2 class="title text-center mb-3">What Customer Say About Us</h2><!-- End .title text-center -->
 
-                    <div class="mb-5"></div><!-- End .mb-4 -->
-                </div><!-- End .container -->
-
-                <div class="bg-light-2 pt-6 pb-5 mb-6 mb-lg-8">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-5 mb-3 mb-lg-0">
-                                <h2 class="title">Who We Are</h2><!-- End .title -->
-                                <p class="lead text-primary mb-3">Pellentesque odio nisi, euismod pharetra a ultricies <br>in diam. Sed arcu. Cras consequat</p><!-- End .lead text-primary -->
-                                <p class="mb-2">Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue. </p>
-
-                                <a href="blog.html" class="btn btn-sm btn-minwidth btn-outline-primary-2">
-                                    <span>VIEW OUR NEWS</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                </a>
-                            </div><!-- End .col-lg-5 -->
-
-                            <div class="col-lg-6 offset-lg-1">
-                                <div class="about-images">
-                                    <img src="assets/images/about/img-1.jpg" alt="" class="about-img-front">
-                                    <img src="assets/images/about/img-2.jpg" alt="" class="about-img-back">
-                                </div><!-- End .about-images -->
-                            </div><!-- End .col-lg-6 -->
-                        </div><!-- End .row -->
-                    </div><!-- End .container -->
-                </div><!-- End .bg-light-2 pt-6 pb-6 -->
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <div class="brands-text">
-                                <h2 class="title">The world's premium design brands in one destination.</h2><!-- End .title -->
-                                <p>Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nis</p>
-                            </div><!-- End .brands-text -->
-                        </div><!-- End .col-lg-5 -->
-                        <div class="col-lg-7">
-                            <div class="brands-display">
-                                <div class="row justify-content-center">
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/1.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/2.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/3.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/4.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/5.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/6.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/7.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/8.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-
-                                    <div class="col-6 col-sm-4">
-                                        <a href="#" class="brand">
-                                            <img src="assets/images/brands/9.png" alt="Brand Name">
-                                        </a>
-                                    </div><!-- End .col-sm-4 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .brands-display -->
-                        </div><!-- End .col-lg-7 -->
-                    </div><!-- End .row -->
-
-                    <hr class="mt-4 mb-6">
-
-                    <h2 class="title text-center mb-4">Meet Our Team</h2><!-- End .title text-center mb-2 -->
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="member member-anim text-center">
-                                <figure class="member-media">
-                                    <img src="assets/images/team/member-1.jpg" alt="member photo">
-
-                                    <figcaption class="member-overlay">
-                                        <div class="member-overlay-content">
-                                            <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
-                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
-                                            <div class="social-icons social-icons-simple">
-                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                            </div><!-- End .soial-icons -->
-                                        </div><!-- End .member-overlay-content -->
-                                    </figcaption><!-- End .member-overlay -->
-                                </figure><!-- End .member-media -->
-                                <div class="member-content">
-                                    <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
-                                </div><!-- End .member-content -->
-                            </div><!-- End .member -->
-                        </div><!-- End .col-md-4 -->
-
-                        <div class="col-md-4">
-                            <div class="member member-anim text-center">
-                                <figure class="member-media">
-                                    <img src="assets/images/team/member-2.jpg" alt="member photo">
-
-                                    <figcaption class="member-overlay">
-                                        <div class="member-overlay-content">
-                                            <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
-                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
-                                            <div class="social-icons social-icons-simple">
-                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                            </div><!-- End .soial-icons -->
-                                        </div><!-- End .member-overlay-content -->
-                                    </figcaption><!-- End .member-overlay -->
-                                </figure><!-- End .member-media -->
-                                <div class="member-content">
-                                    <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
-                                </div><!-- End .member-content -->
-                            </div><!-- End .member -->
-                        </div><!-- End .col-md-4 -->
-
-                        <div class="col-md-4">
-                            <div class="member member-anim text-center">
-                                <figure class="member-media">
-                                    <img src="assets/images/team/member-3.jpg" alt="member photo">
-
-                                    <figcaption class="member-overlay">
-                                        <div class="member-overlay-content">
-                                            <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
-                                            <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
-                                            <div class="social-icons social-icons-simple">
-                                                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                            </div><!-- End .soial-icons -->
-                                        </div><!-- End .member-overlay-content -->
-                                    </figcaption><!-- End .member-overlay -->
-                                </figure><!-- End .member-media -->
-                                <div class="member-content">
-                                    <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
-                                </div><!-- End .member-content -->
-                            </div><!-- End .member -->
-                        </div><!-- End .col-md-4 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-
-                <div class="mb-2"></div><!-- End .mb-2 -->
-
-                <div class="about-testimonials bg-light-2 pt-6 pb-6">
-                    <div class="container">
-                        <h2 class="title text-center mb-3">What Customer Say About Us</h2><!-- End .title text-center -->
-
-                        <div class="owl-carousel owl-simple owl-testimonials-photo" data-toggle="owl" 
-                            data-owl-options='{
-                                "nav": false, 
+                    <div class="owl-carousel owl-simple owl-testimonials-photo" data-toggle="owl"
+                         data-owl-options='{
+                                "nav": false,
                                 "dots": true,
                                 "margin": 20,
                                 "loop": false,
@@ -261,7 +263,7 @@
                                 }
                             }'>
                             <blockquote class="testimonial text-center">
-                                <img src="assets/images/testimonials/userEntity-1.jpg" alt="userEntity">
+
                                 <p>“ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque aliquet nibh nec urna. <br>In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. ”</p>
                                 <cite>
                                     Jenson Gregory
@@ -270,7 +272,7 @@
                             </blockquote><!-- End .testimonial -->
 
                             <blockquote class="testimonial text-center">
-                                <img src="assets/images/testimonials/userEntity-2.jpg" alt="userEntity">
+
                                 <p>“ Impedit, ratione sequi, sunt incidunt magnam et. Delectus obcaecati optio eius error libero perferendis nesciunt atque dolores magni recusandae! Doloremque quidem error eum quis similique doloribus natus qui ut ipsum.Velit quos ipsa exercitationem, vel unde obcaecati impedit eveniet non. ”</p>
 
                                 <cite>
@@ -377,212 +379,212 @@
                             <li>
                                 <a href="contact.html">Contact</a>
 
-                                <ul>
-                                    <li><a href="contact.html">Contact 01</a></li>
-                                    <li><a href="contact-2.html">Contact 02</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="faq.html">FAQs</a></li>
-                            <li><a href="404.html">Error 404</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blog.html">Blog</a>
-
-                        <ul>
-                            <li><a href="blog.html">Classic</a></li>
-                            <li><a href="blog-listing.html">Listing</a></li>
-                            <li>
-                                <a href="#">Grid</a>
-                                <ul>
-                                    <li><a href="blog-grid-2cols.html">Grid 2 columns</a></li>
-                                    <li><a href="blog-grid-3cols.html">Grid 3 columns</a></li>
-                                    <li><a href="blog-grid-4cols.html">Grid 4 columns</a></li>
-                                    <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Masonry</a>
-                                <ul>
-                                    <li><a href="blog-masonry-2cols.html">Masonry 2 columns</a></li>
-                                    <li><a href="blog-masonry-3cols.html">Masonry 3 columns</a></li>
-                                    <li><a href="blog-masonry-4cols.html">Masonry 4 columns</a></li>
-                                    <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Mask</a>
-                                <ul>
-                                    <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
-                                    <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Single Post</a>
-                                <ul>
-                                    <li><a href="single.html">Default with sidebar</a></li>
-                                    <li><a href="single-fullwidth.html">Fullwidth no sidebar</a></li>
-                                    <li><a href="single-fullwidth-sidebar.html">Fullwidth with sidebar</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="elements-list.html">Elements</a>
-                        <ul>
-                            <li><a href="elements-products.html">Products</a></li>
-                            <li><a href="elements-typography.html">Typography</a></li>
-                            <li><a href="elements-titles.html">Titles</a></li>
-                            <li><a href="elements-banners.html">Banners</a></li>
-                            <li><a href="elements-product-category.html">Product Category</a></li>
-                            <li><a href="elements-video-banners.html">Video Banners</a></li>
-                            <li><a href="elements-buttons.html">Buttons</a></li>
-                            <li><a href="elements-accordions.html">Accordions</a></li>
-                            <li><a href="elements-tabs.html">Tabs</a></li>
-                            <li><a href="elements-testimonials.html">Testimonials</a></li>
-                            <li><a href="elements-blog-posts.html">Blog Posts</a></li>
-                            <li><a href="elements-portfolio.html">Portfolio</a></li>
-                            <li><a href="elements-cta.html">Call to Action</a></li>
-                            <li><a href="elements-icon-boxes.html">Icon Boxes</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav><!-- End .mobile-nav -->
-
-            <div class="social-icons">
-                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-            </div><!-- End .social-icons -->
-        </div><!-- End .mobile-menu-wrapper -->
-    </div><!-- End .mobile-menu-container -->
-
-    <!-- Sign in / Register Modal -->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="icon-close"></i></span>
-                    </button>
-
-                    <div class="form-box">
-                        <div class="form-tab">
-                            <ul class="nav nav-pills nav-fill" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
-                                </li>
+                            <ul>
+                                <li><a href="contact.html">Contact 01</a></li>
+                                <li><a href="contact-2.html">Contact 02</a></li>
                             </ul>
-                            <div class="tab-content" id="tab-content-5">
-                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email" name="singin-email" required>
-                                        </div><!-- End .form-group -->
+                        </li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="404.html">Error 404</a></li>
+                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="blog.html">Blog</a>
 
-                                        <div class="form-group">
-                                            <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password" name="singin-password" required>
-                                        </div><!-- End .form-group -->
+                    <ul>
+                        <li><a href="blog.html">Classic</a></li>
+                        <li><a href="blog-listing.html">Listing</a></li>
+                        <li>
+                            <a href="#">Grid</a>
+                            <ul>
+                                <li><a href="blog-grid-2cols.html">Grid 2 columns</a></li>
+                                <li><a href="blog-grid-3cols.html">Grid 3 columns</a></li>
+                                <li><a href="blog-grid-4cols.html">Grid 4 columns</a></li>
+                                <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Masonry</a>
+                            <ul>
+                                <li><a href="blog-masonry-2cols.html">Masonry 2 columns</a></li>
+                                <li><a href="blog-masonry-3cols.html">Masonry 3 columns</a></li>
+                                <li><a href="blog-masonry-4cols.html">Masonry 4 columns</a></li>
+                                <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Mask</a>
+                            <ul>
+                                <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
+                                <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Single Post</a>
+                            <ul>
+                                <li><a href="single.html">Default with sidebar</a></li>
+                                <li><a href="single-fullwidth.html">Fullwidth no sidebar</a></li>
+                                <li><a href="single-fullwidth-sidebar.html">Fullwidth with sidebar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="elements-list.html">Elements</a>
+                    <ul>
+                        <li><a href="elements-products.html">Products</a></li>
+                        <li><a href="elements-typography.html">Typography</a></li>
+                        <li><a href="elements-titles.html">Titles</a></li>
+                        <li><a href="elements-banners.html">Banners</a></li>
+                        <li><a href="elements-product-category.html">Product Category</a></li>
+                        <li><a href="elements-video-banners.html">Video Banners</a></li>
+                        <li><a href="elements-buttons.html">Buttons</a></li>
+                        <li><a href="elements-accordions.html">Accordions</a></li>
+                        <li><a href="elements-tabs.html">Tabs</a></li>
+                        <li><a href="elements-testimonials.html">Testimonials</a></li>
+                        <li><a href="elements-blog-posts.html">Blog Posts</a></li>
+                        <li><a href="elements-portfolio.html">Portfolio</a></li>
+                        <li><a href="elements-cta.html">Call to Action</a></li>
+                        <li><a href="elements-icon-boxes.html">Icon Boxes</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav><!-- End .mobile-nav -->
 
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>LOG IN</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
+        <div class="social-icons">
+            <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+        </div><!-- End .social-icons -->
+    </div><!-- End .mobile-menu-wrapper -->
+</div><!-- End .mobile-menu-container -->
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
-                                            </div><!-- End .custom-checkbox -->
+<!-- Sign in / Register Modal -->
+<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="icon-close"></i></span>
+                </button>
 
-                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
-                                </div><!-- .End .tab-pane -->
-                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="register-email">Your email address *</label>
-                                            <input type="email" class="form-control" id="register-email" name="register-email" required>
-                                        </div><!-- End .form-group -->
+                <div class="form-box">
+                    <div class="form-tab">
+                        <ul class="nav nav-pills nav-fill" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="tab-content-5">
+                            <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <label for="singin-email">Username or email address *</label>
+                                        <input type="text" class="form-control" id="singin-email" name="singin-email" required>
+                                    </div><!-- End .form-group -->
 
-                                        <div class="form-group">
-                                            <label for="register-password">Password *</label>
-                                            <input type="password" class="form-control" id="register-password" name="register-password" required>
-                                        </div><!-- End .form-group -->
+                                    <div class="form-group">
+                                        <label for="singin-password">Password *</label>
+                                        <input type="password" class="form-control" id="singin-password" name="singin-password" required>
+                                    </div><!-- End .form-group -->
 
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>SIGN UP</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
+                                    <div class="form-footer">
+                                        <button type="submit" class="btn btn-outline-primary-2">
+                                            <span>LOG IN</span>
+                                            <i class="icon-long-arrow-right"></i>
+                                        </button>
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="register-policy" required>
-                                                <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
-                                            </div><!-- End .custom-checkbox -->
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login  btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
-                                </div><!-- .End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .form-tab -->
-                    </div><!-- End .form-box -->
-                </div><!-- End .modal-body -->
-            </div><!-- End .modal-content -->
-        </div><!-- End .modal-dialog -->
-    </div><!-- End .modal -->
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="signin-remember">
+                                            <label class="custom-control-label" for="signin-remember">Remember Me</label>
+                                        </div><!-- End .custom-checkbox -->
 
-    <!-- Plugins JS File -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/superfish.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+                                        <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                    </div><!-- End .form-footer -->
+                                </form>
+                                <div class="form-choice">
+                                    <p class="text-center">or sign in with</p>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href="#" class="btn btn-login btn-g">
+                                                <i class="icon-google"></i>
+                                                Login With Google
+                                            </a>
+                                        </div><!-- End .col-6 -->
+                                        <div class="col-sm-6">
+                                            <a href="#" class="btn btn-login btn-f">
+                                                <i class="icon-facebook-f"></i>
+                                                Login With Facebook
+                                            </a>
+                                        </div><!-- End .col-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .form-choice -->
+                            </div><!-- .End .tab-pane -->
+                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <label for="register-email">Your email address *</label>
+                                        <input type="email" class="form-control" id="register-email" name="register-email" required>
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-group">
+                                        <label for="register-password">Password *</label>
+                                        <input type="password" class="form-control" id="register-password" name="register-password" required>
+                                    </div><!-- End .form-group -->
+
+                                    <div class="form-footer">
+                                        <button type="submit" class="btn btn-outline-primary-2">
+                                            <span>SIGN UP</span>
+                                            <i class="icon-long-arrow-right"></i>
+                                        </button>
+
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="register-policy" required>
+                                            <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
+                                        </div><!-- End .custom-checkbox -->
+                                    </div><!-- End .form-footer -->
+                                </form>
+                                <div class="form-choice">
+                                    <p class="text-center">or sign in with</p>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href="#" class="btn btn-login btn-g">
+                                                <i class="icon-google"></i>
+                                                Login With Google
+                                            </a>
+                                        </div><!-- End .col-6 -->
+                                        <div class="col-sm-6">
+                                            <a href="#" class="btn btn-login  btn-f">
+                                                <i class="icon-facebook-f"></i>
+                                                Login With Facebook
+                                            </a>
+                                        </div><!-- End .col-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .form-choice -->
+                            </div><!-- .End .tab-pane -->
+                        </div><!-- End .tab-content -->
+                    </div><!-- End .form-tab -->
+                </div><!-- End .form-box -->
+            </div><!-- End .modal-body -->
+        </div><!-- End .modal-content -->
+    </div><!-- End .modal-dialog -->
+</div><!-- End .modal -->
+
+<!-- Plugins JS File -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.hoverIntent.min.js"></script>
+<script src="assets/js/jquery.waypoints.min.js"></script>
+<script src="assets/js/superfish.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<!-- Main JS File -->
+<script src="assets/js/main.js"></script>
 </body>
 
 
