@@ -54,22 +54,22 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">jquery-steps wizard</h4>
-                  <form id="example-form" method="get" action="admin-update-product">
+                  <form id="example-form" class="signupForm" method="get" action="admin-update-product">
                     <div>
                       <h3>Product Details</h3>
                       <section>
                         <h4>Product Name</h4>
                         <div class="form-group">
                           <label>Product Id : ${editProduct.id} </label>
-                          <input type="hidden" name="productId" value="${editProduct.id}" class="form-control" aria-describedby="emailHelp"
+                          <input id="productId" type="hidden" name="productId" value="${editProduct.id}" class="form-control" aria-describedby="emailHelp"
                                  placeholder="Product Id">
                           <label>Name </label>
-                          <input type="text" name="productName" value="${editProduct.name}" class="form-control" aria-describedby="emailHelp"
+                          <input id="productName" type="text" name="productName" value="${editProduct.name}" class="form-control" aria-describedby="emailHelp"
                             placeholder="Product Name">
                         </div>
                         <div class="form-group">
                           <label>Quantity </label>
-                          <input type="number" name="productQuantity" value="${editProduct.quantity}" class="form-control" aria-describedby="emailHelp"
+                          <input id="productQuantity" type="number" name="productQuantity" value="${editProduct.quantity}" class="form-control" aria-describedby="emailHelp"
                                  placeholder="Product Quantity">
                         </div>
                         <div class="form-group">
@@ -77,7 +77,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text bg-primary text-white">L.E</span>
                             </div>
-                            <input type="text" name="productPrice" value="${editProduct.price}" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input id="productPrice" type="text" name="productPrice" value="${editProduct.price}" class="form-control" aria-label="Amount (to the nearest dollar)">
                           </div>
                         </div>
                         <div class="form-group">
@@ -181,6 +181,7 @@
   <script src="assets/admin/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="assets/admin/js/edit-product-validation.js"></script>
   <script src="assets/admin/js/wizard.js"></script>
   <script src="assets/admin/js/dropify.js"></script>
   <script src="assets/admin/js/jquery-file-upload.js"></script>
