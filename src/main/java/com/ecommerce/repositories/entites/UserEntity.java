@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "user")
 
 @NamedQueries({
-        @NamedQuery(name = "User.findByEmail",
+        @NamedQuery(name = "user.findByEmail",
                 query = "SELECT u from UserEntity u where u.email=:email"),
 })
 

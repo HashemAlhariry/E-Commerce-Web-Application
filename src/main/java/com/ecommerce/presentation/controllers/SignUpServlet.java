@@ -1,6 +1,8 @@
 package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.SignUpBean;
+import com.ecommerce.services.RegisterServices;
+import com.ecommerce.services.impls.RegisterServicesImpl;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +15,8 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(name = "SignUp", urlPatterns = "/registration")
 public class SignUpServlet extends HttpServlet {
 
+    private final RegisterServices  registerServicesImpl = RegisterServicesImpl.getInstance();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
@@ -20,7 +24,6 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        System.out.println("from Reegistration");
 
         String firstName = req.getParameter("register-name");
         String birthDate = req.getParameter("register-birthday");
@@ -32,19 +35,19 @@ public class SignUpServlet extends HttpServlet {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateOfBirth = LocalDate.parse(birthDate, dateTimeFormatter);
 
-        SignUpBean signUpBean = new SignUpBean(firstName,String.valueOf(dateOfBirth),email,password,job,address,creditLimit);
+        SignUpBean userRegistrationBean = new SignUpBean(firstName,String.valueOf(dateOfBirth),email,password,job,address,creditLimit);
 
-        signUpBean.setUserName(firstName);
-        signUpBean.setUserEmail(email);
-        signUpBean.setUserPassword(password);
-        signUpBean.setUserAddress(address);
-        signUpBean.setUserBirthDay(String.valueOf(dateOfBirth));
-        signUpBean.setUserCreditLimit(creditLimit);
-        signUpBean.setUserJob(job);
+        userRegistrationBean.setUserName(firstName);
+        userRegistrationBean.setUserEmail(email);
+        userRegistrationBean.setUserPassword(password);
+        userRegistrationBean.setUserAddress(address);
+        userRegistrationBean.setUserBirthDay(String.valueOf(dateOfBirth));
+        userRegistrationBean.setUserCreditLimit(creditLimit);
+        userRegistrationBean.setUserJob(job);
 
 
-//        SignUpBean signUpBean = userService.registerUser(userRegistrationDto);
-//        req.getSession().setAttribute("userDto", signUpBean);
+        SignUpBean signUpBean = registerServicesImpl.registerUser(userRegistrationBean);
+        req.getSession().setAttribute("userDto", signUpBean);
 
     }
 }

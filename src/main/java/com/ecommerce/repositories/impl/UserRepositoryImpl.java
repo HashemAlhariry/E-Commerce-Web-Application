@@ -22,7 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public UserEntity findByEmail(String email) throws NoResultException {
         entityManager.getTransaction().begin();
-        List<UserEntity> resultList = (ArrayList<UserEntity>) entityManager.createNamedQuery("User.findByEmail").setParameter("email", email).getResultList();
+        List<UserEntity> resultList = (ArrayList<UserEntity>) entityManager.createNamedQuery("user.findByEmail").setParameter("email", email).getResultList();
         entityManager.getTransaction().commit();
         entityManager.close();
 
@@ -31,6 +31,17 @@ public class UserRepositoryImpl implements UserRepository {
                 return user;
         }
         return null;
+    }
+
+    @Override
+    public UserEntity saveUser(UserEntity user) {
+//        System.out.println("saveUser" + user.getEmail());
+        entityManager.getTransaction().begin();
+        entityManager.persist(user);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        System.out.println("User saved " + user);
+        return user;
     }
 
 

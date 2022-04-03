@@ -10,5 +10,7 @@ public interface UserRepository {
 
     UserEntity findByEmail(String email) throws NoResultException;
 
+    UserEntity saveUser(UserEntity user);
+
 
 }

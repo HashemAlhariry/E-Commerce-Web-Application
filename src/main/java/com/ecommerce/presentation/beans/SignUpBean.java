@@ -21,7 +21,9 @@ public class SignUpBean {
         this.userCreditLimit = userCreditLimit;
     }
 
+    public SignUpBean() {
 
+    }
 
 
     public String getUserName() {
