@@ -33,7 +33,7 @@ public class OrderCompletion extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher( "home");
         requestDispatcher.forward(request, response);
     }
 
@@ -64,18 +64,20 @@ public class OrderCompletion extends HttpServlet {
 
                 cartItemBeans = cartService.getCartItemBeans(viewCartItems);
                 BigDecimal total = Util.getTotalPrice(cartItemBeans);
-                OrderBean orderBean= new OrderBean(address,new Date(),phoneNumber, OrderState.PENDING,  total);
+                OrderBean orderBean= new OrderBean(address,new Date(),phoneNumber, OrderState.PENDING,  total,email);
                 List<OrderDetailsBean> orderDetailsBeanList = Util.getOrderDetailsBeans(cartItemBeans,userId);
 
                 System.out.println(orderBean);
                 System.out.println(orderDetailsBeanList);
 
-                orderAddedToDB = orderService.submitOrder(orderBean,orderDetailsBeanList);
+                orderAddedToDB = orderService.submitOrder(orderBean,orderDetailsBeanList,email);
 
                 // order successfully added to DB send client to order successfully page
                 if(orderAddedToDB){
+
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "order-successfully.jsp");
                     requestDispatcher.forward(request, response);
+
                 }else{
 
                     // return user to cart with error message

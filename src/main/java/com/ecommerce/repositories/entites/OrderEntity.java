@@ -30,6 +30,8 @@ public class OrderEntity implements Serializable {
 
     private String address;
 
+    private String email;
+
     @OneToMany(mappedBy = "order")
     private Set<OrderDetailsEntity>orderDetails=new HashSet<>();
 

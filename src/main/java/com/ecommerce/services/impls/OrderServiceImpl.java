@@ -26,14 +26,12 @@ public class OrderServiceImpl implements OrderService {
 
     // update here
     @Override
-    public boolean submitOrder(OrderBean orderBean, List<OrderDetailsBean> orderDetailsBeanList) {
+    public boolean submitOrder(OrderBean orderBean, List<OrderDetailsBean> orderDetailsBeanList,String email) {
 
         try {
 
-            // get User if logged in or ann user
-            UserEntity userEntity =new UserEntity("annonymus","empty5","empty6",orderBean.getAddress(), LocalDate.now(), Role.CUSTOMER, BigDecimal.valueOf(0));
-            UserRepositoryImpl userRepository = UserRepositoryImpl.getInstance();
-            userRepository.save(userEntity);
+            // get user if already registered or create new user
+            UserEntity userEntity = getUserByEmail(orderBean,email);
 
             // get Order Entity
             OrderEntity orderEntity = OrderMapper.INSTANCE.OrderBeanToEntity(orderBean);
@@ -66,7 +64,9 @@ public class OrderServiceImpl implements OrderService {
 
                 orderDetailsRepository.save(orderDetailsEntity);
 
+                // updating product details quantity and get total purchases number
                 productEntity.setQuantity(productEntity.getQuantity()-orderDetailsBean.getQuantity());
+                productEntity.setTotalPurchasesNumber(productEntity.getTotalPurchasesNumber()+1);
                 ProductRepositoryImpl.getInstance().update(productEntity);
             }
 
@@ -82,5 +82,22 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
+    private UserEntity getUserByEmail(OrderBean orderBean, String email ){
+
+        // get User if logged in or ann user
+        List<UserEntity> userEntityListChecker;
+        UserEntity userEntity;
+        UserRepositoryImpl userRepository = UserRepositoryImpl.getInstance();
+        userEntityListChecker = userRepository.getUserByEmail(email);
+
+        if(userEntityListChecker.size()==0){
+            userEntity =new UserEntity("annonymus",email,"000000",orderBean.getAddress(), LocalDate.now(), Role.CUSTOMER, BigDecimal.valueOf(0));
+            userRepository.save(userEntity);
+        }else{
+            userEntity = userEntityListChecker.get(0);
+        }
+
+        return  userEntity;
+    }
 
 }

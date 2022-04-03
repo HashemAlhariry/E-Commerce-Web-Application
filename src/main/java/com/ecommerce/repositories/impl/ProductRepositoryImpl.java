@@ -41,8 +41,7 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
 
     @Override
     public int findAllProductsNumber() {
-        Query queryTotal = entityManager.createQuery
-                ("Select count(p.id) from ProductEntity p");
+        Query queryTotal = entityManager.createQuery("Select count(p.id) from ProductEntity p");
         long countResult = (long)queryTotal.getSingleResult();
         return (int)countResult;
     }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface OrderService {
 
-    public boolean submitOrder(OrderBean orderBean, List<OrderDetailsBean> orderDetailsBeanList);
+    public boolean submitOrder(OrderBean orderBean, List<OrderDetailsBean> orderDetailsBeanList,String email);
 }

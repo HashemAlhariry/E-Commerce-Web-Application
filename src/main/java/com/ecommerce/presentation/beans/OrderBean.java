@@ -15,13 +15,15 @@ public class OrderBean {
     private String phoneNumber;
     private OrderState state;
     private BigDecimal totalPrice;
+    private String email;
 
-    public OrderBean(String address, Date dateTime, String phoneNumber, OrderState state, BigDecimal totalPrice) {
+    public OrderBean(String address, Date dateTime, String phoneNumber, OrderState state, BigDecimal totalPrice,String email) {
         this.address = address;
         this.dateTime = dateTime;
         this.phoneNumber = phoneNumber;
         this.state = state;
         this.totalPrice = totalPrice;
+        this.email=email;
     }
 
 }
