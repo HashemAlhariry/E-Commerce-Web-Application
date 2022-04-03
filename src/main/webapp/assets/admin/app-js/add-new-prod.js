@@ -45,8 +45,8 @@ function sendData(form_data) {
                 $("input[type=file]").val(null);
                 $(".dropify-clear").click();
                 // $("input").val('');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 showSwal('success-message', resp.messages.join(' \n '));
-                $(window).scrollTop(0);
             } else {
                 showSwal('warning-message-and-cancel', resp.messages.join(' \n '));
             }
