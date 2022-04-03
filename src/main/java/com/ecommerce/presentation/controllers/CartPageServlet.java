@@ -27,7 +27,6 @@ public class CartPageServlet extends HttpServlet {
 
     }
 
-
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -36,7 +35,6 @@ public class CartPageServlet extends HttpServlet {
 
     }
 
-
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -44,22 +42,24 @@ public class CartPageServlet extends HttpServlet {
 
         String jsonString = request.getParameter("cart");
         if(jsonString!=null){
-        ObjectMapper jacksonMapper = new ObjectMapper();
-        List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
-        System.out.println(viewCartItems.size());
-        List<CartItemBean> cartItemBeans = new ArrayList<>();
-        BigDecimal subtotal=BigDecimal.ZERO;
-        if(viewCartItems.size()>0){
-            cartItemBeans = cartService.getCartItemBeans(viewCartItems);
-            System.out.println(cartItemBeans);
 
-        }
-        for (CartItemBean cartItem: cartItemBeans) {
-            subtotal=subtotal.add(cartItem.getProductBean().getPrice());
-        }
+            ObjectMapper jacksonMapper = new ObjectMapper();
+            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
+            System.out.println(viewCartItems.size());
+            List<CartItemBean> cartItemBeans = new ArrayList<>();
+            BigDecimal subtotal=BigDecimal.ZERO;
 
-        request.setAttribute("cartItemBeans",cartItemBeans);
-        request.setAttribute("subTotal",subtotal);
+            if(viewCartItems.size()>0){
+                cartItemBeans = cartService.getCartItemBeans(viewCartItems);
+                System.out.println(cartItemBeans);
+            }
+
+            for (CartItemBean cartItem: cartItemBeans) {
+                subtotal=subtotal.add(cartItem.getProductBean().getPrice());
+            }
+            request.setAttribute("cartItemBeans",cartItemBeans);
+            request.setAttribute("subTotal",subtotal);
+
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");

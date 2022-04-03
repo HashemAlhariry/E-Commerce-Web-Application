@@ -2,12 +2,13 @@ package com.ecommerce.repositories.impl;
 
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.repositories.Repository;
-
 import jakarta.persistence.EntityManager;
+
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
+
     protected final EntityManager entityManager = Connector.getInstance().getEntityManager();
     private final Class<T> clazz;
 
@@ -34,6 +35,7 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
 
     @Override
     public T findById(I id) {
+            //entityManager.refresh(id);
         return entityManager.find(clazz, id);
     }
 
