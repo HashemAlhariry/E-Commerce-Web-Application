@@ -127,23 +127,6 @@
                                                     </div>
                                                 </div><!-- end second-->
 
-                                                <div class="col-lg-2 grid-margin stretch-card">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Secondary photo</h4>
-                                                            <input id="img5" name="img5" type="file" class="dropify"/>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- end second-->
-
-                                                <div class="col-lg-2 grid-margin stretch-card">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Secondary photo</h4>
-                                                            <input id="img6" name="img6" type="file" class="dropify"/>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- end second-->
                                             </div>
                                         </div>
 

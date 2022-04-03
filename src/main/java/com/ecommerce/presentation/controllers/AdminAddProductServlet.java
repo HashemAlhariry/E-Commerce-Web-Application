@@ -85,8 +85,6 @@ public class AdminAddProductServlet extends HttpServlet {
         addIfExist(req, parts, "img2");
         addIfExist(req, parts, "img3");
         addIfExist(req, parts, "img4");
-        addIfExist(req, parts, "img5");
-        addIfExist(req, parts, "img6");
         return parts;
     }
 

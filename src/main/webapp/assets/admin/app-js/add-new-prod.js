@@ -11,8 +11,7 @@ $('#submitBtn').click(function () {
         addImgInp(data, 'img2');
         addImgInp(data, 'img3');
         addImgInp(data, 'img4');
-        addImgInp(data, 'img5');
-        addImgInp(data, 'img6');
+
 
 
         sendData(data);
@@ -41,7 +40,11 @@ function sendData(form_data) {
             $('#submitBtn').prop('disabled', false);
             let resp = JSON.parse(data);
             if (resp.state === 'success') {
-                $("input").val("");
+                $("input[type=text]").val(null);
+                $("input[type=number]").val(null);
+                $("input[type=file]").val(null);
+                $(".dropify-clear").click();
+                // $("input").val('');
                 showSwal('success-message', resp.messages.join(' \n '));
             } else {
                 showSwal('warning-message-and-cancel', resp.messages.join(' \n '));
