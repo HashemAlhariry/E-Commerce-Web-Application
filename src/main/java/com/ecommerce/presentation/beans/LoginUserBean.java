@@ -1,5 +1,10 @@
 package com.ecommerce.presentation.beans;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class LoginUserBean {
 
     private String userEmail;
@@ -12,23 +17,6 @@ public class LoginUserBean {
 
     public LoginUserBean() {
 
-    }
-
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
     }
 
     @Override

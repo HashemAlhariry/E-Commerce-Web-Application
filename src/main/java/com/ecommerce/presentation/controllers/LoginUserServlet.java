@@ -22,7 +22,6 @@ import java.util.List;
 
 public class LoginUserServlet extends HttpServlet {
 
-
     private final LoginServices userServiceImpl = LoginServicesImpl.getInstance();
 
 
@@ -53,17 +52,17 @@ public class LoginUserServlet extends HttpServlet {
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("about.jsp");
                 HttpSession session = req.getSession();
 
+                // update name user
                 session.setAttribute("userDto", userDto);
 
 //            } else if (userDto.getUserEmail().equals(email) && userDto.getUserPassword().equals(password))
 //            //admin role
 //            {
-////                RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/index.jsp");
+////              RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/index.jsp");
 //                req.getSession().setAttribute("userDto", userDto);
 //                resp.sendRedirect("dashboard");
-////                requestDispatcher.forward(request, response);
+////              requestDispatcher.forward(request, response);
             } else {
-
                 resp.sendRedirect("login.jsp");
             }
         }
