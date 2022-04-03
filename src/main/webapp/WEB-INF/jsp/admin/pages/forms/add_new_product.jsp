@@ -92,8 +92,8 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <h4 class="card-title">Main photo</h4>
-                                                            <input id="img1" name="img1" type="file" class="dropify"
-                                                                   required/>
+                                                            <input id="img1" name="img1" type="file" class="dropify" required accept="image/jpeg, image/png, image/tiff, image/bmp"/>
+                                                            <div id="img1-error"></div>
                                                         </div>
                                                     </div>
                                                 </div><!-- end main-->
@@ -102,9 +102,8 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <h4 class="card-title">Secondary photo</h4>
-                                                            <input id="img2" name="img2" type="file" class="dropify"
-                                                                   data-max-file-size="3mb"
-                                                                   accept="image/png, image/jpeg" multiple/>
+                                                            <input id="img2" name="img2" type="file" class="dropify" accept="image/jpeg, image/png, image/tiff, image/bmp"/>
+                                                            <div id="img2-error"></div>
                                                         </div>
                                                     </div>
                                                 </div><!-- end second-->
@@ -113,7 +112,8 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <h4 class="card-title">Secondary photo</h4>
-                                                            <input id="img3" name="img3" type="file" class="dropify"/>
+                                                            <input id="img3" name="img3" type="file" class="dropify" accept="image/jpeg, image/png, image/tiff, image/bmp"/>
+                                                            <div id="img3-error"></div>
                                                         </div>
                                                     </div>
                                                 </div><!-- end second-->
@@ -122,7 +122,8 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <h4 class="card-title">Secondary photo</h4>
-                                                            <input id="img4" name="img4" type="file" class="dropify"/>
+                                                            <input id="img4" name="img4" type="file" class="dropify" accept="image/jpeg, image/png, image/tiff, image/bmp"/>
+                                                            <div id="img4-error"></div>
                                                         </div>
                                                     </div>
                                                 </div><!-- end second-->

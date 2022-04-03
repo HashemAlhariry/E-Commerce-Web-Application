@@ -48,8 +48,15 @@
 
             },
             errorPlacement: function (label, element) {
+                console.log(element);
+                console.log(element.attr("type"));
                 label.addClass('mt-2 text-danger');
-                label.insertAfter(element);
+
+                if(element.attr("type") === "file"){
+                    label.insertAfter($('#'+element.attr('id')+'-error'));
+                }else {
+                    label.insertAfter(element);
+                }
             },
             highlight: function (element, errorClass) {
                 $(element).parent().addClass('has-danger')

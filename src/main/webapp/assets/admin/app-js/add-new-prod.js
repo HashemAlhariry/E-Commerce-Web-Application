@@ -46,6 +46,7 @@ function sendData(form_data) {
                 $(".dropify-clear").click();
                 // $("input").val('');
                 showSwal('success-message', resp.messages.join(' \n '));
+                $(window).scrollTop(0);
             } else {
                 showSwal('warning-message-and-cancel', resp.messages.join(' \n '));
             }
