@@ -182,10 +182,10 @@
                     </div><!-- End .container -->
                 </c:if>
                 <c:if test="${cartItemBeans.size()==0}" >
-                    <div class="text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+                    <div class="text-center" style="padding-top: 10px;background-image: url('assets/images/page-header-bg.jpg'); margin-left: 150px;margin-right: 150px; align-self: center">
                         <div class="container">
-                            <h1 class="page-title">Cart is Empty</h1>
-                                <a href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>Start SHOPPING</span><i class="icon-refresh"></i></a>
+                            <h4 style="margin-top: 10px;" class="page-title">Cart is Empty</h4>
+                                <a style="width: 0%;border-color: orange" href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>Start SHOPPING</span><i class="icon-refresh"></i></a>
                         </div><!-- End .container -->
                     </div>
                 </c:if>
