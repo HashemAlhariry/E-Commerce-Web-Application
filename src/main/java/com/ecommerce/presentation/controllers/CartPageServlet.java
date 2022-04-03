@@ -22,13 +22,27 @@ import java.util.List;
 
 @WebServlet(name = "cart",urlPatterns = {"/cart"})
 public class CartPageServlet extends HttpServlet {
-
+    CartService cartService;
     public void init(ServletConfig config) {
-
+        cartService = CartServiceImpl.getInstance();
     }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String jsonString = request.getParameter("cart");
+        if(jsonString!=null) {
+            ObjectMapper jacksonMapper = new ObjectMapper();
+            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>() {
+            });
+            System.out.println(viewCartItems);
+            List<CartItemBean> cartItemBeans = new ArrayList<>();
+            if (viewCartItems.size() > 0) {
+                cartItemBeans = cartService.getCartItemBeans(viewCartItems);
+                System.out.println(cartItemBeans);
+
+            }
+        }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart-testing.jsp");
         requestDispatcher.forward(request, response);
@@ -38,28 +52,25 @@ public class CartPageServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        CartService cartService = CartServiceImpl.getInstance();
+        BigDecimal subtotal=BigDecimal.ZERO;
 
         String jsonString = request.getParameter("cart");
         if(jsonString!=null){
+        ObjectMapper jacksonMapper = new ObjectMapper();
+        List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
+        System.out.println(viewCartItems);
+        List<CartItemBean> cartItemBeans = new ArrayList<>();
+        if(viewCartItems.size()>0){
+            cartItemBeans = cartService.getCartItemBeans(viewCartItems);
+            System.out.println(cartItemBeans);
 
-            ObjectMapper jacksonMapper = new ObjectMapper();
-            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
-            System.out.println(viewCartItems.size());
-            List<CartItemBean> cartItemBeans = new ArrayList<>();
-            BigDecimal subtotal=BigDecimal.ZERO;
+        }
+        for (CartItemBean cartItem: cartItemBeans) {
+            subtotal=subtotal.add(cartItem.getProductBean().getPrice().multiply(new BigDecimal(cartItem.getRequiredQuantity())));
+        }
 
-            if(viewCartItems.size()>0){
-                cartItemBeans = cartService.getCartItemBeans(viewCartItems);
-                System.out.println(cartItemBeans);
-            }
-
-            for (CartItemBean cartItem: cartItemBeans) {
-                subtotal=subtotal.add(cartItem.getProductBean().getPrice());
-            }
             request.setAttribute("cartItemBeans",cartItemBeans);
             request.setAttribute("subTotal",subtotal);
-
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
