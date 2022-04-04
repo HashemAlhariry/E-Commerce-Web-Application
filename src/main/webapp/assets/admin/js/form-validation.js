@@ -9,7 +9,8 @@
             rules: {
                 name: {
                     required: true,
-                    minlength: 5
+                    minlength: 2/*,
+                    maxLength:50*/
                 },
                 price: {
                     required: true,
@@ -24,12 +25,16 @@
                 },
                 img1: {
                     required: true
-                }
+                }/*,
+                description: {
+                    maxLength: 200
+                }*/
             },
             messages: {
                 name: {
                     required: "Please enter the product name",
-                    minlength: "Your product must consist of at least 5 characters"
+                    minlength: "Your product must consist of at least 5 characters"/*,
+                    maxLength :"This field size is 50"*/
                 },
                 price: {
                     required: "Please enter the product price",
@@ -44,7 +49,10 @@
                 },
                 img1: {
                     required: "Please enter the main product image"
-                }
+                }/*,
+                description: {
+                    maxLength :"This field size is 150"
+                }*/
 
             },
             errorPlacement: function (label, element) {

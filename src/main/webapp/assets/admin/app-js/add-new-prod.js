@@ -41,12 +41,13 @@ function sendData(form_data) {
             let resp = JSON.parse(data);
             if (resp.state === 'success') {
                 $("input[type=text]").val(null);
+                $("#description").val(null);
                 $("input[type=number]").val(null);
                 $("input[type=file]").val(null);
                 $(".dropify-clear").click();
                 // $("input").val('');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 showSwal('success-message', resp.messages.join(' \n '));
-                $(window).scrollTop(0);
             } else {
                 showSwal('warning-message-and-cancel', resp.messages.join(' \n '));
             }
