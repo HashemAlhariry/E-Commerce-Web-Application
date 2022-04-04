@@ -1,5 +1,6 @@
 package com.ecommerce.presentation.controllers;
 
+import com.ecommerce.exceptions.IllegalInputException;
 import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.services.ProductService;
@@ -44,12 +45,17 @@ public class ShopPageServlet extends HttpServlet {
         int totalCount = productService.getAllProductsCount();
         int countOfProductsPerPage = 12;
         int numberOfPages = (int)Math.ceil((float)totalCount/countOfProductsPerPage);
-        System.out.println(allProductsBeans);
-        request.setAttribute("allProducts",allProductsBeans);
-        request.setAttribute("totalCount",totalCount);
-        request.setAttribute("numberOfPages", numberOfPages);
-        request.setAttribute("currentPageProductsNumber", allProductsBeans.size());
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "shop.jsp");
-        requestDispatcher.forward(request, response);
+        if(allProductsBeans != null){
+            System.out.println(allProductsBeans);
+            request.setAttribute("allProducts",allProductsBeans);
+            request.setAttribute("totalCount",totalCount);
+            request.setAttribute("numberOfPages", numberOfPages);
+            request.setAttribute("currentPageProductsNumber", allProductsBeans.size());
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "shop.jsp");
+            requestDispatcher.forward(request, response);
+        }
+        else{
+            throw new IllegalInputException();
+        }
     }
 }

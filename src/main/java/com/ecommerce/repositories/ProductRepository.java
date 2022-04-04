@@ -9,9 +9,9 @@ public interface ProductRepository extends Repository<ProductEntity,Long> {
 
     List<ProductEntity> getLast10();
     List<ProductEntity> findAllByCategoryId(int id);
-    List<ProductEntity> getSinglePageProducts(int PageNumber , int recordsPerPage);
+//    List<ProductEntity> getSinglePageProducts(int PageNumber , int recordsPerPage);
     List<ProductEntity> findProductByName(String productName);
-    int findAllProductsNumber();
+//    int findAllProductsNumber();
 
 
 
