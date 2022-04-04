@@ -82,7 +82,7 @@
                                                 <div class="product">
                                                     <figure class="product-media">
                                                         <a href="#">
-                                                            <img src="assets/images/products/table/product-1.jpg" alt="Product image">
+                                                            <img src="${cartItem.productBean.images.iterator().next()} " alt="Product image">
                                                         </a>
                                                     </figure>
 
