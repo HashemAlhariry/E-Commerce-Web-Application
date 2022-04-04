@@ -102,7 +102,7 @@
                                         </tr>
                                     </c:forEach>
                                     </tbody>
-                                
+
                                 </table><!-- End .table table-wishlist -->
 
                                 <div class="cart-bottom">

@@ -127,11 +127,11 @@
                                                 <span class="product-label label-new">New</span>
                                                 <a href="shop">
                                                     <c:choose>
-                                                        <c:when test="${product.category.categoryId==5}">
+                                                        <c:when test="${product.category.categoryId==1}">
                                                             <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
                                                         </c:when>
 
-                                                        <c:when test="${product.category.categoryId==3}">
+                                                        <c:when test="${product.category.categoryId==2}">
                                                             <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
                                                         </c:when>
                                                         <c:otherwise>
@@ -168,15 +168,15 @@
                                                 <div class="product-nav product-nav-thumbs">
 
                                                     <a href="#" class="active">
-                                                        <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                        <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
                                                     </a>
 
                                                     <a href="#">
-                                                        <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                        <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
                                                     </a>
 
                                                     <a href="#">
-                                                        <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                        <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
                                                     </a>
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
@@ -465,14 +465,14 @@
 
                                                     <div class="product-nav product-nav-thumbs">
                                                         <a href="#" class="active">
-                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
                                                         </a>
                                                         <a href="#">
-                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
                                                         </a>
 
                                                         <a href="#">
-                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
                                                         </a>
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->

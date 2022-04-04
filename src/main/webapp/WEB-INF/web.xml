@@ -19,6 +19,10 @@
     <exception-type>java.lang.NumberFormatException</exception-type>
     <location>/404</location>
   </error-page>
+  <error-page>
+    <exception-type>com.ecommerce.exceptions.IllegalInputException</exception-type>
+    <location>/illegal</location>
+  </error-page>
 
 <!--  <welcome-file-list>-->
 <!--    <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>-->

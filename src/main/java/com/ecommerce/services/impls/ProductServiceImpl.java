@@ -74,7 +74,8 @@ public class ProductServiceImpl implements ProductService {
         int countOfProductsPerPage = 12;
         int numberOfPages = (int)Math.ceil((float)totalCount/countOfProductsPerPage);
         if (pageNumber <= numberOfPages){
-            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageProducts(pageNumber,countOfProductsPerPage);
+//            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageProducts(pageNumber,countOfProductsPerPage);
+            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageContent(pageNumber,countOfProductsPerPage);
             List<ProductBean> productBeansOfSinglePage = ProductMapper.INSTANCE.listEntitiesToBeans(productEntitiesOfSinglePage);
             return productBeansOfSinglePage;
         }else{
@@ -85,7 +86,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public int getAllProductsCount() {
-        return productRepository.findAllProductsNumber();
+//        return productRepository.findAllProductsNumber();
+        return productRepository.getCount();
     }
 
 
