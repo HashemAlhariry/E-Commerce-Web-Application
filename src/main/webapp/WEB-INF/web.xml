@@ -32,9 +32,13 @@
     <servlet-name>SearchProductServlet</servlet-name>
     <servlet-class>com.ecommerce.presentation.controllers.SearchProductServlet</servlet-class>
   </servlet>
+
   <servlet-mapping>
     <servlet-name>SearchProductServlet</servlet-name>
     <url-pattern>/searchproduct</url-pattern>
   </servlet-mapping>
+
+
+
 
 </web-app>
