@@ -8,7 +8,9 @@ import java.net.MalformedURLException;
 public class MailTest {
     public static void main(String[] args) {
         try {
-            MailUtil.getInstance().sendAddContactMail("ahmedosamam03@gmail.com","015");
+//            MailUtil.getInstance().sendAddContactMail("ahmedosamam03@gmail.com","015");
+
+            MailUtil.getInstance().sendConfirmationMail("http://localhost:9595/amazonya/","ahmedosamam03@gmail.com","015");
         } catch (EmailException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
