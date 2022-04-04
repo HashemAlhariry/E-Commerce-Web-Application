@@ -1,3 +1,6 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +52,7 @@
                   <div class="card px-2">
                       <div class="card-body">
                           <div class="container-fluid">
-                            <h3 class="text-right my-5">Invoice&nbsp;&nbsp;#INV-17</h3>
+                            <h3 class="text-right my-5">ORDER #-${order.id}</h3>
                             <hr>
                           </div>
                           <div class="container-fluid d-flex justify-content-between">
@@ -120,7 +123,7 @@
                             <hr>
                           </div>
                           <div class="container-fluid w-100">
-                            <a href="#" class="btn btn-primary float-right mt-4 ml-2"><i class="fa fa-print mr-1"></i>Print</a>
+                            <a href="#" onclick="window.print()" class="btn btn-primary float-right mt-4 ml-2"><i class="fa fa-print mr-1"></i>Print</a>
                             <a href="#" class="btn btn-success float-right mt-4"><i class="fa fa-share mr-1"></i>Send Invoice</a>
                           </div>
                       </div>
