@@ -1,7 +1,6 @@
 package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.LoginUserBean;
-import com.ecommerce.repositories.entites.UserEntity;
 import com.ecommerce.services.LoginServices;
 import com.ecommerce.services.impls.LoginServicesImpl;
 import com.ecommerce.utils.CommonString;
@@ -12,10 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @WebServlet(name = "login", urlPatterns = {"/login"})
