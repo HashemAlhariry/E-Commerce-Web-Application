@@ -45,7 +45,7 @@ public class LoginUserServlet extends HttpServlet {
             if (userDto.getEmail().equals(email) && userDto.getPass().equals(password))
             //user role
             {
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("about.jsp");
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
                 HttpSession session = req.getSession();
                 // update name user
                 session.setAttribute("userDto", userDto);
