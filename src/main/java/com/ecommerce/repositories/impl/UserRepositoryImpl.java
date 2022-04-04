@@ -47,11 +47,10 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Long> impleme
 
     @Override
     public UserEntity saveUser(UserEntity user) {
-        // System.out.println("saveUser" + user.getEmail());
+        //System.out.println("saveUser" + user.getEmail());
         entityManager.getTransaction().begin();
         entityManager.persist(user);
         entityManager.getTransaction().commit();
-        entityManager.close();
         System.out.println("User saved " + user);
         return user;
     }
