@@ -13,6 +13,7 @@ import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 import com.ecommerce.services.ProductService;
 import com.ecommerce.utils.FileUtil;
+import com.ecommerce.utils.S3Util;
 import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.http.Part;
 
@@ -57,9 +58,7 @@ public class ProductServiceImpl implements ProductService {
 
     private Set<String> saveImages(Collection<Part> imageParts) throws IOException {
         Set<String> imageNames = new HashSet<>();
-        UUID uuid;
         for (Part imagePart : imageParts) {
-            uuid = UUID.randomUUID();
             Optional<String> optionalFileName = FileUtil.getINSTANCE().getFileName(imagePart);
             if (optionalFileName.isEmpty()) {
                 continue;
@@ -68,8 +67,8 @@ public class ProductServiceImpl implements ProductService {
             if (imageName.isEmpty()) {
                 continue;
             }
-            imagePart.write(uuid.toString() + imageName);
-            imageNames.add(uuid + imageName);
+            String imgUrl = S3Util.uploadFile(imageName,imagePart.getInputStream());
+            imageNames.add(imgUrl);
         }
         return imageNames;
     }

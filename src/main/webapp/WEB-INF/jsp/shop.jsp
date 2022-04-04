@@ -195,8 +195,8 @@
 
                                                     <a href="shop">
                                                         <c:choose>
-                                                            <c:when test="${product.category.categoryId==5}">
-                                                                <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
+                                                            <c:when test="${product.category.categoryId==1}">
+                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
@@ -204,6 +204,7 @@
                                                         </c:choose>
                                                     </a>
 
+ 
                                                     <div class="product-action-vertical" >
                                                         <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
@@ -257,11 +258,12 @@
                                                     <span class="product-label label-new">New</span>
                                                     <a href="shop">
                                                         <c:choose>
-                                                            <c:when test="${product.category.categoryId==5}">
-                                                                <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
+                                                           <c:when test="${product.category.categoryId==2}">
+                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
+                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
+ 
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </a>
