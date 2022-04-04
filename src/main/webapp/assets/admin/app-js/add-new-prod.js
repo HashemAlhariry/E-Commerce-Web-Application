@@ -41,6 +41,7 @@ function sendData(form_data) {
             let resp = JSON.parse(data);
             if (resp.state === 'success') {
                 $("input[type=text]").val(null);
+                $("#description").val(null);
                 $("input[type=number]").val(null);
                 $("input[type=file]").val(null);
                 $(".dropify-clear").click();

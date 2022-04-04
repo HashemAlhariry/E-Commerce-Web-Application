@@ -57,7 +57,7 @@
                                     <fieldset>
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input id="name" class="form-control" name="name" minlength="5" type="text"
+                                            <input id="name" class="form-control" name="name" minlength="2" maxlength="50" type="text"
                                                    required>
                                         </div>
                                         <div class="form-group">
@@ -83,7 +83,7 @@
 
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea id="description" class="form-control" rows="5"
+                                            <textarea id="description" class="form-control" rows="5" maxlength="200"
                                                       name="description"></textarea>
                                         </div>
                                         <div class="form-group">
@@ -181,7 +181,7 @@
 <script src="../../js/form-repeater.js"></script>
 -->
 <script src="assets/admin/js/form-validation.js"></script>
-<script src="assets/admin/js/bt-maxLength.js"></script>
+<script src="assets/admin/js/product-maxLength.js"></script>
 <script src="assets/admin/js/alerts.js"></script>
 <script src="assets/admin/app-js/add-new-prod.js"></script>
 <!-- End custom js for this page-->

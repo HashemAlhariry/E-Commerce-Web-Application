@@ -13,9 +13,10 @@ import java.util.Collection;
 @Getter
 @Setter
 public class AddProductBean {
-    @NotNull(message = "Product name size must be 5 at least")
-    @Size(min = 5,message = "Product name size must be 5 at least")
+    @NotNull(message = "Product name size must be 2 at least")
+    @Size(min = 2,max = 50,message = "Product name size must be between 2 and 50 at least")
     String name;
+    @Size(max = 200,message = "Product description max size is 200")
     String description;
     @NotNull(message = "Product price can't be null")
     BigDecimal price;
