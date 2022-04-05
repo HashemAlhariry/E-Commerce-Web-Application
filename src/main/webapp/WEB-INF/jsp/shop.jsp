@@ -124,20 +124,18 @@
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
-                                                <span class="product-label label-new">New</span>
+                                                <c:if test="${!empty product.state}">
+                                                    <span class="product-label label-new">${product.state}</span>
+                                                </c:if>
                                                 <a href="shop">
-                                                    <c:choose>
-                                                        <c:when test="${product.category.categoryId==1}">
-                                                            <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
-                                                        </c:when>
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
 
-                                                        <c:when test="${product.category.categoryId==2}">
-                                                            <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
-                                                        </c:otherwise>
-                                                    </c:choose>
+                                                        <c:if test="${loop.last }">
+                                                            <img src="${image}" alt="Product image" class="product-image">
+                                                        </c:if>
+
+                                                    </c:forEach>
+
                                                 </a>
 
                                                 <div class="product-action-vertical">
@@ -154,7 +152,7 @@
                                                 <div class="product-cat">
                                                     <a href="#">${product.category.categoryName}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                         ${product.price} EGP
                                                 </div><!-- End .product-price -->
@@ -162,22 +160,17 @@
                                                     <div class="ratings">
                                                         <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
-                                                    <span class="ratings-text">( 2 Reviews )</span>
+<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
                                                 </div><!-- End .rating-container -->
 
                                                 <div class="product-nav product-nav-thumbs">
-
-                                                    <a href="#" class="active">
-                                                        <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
-                                                    </a>
-
-                                                    <a href="#">
-                                                        <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
-                                                    </a>
-
-                                                    <a href="#">
-                                                        <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
-                                                    </a>
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+                                                        <c:if test="${!loop.last }">
+                                                            <a href="#" class="active">
+                                                                <img src="${image}" alt="product desc">
+                                                            </a>
+                                                        </c:if>
+                                                    </c:forEach>
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
