@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
     <link rel="stylesheet" href="assets/css/demos/demo-4.css">
+
+    <script src="assets/js/amazonya/cookie-checker.js"></script>
 </head>
 
 <body>
@@ -71,7 +73,7 @@
                                     <li><a href="wishlist.html"><i class="icon-heart-o"></i>Wishlist <span>(3)</span></a></li>
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
+                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-userEntity"></i>Login</a></li>
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->

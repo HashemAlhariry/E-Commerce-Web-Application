@@ -26,7 +26,7 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
-                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                            <li><a href="login"  >Sign in / Sign up</a></li>
                             <%--<li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>--%>
 
                         </ul>
@@ -53,11 +53,11 @@
             <div class="header-center">
                 <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                     <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                    <form action="#" method="get">
+                    <form action="searchproduct" method="get">
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="q" class="sr-only">Search</label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..."
+                            <input type="search" class="form-control" name="product-name" id="q" placeholder="Search product ..."
                                    required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
@@ -174,7 +174,6 @@
                         <li class="megamenu-container ">
                             <a href="home" class="our-sf-with-ul">Home</a>
 
-
                                 </li>
 
                                 <li>
@@ -186,20 +185,20 @@
                                     <ul>
 
                                         <li>
-                                            <a href="about.html" class="our-sf-with-ul">About</a>
+                                            <a href="aboutUs" class="our-sf-with-ul">About</a>
                                         </li>
 
                                         <li>
-                                            <a href="contact.html" class="our-sf-with-ul">Contact</a>
+                                            <a href="contactUs" class="our-sf-with-ul">Contact</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="faq.html">FAQs</a>
+                                            <a href="qs">FAQs</a>
                                         </li>
 
                                         <li>
-                                            <a href="coming-soon.html">Coming Soon</a>
+                                            <a href="comingsoon">Coming Soon</a>
                                         </li>
 
                                     </ul>
@@ -218,7 +217,7 @@
 </header>
 <!-- End .header -->
 
-<script src=http://code.jquery.com/jquery-latest.min.js ></script>
+
 <script>
 
     window.onload = (event) => {

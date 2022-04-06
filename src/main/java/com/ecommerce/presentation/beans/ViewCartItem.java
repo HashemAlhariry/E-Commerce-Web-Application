@@ -1,7 +1,11 @@
 package com.ecommerce.presentation.beans;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class ViewCartItem {
-    private long id;
+    public long id;
     private int quantity;
 
     public ViewCartItem(long id, int quantity) {
@@ -9,21 +13,5 @@ public class ViewCartItem {
         this.quantity = quantity;
     }
     public ViewCartItem() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 }

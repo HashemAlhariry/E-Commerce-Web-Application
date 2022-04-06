@@ -1,6 +1,12 @@
+<script src="assets/js/amazonya/cookie-checker.js"></script>
 <script>
     window.onload = (event) => {
-        post('cart','post');
+        if(!navigator.cookieEnabled) {
+            window.location.href = "un-enabled-cookie";
+        }else{
+            post('cart','post');
+        }
+
     };
 
     function post(path,method='post') {

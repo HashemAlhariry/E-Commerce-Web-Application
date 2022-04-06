@@ -38,6 +38,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
     <link rel="stylesheet" href="assets/css/demos/demo-4.css">
+
+    <script src="assets/js/amazonya/cookie-checker.js"></script>
+
 </head>
 
 <body>
@@ -1947,6 +1950,8 @@
 <%--    </div>--%>
 
     <!-- Plugins JS File -->
+
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.hoverIntent.min.js"></script>

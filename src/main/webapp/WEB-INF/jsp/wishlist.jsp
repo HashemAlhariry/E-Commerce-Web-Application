@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="assets/css/skins/skin-demo-4.css">
     <link rel="stylesheet" href="assets/css/demos/demo-4.css">
 
+    <script src="assets/js/amazonya/cookie-checker.js"></script>
+
 </head>
 
 <body>
@@ -48,8 +50,8 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="home">Home</a></li>
+                        <li class="breadcrumb-item"><a href="shop">Shop</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
                     </ol>
                 </div><!-- End .container -->
@@ -70,12 +72,12 @@
 
 						<tbody>
                         <c:forEach items="${wishlistBeans}" var="wishlistProduct" >
-							<tr>
+							<tr id="productRow${wishlistProduct.id}">
 								<td class="product-col">
 									<div class="product">
 										<figure class="product-media">
 											<a href="#">
-												<img src="assets/images/products/table/product-2.jpg" alt="Product image">
+												<img src=${wishlistProduct.images.iterator().next()} alt="assets/images/products/table/product-2.jpg">
 											</a>
 										</figure>
 
@@ -85,11 +87,11 @@
 									</div><!-- End .product -->
 								</td>
 								<td class="price-col">${wishlistProduct.price}</td>
-                                <c:choose>
 
+                                <c:choose>
                                 <c:when test="${wishlistProduct.quantity>0}">
                                     <td class="stock-col"><span class="in-stock">In stock </span></td>
-                                    <td><button class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button></td>
+                                    <td><button onclick="addToCart(${wishlistProduct.id})" class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button></td>
                                 </c:when>
 
                                 <c:when test="${wishlistProduct.quantity==0}">
@@ -97,32 +99,32 @@
                                     <td class="action-col"><button class="btn btn-block btn-outline-primary-2 disabled">Out of Stock</button>
                                     </td>
                                 </c:when>
-
                                 </c:choose>
-								<td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+
+								<td class="remove-col"><button class="btn-remove"  onclick="removeProduct(${wishlistProduct.id})"><i class="icon-close"></i></button></td>
 							</tr>
                         </c:forEach>
-                        <tr>
-                            <td class="product-col">
-                                <div class="product">
-                                    <figure class="product-media">
-                                        <a href="#">
-                                            <img src="assets/images/products/table/product-3.jpg" alt="Product image">
-                                        </a>
-                                    </figure>
+                        <!--   <tr>
+                              <td class="product-col">
+                                  <div class="product">
+                                      <figure class="product-media">
+                                          <a href="#">
+                                              <img src="assets/images/products/table/product-3.jpg" alt="Product image">
+                                          </a>
+                                      </figure>
 
-                                    <h3 class="product-title">
-                                        <a href="#">Orange saddle lock front chain cross body bag</a>
-                                    </h3><!-- End .product-title -->
-                                </div><!-- End .product -->
-                            </td>
-                            <td class="price-col">$52.00</td>
-                            <td class="stock-col"><span class="out-of-stock">Out of stock</span></td>
-                            <td class="action-col">
-                                <button class="btn btn-block btn-outline-primary-2 disabled">Out of Stock</button>
-                            </td>
-                            <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-                        </tr>
+                                      <h3 class="product-title">
+                                          <a href="#">Orange saddle lock front chain cross body bag</a>
+                                      </h3>
+                                  </div>
+                              </td>
+                              <td class="price-col">$52.00</td>
+                              <td class="stock-col"><span class="out-of-stock">Out of stock</span></td>
+                              <td class="action-col">
+                                  <button class="btn btn-block btn-outline-primary-2 disabled">Out of Stock</button>
+                              </td>
+                              <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+                          </tr> -->
 						</tbody>
 					</table><!-- End .table table-wishlist -->
 	            	<div class="wishlist-share">
@@ -425,7 +427,68 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
 </body>
+<script>
 
+    function removeProduct(productId){
+
+
+        var localStorageContent = localStorage.getItem("wishlistItems");
+        let wishlistItems = JSON.parse(localStorageContent);
+        for(var i=0 ; i<wishlistItems.length ; i++){
+            if (wishlistItems[i] === productId){
+                wishlistItems.splice(i,1);
+
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+                console.log(wishlistItems);
+                document.getElementById("productRow"+productId).remove();
+                console.log("productRow"+productId);
+                document.getElementById("wishListItemsNumber").textContent =  wishlistItems.length.toString();
+                break;
+            }
+        }
+    }
+
+
+    function addToCart(productId){
+        //get all available id in local storage
+        //update list
+        //save list to local storage
+        var checker=true;
+        var localStorageContent = localStorage.getItem("cartItems");
+
+        if (localStorageContent == null) {
+            cartItems = [];
+        } else {
+            cartItems = JSON.parse(localStorageContent);
+        }
+
+        cartItem = new CartItem(productId,1);
+
+        for(var i =0;i<cartItems.length;i++){
+            if(cartItems[i].id === productId){
+                cartItems[i].quantity++;
+                checker=false;
+            }
+        }
+
+        if(checker && productId>=0){
+            cartItems.push(cartItem);
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        console.log(JSON.parse(localStorage.getItem("cartItems")));
+        console.log(cartItems);
+
+        document.getElementById("cartItemsNumber").textContent =  cartItems.length;
+
+
+
+    }
+    function CartItem(id, quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
+</script>
 
 <!-- molla/wishlist.html  22 Nov 2019 09:55:06 GMT -->
 </html>
