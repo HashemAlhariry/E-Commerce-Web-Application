@@ -50,6 +50,7 @@ public class ProductServiceImpl implements ProductService {
         }
 
         Set<String> images = saveImages(addProductBean.getImages());
+        images.add(mainImgURI);
 
         CategoryEntity category = categoryRepository.findById(addProductBean.getCategoryId());
         if (category == null) {

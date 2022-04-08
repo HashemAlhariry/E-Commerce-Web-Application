@@ -2,6 +2,7 @@ package com.ecommerce.repositories.entites;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,6 +49,7 @@ public class ProductEntity {
             name = "product_images",
             joinColumns = @JoinColumn(name = "product_id")
     )
+    @Size(min = 1)
     private Set<String> images = new HashSet<>();
 
     private LocalDate creationDate;
