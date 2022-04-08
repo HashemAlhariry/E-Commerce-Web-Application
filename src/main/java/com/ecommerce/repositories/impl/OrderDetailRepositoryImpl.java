@@ -3,6 +3,8 @@ package com.ecommerce.repositories.impl;
 import com.ecommerce.repositories.OrderDetailRepository;
 import com.ecommerce.repositories.OrderRepository;
 import com.ecommerce.repositories.entites.OrderDetailsEntity;
+import com.ecommerce.repositories.entites.ProductEntity;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -16,6 +18,18 @@ public class OrderDetailRepositoryImpl extends RepositoryImpl<OrderDetailsEntity
     public static OrderDetailRepositoryImpl getInstance() {
         return INSTANCE;
     }
+
+    @Override
+    public List<OrderDetailsEntity> findAllById(int id) {
+        TypedQuery<OrderDetailsEntity> query = entityManager.createNamedQuery("findAllById" , OrderDetailsEntity.class);
+        query.setParameter("order_id", id);
+        return  query.getResultList();
+    }
+
+//    @Override
+//    public List<OrderDetailsEntity> findByOrderId(int id) {
+//        return null;
+//    }
 
 
 //    @Override

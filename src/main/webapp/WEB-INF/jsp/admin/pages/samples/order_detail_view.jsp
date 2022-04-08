@@ -52,17 +52,17 @@
                   <div class="card px-2">
                       <div class="card-body">
                           <div class="container-fluid">
-                            <h3 class="text-right my-5">ORDER #-${order.id}</h3>
+                            <h3 class="text-right my-5">ORDER # ${orderDetails[0].order.id}</h3>
                             <hr>
                           </div>
                           <div class="container-fluid d-flex justify-content-between">
                             <div class="col-lg-3 pl-0">
-                              <p class="mt-5 mb-2"><b>Melody Admin</b></p>
-                              <p>104,<br>Minare SK,<br>Canada, K1A 0G9.</p>
+                              <p class="mt-5 mb-2"><b>${orderDetails[0].user.userName}</b></p>
+                              <p>${orderDetails[0].user.address}</p>
                             </div>
                             <div class="col-lg-3 pr-0">
                               <p class="mt-5 mb-2 text-right"><b>Invoice to</b></p>
-                              <p class="text-right">Gaala & Sons,<br> C-201, Beykoz-34800,<br> Canada, K1A 0G9.</p>
+                              <p class="text-right">Email<br>${orderDetails[0].user.email}</p>
                             </div>
                           </div>
                           <div class="container-fluid d-flex justify-content-between">
@@ -84,34 +84,15 @@
                                       </tr>
                                   </thead>
                                   <tbody>
+                                <c:forEach items="${orderDetails}" var="order">
                                     <tr class="text-right">
-                                      <td class="text-left">1</td>
-                                      <td class="text-left">Brochure Design</td>
-                                      <td>2</td>
-                                      <td>$20</td>
-                                      <td>$40</td>
+                                      <td class="text-left">+</td>
+                                      <td class="text-left">${order.product.name}</td>
+                                      <td>${order.product.name}</td>
+                                      <td>${order.quantity}</td>
+                                      <td>${order.price}</td>
                                     </tr>
-                                    <tr class="text-right">
-                                      <td class="text-left">2</td>
-                                      <td class="text-left">Web Design Packages(Template) - Basic</td>
-                                      <td>05</td>
-                                      <td>$25</td>
-                                      <td>$125</td>
-                                    </tr>
-                                    <tr class="text-right">
-                                      <td class="text-left">3</td>
-                                      <td class="text-left">Print Ad - Basic - Color</td>
-                                      <td>08</td>
-                                      <td>$500</td>
-                                      <td>$4000</td>
-                                    </tr>
-                                    <tr class="text-right">
-                                      <td class="text-left">4</td>
-                                      <td class="text-left">Down Coat</td>
-                                      <td>1</td>
-                                      <td>$5</td>
-                                      <td>$5</td>
-                                    </tr>
+                                </c:forEach>
                                   </tbody>
                                 </table>
                               </div>
