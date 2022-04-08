@@ -31,8 +31,18 @@ public class AdminSearchProductServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<ProductEntity> searchedProducts = productService.findAllByCategoryId(Integer.parseInt(request.getParameter("categoryId")));
-        searchedProducts = searchedProducts.stream().filter(product -> product.getPrice().compareTo(BigDecimalParser.parse(request.getParameter("productPrice")))==0).collect(Collectors.toList());
+        List<ProductEntity> searchedProducts=null;
+        if (Integer.parseInt(request.getParameter("categoryId"))<=0 || request.getParameter("productPrice").equals(""))
+        {
+            searchedProducts=productService.findAll();
+
+        }
+        else
+        {
+            searchedProducts=productService.findAllByCategoryId(Integer.parseInt(request.getParameter("categoryId")));
+            searchedProducts = searchedProducts.stream().filter(product -> product.getPrice().compareTo(BigDecimalParser.parse(request.getParameter("productPrice")))==0).collect(Collectors.toList());
+
+        }
         List<ProductBean>searchedProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(searchedProducts);
         request.setAttribute("allProducts",searchedProductsBeans);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/tables/products_view.jsp");

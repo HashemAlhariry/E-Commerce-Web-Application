@@ -90,7 +90,7 @@
                         <h4>Image</h4>
                         <div class="form-group">
                           <div class="row">
-                            <div class="col-lg-6 grid-margin stretch-card">
+                            <div class="col-lg-4 grid-margin stretch-card">
                               <div class="card">
                                 <div class="card-body">
                                   <h4 class="card-title">Profile Image</h4>
@@ -98,13 +98,27 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-lg-6 grid-margin stretch-card">
+                            <div class="col-lg-4 grid-margin stretch-card">
                               <div class="card">
                                 <div class="card-body">
-                                  <h4 class="card-title">Gallery</h4>
-                                  <div class="file-upload-wrapper">
-                                    <div id="fileuploader">Upload</div>
-                                  </div>
+                                  <h4 class="card-title">Image2</h4>
+                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4 grid-margin stretch-card">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">Image 3</h4>
+                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4 grid-margin stretch-card">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">Image 4</h4>
+                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
                                 </div>
                               </div>
                             </div>

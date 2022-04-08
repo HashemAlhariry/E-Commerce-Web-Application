@@ -60,10 +60,11 @@
                       <h4 class="card-title">Search</h4>
                       <form action="admin-product-search" class="form-inline">
                         <label class="sr-only" for="inlineFormInputName2">Product Price</label>
-                        <input name="productPrice" type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="price">
+                        <input name="productPrice" type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="price" value="">
                         <div class="input-group mb-2 mr-sm-2">
                           <label>Select Category</label>
                           <select name="categoryId" class="js-example-basic-single w-100">
+                            <option value="0">All</option>
                             <option value="1">Laptop</option>
                             <option value="2">Smart Watch</option>
                             <option value="3">Mobiles</option>
