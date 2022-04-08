@@ -21,5 +21,7 @@ public interface ProductService {
     List<ProductBean> getProductsOfPage(int pageNumber);
     int getAllProductsCount();
     List<ProductEntity> findProductByName(String productName);
+    List<ProductBean> getFilteredProductsBeans(int pageNumber, int recordsPerPage, List<String> categoriesIds);
+    long getProductsCountInCategories(String...categoriesIdArr);
 
 }

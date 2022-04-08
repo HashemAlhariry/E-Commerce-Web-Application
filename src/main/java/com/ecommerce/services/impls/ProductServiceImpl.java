@@ -141,4 +141,25 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> findProductByName(String productName) {
         return productRepository.findProductByName(productName);
     }
+
+    @Override
+    public List<ProductBean> getFilteredProductsBeans(int pageNumber, int recordsPerPage, List<String> categoriesIds) {
+        int totalCount = getAllProductsCount();
+        int countOfProductsPerPage = 12;
+        int numberOfPages = (int)Math.ceil((float)totalCount/countOfProductsPerPage);
+        if (pageNumber <= numberOfPages){
+//            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageProducts(pageNumber,countOfProductsPerPage);
+            List<ProductEntity> filteredProductEntities =  productRepository.getFilteredProducts(pageNumber,recordsPerPage,categoriesIds);
+            List<ProductBean> productBeansOfSinglePage = ProductMapper.INSTANCE.listEntitiesToBeans(filteredProductEntities);
+            return productBeansOfSinglePage;
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public long getProductsCountInCategories(String...categoriesIdArr) {
+        List<String> categoriesId = Arrays.asList(categoriesIdArr);
+        return productRepository.countProductsOfCertainCategories(categoriesId);
+    }
 }

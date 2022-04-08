@@ -65,7 +65,7 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    Showing <span>${currentPageProductsNumber} of ${totalCount}</span> Products
+                                    Showing <span>${currentPageProductsNumber} of ${totalCount}</span> Products          page : <span>${currentPageNumber}</span>
                                 </div><!-- End .toolbox-info -->
                             </div><!-- End .toolbox-left -->
 
@@ -131,7 +131,7 @@
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
 
                                                         <c:if test="${loop.last }">
-                                                            <img src="${image}" alt="Product image" class="product-image">
+                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
                                                         </c:if>
 
                                                     </c:forEach>
@@ -538,10 +538,18 @@
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
 
-                                <c:forEach begin="1" end="${numberOfPages}" var="i">
-                                    <li class="page-item active" aria-current="page"><a class="page-link" href="shop?pageNumber=${i}">${i}</a></li>
-<%--                                    <li class="page-item active" aria-current="page"><a class="page-link" onclick="getPageProducts(${i})">${i}</a></li>--%>
-                                </c:forEach>
+                                <c:if test="${empty filtration}" >
+                                    <c:forEach begin="1" end="${numberOfPages}" var="i">
+                                        <li class="page-item active" aria-current="page"><a class="page-link" href="shop?pageNumber=${i}">${i}</a></li>
+                                        <%--                                    <li class="page-item active" aria-current="page"><a class="page-link" onclick="getPageProducts(${i})">${i}</a></li>--%>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${!empty filtration}" >
+                                    <c:forEach begin="1" end="${numberOfPages}" var="i">
+                                        <li class="page-item active" aria-current="page" <c:if test="${currentPageNumber==i}"> style="border-color: orange;border-style: solid; cursor: pointer" </c:if> ><a class="page-link" onclick="loadFilteredPageNo(${i})">${i}</a></li>
+                                        <%--                                    <li class="page-item active" aria-current="page"><a class="page-link" onclick="getPageProducts(${i})">${i}</a></li>--%>
+                                    </c:forEach>
+                                </c:if>
                                 <!--
                                 <li class="page-item disabled">
                                     <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
@@ -577,7 +585,7 @@
                                                     <input type="checkbox" class="custom-control-input" id="laptopCatCheckBox">
                                                     <label class="custom-control-label" for="laptopCatCheckBox">Computer & Laptop</label>
                                                 </div><!-- End .custom-checkbox -->
-                                                <span class="item-count" id="categoryProductsNumber">3</span>
+                                                <span class="item-count" id="categoryProductsNumber">${laptopsCount}</span>
                                             </div><!-- End .filter-item -->
 
                                             <div class="filter-item">
@@ -585,7 +593,7 @@
                                                     <input type="checkbox" class="custom-control-input" id="mobileCatCheckBox">
                                                     <label class="custom-control-label" for="mobileCatCheckBox">Smart Phones</label>
                                                 </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">0</span>
+                                                <span class="item-count">${mobilesCount}</span>
                                             </div><!-- End .filter-item -->
 
                                             <div class="filter-item">
@@ -593,7 +601,7 @@
                                                     <input type="checkbox" class="custom-control-input" id="watchCatCheckBox">
                                                     <label class="custom-control-label" for="watchCatCheckBox">Smart Watches</label>
                                                 </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">4</span>
+                                                <span class="item-count">${watchesCount}</span>
                                             </div><!-- End .filter-item -->
                                         </div><!-- End .filter-items -->
                                         <div style="margin-top: 25px;">
@@ -964,52 +972,62 @@
         });
     });
     function filterByCategory(){
+
         var laptops = document.getElementById("laptopCatCheckBox").checked;
         var mobiles = document.getElementById("mobileCatCheckBox").checked;
         var watches = document.getElementById("watchCatCheckBox").checked;
-        var productView = document.getElementById("productsView");
-
-        $("#productsContainer").hide();
-        $("#laptopsContainer").hide();
-        $("#mobileContainer").hide();
-        $("#watchContainer").hide();
-        $("#mobAndWatchContainer").hide();
-        $("#mobAndLapContainer").hide();
-        $("#watchAndLapContainer").hide();
 
         if((laptops && mobiles && watches)||(!laptops && !mobiles && !watches)){
-            $("#productsContainer").show();
+            window.location.href = "shop";
         }
         else{
-            if (laptops){
-                if(mobiles){
-                    $("#mobAndLapContainer").attr("hidden",false);
-                    $("#mobAndLapContainer").show();
-                }
-                else if(watches){
-                    $("#watchAndLapContainer").attr("hidden",false);
-                    $("#watchAndLapContainer").show();
-                }
-                else{
-                    $("#laptopsContainer").attr("hidden",false);
-                    $("#laptopsContainer").show();
-                }
-            }else if(mobiles){
-                if(watches){
-                    $("#mobAndWatchContainer").attr("hidden",false);
-                    $("#mobAndWatchContainer").show();
-                }
-                else{
-                    $("#mobileContainer").attr("hidden",false);
-                    $("#mobileContainer").show();
-                }
-            }else{
-                $("#watchContainer").attr("hidden",false);
-                $("#watchContainer").show();
-            }
+            window.location.href = "filter?laptops="+laptops+"&mobiles="+mobiles+"&watches="+watches;
         }
 
-
+        // var productView = document.getElementById("productsView");
+        //
+        // $("#productsContainer").hide();
+        // $("#laptopsContainer").hide();
+        // $("#mobileContainer").hide();
+        // $("#watchContainer").hide();
+        // $("#mobAndWatchContainer").hide();
+        // $("#mobAndLapContainer").hide();
+        // $("#watchAndLapContainer").hide();
+        //
+        // if((laptops && mobiles && watches)||(!laptops && !mobiles && !watches)){
+        //     $("#productsContainer").show();
+        // }
+        // else{
+        //     if (laptops){
+        //         if(mobiles){
+        //             window.location.href = "filter?laptop=1&mobile=1"
+        //             $("#mobAndLapContainer").attr("hidden",false);
+        //             $("#mobAndLapContainer").show();
+        //         }
+        //         else if(watches){
+        //             $("#watchAndLapContainer").attr("hidden",false);
+        //             $("#watchAndLapContainer").show();
+        //         }
+        //         else{
+        //             $("#laptopsContainer").attr("hidden",false);
+        //             $("#laptopsContainer").show();
+        //         }
+        //     }else if(mobiles){
+        //         if(watches){
+        //             $("#mobAndWatchContainer").attr("hidden",false);
+        //             $("#mobAndWatchContainer").show();
+        //         }
+        //         else{
+        //             $("#mobileContainer").attr("hidden",false);
+        //             $("#mobileContainer").show();
+        //         }
+        //     }else{
+        //         $("#watchContainer").attr("hidden",false);
+        //         $("#watchContainer").show();
+        //     }
+        // }
+        //
+        //
 
     }
 
@@ -1088,32 +1106,57 @@
         document.getElementById("wishListItemsNumber").textContent =  WishListItems.length.toString();
 
     }
-    function getPageProducts(pageNumber) {
-        if (window.XMLHttpRequest) {
-            request = new XMLHttpRequest();
-        }
-        else if (window.ActiveXObject) {
-            request = new ActiveXObject("Microsoft.XMLHTTP");
+    function loadFilteredPageNo(pageNumber){
+        let urlString = window.location.href;
+        let paramString = urlString.split('&')[0]+"&"+urlString.split('&')[1]+"&"+urlString.split('&')[2];
+        window.location.href = paramString+"&pageNumber="+pageNumber;
+
+    }
+    window.onload= (event) => {
+        let urlString = window.location.href;
+        let paramString = urlString.split('?')[1];
+        let queryString = new URLSearchParams(paramString);
+        let newQueryString = urlString.split('?')[0]+"?";
+        for (let pair of queryString.entries()) {
+            if(pair[0] === "laptops" && pair[1]==="true") {
+
+                window.document.getElementById("laptopCatCheckBox").checked = true;
+            }
+            if(pair[0] === "mobiles" && pair[1]==="true") {
+                window.document.getElementById("mobileCatCheckBox").checked = true;
+            }
+            if(pair[0] === "watches" && pair[1]==="true") {
+                window.document.getElementById("watchCatCheckBox").checked = true;
+            }
         }
 
-        request.onreadystatechange = handleStateChanges;
-        // yourvalue = this.textContent;
-
-        url = "shop?pageNumber="+ pageNumber + "&timeStamp=" + new Date().getTime();
-        request.open("GET", url, true);
-        request.send(null);
-    }
-    function handleStateChanges() {
-        if (request.readyState == 4 && request.status == 200) {
-            xmlvalue = request.responseText;
-            console.log(xmlvalue);
-            window.document.innerHTML = xmlvalue;
-        }
-    }
-    function handleStateChange() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            document.getElementById("resultsTable").innerHTML = xmlHttp.responseText;
-    }
+    };
+    // function getPageProducts(pageNumber) {
+    //     if (window.XMLHttpRequest) {
+    //         request = new XMLHttpRequest();
+    //     }
+    //     else if (window.ActiveXObject) {
+    //         request = new ActiveXObject("Microsoft.XMLHTTP");
+    //     }
+    //
+    //     request.onreadystatechange = handleStateChanges;
+    //     // yourvalue = this.textContent;
+    //
+    //     url = "shop?pageNumber="+ pageNumber + "&timeStamp=" + new Date().getTime();
+    //     request.open("GET", url, true);
+    //     request.send(null);
+    // }
+    // function handleStateChanges() {
+    //     if (request.readyState == 4 && request.status == 200) {
+    //         xmlvalue = request.responseText;
+    //         console.log(xmlvalue);
+    //         window.document.innerHTML = xmlvalue;
+    //     }
+    // }
+    // function handleStateChange() {
+    //     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+    //         document.getElementById("resultsTable").innerHTML = xmlHttp.responseText;
+    // }
 
 
 </script>
