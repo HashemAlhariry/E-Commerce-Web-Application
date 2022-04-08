@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 @WebServlet(name = "admin-order-detail-view", urlPatterns = {"/admin-order-detail-view"})
@@ -41,8 +42,9 @@ public class AdminViewOrderDetailsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<OrderDetailsEntity> orderDetailsEntity =  orderDetailsService.findAllById(Integer.parseInt(req.getParameter("orderId")));
         List<OrderDetailsBean> orderDetailsBean = OrderDetailsMapper.INSTANCE.listEntitiesToBeans(orderDetailsEntity);
-        System.out.println();
+        BigDecimal totalPrice=orderDetailsEntity.get(0).getOrder().getTotalPrice();
         req.setAttribute("orderDetails",orderDetailsEntity);
+        req.setAttribute("totalPrice",totalPrice);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/samples/order_detail_view.jsp");
         requestDispatcher.forward(req, resp);
     }

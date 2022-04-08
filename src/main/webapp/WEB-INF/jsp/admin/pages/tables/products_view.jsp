@@ -49,10 +49,31 @@
               </ol>
             </nav>
           </div>
+
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Data table</h4>
               <div class="row">
+                <div class="col-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Search</h4>
+                      <form class="form-inline">
+                        <label class="sr-only" for="inlineFormInputName2">Product Price</label>
+                        <input  type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="price">
+                        <div class="input-group mb-2 mr-sm-2">
+                          <label>Select Category</label>
+                          <select name="category" class="js-example-basic-single w-100">
+                            <option value="1">Laptop</option>
+                            <option value="2">Smart Watch</option>
+                            <option value="3">Mobiles</option>
+                          </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Search</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
                 <div class="col-12">
                   <div class="table-responsive">
                     <table id="order-listing" class="table">
@@ -139,7 +160,9 @@
   <!-- Custom js for this page-->
   <script src="assets/admin/js/js-grid.js"></script>
   <script src="assets/admin/js/db.js"></script>
-  <!-- End custom js for this page-->
+    <script src="assets/admin/js/select2.js"></script>
+
+    <!-- End custom js for this page-->
     <script>
       var req = null;
       function updateProduct(id)

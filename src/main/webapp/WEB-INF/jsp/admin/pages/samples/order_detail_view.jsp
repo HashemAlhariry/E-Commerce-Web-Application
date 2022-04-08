@@ -78,7 +78,7 @@
                                     <tr class="bg-dark text-white">
                                         <th>#</th>
                                         <th>Description</th>
-                                        <th class="text-right">Quantity</th>
+                                        <th class="text-right">Product</th>
                                         <th class="text-right">Unit cost</th>
                                         <th class="text-right">Total</th>
                                       </tr>
@@ -88,8 +88,8 @@
                                     <tr class="text-right">
                                       <td class="text-left">+</td>
                                       <td class="text-left">${order.product.name}</td>
-                                      <td>${order.product.name}</td>
                                       <td>${order.quantity}</td>
+                                      <td>${order.product.price}</td>
                                       <td>${order.price}</td>
                                     </tr>
                                 </c:forEach>
@@ -98,9 +98,7 @@
                               </div>
                           </div>
                           <div class="container-fluid mt-5 w-100">
-                            <p class="text-right mb-2">Sub - Total amount: $12,348</p>
-                            <p class="text-right">vat (10%) : $138</p>
-                            <h4 class="text-right mb-5">Total : $13,986</h4>
+                            <h4 class="text-right mb-5">Total : ${totalPrice}</h4>
                             <hr>
                           </div>
                           <div class="container-fluid w-100">
