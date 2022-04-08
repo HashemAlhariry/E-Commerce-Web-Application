@@ -16,7 +16,9 @@ import java.util.Set;
 @NamedQueries({
         @NamedQuery(name = "reversed ids",query = "select p from ProductEntity p ORDER BY p.id DESC "),
         @NamedQuery(name = "findAllByCategoryId",query = "select p from ProductEntity p   where  p.category.id = :category_id"),
-        @NamedQuery(name = "findProductByName",query = "select p from ProductEntity p   where  p.name  LIKE  CONCAT('%',:product_name,'%') ")
+        @NamedQuery(name = "findProductByName",query = "select p from ProductEntity p   where  p.name  LIKE  CONCAT('%',:product_name,'%') "),
+        @NamedQuery(name = "findProductByPrice",query = "select p from ProductEntity p   where  p.price  = :product_price")
+
 
 })
 @Getter @Setter

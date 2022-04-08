@@ -3,6 +3,7 @@ package com.ecommerce.services;
 import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductService {
@@ -17,5 +18,6 @@ public interface ProductService {
     List<ProductBean> getAllProductBeans(List<Long> ids);
 
     List<ProductEntity> findProductByName(String productName);
+    List<ProductEntity> findProductByPrice(BigDecimal productPrice);
 
 }

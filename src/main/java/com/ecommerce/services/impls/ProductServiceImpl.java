@@ -8,6 +8,7 @@ import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 import com.ecommerce.services.ProductService;
 import com.ecommerce.utils.mappers.ProductMapper;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,4 +72,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductEntity> findProductByName(String productName) {return productRepository.findProductByName(productName);}
+
+    @Override
+    public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {return productRepository.findProductByPrice(productPrice);}
 }

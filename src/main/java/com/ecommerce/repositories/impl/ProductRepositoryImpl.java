@@ -6,6 +6,8 @@ import com.ecommerce.repositories.entites.ProductEntity;
 
 import com.ecommerce.repositories.entites.ProductState;
 import jakarta.persistence.TypedQuery;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> implements ProductRepository {
@@ -37,6 +39,15 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
         query.setParameter("product_name", productName);
         return  query.getResultList();
     }
+
+    @Override
+    public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {
+        TypedQuery<ProductEntity> query = entityManager.createNamedQuery("findProductByPrice" , ProductEntity.class);
+        query.setParameter("product_price", productPrice);
+        return  query.getResultList();
+
+    }
+
     @Override
     public boolean delete(ProductEntity entity) {
         entity.setState(ProductState.ARCHIVED);

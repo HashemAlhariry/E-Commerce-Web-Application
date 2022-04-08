@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderEntity findById(int id) {
-        return null;
+        return orderRepository.findById(id);
     }
 
     @Override

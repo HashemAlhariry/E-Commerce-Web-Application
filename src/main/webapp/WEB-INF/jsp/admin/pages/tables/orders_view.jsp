@@ -91,7 +91,7 @@
                                   </c:choose>
                               </td>
                               <td>
-                                  <button  class="btn btn-outline-primary" onclick="updateProduct(${order.id})">View Details</button>
+                                  <button  class="btn btn-outline-primary" onclick="orderDetailView(${order.id})">View Details</button>
                               </td>
                           </tr>
                       </c:forEach>
@@ -133,6 +133,15 @@
   <!-- Custom js for this page-->
   <script src="assets/admin/js/data-table.js"></script>
   <!-- End custom js for this page-->
+<script>
+    var req = null;
+    function orderDetailView(id)
+    {
+        var orderId = document.getElementById(id).innerHTML;
+        var url = "admin-order-detail-view?orderId="+id;
+        window.location.href = url;
+    }
+</script>
 </body>
 
 

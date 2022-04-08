@@ -34,7 +34,7 @@
       <%@ include file="../../includes/sidebar.jsp" %>
 
       <!-- partial -->
-      <div class="main-panel">          
+      <div class="main-panel" id="orderDetail">
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title">
@@ -123,7 +123,7 @@
                             <hr>
                           </div>
                           <div class="container-fluid w-100">
-                            <a href="#" onclick="window.print()" class="btn btn-primary float-right mt-4 ml-2"><i class="fa fa-print mr-1"></i>Print</a>
+                            <a href="#" onclick="printOrder()" class="btn btn-primary float-right mt-4 ml-2"><i class="fa fa-print mr-1"></i>Print</a>
                             <a href="#" class="btn btn-success float-right mt-4"><i class="fa fa-share mr-1"></i>Send Invoice</a>
                           </div>
                       </div>
@@ -158,6 +158,20 @@
   <script src="assets/admin/js/misc.js"></script>
   <script src="assets/admin/js/settings.js"></script>
   <script src="assets/admin/js/todolist.js"></script>
+  <script>
+    function printOrder() {
+      var divContents = document.getElementById("orderDetail").innerHTML;
+      var a = window.open('', '', 'height=700, width=500');
+      a.document.write('<html><head>' +
+              '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>Melody Admin</title><link rel="stylesheet" href="assets/admin/vendors/iconfonts/font-awesome/css/all.min.css"><link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css"><link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.addons.css"><link rel="stylesheet" href="assets/admin/css/style.css"><link rel="shortcut icon" href="assets/admin/images/favicon.png" />'+'</head>');
+      a.document.write('<body > <h1>Order <br>');
+      a.document.write(divContents);
+      a.document.write('</body></html>');
+      a.document.close();
+      a.print();
+    }
+  </script>
+<%--  <script src="assets/admin/vendors/js/vendor.bundle.base.js"><script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script><script src="assets/admin/js/off-canvas.js"></script><script src="assets/admin/js/hoverable-collapse.js"></script><script src="assets/admin/js/misc.js"></script><script src="assets/admin/js/settings.js"></script><script src="assets/admin/js/todolist.js"></script>--%>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
