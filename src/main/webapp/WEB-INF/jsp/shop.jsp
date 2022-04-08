@@ -571,11 +571,12 @@
                     </div><!-- End .col-lg-9 -->
                     <aside class="col-lg-3 order-lg-first">
                         <div class="sidebar sidebar-shop">
-                            <div class="widget widget-clean">
-                                <label>Filters:</label>
-                                <a href="#" class="sidebar-filter-clear">Clean All</a>
-                            </div><!-- End .widget widget-clean -->
-
+                            <c:if test="${!empty filtration}" >
+                                <div class="widget widget-clean">
+                                    <label>Filters:</label>
+                                    <a href="shop" class="sidebar-filter-clear">Clean All</a>
+                                </div><!-- End .widget widget-clean -->
+                            </c:if>
                             <div class="widget widget-collapsible">
                                 <h3 class="widget-title">
                                     <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
