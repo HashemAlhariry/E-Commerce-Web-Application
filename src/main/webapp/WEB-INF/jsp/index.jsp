@@ -185,7 +185,7 @@
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-top"><c:out value="${product.state}"/></span>
                                         <a href="product.html">
-                                            <img c src="${product.mainImage}" alt="Product image"
+                                            <img src="${product.mainImage}" alt="Product image"
                                                  class="product-image" style="height:218px">
                                         </a>
 

@@ -180,13 +180,6 @@ public class MailUtil {
                 "        <td align=\"center\" valign=\"top\" width=\"600\">\n" +
                 "        <![endif]-->\n" +
                 "                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width: 600px;\">\n" +
-                "                    <tr>\n" +
-                "                        <td align=\"center\" valign=\"top\" style=\"padding: 36px 24px;\">\n" +
-                "                                <img src=\"/assets/images/demos/demo-3/logo-footer.png\"\n" +
-                "                                    alt=\"Logo\" border=\"0\" width=\"150\"\n" +
-                "                                    style=\"display: block; width: 150px; max-width: 150px; min-width: 150px;\">\n" +
-                "                        </td>\n" +
-                "                    </tr>\n" +
                 "                </table>\n" +
                 "                <!--[if (gte mso 9)|(IE)]>\n" +
                 "        </td>\n" +
