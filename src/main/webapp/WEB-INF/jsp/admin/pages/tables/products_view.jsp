@@ -58,12 +58,12 @@
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Search</h4>
-                      <form class="form-inline">
+                      <form action="admin-product-search" class="form-inline">
                         <label class="sr-only" for="inlineFormInputName2">Product Price</label>
-                        <input  type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="price">
+                        <input name="productPrice" type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="price">
                         <div class="input-group mb-2 mr-sm-2">
                           <label>Select Category</label>
-                          <select name="category" class="js-example-basic-single w-100">
+                          <select name="categoryId" class="js-example-basic-single w-100">
                             <option value="1">Laptop</option>
                             <option value="2">Smart Watch</option>
                             <option value="3">Mobiles</option>
