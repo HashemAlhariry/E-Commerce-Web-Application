@@ -12,6 +12,8 @@ public interface ProductRepository extends Repository<ProductEntity,Long> {
 //    List<ProductEntity> getSinglePageProducts(int PageNumber , int recordsPerPage);
     List<ProductEntity> findProductByName(String productName);
 //    int findAllProductsNumber();
+    List<ProductEntity> getFilteredProducts(int pageNumber, int recordsPerPage, List<String> categoriesIds);
+    long countProductsOfCertainCategories(List<String> categoriesIds);
 
 
 

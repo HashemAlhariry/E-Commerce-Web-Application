@@ -15,10 +15,17 @@ import jakarta.persistence.Persistence;
 import com.ecommerce.repositories.entites.CategoryEntity;
 import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainTest {
         public static void main(String[] args) {
 
         ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+        List<String> categoriesIds = new ArrayList<>();
+        categoriesIds.add("1");
+        categoriesIds.add("3");
+        System.out.println(productRepository.getFilteredProducts(1,5,categoriesIds));
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("amazonya");
 //        EntityManager em = emf.createEntityManager();
 //        System.out.println(productRepository.getSinglePageProducts(2,20));
@@ -78,20 +85,20 @@ public class MainTest {
                 // OrderDetailsRepositoryImpl orderDetailsRepository =
                 // OrderDetailsRepositoryImpl.getInstance();
 
-                CategoryEntity categoryEntity1 = new CategoryEntity();
-                categoryEntity1.setCategoryName("Computer & Laptop");
-                categoryEntity1.setCategoryImage("assets/images/demos/demo-4/cats/1.png");
-
-                CategoryEntity categoryEntity2 = new CategoryEntity();
-                categoryEntity2.setCategoryName("Smart Watches");
-                categoryEntity2.setCategoryImage("assets/images/demos/demo-4/cats/6.png");
-
-                CategoryEntity categoryEntity3 = new CategoryEntity();
-                categoryEntity3.setCategoryName("Smart Phones");
-                categoryEntity3.setCategoryImage("assets/images/demos/demo-4/cats/3.png");
-                CategoryRepositoryImpl.getInstance().save(categoryEntity1);
-                CategoryRepositoryImpl.getInstance().save(categoryEntity2);
-                CategoryRepositoryImpl.getInstance().save(categoryEntity3);
+//                CategoryEntity categoryEntity1 = new CategoryEntity();
+//                categoryEntity1.setCategoryName("Computer & Laptop");
+//                categoryEntity1.setCategoryImage("assets/images/demos/demo-4/cats/1.png");
+//
+//                CategoryEntity categoryEntity2 = new CategoryEntity();
+//                categoryEntity2.setCategoryName("Smart Watches");
+//                categoryEntity2.setCategoryImage("assets/images/demos/demo-4/cats/6.png");
+//
+//                CategoryEntity categoryEntity3 = new CategoryEntity();
+//                categoryEntity3.setCategoryName("Smart Phones");
+//                categoryEntity3.setCategoryImage("assets/images/demos/demo-4/cats/3.png");
+//                CategoryRepositoryImpl.getInstance().save(categoryEntity1);
+//                CategoryRepositoryImpl.getInstance().save(categoryEntity2);
+//                CategoryRepositoryImpl.getInstance().save(categoryEntity3);
                 //
                 // ProductEntity productEntityC = new ProductEntity();
                 // productEntityC.setPrice(123);

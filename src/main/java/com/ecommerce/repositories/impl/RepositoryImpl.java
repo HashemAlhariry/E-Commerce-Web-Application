@@ -6,9 +6,14 @@ import com.ecommerce.repositories.Repository;
 import com.ecommerce.repositories.entites.ProductEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
@@ -73,4 +78,5 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
         List <T> BeansPerSinglePage = query.getResultList();
         return BeansPerSinglePage;
     }
+
 }

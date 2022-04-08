@@ -45,15 +45,21 @@
     <main class="main">
         <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
             <div class="container">
-                <h1 class="page-title"> Shop </h1>
+                <h1 class="page-title">Grid 4 Columns<span>Shop</span></h1>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="home">Home</a></li>
-                    <li class="breadcrumb-item active "><a href="shop">Shop</a></li>
-
+                    <c:choose>
+                        <c:when test="${filtration}">
+                            <li class="breadcrumb-item"><a href="shop">Shop</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Filters Page</li>                        </c:when>
+                        <c:otherwise>
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        </c:otherwise>
+                    </c:choose>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
@@ -65,7 +71,7 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    Showing <span>${currentPageProductsNumber} of ${totalCount}</span> Products
+                                    Showing <span>${currentPageProductsNumber} of ${totalCount}</span> Products          page : <span>${currentPageNumber}</span>
                                 </div><!-- End .toolbox-info -->
                             </div><!-- End .toolbox-left -->
 
@@ -124,25 +130,23 @@
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
-                                                <span class="product-label label-new">New</span>
+                                                <c:if test="${!empty product.state}">
+                                                    <span class="product-label label-new">${product.state}</span>
+                                                </c:if>
                                                 <a href="shop">
-                                                    <c:choose>
-                                                        <c:when test="${product.category.categoryId==1}">
-                                                            <img src=${product.images.iterator().next()} alt="assets/images/products/laptop1.jpg" class="product-image"    >
-                                                        </c:when>
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
 
-                                                        <c:when test="${product.category.categoryId==3}">
-                                                            <img src=${product.images.iterator().next()} alt="assets/images/products/mobile.jpg" class="product-image"     >
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <img src=${product.images.iterator().next()} alt="assets/images/products/watch.png" class="product-image"   >
-                                                        </c:otherwise>
-                                                    </c:choose>
+                                                        <c:if test="${loop.last }">
+                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
+                                                        </c:if>
+
+                                                    </c:forEach>
+
                                                 </a>
 
                                                 <div class="product-action-vertical">
                                                     <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
@@ -154,9 +158,7 @@
                                                 <div class="product-cat">
                                                     <a href="#">${product.category.categoryName}</a>
                                                 </div><!-- End .product-cat -->
-
                                                 <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                <br>
                                                 <div class="product-price">
                                                         ${product.price} EGP
                                                 </div><!-- End .product-price -->
@@ -164,28 +166,27 @@
                                                     <div class="ratings">
                                                         <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
-                                                    <span class="ratings-text">( 2 Reviews )</span>
+<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
                                                 </div><!-- End .rating-container -->
+
                                                 <div class="product-nav product-nav-thumbs">
-
-                                                    <c:forEach items="${product.images}" var="product">
-
-                                                    <a href="#">
-                                                        <img src="${product}" alt="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg"  style=" max-height:40px;   height: auto;">
-                                                    </a>
-
-
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+                                                        <c:if test="${!loop.last }">
+                                                            <a href="#" class="active">
+                                                                <img src="${image}" alt="product desc">
+                                                            </a>
+                                                        </c:if>
                                                     </c:forEach>
                                                 </div><!-- End .product-nav -->
-
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
                                 </c:forEach>
+
                             </div>
                             <div class="row justify-content-center" id="watchAndLapContainer" hidden>
                                 <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${(product.category.categoryId==1)or(product.category.categoryId==2)}">
+                                    <c:if test="${(product.category.categoryId==1)or(product.category.categoryId==5)}">
                                         <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
@@ -194,22 +195,22 @@
                                                     <a href="shop">
                                                         <c:choose>
                                                             <c:when test="${product.category.categoryId==1}">
-                                                                <img src=${product.images.iterator().next()} alt="assets/images/products/laptop1.jpg" class="product-image"    >
+                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img src=${product.images.iterator().next()} alt="assets/images/products/watch.png" class="product-image"   >
+                                                                <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
                                                             </c:otherwise>
                                                         </c:choose>
-
                                                     </a>
 
-                                                    <div class="product-action-vertical">
-                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+ 
+                                                    <div class="product-action-vertical" >
+                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
@@ -217,9 +218,7 @@
                                                     <div class="product-cat">
                                                         <a href="#">${product.category.categoryName}</a>
                                                     </div><!-- End .product-cat -->
-
-                                                    <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                    <br>
+                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                             ${product.price} EGP
                                                     </div><!-- End .product-price -->
@@ -228,18 +227,19 @@
                                                             <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
                                                         </div><!-- End .ratings -->
                                                         <span class="ratings-text">( 2 Reviews )</span>
-                                                    </div><!-- End .rating-container -->>
+                                                    </div><!-- End .rating-container -->
 
                                                     <div class="product-nav product-nav-thumbs">
+                                                        <a href="#" class="active">
+                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                        </a>
 
-                                                        <c:forEach items="${product.images}" var="product">
-
-                                                            <a href="#">
-                                                                <img src="${product}" alt="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg"  style=" max-height:40px;   height: auto;">
-                                                            </a>
-
-
-                                                        </c:forEach>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                        </a>
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
@@ -250,31 +250,30 @@
                             </div>
                             <div class="row justify-content-center" id="mobAndLapContainer"hidden>
                                 <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==1)}">
+                                    <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==5)}">
                                         <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
                                                     <span class="product-label label-new">New</span>
                                                     <a href="shop">
                                                         <c:choose>
-                                                            <c:when test="${product.category.categoryId==3}">
-                                                                <img src=${product.images.iterator().next()} alt="assets/images/products/mobile.jpg" class="product-image"     >
+                                                           <c:when test="${product.category.categoryId==2}">
+                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img src=${product.images.iterator().next()} alt="assets/images/products/laptop1.jpg" class="product-image"    >
+                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
  
                                                             </c:otherwise>
                                                         </c:choose>
-
                                                     </a>
 
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
@@ -282,9 +281,7 @@
                                                     <div class="product-cat">
                                                         <a href="#">${product.category.categoryName}</a>
                                                     </div><!-- End .product-cat -->
-
-                                                    <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                    <br>
+                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                             ${product.price} EGP
                                                     </div><!-- End .product-price -->
@@ -294,16 +291,18 @@
                                                         </div><!-- End .ratings -->
                                                         <span class="ratings-text">( 2 Reviews )</span>
                                                     </div><!-- End .rating-container -->
+
                                                     <div class="product-nav product-nav-thumbs">
+                                                        <a href="#" class="active">
+                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                        </a>
 
-                                                        <c:forEach items="${product.images}" var="product">
-
-                                                            <a href="#">
-                                                                <img src="${product}" alt="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg"  style=" max-height:40px;   height: auto;">
-                                                            </a>
-
-
-                                                        </c:forEach>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                        </a>
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
@@ -314,30 +313,29 @@
                             </div>
                             <div class="row justify-content-center" id="mobAndWatchContainer" hidden>
                                 <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==2)}">
+                                    <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==1)}">
                                         <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
                                                     <span class="product-label label-new">New</span>
                                                     <a href="shop">
                                                         <c:choose>
-                                                            <c:when test="${product.category.categoryId==3}">
-                                                                <img src=${product.images.iterator().next()} alt="assets/images/products/mobile.jpg" class="product-image"     >
+                                                            <c:when test="${product.category.categoryId==1}">
+                                                                <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <img src=${product.images.iterator().next()} alt="assets/images/products/watch.png" class="product-image"   >
+                                                                <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
                                                             </c:otherwise>
                                                         </c:choose>
-
-
                                                     </a>
+
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
@@ -345,9 +343,7 @@
                                                     <div class="product-cat">
                                                         <a href="#">${product.category.categoryName}</a>
                                                     </div><!-- End .product-cat -->
-
-                                                    <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                    <br>
+                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                             ${product.price} EGP
                                                     </div><!-- End .product-price -->
@@ -357,16 +353,18 @@
                                                         </div><!-- End .ratings -->
                                                         <span class="ratings-text">( 2 Reviews )</span>
                                                     </div><!-- End .rating-container -->
+
                                                     <div class="product-nav product-nav-thumbs">
+                                                        <a href="#" class="active">
+                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                        </a>
 
-                                                        <c:forEach items="${product.images}" var="product">
-
-                                                            <a href="#">
-                                                                <img src="${product}" alt="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg"  style=" max-height:40px;   height: auto;">
-                                                            </a>
-
-
-                                                        </c:forEach>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                        </a>
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
@@ -377,21 +375,22 @@
                             </div>
                             <div class="row justify-content-center" id="laptopsContainer" hidden>
                                 <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${product.category.categoryId==1}">
+                                    <c:if test="${product.category.categoryId==5}">
                                         <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
                                                     <span class="product-label label-new">New</span>
                                                     <a href="shop">
-                                                        <img src=${product.images.iterator().next()} alt="assets/images/products/laptop1.jpg" class="product-image"    >
+                                                        <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
                                                     </a>
+
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
@@ -399,9 +398,7 @@
                                                     <div class="product-cat">
                                                         <a href="#">${product.category.categoryName}</a>
                                                     </div><!-- End .product-cat -->
-
-                                                    <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                    <br>
+                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                             ${product.price} EGP
                                                     </div><!-- End .product-price -->
@@ -413,15 +410,16 @@
                                                     </div><!-- End .rating-container -->
 
                                                     <div class="product-nav product-nav-thumbs">
+                                                        <a href="#" class="active">
+                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                        </a>
 
-                                                        <c:forEach items="${product.images}" var="product">
-
-                                                            <a href="#">
-                                                                <img src="${product}" alt="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg"  style=" max-height:40px;   height: auto;">
-                                                            </a>
-
-
-                                                        </c:forEach>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                        </a>
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
@@ -438,15 +436,16 @@
                                                 <figure class="product-media">
                                                     <span class="product-label label-new">New</span>
                                                     <a href="shop">
-                                                        <img src=${product.images.iterator().next()} alt="assets/images/products/mobile.jpg" class="product-image"     >
+                                                        <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
                                                     </a>
+
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
@@ -454,9 +453,7 @@
                                                     <div class="product-cat">
                                                         <a href="#">${product.category.categoryName}</a>
                                                     </div><!-- End .product-cat -->
-
-                                                    <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                    <br>
+                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                             ${product.price} EGP
                                                     </div><!-- End .product-price -->
@@ -468,15 +465,16 @@
                                                     </div><!-- End .rating-container -->
 
                                                     <div class="product-nav product-nav-thumbs">
+                                                        <a href="#" class="active">
+                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
+                                                        </a>
 
-                                                        <c:forEach items="${product.images}" var="product">
-
-                                                            <a href="#">
-                                                                <img src="${product}" alt="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg"  style=" max-height:40px;   height: auto;">
-                                                            </a>
-
-
-                                                        </c:forEach>
+                                                        <a href="#">
+                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
+                                                        </a>
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
@@ -487,21 +485,22 @@
                             </div>
                             <div class="row justify-content-center" id="watchContainer" hidden>
                                 <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${product.category.categoryId==2}">
+                                    <c:if test="${product.category.categoryId==1}">
                                         <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
                                             <div class="product product-7 text-center">
                                                 <figure class="product-media">
                                                     <span class="product-label label-new">New</span>
                                                     <a href="shop">
-                                                        <img src=${product.images.iterator().next()} alt="assets/images/products/watch.png" class="product-image"   >
+                                                        <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
                                                     </a>
+
                                                     <div class="product-action-vertical">
-                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
-                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                                     </div><!-- End .product-action -->
                                                 </figure><!-- End .product-media -->
 
@@ -509,9 +508,7 @@
                                                     <div class="product-cat">
                                                         <a href="#">${product.category.categoryName}</a>
                                                     </div><!-- End .product-cat -->
-
-                                                    <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                    <br>
+                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                             ${product.price} EGP
                                                     </div><!-- End .product-price -->
@@ -521,17 +518,18 @@
                                                         </div><!-- End .ratings -->
                                                         <span class="ratings-text">( 2 Reviews )</span>
                                                     </div><!-- End .rating-container -->
-                                                    
+
                                                     <div class="product-nav product-nav-thumbs">
+                                                        <a href="#" class="active">
+                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
+                                                        </a>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
+                                                        </a>
 
-                                                        <c:forEach items="${product.images}" var="product">
-
-                                                            <a href="#">
-                                                                <img src="${product}" alt="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg"  style=" max-height:40px;   height: auto;">
-                                                            </a>
-
-
-                                                        </c:forEach>
+                                                        <a href="#">
+                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
+                                                        </a>
                                                     </div><!-- End .product-nav -->
                                                 </div><!-- End .product-body -->
                                             </div><!-- End .product -->
@@ -540,16 +538,24 @@
                                 </c:forEach>
 
                             </div>
-                        </div> <!-- End .products -->
+                        </div><!-- End .products -->
 
 
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
 
-                                <c:forEach begin="1" end="${numberOfPages}" var="i">
-                                    <li class="page-item active" aria-current="page"><a class="page-link" href="shop?pageNumber=${i}">${i}</a></li>
-                                 <%--li class="page-item active" aria-current="page"><a class="page-link" onclick="getPageProducts(${i})">${i}</a></li>--%>
-                                </c:forEach>
+                                <c:if test="${empty filtration}" >
+                                    <c:forEach begin="1" end="${numberOfPages}" var="i">
+                                        <li class="page-item active" aria-current="page"><a class="page-link" href="shop?pageNumber=${i}" <c:if test="${currentPageNumber==i}"> style="border-color: orange;border-style: solid; cursor: pointer" </c:if> >${i}</a></li>
+                                        <%--                                    <li class="page-item active" aria-current="page"><a class="page-link" onclick="getPageProducts(${i})">${i}</a></li>--%>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${!empty filtration}" >
+                                    <c:forEach begin="1" end="${numberOfPages}" var="i">
+                                        <li class="page-item active" aria-current="page" <c:if test="${currentPageNumber==i}"> style="border-color: orange;border-style: solid; cursor: pointer" </c:if> ><a class="page-link" onclick="loadFilteredPageNo(${i})">${i}</a></li>
+                                        <%--                                    <li class="page-item active" aria-current="page"><a class="page-link" onclick="getPageProducts(${i})">${i}</a></li>--%>
+                                    </c:forEach>
+                                </c:if>
                                 <!--
                                 <li class="page-item disabled">
                                     <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
@@ -585,7 +591,7 @@
                                                     <input type="checkbox" class="custom-control-input" id="laptopCatCheckBox">
                                                     <label class="custom-control-label" for="laptopCatCheckBox">Computer & Laptop</label>
                                                 </div><!-- End .custom-checkbox -->
-                                                <span class="item-count" id="categoryProductsNumber">3</span>
+                                                <span class="item-count" id="categoryProductsNumber">${laptopsCount}</span>
                                             </div><!-- End .filter-item -->
 
                                             <div class="filter-item">
@@ -593,7 +599,7 @@
                                                     <input type="checkbox" class="custom-control-input" id="mobileCatCheckBox">
                                                     <label class="custom-control-label" for="mobileCatCheckBox">Smart Phones</label>
                                                 </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">0</span>
+                                                <span class="item-count">${mobilesCount}</span>
                                             </div><!-- End .filter-item -->
 
                                             <div class="filter-item">
@@ -601,7 +607,7 @@
                                                     <input type="checkbox" class="custom-control-input" id="watchCatCheckBox">
                                                     <label class="custom-control-label" for="watchCatCheckBox">Smart Watches</label>
                                                 </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">4</span>
+                                                <span class="item-count">${watchesCount}</span>
                                             </div><!-- End .filter-item -->
                                         </div><!-- End .filter-items -->
                                         <div style="margin-top: 25px;">
@@ -972,52 +978,62 @@
         });
     });
     function filterByCategory(){
+
         var laptops = document.getElementById("laptopCatCheckBox").checked;
         var mobiles = document.getElementById("mobileCatCheckBox").checked;
         var watches = document.getElementById("watchCatCheckBox").checked;
-        var productView = document.getElementById("productsView");
-
-        $("#productsContainer").hide();
-        $("#laptopsContainer").hide();
-        $("#mobileContainer").hide();
-        $("#watchContainer").hide();
-        $("#mobAndWatchContainer").hide();
-        $("#mobAndLapContainer").hide();
-        $("#watchAndLapContainer").hide();
 
         if((laptops && mobiles && watches)||(!laptops && !mobiles && !watches)){
-            $("#productsContainer").show();
+            window.location.href = "shop";
         }
         else{
-            if (laptops){
-                if(mobiles){
-                    $("#mobAndLapContainer").attr("hidden",false);
-                    $("#mobAndLapContainer").show();
-                }
-                else if(watches){
-                    $("#watchAndLapContainer").attr("hidden",false);
-                    $("#watchAndLapContainer").show();
-                }
-                else{
-                    $("#laptopsContainer").attr("hidden",false);
-                    $("#laptopsContainer").show();
-                }
-            }else if(mobiles){
-                if(watches){
-                    $("#mobAndWatchContainer").attr("hidden",false);
-                    $("#mobAndWatchContainer").show();
-                }
-                else{
-                    $("#mobileContainer").attr("hidden",false);
-                    $("#mobileContainer").show();
-                }
-            }else{
-                $("#watchContainer").attr("hidden",false);
-                $("#watchContainer").show();
-            }
+            window.location.href = "filter?laptops="+laptops+"&mobiles="+mobiles+"&watches="+watches;
         }
 
-
+        // var productView = document.getElementById("productsView");
+        //
+        // $("#productsContainer").hide();
+        // $("#laptopsContainer").hide();
+        // $("#mobileContainer").hide();
+        // $("#watchContainer").hide();
+        // $("#mobAndWatchContainer").hide();
+        // $("#mobAndLapContainer").hide();
+        // $("#watchAndLapContainer").hide();
+        //
+        // if((laptops && mobiles && watches)||(!laptops && !mobiles && !watches)){
+        //     $("#productsContainer").show();
+        // }
+        // else{
+        //     if (laptops){
+        //         if(mobiles){
+        //             window.location.href = "filter?laptop=1&mobile=1"
+        //             $("#mobAndLapContainer").attr("hidden",false);
+        //             $("#mobAndLapContainer").show();
+        //         }
+        //         else if(watches){
+        //             $("#watchAndLapContainer").attr("hidden",false);
+        //             $("#watchAndLapContainer").show();
+        //         }
+        //         else{
+        //             $("#laptopsContainer").attr("hidden",false);
+        //             $("#laptopsContainer").show();
+        //         }
+        //     }else if(mobiles){
+        //         if(watches){
+        //             $("#mobAndWatchContainer").attr("hidden",false);
+        //             $("#mobAndWatchContainer").show();
+        //         }
+        //         else{
+        //             $("#mobileContainer").attr("hidden",false);
+        //             $("#mobileContainer").show();
+        //         }
+        //     }else{
+        //         $("#watchContainer").attr("hidden",false);
+        //         $("#watchContainer").show();
+        //     }
+        // }
+        //
+        //
 
     }
 
@@ -1096,32 +1112,57 @@
         document.getElementById("wishListItemsNumber").textContent =  WishListItems.length.toString();
 
     }
-    function getPageProducts(pageNumber) {
-        if (window.XMLHttpRequest) {
-            request = new XMLHttpRequest();
-        }
-        else if (window.ActiveXObject) {
-            request = new ActiveXObject("Microsoft.XMLHTTP");
+    function loadFilteredPageNo(pageNumber){
+        let urlString = window.location.href;
+        let paramString = urlString.split('&')[0]+"&"+urlString.split('&')[1]+"&"+urlString.split('&')[2];
+        window.location.href = paramString+"&pageNumber="+pageNumber;
+
+    }
+    window.onload= (event) => {
+        let urlString = window.location.href;
+        let paramString = urlString.split('?')[1];
+        let queryString = new URLSearchParams(paramString);
+        let newQueryString = urlString.split('?')[0]+"?";
+        for (let pair of queryString.entries()) {
+            if(pair[0] === "laptops" && pair[1]==="true") {
+
+                window.document.getElementById("laptopCatCheckBox").checked = true;
+            }
+            if(pair[0] === "mobiles" && pair[1]==="true") {
+                window.document.getElementById("mobileCatCheckBox").checked = true;
+            }
+            if(pair[0] === "watches" && pair[1]==="true") {
+                window.document.getElementById("watchCatCheckBox").checked = true;
+            }
         }
 
-        request.onreadystatechange = handleStateChanges;
-        // yourvalue = this.textContent;
-
-        url = "shop?pageNumber="+ pageNumber + "&timeStamp=" + new Date().getTime();
-        request.open("GET", url, true);
-        request.send(null);
-    }
-    function handleStateChanges() {
-        if (request.readyState == 4 && request.status == 200) {
-            xmlvalue = request.responseText;
-            console.log(xmlvalue);
-            window.document.innerHTML = xmlvalue;
-        }
-    }
-    function handleStateChange() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            document.getElementById("resultsTable").innerHTML = xmlHttp.responseText;
-    }
+    };
+    // function getPageProducts(pageNumber) {
+    //     if (window.XMLHttpRequest) {
+    //         request = new XMLHttpRequest();
+    //     }
+    //     else if (window.ActiveXObject) {
+    //         request = new ActiveXObject("Microsoft.XMLHTTP");
+    //     }
+    //
+    //     request.onreadystatechange = handleStateChanges;
+    //     // yourvalue = this.textContent;
+    //
+    //     url = "shop?pageNumber="+ pageNumber + "&timeStamp=" + new Date().getTime();
+    //     request.open("GET", url, true);
+    //     request.send(null);
+    // }
+    // function handleStateChanges() {
+    //     if (request.readyState == 4 && request.status == 200) {
+    //         xmlvalue = request.responseText;
+    //         console.log(xmlvalue);
+    //         window.document.innerHTML = xmlvalue;
+    //     }
+    // }
+    // function handleStateChange() {
+    //     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+    //         document.getElementById("resultsTable").innerHTML = xmlHttp.responseText;
+    // }
 
 
 </script>
