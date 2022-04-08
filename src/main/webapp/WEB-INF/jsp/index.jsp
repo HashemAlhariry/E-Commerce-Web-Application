@@ -190,12 +190,11 @@
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                                            <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
                                         </div><!-- End .product-action -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to
-                                                cart</span></a>
+                                            <a onclick="addToCart(${product.id})" class="btn-product btn-cart" title="Add to cart"><span>add tocart</span></a>
                                             <a href="quickView?productId=${product.id}" class="btn-product btn-quickview"
                                                title="Quick view"><span>quick view</span></a>
                                         </div><!-- End .product-action -->
@@ -539,6 +538,76 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/demos/demo-4.js"></script>
+        <script>
+            function addToCart(productId){
+                //get all available id in local storage
+                //update list
+                //save list to local storage
+                var checker=true;
+                var localStorageContent = localStorage.getItem("cartItems");
+
+                if (localStorageContent == null) {
+                    cartItems = [];
+                } else {
+                    cartItems = JSON.parse(localStorageContent);
+                }
+
+                cartItem = new CartItem(productId,1);
+
+                for(var i =0;i<cartItems.length;i++){
+                    if(cartItems[i].id === productId){
+                        cartItems[i].quantity++;
+                        checker=false;
+                    }
+                }
+
+                if(checker && productId>=0){
+                    cartItems.push(cartItem);
+                }
+
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                console.log(JSON.parse(localStorage.getItem("cartItems")));
+                console.log(cartItems);
+
+                document.getElementById("cartItemsNumber").textContent =  cartItems.length;
+
+
+
+            }
+            function addToWishList(productId){
+
+                //get all available id in local storage
+                //update list
+                //save list to local storage
+                var check=true;
+                var localStorageContent = localStorage.getItem("wishlistItems");
+                if (localStorageContent == null) {
+                    WishListItems = [];
+                } else {
+                    WishListItems = JSON.parse(localStorageContent);
+                }
+
+
+
+                for(let i =0;i<WishListItems.length;i++){
+                    if(WishListItems[i]===productId){
+                        check = false;
+                    }
+                }
+
+
+                if( check && productId>=0){
+                    WishListItems.push(productId);
+                }
+
+                localStorage.setItem('wishlistItems', JSON.stringify(WishListItems));
+                console.log(JSON.parse(localStorage.getItem("wishlistItems")));
+                console.log(WishListItems);
+
+                document.getElementById("wishListItemsNumber").textContent =  WishListItems.length.toString();
+
+            }
+        </script>
 </body>
 
 

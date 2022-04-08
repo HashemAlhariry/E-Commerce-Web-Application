@@ -63,9 +63,9 @@
 
                 <div class="product-details-action">
                     <div class="details-action-wrapper">
-                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+                        <a onclick="addToWishList(${product.id})" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
                     </div><!-- End .details-action-wrapper -->
-                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                 </div>
 
                 <div class="product-details-footer">
