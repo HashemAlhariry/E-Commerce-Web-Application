@@ -21,6 +21,7 @@ public class ProductBean {
     private double salePercentage;
     private ProductState state;
     private int totalPurchasesNumber;
+    private String mainImage;
     private Set<String> images = new HashSet<>();
     private LocalDate creationDate;
     private CategoryBean category;
