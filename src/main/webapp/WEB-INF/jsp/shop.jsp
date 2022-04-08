@@ -51,9 +51,15 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Grid 4 Columns</li>
+                    <li class="breadcrumb-item"><a href="home">Home</a></li>
+                    <c:choose>
+                        <c:when test="${filtration}">
+                            <li class="breadcrumb-item"><a href="shop">Shop</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Filters Page</li>                        </c:when>
+                        <c:otherwise>
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        </c:otherwise>
+                    </c:choose>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
@@ -540,7 +546,7 @@
 
                                 <c:if test="${empty filtration}" >
                                     <c:forEach begin="1" end="${numberOfPages}" var="i">
-                                        <li class="page-item active" aria-current="page"><a class="page-link" href="shop?pageNumber=${i}">${i}</a></li>
+                                        <li class="page-item active" aria-current="page"><a class="page-link" href="shop?pageNumber=${i}" <c:if test="${currentPageNumber==i}"> style="border-color: orange;border-style: solid; cursor: pointer" </c:if> >${i}</a></li>
                                         <%--                                    <li class="page-item active" aria-current="page"><a class="page-link" onclick="getPageProducts(${i})">${i}</a></li>--%>
                                     </c:forEach>
                                 </c:if>

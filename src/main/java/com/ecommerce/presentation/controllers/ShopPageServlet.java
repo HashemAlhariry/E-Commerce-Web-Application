@@ -36,11 +36,14 @@ public class ShopPageServlet extends HttpServlet {
         System.out.println("pageNumberAsString " +pageNumberAsString);
         if (pageNumberAsString == null){
             allProductsBeans = productService.getProductsOfPage(1);
+            request.setAttribute("currentPageNumber", 1);
+
         }
         else{
             int pageNumber = Integer.parseInt(pageNumberAsString.trim());
             System.out.println("pageNumber"+pageNumber);
             allProductsBeans = productService.getProductsOfPage(pageNumber);
+            request.setAttribute("currentPageNumber", pageNumber);
         }
         int totalCount = productService.getAllProductsCount();
         int countOfProductsPerPage = 12;
@@ -51,6 +54,10 @@ public class ShopPageServlet extends HttpServlet {
             request.setAttribute("totalCount",totalCount);
             request.setAttribute("numberOfPages", numberOfPages);
             request.setAttribute("currentPageProductsNumber", allProductsBeans.size());
+            request.setAttribute("laptopsCount", productService.getProductsCountInCategories("1"));
+            request.setAttribute("watchesCount", productService.getProductsCountInCategories("2"));
+            request.setAttribute("mobilesCount", productService.getProductsCountInCategories("3"));
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "shop.jsp");
             requestDispatcher.forward(request, response);
         }
