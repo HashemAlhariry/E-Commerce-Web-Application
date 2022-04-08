@@ -65,9 +65,9 @@
                           <label>Select Category</label>
                           <select name="categoryId" class="js-example-basic-single w-100">
                             <option value="0">All</option>
-                            <option value="1">Laptop</option>
-                            <option value="2">Smart Watch</option>
-                            <option value="3">Mobiles</option>
+                          <c:forEach items="${currentCategories}" var="category">
+                            <option value="${category.categoryId}">${category.categoryName}</option>
+                          </c:forEach>
                           </select>
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Search</button>

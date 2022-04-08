@@ -11,6 +11,7 @@ public interface ProductRepository extends Repository<ProductEntity,Long> {
     List<ProductEntity> findAllByCategoryId(int id);
     List<ProductEntity> findProductByName(String productName);
     List<ProductEntity> findProductByPrice(BigDecimal productPrice);
+    List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice ,int id);
 
 
 }

@@ -19,5 +19,8 @@ public interface ProductService {
 
     List<ProductEntity> findProductByName(String productName);
     List<ProductEntity> findProductByPrice(BigDecimal productPrice);
+    List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id);
+
+
 
 }

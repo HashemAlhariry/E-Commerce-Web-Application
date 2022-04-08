@@ -75,4 +75,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {return productRepository.findProductByPrice(productPrice);}
+
+    @Override
+    public List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id) {
+        return productRepository.findProductByPriceAndCategoryId(productPrice,id);}
 }

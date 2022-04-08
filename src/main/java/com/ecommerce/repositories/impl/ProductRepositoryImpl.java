@@ -49,6 +49,14 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
     }
 
     @Override
+    public List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id) {
+        TypedQuery<ProductEntity> query = entityManager.createNamedQuery("findProductByPriceAndCategoryId" , ProductEntity.class);
+        query.setParameter("product_price", productPrice);
+        query.setParameter("category_id", id);
+        return  query.getResultList();
+    }
+
+    @Override
     public boolean delete(ProductEntity entity) {
         entity.setState(ProductState.ARCHIVED);
         entityManager.getTransaction().begin();
