@@ -58,7 +58,7 @@ public class AdminAddProductServlet extends HttpServlet {
             int quantity = Integer.parseInt(req.getParameter("quantity"));
             String description = req.getParameter("description");
             int categoryId = Integer.parseInt(req.getParameter("category"));
-            Collection<Part> parts = getParts(req);
+            List<Part> parts = getParts(req);
             AddProductBean addProductBean = new AddProductBean(name, description, price, quantity, categoryId, parts);
             productService.save(addProductBean);
             messages.add("Added Successfully");
@@ -75,11 +75,11 @@ public class AdminAddProductServlet extends HttpServlet {
         }
     }
 
-    private Collection<Part> getParts(HttpServletRequest req) throws ServletException, IOException, CustomValidationException {
-        Collection<Part> parts = new ArrayList<>();
+    private List<Part> getParts(HttpServletRequest req) throws ServletException, IOException, CustomValidationException {
+        List<Part> parts = new ArrayList<>();
         Part mainPart = req.getPart("img1");
         if (mainPart == null || FileUtil.getINSTANCE().getFileName(mainPart).isEmpty() || FileUtil.getINSTANCE().getFileName(mainPart).get().isEmpty()) {
-            throw new CustomValidationException("Main image not exist");
+            throw new CustomValidationException("Main image doesn't exist");
         }
         parts.add(mainPart);
         addIfExist(req, parts, "img2");

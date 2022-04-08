@@ -37,16 +37,26 @@ public class ProductServiceImpl implements ProductService {
     public ProductEntity save(AddProductBean addProductBean) throws IOException, CustomValidationException {
 
 
-        Set<String> images = saveImages(addProductBean.getImages());
-        if (images.isEmpty()) {
+        if (addProductBean.getImages().isEmpty()) {
             throw new CustomValidationException("Images must be 1 at least");
         }
+
+        Part mainImagePart=addProductBean.getImages().get(0);
+        addProductBean.getImages().remove(0);
+        String mainImgURI=saveMainImage(mainImagePart);
+
+        if (mainImgURI.isEmpty()) {
+            throw new CustomValidationException("Couldn't save main image");
+        }
+
+        Set<String> images = saveImages(addProductBean.getImages());
+
         CategoryEntity category = categoryRepository.findById(addProductBean.getCategoryId());
         if (category == null) {
             throw new CustomValidationException("Category not found");
         }
         ProductEntity productEntity = ProductMapper.INSTANCE.addProductBeanToEntity(addProductBean);
-
+        productEntity.setMainImage(mainImgURI);
         productEntity.setImages(images);
         productEntity.setCreationDate(LocalDate.now());
         productEntity.setCategory(category);
@@ -56,7 +66,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
-    private Set<String> saveImages(Collection<Part> imageParts) throws IOException {
+    private Set<String> saveImages(List<Part> imageParts) throws IOException {
+
         Set<String> imageNames = new HashSet<>();
         for (Part imagePart : imageParts) {
             Optional<String> optionalFileName = FileUtil.getINSTANCE().getFileName(imagePart);
@@ -67,10 +78,23 @@ public class ProductServiceImpl implements ProductService {
             if (imageName.isEmpty()) {
                 continue;
             }
-            String imgUrl = S3Util.uploadFile(imageName,imagePart.getInputStream());
+            String imgUrl = S3Util.uploadFile(imageName, imagePart.getInputStream());
             imageNames.add(imgUrl);
         }
         return imageNames;
+    }
+
+    private String saveMainImage(Part imagePart) throws IOException {
+        Optional<String> optionalFileName = FileUtil.getINSTANCE().getFileName(imagePart);
+        if (optionalFileName.isEmpty()) {
+            return "";
+        }
+        String imageName = optionalFileName.get();
+        if (imageName.isEmpty()) {
+            return "";
+        }
+        String imgUrl = S3Util.uploadFile(imageName, imagePart.getInputStream());
+        return imgUrl;
     }
 
     @Override
@@ -118,13 +142,13 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductBean> getProductsOfPage(int pageNumber) {
         int totalCount = getAllProductsCount();
         int countOfProductsPerPage = 12;
-        int numberOfPages = (int)Math.ceil((float)totalCount/countOfProductsPerPage);
-        if (pageNumber <= numberOfPages){
+        int numberOfPages = (int) Math.ceil((float) totalCount / countOfProductsPerPage);
+        if (pageNumber <= numberOfPages) {
 //            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageProducts(pageNumber,countOfProductsPerPage);
-            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageContent(pageNumber,countOfProductsPerPage);
+            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageContent(pageNumber, countOfProductsPerPage);
             List<ProductBean> productBeansOfSinglePage = ProductMapper.INSTANCE.listEntitiesToBeans(productEntitiesOfSinglePage);
             return productBeansOfSinglePage;
-        }else{
+        } else {
             return null;
         }
 

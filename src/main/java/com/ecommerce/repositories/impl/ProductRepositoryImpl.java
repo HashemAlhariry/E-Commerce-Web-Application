@@ -3,9 +3,8 @@ package com.ecommerce.repositories.impl;
 
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
-
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+
 import java.util.List;
 
 public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> implements ProductRepository {
@@ -21,7 +20,7 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
 
     @Override
     public List<ProductEntity> getLast10() {
-        return (List<ProductEntity>) entityManager.createNamedQuery("reversed ids").setMaxResults(10).getResultList();
+        return (List<ProductEntity>) entityManager.createNamedQuery("newArrivals").setMaxResults(10).getResultList();
     }
 
     @Override
