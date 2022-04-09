@@ -130,4 +130,11 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
         long result =  entityManager.createQuery(criteriaQuery).getSingleResult();
         return result;
     }
+
+    @Override
+    public List<ProductEntity> relatedProducts(int id) {
+        TypedQuery<ProductEntity> query = entityManager.createNamedQuery("relatedProducts", ProductEntity.class);
+        query.setParameter("category_id", id);
+        return  query.setMaxResults(4).getResultList();
+    }
 }
