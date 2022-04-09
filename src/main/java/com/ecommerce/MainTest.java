@@ -1,10 +1,16 @@
 package com.ecommerce;
 
+import com.ecommerce.repositories.CategoryRepository;
+import com.ecommerce.repositories.OrderDetailRepository;
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.repositories.entites.Role;
 import com.ecommerce.repositories.entites.UserEntity;
+import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
+import com.ecommerce.repositories.impl.OrderDetailRepositoryImpl;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
+import com.ecommerce.services.OrderDetailsService;
+import com.ecommerce.services.impls.OrderDetailsServiceImpl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -17,20 +23,31 @@ public class MainTest {
     public static void main(String[] args) {
 
         ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+        CategoryRepository categoryRepository = CategoryRepositoryImpl.getInstance();
+        OrderDetailRepository orderDetailRepository = OrderDetailRepositoryImpl.getInstance();
+        OrderDetailsService orderDetailsService = OrderDetailsServiceImpl.getInstance();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("amazonya");
         EntityManager em = emf.createEntityManager();
-//        Image image1 = new Image("imagepath1");
-        UserEntity userEntity = new UserEntity("osos","hashem@osos","marwa","shoubra el kheima", LocalDate.now(), Role.CUSTOMER, BigDecimal.valueOf(2000L));
 
-
-        ProductEntity product = new ProductEntity("Dell", new BigDecimal(20000) , 3, "ana laptop osama", Set.of("image1"));
+//        System.out.println(orderDetailsService.findAllById(1).get(0).);
+////        Image image1 = new Image("imagepath1");
+//        UserEntity userEntity = new UserEntity("osos","hashem@osos","marwa","shoubra el kheima", LocalDate.now(), Role.CUSTOMER, BigDecimal.valueOf(2000L));
+//        System.out.println(categoryRepository.findById(1));
+       // System.out.println("get entity by id "+productRepository.findById(1l).toString());
+        //ProductEntity productEntity = productRepository.findById(1l);
+//        ProductEntity productEntity = new ProductEntity();
+//        productEntity.setName("s");
+//        productEntity.setCategory(categoryRepository.findById(1));
+//em.persist(productEntity);
+//        System.out.println(productRepository.delete(productEntity));
+//        ProductEntity product = new ProductEntity("Dell", new BigDecimal(20000) , 3, "ana laptop osama", Set.of("image1"));
 //        image1.setProduct(product);
-        em.getTransaction().begin();
-        em.persist(userEntity);
-        em.persist(product);
-        em.getTransaction().commit();
-        em.clear();
-        em.close();
+//        em.getTransaction().begin();
+//        em.persist(userEntity);
+//        em.persist(product);
+//        em.getTransaction().commit();
+//        em.clear();
+//        em.close();
 
    //     System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
 //        TestEntity test = new TestEntity();

@@ -1,15 +1,13 @@
 package com.ecommerce.presentation.controllers;
 
-import com.ecommerce.presentation.beans.OrderBean;
-import com.ecommerce.presentation.beans.OrderDetailsBean;
+import com.ecommerce.presentation.beans.AdminOrderDetailsBean;
 import com.ecommerce.repositories.entites.OrderDetailsEntity;
 import com.ecommerce.services.OrderDetailsService;
 import com.ecommerce.services.OrderService;
 import com.ecommerce.services.impls.OrderDetailsServiceImpl;
 import com.ecommerce.services.impls.OrderServiceImpl;
 import com.ecommerce.utils.CommonString;
-import com.ecommerce.utils.mappers.OrderDetailsMapper;
-import com.ecommerce.utils.mappers.OrderMapper;
+import com.ecommerce.utils.mappers.AdminOrderDetailsMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
@@ -41,9 +39,9 @@ public class AdminViewOrderDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<OrderDetailsEntity> orderDetailsEntity =  orderDetailsService.findAllById(Integer.parseInt(req.getParameter("orderId")));
-        List<OrderDetailsBean> orderDetailsBean = OrderDetailsMapper.INSTANCE.listEntitiesToBeans(orderDetailsEntity);
+        List<AdminOrderDetailsBean> orderDetailsBean = AdminOrderDetailsMapper.INSTANCE.listEntitiesToBeans(orderDetailsEntity);
         BigDecimal totalPrice=orderDetailsEntity.get(0).getOrder().getTotalPrice();
-        req.setAttribute("orderDetails",orderDetailsEntity);
+        req.setAttribute("orderDetails",orderDetailsBean);
         req.setAttribute("totalPrice",totalPrice);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/samples/order_detail_view.jsp");
         requestDispatcher.forward(req, resp);

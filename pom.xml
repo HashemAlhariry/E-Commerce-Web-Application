@@ -176,7 +176,7 @@
                 <configuration>
                     <username>admin</username>
                     <password>admin1234</password>
-                    <url>http://localhost:8088/manager/text</url>
+                    <url>http://localhost:9191/manager/text</url>
                     <path>/amazonya</path>
 
 
