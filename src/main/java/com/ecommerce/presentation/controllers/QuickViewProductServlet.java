@@ -16,30 +16,29 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "admin-product-view", urlPatterns = {"/admin-product"})
+@WebServlet(name = "quickView", urlPatterns = {"/quickView"})
+public class QuickViewProductServlet extends HttpServlet {
 
-public class AdminProductView extends HttpServlet {
-
-    private ServletContext servletContext;
+    ServletContext servletContext;
     ProductService productService;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService= ProductServiceImpl.getInstance();
-
+        productService = ProductServiceImpl.getInstance();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<ProductEntity> allProducts = productService.findAll();
-        System.out.println(allProducts);
-        List<ProductBean> allProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(allProducts);
-        System.out.println(allProductsBeans);
-        req.setAttribute("allProducts",allProductsBeans);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/tables/products_view.jsp");
+        Long productId = Long.parseLong(req.getParameter("productId"));
+        ProductEntity productEntity = productService.findById(productId);
+        ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(productEntity);
+        System.out.println("aaa "+productEntity);
+        System.out.println("ASDASDASdASDASDasdaSDASDASd   "+productBean);
+        req.setAttribute("product", productBean);
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "quickView.jsp");
         requestDispatcher.forward(req, resp);
     }
 

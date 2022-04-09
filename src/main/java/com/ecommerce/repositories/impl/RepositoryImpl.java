@@ -2,11 +2,8 @@ package com.ecommerce.repositories.impl;
 
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.repositories.Repository;
-
-import com.ecommerce.repositories.entites.ProductEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
-
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -51,6 +48,7 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
 
     @Override
     public T update(T entity) {
+        System.out.println("inside Repo Impl");
         entityManager.getTransaction().begin();
         entityManager.merge(entity);
         entityManager.getTransaction().commit();
@@ -60,7 +58,7 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
     @Override
     public int getCount() {
         Query queryTotal = entityManager.createQuery
-                ("Select count(p.id) from "+ clazz.getSimpleName()+" p");
+                ("Select count(p) from "+ clazz.getSimpleName()+" p");
         long countResult = (long)queryTotal.getSingleResult();
         return (int)countResult;
     }
@@ -73,4 +71,5 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
         List <T> BeansPerSinglePage = query.getResultList();
         return BeansPerSinglePage;
     }
+
 }

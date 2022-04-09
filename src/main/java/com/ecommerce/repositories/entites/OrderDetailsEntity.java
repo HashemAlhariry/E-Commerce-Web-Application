@@ -9,6 +9,12 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "order_details")
+
+@NamedQueries({
+        @NamedQuery(name = "findAllById",query = "select o from OrderDetailsEntity  o   where  o.id.orderId = :order_id")
+
+})
+
 @Getter
 @Setter
 public class OrderDetailsEntity implements Serializable {

@@ -42,61 +42,48 @@
 </head>
 
 <body>
-<div class="page-wrapper">
+<c:forEach var="product" items="${categorizedProducts}">
+    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+        <div class="product">
+            <figure class="product-media">
+                <a href="product.html">
+                    <img src="${product.mainImage}" alt="Product image"
+                         class="product-image" style="height:218px">
+                </a>
 
-    <%@ include file="includes/header.jsp" %>
+                <div class="product-action-vertical">
+                    <a onclick="addToCart(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                </div><!-- End .product-action -->
+                <div class="product-action">
+                    <a onclick="addToWishList(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                        <%--<a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>--%>
+                    <a href="quickView?productId=${product.id}"
+                       class="btn-product btn-quickview"
+                       title="Quick view"><span>quick view</span></a>
+                </div><!-- End .product-action -->
+            </figure><!-- End .product-media -->
 
-    <input type="hidden" id="categoryId" value="${category.categoryId}">
-    <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
-            <div class="container">
-                <h1 class="page-title">${category.categoryName}<span>Shop</span></h1>
-            </div><!-- End .container -->
-        </div><!-- End .page-header -->
-        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="home">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Category</li>
-                </ol>
-            </div><!-- End .container -->
-        </nav><!-- End .breadcrumb-nav -->
-
-        <div class="page-content">
-            <div class="container">
-                <c:if test="${empty categorizedProducts}">
-                    <h1 class="error-title text-center ">There is no product yet</h1><!-- End .error-title -->
-                </c:if>
-                <c:if test="${!empty categorizedProducts}">
-                    <div class="products">
-                        <div class="row" id="productsDiv">
-                            <%@ include file="components/category-products-component.jsp" %>
-
-                        </div><!-- End .row -->
-
-                        <div class="load-more-container text-center">
-                            <button id="loadMoreBtn" class="btn btn-outline-darker btn-load-more">More Products <i
-                                    class="icon-refresh"></i></button>
-                        </div><!-- End .load-more-container -->
-                    </div>
-                    <!-- End .products -->
-                </c:if>
-
-
-                <div class="sidebar-filter-overlay"></div><!-- End .sidebar-filter-overlay -->
-            </div><!-- End .container -->
-        </div><!-- End .page-content -->
-    </main><!-- End .main -->
-
-    <%@ include file="includes/footer.jsp" %>
-</div><!-- End .page-wrapper -->
-<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
-
-<%@ include file="includes/mobile-header-sidemenu.jsp" %>
-<!-- End .mobile-menu-container -->
+            <div class="product-body">
+                <div class="product-cat">
+                    <a href="#">${product.category.categoryName}</a>
+                </div><!-- End .product-cat -->
+                <h3 class="product-title"><a href="product.html">${product.name}</a></h3>
+                <!-- End .product-title -->
+                <div class="product-price">
+                    ${product.price} EGP
+                </div><!-- End .product-price -->
+                <div class="ratings-container">
+                    <div class="ratings">
+                        <div class="ratings-val" style="width: 80%;"></div>
+                        <!-- End .ratings-val -->
+                    </div><!-- End .ratings -->
+                    <span class="ratings-text">( 11 Reviews )</span>
+                </div><!-- End .rating-container -->
+            </div><!-- End .product-body -->
+        </div><!-- End .product -->
+    </div>
+    <!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+</c:forEach>
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -111,9 +98,6 @@
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/demos/demo-4.js"></script>
-<script src="assets/app-js/load-category-products.js"></script>
+
+
 </body>
-
-
-<!-- molla/category-boxed.html  22 Nov 2019 10:03:02 GMT -->
-</html>

@@ -1,5 +1,4 @@
 $('#submitBtn').click(function () {
-
     if ($('#productForm').valid()) {
         var data = new FormData();
         data.append('name', $('#name').val());
@@ -26,6 +25,8 @@ function addImgInp(data, id) {
 
 function sendData(form_data) {
     $('#submitBtn').prop('disabled', true);
+    $('#loader').modal('show');
+
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -38,6 +39,7 @@ function sendData(form_data) {
         success: function (data) {
 
             $('#submitBtn').prop('disabled', false);
+            $('#loader').modal('hide');
             let resp = JSON.parse(data);
             if (resp.state === 'success') {
                 $("input[type=text]").val(null);
@@ -55,6 +57,7 @@ function sendData(form_data) {
         },
         error: function (e) {
             $('#submitBtn').prop('disabled', false);
+            $('#loader').modal('hide');
             console.log("ERROR : ", e);
             showSwal('warning-message-and-cancel', e);
         }

@@ -82,7 +82,7 @@
                                                 <div class="product">
                                                     <figure class="product-media">
                                                         <a href="#">
-                                                            <img src="${cartItem.productBean.images.iterator().next()} " alt="Product image">
+                                                            <img src="${cartItem.productBean.mainImage} " alt="Product image">
                                                         </a>
                                                     </figure>
 
@@ -177,7 +177,7 @@
                                 <a href="order-details" id="checkoutButton" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
                             </div><!-- End .summary -->
 
-                            <a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
+                            <a href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
                         </aside><!-- End .col-lg-3 -->
                     </div><!-- End .row -->
                 </div><!-- End .container -->
