@@ -124,9 +124,11 @@
             </button>
 
         </div>
-
         </form>
+
         <br>
+
+        <!--
         <br>
         <div class="summary summary-cart">
 
@@ -148,7 +150,9 @@
 
 
         </div>
-    </main><!-- End .main -->
+        -->
+
+    </main>
 
     <%@ include file="includes/footer.jsp" %><!-- End .footer -->
 </div><!-- End .page-wrapper -->
