@@ -47,9 +47,9 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container d-flex align-items-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Products</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Centered</li>
+                        <li class="breadcrumb-item"><a href="/amazonya">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/amazonya/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
                     </ol>
 
                     <nav class="product-pager ml-auto" aria-label="Product">
@@ -146,7 +146,7 @@
                                     <div class="product-details-footer">
                                         <div class="product-cat">
                                             <span>Category:</span>
-                                            <a href="/amazonya/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a>
+                                            <a href="/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a>
                                         </div><!-- End .product-cat -->
 
                                         <div class="social-icons social-icons-sm">
@@ -166,9 +166,6 @@
                         <ul class="nav nav-pills justify-content-center" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping & Returns</a>
