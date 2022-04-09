@@ -77,7 +77,7 @@
 									<div class="product">
 										<figure class="product-media">
 											<a href="#">
-												<img src=${wishlistProduct.images.iterator().next()} alt="assets/images/products/table/product-2.jpg">
+												<img src=${wishlistProduct.mainImage} alt="assets/images/products/table/product-2.jpg">
 											</a>
 										</figure>
 

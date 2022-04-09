@@ -52,13 +52,11 @@
                 </a>
 
                 <div class="product-action-vertical">
-                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                    <a onclick="addToCart(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                 </div><!-- End .product-action -->
                 <div class="product-action">
-                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                        <%--                                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>--%>
-
-
+                    <a onclick="addToWishList(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                        <%--<a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>--%>
                     <a href="quickView?productId=${product.id}"
                        class="btn-product btn-quickview"
                        title="Quick view"><span>quick view</span></a>
@@ -100,4 +98,6 @@
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/demos/demo-4.js"></script>
+
+
 </body>
