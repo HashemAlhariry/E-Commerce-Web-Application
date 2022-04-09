@@ -41,6 +41,33 @@
     <%@ include file="includes/header.jsp" %>
     <main class="main">
 
+
+        <br>
+        <div class="summary summary-cart">
+            <h3 class="summary-title">Products</h3>
+            <table class="table table-cart table-mobile">
+                <tbody>
+                <c:forEach items="${cartItems}" var="cartItem" >
+                    <tr id="productRow${cartItem.productBean.id}">
+                        <td class="product-col">
+                            <div class="product">
+                                <figure class="product-media">
+                                    <a href="#">
+                                        <img src="${cartItem.productBean.images.iterator().next()} " alt="Product image">
+                                    </a>
+                                </figure>
+
+                                <h3 class="product-title">
+                                    <a href="#">${cartItem.productBean.name}</a>
+                                </h3><!-- End .product-title -->
+                            </div><!-- End .product -->
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+
         <br>
         <br>
         <form onsubmit="post('order-completion','post')" method="post" id ="form">

@@ -1,3 +1,4 @@
+
 package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.CartItemBean;
@@ -29,7 +30,7 @@ import java.util.List;
 
 
 @WebServlet(name = "order-completion", urlPatterns = {"/order-completion"})
-public class OrderCompletion extends HttpServlet {
+public class OrderCompletionServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,21 +53,31 @@ public class OrderCompletion extends HttpServlet {
         String address =  request.getParameter("userAddress");
         String phoneNumber = request.getParameter("phoneNumber");
         String jsonString = request.getParameter("cart");
+        String paymentMethod= request.getParameter("paymentMethod");
 
         if(jsonString!=null){
 
             ObjectMapper jacksonMapper = new ObjectMapper();
             List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
             System.out.println(viewCartItems.size());
-            List<CartItemBean> cartItemBeans = new ArrayList<>();
+            List<CartItemBean> cartItemBeans;
+            // to remove product with quantity 0
+            List<CartItemBean> cartItemBeansUpdated=new ArrayList<>();
 
             if(viewCartItems.size()>0){
 
                 cartItemBeans = cartService.getCartItemBeans(viewCartItems);
+
+                // remove products cart bean , quantity = 0
+                for (CartItemBean cartItemBean: cartItemBeans){
+                    if(cartItemBean.getProductBean().getQuantity()!=0) {
+                        cartItemBeansUpdated.add(cartItemBean);
+                    }
+                }
+
                 BigDecimal total = Util.getTotalPrice(cartItemBeans);
                 OrderBean orderBean= new OrderBean(address,new Date(),phoneNumber, OrderState.PENDING,  total,email);
-                List<OrderDetailsBean> orderDetailsBeanList = Util.getOrderDetailsBeans(cartItemBeans,userId);
-
+                List<OrderDetailsBean> orderDetailsBeanList = Util.getOrderDetailsBeans(cartItemBeansUpdated,userId);
                 System.out.println(orderBean);
                 System.out.println(orderDetailsBeanList);
 
