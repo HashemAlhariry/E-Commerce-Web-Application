@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Embeddable
 @Getter @Setter
 public class OrderDetailsID implements Serializable {
+
     @Column(name = "product_id")
     long productId;
     @Column(name = "user_id")

@@ -65,7 +65,7 @@
 							</ul>
 							<div class="tab-content">
 							    <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-							    	<form action="#">
+							    	<form action="login" method="POST">
 							    		<div class="form-group">
 							    			<label for="signup-email-2">email address *</label>
 							    			<input type="text" class="form-control" id="signup-email-2" name="signup-email" required>
@@ -109,7 +109,7 @@
 							    	</div><!-- End .form-choice -->
 							    </div><!-- .End .tab-pane -->
 							    <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
-							    	<form action="#">
+							    	<form action="registration" method="POST">
                                         <div class="form-group">
                                             <label for="register-name-2">name *</label>
                                             <input type="text" class="form-control" id="register-name-2" name="register-name" required>
@@ -131,20 +131,20 @@
 							    			<input type="password" class="form-control" id="register-password-2" name="register-password" required>
 							    		</div><!-- End .form-group -->
 
-                                        <div class="form-group">
-                                            <label for="register-jop-2">job *</label>
-                                            <input type="text" class="form-control" id="register-jop-2" name="register-job" required>
-                                        </div><!-- End .form-group -->
+<%--                                        <div class="form-group">--%>
+<%--                                            <label for="register-jop-2">job *</label>--%>
+<%--                                            <input type="text" class="form-control" id="register-jop-2" name="register-job" required>--%>
+<%--                                        </div><!-- End .form-group -->--%>
 
                                         <div class="form-group">
                                             <label for="register-address-2">address *</label>
                                             <input type="text" class="form-control" id="register-address-2" name="register-address" required>
                                         </div><!-- End .form-group -->
 
-                                        <div class="form-group">
-                                            <label for="register-credit limit-2">credit limit *</label>
-                                            <input type="text" class="form-control" id="register-credit limit-2" name="register-credit limit" required>
-                                        </div><!-- End .form-group -->
+<%--                                        <div class="form-group">--%>
+<%--                                            <label for="register-credit limit-2">credit limit *</label>--%>
+<%--                                            <input type="text" class="form-control" id="register-credit limit-2" name="register-credit limit" required>--%>
+<%--                                        </div><!-- End .form-group -->--%>
 
                                         <div class="form-footer">
 							    			<button type="submit" class="btn btn-outline-primary-2">

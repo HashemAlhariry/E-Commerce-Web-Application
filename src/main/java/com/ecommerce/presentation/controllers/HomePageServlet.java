@@ -1,13 +1,13 @@
 package com.ecommerce.presentation.controllers;
 
-import com.ecommerce.presentation.beans.ProductBean;
+import com.ecommerce.presentation.beans.NewArrivalProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.services.CategoryServices;
 import com.ecommerce.services.ProductService;
 import com.ecommerce.services.impls.CategoryServicesImpl;
 import com.ecommerce.services.impls.ProductServiceImpl;
 import com.ecommerce.utils.CommonString;
-import com.ecommerce.utils.mappers.ProductMapper;
+import com.ecommerce.utils.mappers.NewArrivalProductMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
@@ -36,7 +36,7 @@ public class HomePageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ProductEntity>newArrivals = productService.getLast10();
-        List<ProductBean>newArrivalsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(newArrivals);
+        List<NewArrivalProductBean>newArrivalsBeans = NewArrivalProductMapper.INSTANCE.listEntitiesToBeans(newArrivals);
         System.out.println(newArrivals);
         System.out.println(newArrivalsBeans);
         req.setAttribute("newArrivals",newArrivalsBeans);

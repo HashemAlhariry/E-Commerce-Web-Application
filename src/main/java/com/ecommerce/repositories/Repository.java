@@ -9,5 +9,7 @@ public interface Repository<T,I>{
     T findById(I id);
     List<T>findAll();
     T update(T entity);
+    int getCount();
+    List<T> getSinglePageContent(int pageNumber, int recordsPerPage);
 
 }

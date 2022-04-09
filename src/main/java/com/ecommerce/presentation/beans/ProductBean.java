@@ -13,25 +13,17 @@ import java.util.Set;
 public class ProductBean {
 
     private long id;
-
     private String name;
-
     private BigDecimal price=BigDecimal.ZERO;
-
     private int quantity;
-
     private String description;
     private double rating;
     private double salePercentage;
-
     private ProductState state;
     private int totalPurchasesNumber;
-
-
+    private String mainImage;
     private Set<String> images = new HashSet<>();
-
     private LocalDate creationDate;
-
     private CategoryBean category;
 
     public  ProductBean(){}

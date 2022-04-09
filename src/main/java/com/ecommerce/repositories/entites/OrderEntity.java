@@ -30,9 +30,21 @@ public class OrderEntity implements Serializable {
 
     private String address;
 
+    private String email;
+
     @OneToMany(mappedBy = "order")
     private Set<OrderDetailsEntity>orderDetails=new HashSet<>();
 
+    public OrderEntity(OrderState state, LocalDateTime dateTime, BigDecimal totalPrice, String phoneNumber, String address, Set<OrderDetailsEntity> orderDetails) {
+        this.state = state;
+        this.dateTime = dateTime;
+        this.totalPrice = totalPrice;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.orderDetails = orderDetails;
+    }
 
+    public OrderEntity() {
 
+    }
 }

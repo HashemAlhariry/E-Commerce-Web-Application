@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class ViewCartItem {
-    private long id;
+    public long id;
     private int quantity;
 
     public ViewCartItem(long id, int quantity) {

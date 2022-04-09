@@ -1,37 +1,38 @@
 package com.ecommerce.presentation.beans;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class LoginUserBean {
 
-    private String userEmail;
-    private String userPassword;
+    private String email;
+    private String pass;
 
     public LoginUserBean(String userEmail, String userPassword ) {
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
+        this.email = userEmail;
+        this.pass = userPassword;
+    }
+
+    public LoginUserBean() {
+
     }
 
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public String getPass() {
+        return pass;
     }
 
     @Override
     public String toString() {
-        return "LoginSignUpBean{" +
-                ", email=" + userEmail + '\'' +
-                ", password='" + userPassword + '\'' +
+        return "LoginUserBean{" +
+                "email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
                 '}';
     }
 }
