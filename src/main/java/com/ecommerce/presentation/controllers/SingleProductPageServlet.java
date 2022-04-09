@@ -1,11 +1,16 @@
 package com.ecommerce.presentation.controllers;
 
+import com.ecommerce.presentation.beans.CategoryBean;
 import com.ecommerce.presentation.beans.NewArrivalProductBean;
 import com.ecommerce.presentation.beans.ProductBean;
+import com.ecommerce.repositories.entites.CategoryEntity;
 import com.ecommerce.repositories.entites.ProductEntity;
+import com.ecommerce.services.CategoryServices;
 import com.ecommerce.services.ProductService;
+import com.ecommerce.services.impls.CategoryServicesImpl;
 import com.ecommerce.services.impls.ProductServiceImpl;
 import com.ecommerce.utils.CommonString;
+import com.ecommerce.utils.mappers.CategoryMapper;
 import com.ecommerce.utils.mappers.NewArrivalProductMapper;
 import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.RequestDispatcher;
@@ -25,18 +30,23 @@ import java.util.List;
 public class SingleProductPageServlet extends HttpServlet {
     ServletContext servletContext;
     ProductService productService;
+    CategoryServices categoryService;
 
         public void init(ServletConfig config) {
             servletContext = config.getServletContext();
             productService= ProductServiceImpl.getInstance();
+            categoryService= CategoryServicesImpl.getInstance();
         }
 
 
         @Override
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             ProductEntity singleProduct = productService.findById(Long.parseLong(request.getParameter("productId")));
+            CategoryEntity category = categoryService.findById(Integer.parseInt(String.valueOf(singleProduct.getId())));
+            CategoryBean categoryBean = CategoryMapper.INSTANCE.categoryEntityToBean(category);
             ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(singleProduct);
             request.setAttribute("singleProduct",productBean);
+            request.setAttribute("category",categoryBean);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "product-centered.jsp");
             requestDispatcher.forward(request, response);
 

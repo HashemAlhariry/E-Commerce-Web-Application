@@ -1,3 +1,6 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,18 +85,11 @@
                                             <a class="product-gallery-item active" href="#" data-image="${singleProduct.mainImage}" data-zoom-image="${singleProduct.mainImage}">
                                                 <img src="${singleProduct.mainImage}" alt="product side">
                                             </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/centered/2-big.jpg" data-zoom-image="assets/images/products/single/centered/2-big.jpg">
-                                                <img src="assets/images/products/single/centered/2-small.jpg" alt="product cross">
+                                            <c:forEach items="${singleProduct.images}" var="gallery">
+                                            <a class="product-gallery-item" href="#" data-image="${gallery}" data-zoom-image="${gallery}">
+                                                <img src="${gallery}" alt="product cross">
                                             </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/centered/3-big.jpg" data-zoom-image="assets/images/products/single/centered/3-big.jpg">
-                                                <img src="assets/images/products/single/centered/3-small.jpg" alt="product with model">
-                                            </a>
-
-                                            <a class="product-gallery-item" href="#" data-image="assets/images/products/single/centered/4-big.jpg" data-zoom-image="assets/images/products/single/centered/4-big.jpg">
-                                                <img src="assets/images/products/single/centered/4-small.jpg" alt="product back">
-                                            </a>
+                                            </c:forEach>
                                         </div><!-- End .product-image-gallery -->
                                     </div><!-- End .row -->
                                 </div><!-- End .product-gallery -->
@@ -101,7 +97,7 @@
 
                             <div class="col-md-6">
                                 <div class="product-details product-details-centered">
-                                    <h1 class="product-title">Beige metal hoop tote bag</h1><!-- End .product-title -->
+                                    <h1 class="product-title">${singleProduct.name}</h1><!-- End .product-title -->
 
                                     <div class="ratings-container">
                                         <div class="ratings">
@@ -111,36 +107,12 @@
                                     </div><!-- End .rating-container -->
 
                                     <div class="product-price">
-                                        $76.00
+                                        ${singleProduct.price}
                                     </div><!-- End .product-price -->
 
                                     <div class="product-content">
-                                        <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero.</p>
+                                        <p>${singleProduct.description}</p>
                                     </div><!-- End .product-content -->
-
-                                    <div class="details-filter-row details-row-size">
-                                        <label>Color:</label>
-
-                                        <div class="product-nav product-nav-dots">
-                                            <a href="#" class="active" style="background: #cc9966;"><span class="sr-only">Color name</span></a>
-                                            <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                        </div><!-- End .product-nav -->
-                                    </div><!-- End .details-filter-row -->
-
-                                    <div class="details-filter-row details-row-size">
-                                        <label for="size">Size:</label>
-                                        <div class="select-custom">
-                                            <select name="size" id="size" class="form-control">
-                                                <option value="#" selected="selected">One Size</option>
-                                                <option value="s">Small</option>
-                                                <option value="m">Medium</option>
-                                                <option value="l">Large</option>
-                                                <option value="xl">Extra Large</option>
-                                            </select>
-                                        </div><!-- End .select-custom -->
-
-                                        <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
-                                    </div><!-- End .details-filter-row -->
 
                                     <div class="product-details-action">
                                         <div class="details-action-col">
@@ -153,16 +125,13 @@
 
                                         <div class="details-action-wrapper">
                                             <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
-                                            <a href="#" class="btn-product btn-compare" title="Compare"><span>Add to Compare</span></a>
                                         </div><!-- End .details-action-wrapper -->
                                     </div><!-- End .product-details-action -->
 
                                     <div class="product-details-footer">
                                         <div class="product-cat">
                                             <span>Category:</span>
-                                            <a href="#">Women</a>,
-                                            <a href="#">Dresses</a>,
-                                            <a href="#">Yellow</a>
+                                            <a href="/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a>,
                                         </div><!-- End .product-cat -->
 
                                         <div class="social-icons social-icons-sm">
