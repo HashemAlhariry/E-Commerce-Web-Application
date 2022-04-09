@@ -42,6 +42,10 @@ public class AdminSearchProductServlet extends HttpServlet {
         {
             searchedProducts = productService.findProductByPrice(BigDecimalParser.parse(request.getParameter("productPrice")));
         }
+        else if (!request.getParameter("categoryId").equals(null) && request.getParameter("productPrice").equals(""))
+        {
+            searchedProducts = productService.findAllByCategoryId(Integer.parseInt(request.getParameter("categoryId")));
+        }
         else
         {
             searchedProducts=productService.findProductByPriceAndCategoryId(BigDecimalParser.parse(request.getParameter("productPrice")),Integer.parseInt(request.getParameter("categoryId")));
