@@ -1,4 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib  uri="/WEB-INF/tlds/sortTag.tld" prefix="p" %>
 
 
 <!DOCTYPE html>
@@ -79,10 +80,11 @@
                                 <div class="toolbox-sort">
                                     <label for="sortby">Sort by:</label>
                                     <div class="select-custom">
-                                        <select name="sortby" id="sortby" class="form-control">
-                                            <option value="popularity" selected="selected">Most Popular</option>
-                                            <option value="rating">Most Rated</option>
-                                            <option value="date">Date</option>
+                                        <select name="sortby" id="sortby" class="form-control" onchange="sortProducts()">
+                                            <option value="oldest" selected="selected">Oldest</option>
+                                            <option value="priceAsc" >Price Low to High</option>
+                                            <option value="priceDesc">Price High to Low</option>
+                                            <option value="date">Newest</option>
                                         </select>
                                     </div>
                                 </div><!-- End .toolbox-sort -->
@@ -184,6 +186,183 @@
                                 </c:forEach>
 
                             </div>
+                            <div class="row justify-content-center" id="sortByPriceDesc" hidden>
+                                <c:forEach items="${p:sortByPriceDesc(allProducts)}" var="product">
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <c:if test="${!empty product.state}">
+                                                    <span class="product-label label-new">${product.state}</span>
+                                                </c:if>
+                                                <a href="shop">
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+
+                                                        <c:if test="${loop.last }">
+                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
+                                                        </c:if>
+
+                                                    </c:forEach>
+
+                                                </a>
+
+                                                <div class="product-action-vertical">
+                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                </div><!-- End .product-action-vertical -->
+
+                                                <div class="product-action">
+                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
+
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">${product.category.categoryName}</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                        ${product.price} EGP
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
+                                                </div><!-- End .rating-container -->
+
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+                                                        <c:if test="${!loop.last }">
+                                                            <a href="#" class="active">
+                                                                <img src="${image}" alt="product desc">
+                                                            </a>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                </c:forEach>
+
+                            </div>
+                            <div class="row justify-content-center" id="sortByPriceAsc" hidden>
+                                <c:forEach items="${p:sortByPriceAsc(allProducts)}" var="product">
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <c:if test="${!empty product.state}">
+                                                    <span class="product-label label-new">${product.state}</span>
+                                                </c:if>
+                                                <a href="shop">
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+
+                                                        <c:if test="${loop.last }">
+                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
+                                                        </c:if>
+
+                                                    </c:forEach>
+
+                                                </a>
+
+                                                <div class="product-action-vertical">
+                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                </div><!-- End .product-action-vertical -->
+
+                                                <div class="product-action">
+                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
+
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">${product.category.categoryName}</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                        ${product.price} EGP
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
+                                                </div><!-- End .rating-container -->
+
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+                                                        <c:if test="${!loop.last }">
+                                                            <a href="#" class="active">
+                                                                <img src="${image}" alt="product desc">
+                                                            </a>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                </c:forEach>
+
+                            </div>
+                            <div class="row justify-content-center" id="sortByDate" hidden>
+                                <c:forEach items="${p:sortByDate(allProducts)}" var="product">
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media">
+                                                <c:if test="${!empty product.state}">
+                                                    <span class="product-label label-new">${product.state}</span>
+                                                </c:if>
+                                                <a href="shop">
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+
+                                                        <c:if test="${loop.last }">
+                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
+                                                        </c:if>
+
+                                                    </c:forEach>
+
+                                                </a>
+
+                                                <div class="product-action-vertical">
+                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                </div><!-- End .product-action-vertical -->
+
+                                                <div class="product-action">
+                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
+
+                                            <div class="product-body">
+                                                <div class="product-cat">
+                                                    <a href="#">${product.category.categoryName}</a>
+                                                </div><!-- End .product-cat -->
+                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
+                                                <div class="product-price">
+                                                        ${product.price} EGP
+                                                </div><!-- End .product-price -->
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
+                                                </div><!-- End .rating-container -->
+
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
+                                                        <c:if test="${!loop.last }">
+                                                            <a href="#" class="active">
+                                                                <img src="${image}" alt="product desc">
+                                                            </a>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                </c:forEach>
+
+                            </div>
                             <div class="row justify-content-center" id="watchAndLapContainer" hidden>
                                 <c:forEach items="${allProducts}" var="product">
                                     <c:if test="${(product.category.categoryId==1)or(product.category.categoryId==5)}">
@@ -203,7 +382,7 @@
                                                         </c:choose>
                                                     </a>
 
- 
+
                                                     <div class="product-action-vertical" >
                                                         <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                                                         <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
@@ -248,296 +427,7 @@
                                 </c:forEach>
 
                             </div>
-                            <div class="row justify-content-center" id="mobAndLapContainer"hidden>
-                                <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==5)}">
-                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
-                                            <div class="product product-7 text-center">
-                                                <figure class="product-media">
-                                                    <span class="product-label label-new">New</span>
-                                                    <a href="shop">
-                                                        <c:choose>
-                                                           <c:when test="${product.category.categoryId==2}">
-                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <img src="https://amazonya.s3.eu-central-1.amazonaws.com/laptop2.jpg" alt="Product image" class="product-image">
- 
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </a>
 
-                                                    <div class="product-action-vertical">
-                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    </div><!-- End .product-action-vertical -->
-
-                                                    <div class="product-action">
-                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                    </div><!-- End .product-action -->
-                                                </figure><!-- End .product-media -->
-
-                                                <div class="product-body">
-                                                    <div class="product-cat">
-                                                        <a href="#">${product.category.categoryName}</a>
-                                                    </div><!-- End .product-cat -->
-                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
-                                                    <div class="product-price">
-                                                            ${product.price} EGP
-                                                    </div><!-- End .product-price -->
-                                                    <div class="ratings-container">
-                                                        <div class="ratings">
-                                                            <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
-                                                        </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( 2 Reviews )</span>
-                                                    </div><!-- End .rating-container -->
-
-                                                    <div class="product-nav product-nav-thumbs">
-                                                        <a href="#" class="active">
-                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
-                                                        </a>
-
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                    </div><!-- End .product-nav -->
-                                                </div><!-- End .product-body -->
-                                            </div><!-- End .product -->
-                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                    </c:if>
-                                </c:forEach>
-
-                            </div>
-                            <div class="row justify-content-center" id="mobAndWatchContainer" hidden>
-                                <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${(product.category.categoryId==3)or(product.category.categoryId==1)}">
-                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
-                                            <div class="product product-7 text-center">
-                                                <figure class="product-media">
-                                                    <span class="product-label label-new">New</span>
-                                                    <a href="shop">
-                                                        <c:choose>
-                                                            <c:when test="${product.category.categoryId==1}">
-                                                                <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </a>
-
-                                                    <div class="product-action-vertical">
-                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    </div><!-- End .product-action-vertical -->
-
-                                                    <div class="product-action">
-                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                    </div><!-- End .product-action -->
-                                                </figure><!-- End .product-media -->
-
-                                                <div class="product-body">
-                                                    <div class="product-cat">
-                                                        <a href="#">${product.category.categoryName}</a>
-                                                    </div><!-- End .product-cat -->
-                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
-                                                    <div class="product-price">
-                                                            ${product.price} EGP
-                                                    </div><!-- End .product-price -->
-                                                    <div class="ratings-container">
-                                                        <div class="ratings">
-                                                            <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
-                                                        </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( 2 Reviews )</span>
-                                                    </div><!-- End .rating-container -->
-
-                                                    <div class="product-nav product-nav-thumbs">
-                                                        <a href="#" class="active">
-                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
-                                                        </a>
-
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                    </div><!-- End .product-nav -->
-                                                </div><!-- End .product-body -->
-                                            </div><!-- End .product -->
-                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                    </c:if>
-                                </c:forEach>
-
-                            </div>
-                            <div class="row justify-content-center" id="laptopsContainer" hidden>
-                                <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${product.category.categoryId==5}">
-                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
-                                            <div class="product product-7 text-center">
-                                                <figure class="product-media">
-                                                    <span class="product-label label-new">New</span>
-                                                    <a href="shop">
-                                                        <img src="assets/images/products/laptop1.jpg" alt="Product image" class="product-image">
-                                                    </a>
-
-                                                    <div class="product-action-vertical">
-                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    </div><!-- End .product-action-vertical -->
-
-                                                    <div class="product-action">
-                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                    </div><!-- End .product-action -->
-                                                </figure><!-- End .product-media -->
-
-                                                <div class="product-body">
-                                                    <div class="product-cat">
-                                                        <a href="#">${product.category.categoryName}</a>
-                                                    </div><!-- End .product-cat -->
-                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
-                                                    <div class="product-price">
-                                                            ${product.price} EGP
-                                                    </div><!-- End .product-price -->
-                                                    <div class="ratings-container">
-                                                        <div class="ratings">
-                                                            <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
-                                                        </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( 2 Reviews )</span>
-                                                    </div><!-- End .rating-container -->
-
-                                                    <div class="product-nav product-nav-thumbs">
-                                                        <a href="#" class="active">
-                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
-                                                        </a>
-
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                    </div><!-- End .product-nav -->
-                                                </div><!-- End .product-body -->
-                                            </div><!-- End .product -->
-                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                    </c:if>
-                                </c:forEach>
-
-                            </div><!-- End .row -->
-                            <div class="row justify-content-center" id="mobileContainer" hidden>
-                                <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${product.category.categoryId==3}">
-                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
-                                            <div class="product product-7 text-center">
-                                                <figure class="product-media">
-                                                    <span class="product-label label-new">New</span>
-                                                    <a href="shop">
-                                                        <img src="assets/images/products/mobile.jpg" alt="Product image" class="product-image">
-                                                    </a>
-
-                                                    <div class="product-action-vertical">
-                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    </div><!-- End .product-action-vertical -->
-
-                                                    <div class="product-action">
-                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                    </div><!-- End .product-action -->
-                                                </figure><!-- End .product-media -->
-
-                                                <div class="product-body">
-                                                    <div class="product-cat">
-                                                        <a href="#">${product.category.categoryName}</a>
-                                                    </div><!-- End .product-cat -->
-                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
-                                                    <div class="product-price">
-                                                            ${product.price} EGP
-                                                    </div><!-- End .product-price -->
-                                                    <div class="ratings-container">
-                                                        <div class="ratings">
-                                                            <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
-                                                        </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( 2 Reviews )</span>
-                                                    </div><!-- End .rating-container -->
-
-                                                    <div class="product-nav product-nav-thumbs">
-                                                        <a href="#" class="active">
-                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
-                                                        </a>
-
-                                                        <a href="#">
-                                                            <img src="https://amazonya.s3.eu-central-1.amazonaws.com/cart/product-1.jpg" alt="product desc">
-                                                        </a>
-                                                    </div><!-- End .product-nav -->
-                                                </div><!-- End .product-body -->
-                                            </div><!-- End .product -->
-                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                    </c:if>
-                                </c:forEach>
-
-                            </div>
-                            <div class="row justify-content-center" id="watchContainer" hidden>
-                                <c:forEach items="${allProducts}" var="product">
-                                    <c:if test="${product.category.categoryId==1}">
-                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
-                                            <div class="product product-7 text-center">
-                                                <figure class="product-media">
-                                                    <span class="product-label label-new">New</span>
-                                                    <a href="shop">
-                                                        <img src="assets/images/products/watch.png" alt="Product image" class="product-image">
-                                                    </a>
-
-                                                    <div class="product-action-vertical">
-                                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    </div><!-- End .product-action-vertical -->
-
-                                                    <div class="product-action">
-                                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                    </div><!-- End .product-action -->
-                                                </figure><!-- End .product-media -->
-
-                                                <div class="product-body">
-                                                    <div class="product-cat">
-                                                        <a href="#">${product.category.categoryName}</a>
-                                                    </div><!-- End .product-cat -->
-                                                    <h3 class="product-title"><a href="product.html">${product.description}</a></h3><!-- End .product-title -->
-                                                    <div class="product-price">
-                                                            ${product.price} EGP
-                                                    </div><!-- End .product-price -->
-                                                    <div class="ratings-container">
-                                                        <div class="ratings">
-                                                            <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
-                                                        </div><!-- End .ratings -->
-                                                        <span class="ratings-text">( 2 Reviews )</span>
-                                                    </div><!-- End .rating-container -->
-
-                                                    <div class="product-nav product-nav-thumbs">
-                                                        <a href="#" class="active">
-                                                            <img src="assets/images/products/product-4-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc">
-                                                        </a>
-
-                                                        <a href="#">
-                                                            <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc">
-                                                        </a>
-                                                    </div><!-- End .product-nav -->
-                                                </div><!-- End .product-body -->
-                                            </div><!-- End .product -->
-                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                    </c:if>
-                                </c:forEach>
-
-                            </div>
                         </div><!-- End .products -->
 
 
@@ -1137,6 +1027,29 @@
         }
 
     };
+    function sortProducts(){
+        $("#productsContainer").hide();
+        $("#sortByPriceAsc").hide();
+        $("#sortByPriceDesc").hide();
+        $("#sortByDate").hide();
+        let select = document.getElementById("sortby");
+        console.log(select.value === "priceAsc");
+        if (select.value === "priceAsc") {
+            console.log("msh fahem")
+            $("#sortByPriceAsc").attr("hidden",false);
+            $("#sortByPriceAsc").show();
+
+        }
+        if (select.value === "priceDesc") {
+            $("#sortByPriceDesc").attr("hidden",false);
+            $("#sortByPriceDesc").show();
+            }
+        if (select.value === "date") {
+            $("#sortByDate").attr("hidden",false);
+            $("#sortByDate").show();
+        }
+        if (select.value === "oldest") {$("#productsContainer").show();}
+    }
     // function getPageProducts(pageNumber) {
     //     if (window.XMLHttpRequest) {
     //         request = new XMLHttpRequest();

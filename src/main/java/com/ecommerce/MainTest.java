@@ -1,5 +1,6 @@
 package com.ecommerce;
 
+import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.repositories.entites.Role;
@@ -8,6 +9,7 @@ import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
 import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 import com.ecommerce.services.ProductService;
 import com.ecommerce.services.impls.ProductServiceImpl;
+import com.ecommerce.tld.util.ProductListSorting;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -25,7 +27,14 @@ public class MainTest {
         List<String> categoriesIds = new ArrayList<>();
         categoriesIds.add("1");
         categoriesIds.add("3");
-        System.out.println(productRepository.getFilteredProducts(1,5,categoriesIds));
+        //System.out.println(productRepository.getFilteredProducts(1,5,categoriesIds));
+        ProductService productService = ProductServiceImpl.getInstance();
+        List<ProductBean> list = productService.getProductsOfPage(1);
+                List<ProductBean> sortedList =  ProductListSorting.sortByPriceAsc(list);
+                //sortedList.forEach(p-> System.out.println(p.getPrice()));
+                System.out.println("=====================================================================");
+                sortedList = ProductListSorting.sortByDate(list);
+                sortedList.forEach(p-> System.out.println(p.getCreationDate()));
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("amazonya");
 //        EntityManager em = emf.createEntityManager();
 //        System.out.println(productRepository.getSinglePageProducts(2,20));
