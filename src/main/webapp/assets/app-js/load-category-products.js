@@ -14,35 +14,25 @@ $('#loadMoreBtn').click(function () {
 
 
 function sendData(form_data) {
-    $('#submitBtn').prop('disabled', true);
-    console.log("asdasdAsdASdaSd");
-    console.log(JSON.stringify(form_data));
+    $('#loadMoreBtn').prop('disabled', true);
     $.ajax({
         url: 'categorized-product',
         type: 'POST',
         contentType: 'application/x-www-form-urlencoded',
         data: form_data,
         success: function (data) {
-            console.log(data);
             if(data=='noMore'){
-                console.log('aaaaasasdASa');
-                $('#submitBtn').prop('disabled', true);
+                $('#loadMoreBtn').prop('disabled', true);
             }else{
                 nextLoadPage++;
 
                 $('#loadMoreBtn').prop('disabled', false);
                 $('#productsDiv').append(data);
             }
-            /*let resp = JSON.parse(data);
-            if (resp.state === 'success') {
-                console.log(data);
-            } else {
-                showSwal('warning-message-and-cancel', resp.messages.join(' \n '));
-            }
-*/
+
         },
         error: function (e) {
-            $('#submitBtn').prop('disabled', false);
+            $('#loadMoreBtn').prop('disabled', false);
             $('#loader').modal('hide');
             console.log("ERROR : ", e);
             showSwal('warning-message-and-cancel', e);

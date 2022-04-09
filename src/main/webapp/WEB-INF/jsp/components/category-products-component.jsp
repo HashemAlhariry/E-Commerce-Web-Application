@@ -72,7 +72,7 @@
                 <h3 class="product-title"><a href="product.html">${product.name}</a></h3>
                 <!-- End .product-title -->
                 <div class="product-price">
-                    $${product.price}
+                    ${product.price} EGP
                 </div><!-- End .product-price -->
                 <div class="ratings-container">
                     <div class="ratings">
@@ -86,4 +86,18 @@
     </div>
     <!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 </c:forEach>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.hoverIntent.min.js"></script>
+<script src="assets/js/jquery.waypoints.min.js"></script>
+<script src="assets/js/superfish.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/bootstrap-input-spinner.js"></script>
+<script src="assets/js/jquery.plugin.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/jquery.countdown.min.js"></script>
+<!-- Main JS File -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/demos/demo-4.js"></script>
 </body>
