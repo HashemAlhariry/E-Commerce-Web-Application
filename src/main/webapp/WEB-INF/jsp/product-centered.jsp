@@ -53,12 +53,12 @@
                     </ol>
 
                     <nav class="product-pager ml-auto" aria-label="Product">
-                        <a class="product-pager-link product-pager-prev" href="/single-product-page?productId=${singleProduct.id-1}" aria-label="Previous" tabindex="-1">
+                        <a class="product-pager-link product-pager-prev" href="/amazonya/single-product-page?productId=${singleProduct.id-1}" aria-label="Previous" tabindex="-1">
                             <i class="icon-angle-left"></i>
                             <span>Prev</span>
                         </a>
 
-                        <a class="product-pager-link product-pager-next" href="/single-product-page?productId=${singleProduct.id+1}" aria-label="Next" tabindex="-1">
+                        <a class="product-pager-link product-pager-next" href="/amazonya/single-product-page?productId=${singleProduct.id+1}" aria-label="Next" tabindex="-1">
                             <span>Next</span>
                             <i class="icon-angle-right"></i>
                         </a>
