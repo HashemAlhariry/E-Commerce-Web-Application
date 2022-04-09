@@ -42,11 +42,17 @@ public class SingleProductPageServlet extends HttpServlet {
         @Override
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             ProductEntity singleProduct = productService.findById(Long.parseLong(request.getParameter("productId")));
-            CategoryEntity category = categoryService.findById(Integer.parseInt(String.valueOf(singleProduct.getId())));
-            CategoryBean categoryBean = CategoryMapper.INSTANCE.categoryEntityToBean(category);
             ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(singleProduct);
+
+            int cId = Integer.parseInt(String.valueOf(singleProduct.getCategory().getCategoryId()));
+            CategoryEntity category = categoryService.findById(cId);
+            CategoryBean categoryBean = CategoryMapper.INSTANCE.categoryEntityToBean(category);
+
+            List<ProductEntity> relatedProducts = productService.relatedProducts(cId);
+            List<ProductBean> relatedProductBeans = ProductMapper.INSTANCE.listEntitiesToBeans(relatedProducts);
             request.setAttribute("singleProduct",productBean);
             request.setAttribute("category",categoryBean);
+            request.setAttribute("relatedProducts",relatedProductBeans);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "product-centered.jsp");
             requestDispatcher.forward(request, response);
 

@@ -29,4 +29,7 @@ public interface ProductService {
     List<ProductBean> getFilteredProductsBeans(int pageNumber, int recordsPerPage, List<String> categoriesIds);
     long getProductsCountInCategories(String...categoriesIdArr);
 
+    List<ProductEntity> relatedProducts(int id);
+
+
 }
