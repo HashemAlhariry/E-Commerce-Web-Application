@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,9 +23,9 @@ public class AddProductBean {
     int quantity;
     int categoryId;
     @Size(min = 1,message = "Product images size must be 1 at least")
-    Collection<Part> images;
+    List<Part> images;
 
-    public AddProductBean(String name, String description, BigDecimal price, int quantity, int categoryId, Collection<Part> images) {
+    public AddProductBean(String name, String description, BigDecimal price, int quantity, int categoryId, List<Part> images) {
         this.name = name;
         this.description = description;
         this.price = price;

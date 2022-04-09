@@ -27,7 +27,7 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
 
     @Override
     public List<ProductEntity> getLast10() {
-        return (List<ProductEntity>) entityManager.createNamedQuery("reversed ids").setMaxResults(10).getResultList();
+        return (List<ProductEntity>) entityManager.createNamedQuery("newArrivals").setMaxResults(10).getResultList();
     }
 
     @Override

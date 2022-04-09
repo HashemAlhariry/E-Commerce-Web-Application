@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Melody Admin</title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/admin/vendors/iconfonts/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.addons.css">
@@ -29,6 +30,9 @@
 <div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
     <%@ include file="../../includes/header.jsp" %>
+
+
+
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_settings-panel.html -->
@@ -47,6 +51,19 @@
                         </ol>
                     </nav>
                 </div>
+
+                <!-- Load Model modal -->
+<%--                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>--%>
+
+                <div class="modal fade bd-example-modal-sm" id="loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="loader-demo-box">
+                                <div class="pixel-loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row grid-margin">
                     <div class="col-lg-12">
                         <div class="card">
@@ -55,6 +72,7 @@
                                 <form class="cmxform" id="productForm" method="post" action="admin-add-product"
                                       enctype="multipart/form-data">
                                     <fieldset>
+
                                         <div class="form-group">
                                             <label for="name">Name</label>
                                             <input id="name" class="form-control" name="name" minlength="2" maxlength="50" type="text"

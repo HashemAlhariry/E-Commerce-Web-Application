@@ -9,8 +9,7 @@
             rules: {
                 name: {
                     required: true,
-                    minlength: 2/*,
-                    maxLength:50*/
+                    minlength: 2
                 },
                 price: {
                     required: true,
@@ -25,16 +24,12 @@
                 },
                 img1: {
                     required: true
-                }/*,
-                description: {
-                    maxLength: 200
-                }*/
+                }
             },
             messages: {
                 name: {
                     required: "Please enter the product name",
-                    minlength: "Your product must consist of at least 5 characters"/*,
-                    maxLength :"This field size is 50"*/
+                    minlength: "Your product must consist of at least 5 characters"
                 },
                 price: {
                     required: "Please enter the product price",
@@ -49,15 +44,10 @@
                 },
                 img1: {
                     required: "Please enter the main product image"
-                }/*,
-                description: {
-                    maxLength :"This field size is 150"
-                }*/
+                }
 
             },
             errorPlacement: function (label, element) {
-                console.log(element);
-                console.log(element.attr("type"));
                 label.addClass('mt-2 text-danger');
 
                 if(element.attr("type") === "file"){

@@ -1,9 +1,18 @@
 package com.ecommerce.repositories.entites;
 
 public enum ProductState {
-    NEW,
-    OUT_OF_STOCK,
-    ON_SALE,
-    BEST_SELLER,
-    ARCHIVED;
+    NEW("New"),
+    OUT_OF_STOCK("Out of stock"),
+    ON_SALE("On sale"),
+    BEST_SELLER("Best seller"),
+    ARCHIVED("Archived");
+    private final String name;
+
+    ProductState(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
