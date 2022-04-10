@@ -6,4 +6,5 @@ public interface LoginServices {
 
 
     UserBean findUserByEmail(String email);
+    UserBean findUserById(int id);
 }

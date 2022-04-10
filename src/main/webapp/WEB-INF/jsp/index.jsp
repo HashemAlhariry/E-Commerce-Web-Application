@@ -181,7 +181,7 @@
                                     }
                                 }
                             }'>
-                            <div id="hiddenCart" >${requestScope.cartItemBeans}</div>
+                            <div id="hiddenCart" >${sessionScope.cartItemBeans}</div>
                             <div id="loggedInCheck" >${sessionScope.loggedIn}</div>
                             <c:forEach var="product" items="${newArrivals}">
 

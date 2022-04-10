@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 
 <!-- molla/login.html  22 Nov 2019 10:04:03 GMT -->
@@ -494,6 +497,8 @@
         if(!navigator.cookieEnabled) {
             window.location.href = "un-enabled-cookie";
         }else{
+            addToCart(-1);
+            addToWishList(-1);
             insertCartInForm();
         }
 
