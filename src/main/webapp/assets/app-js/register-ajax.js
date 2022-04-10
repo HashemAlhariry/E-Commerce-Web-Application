@@ -30,10 +30,10 @@ function sendData(form_data) {
                 window.location.href = "login";
             }
             else{
-
-
+                $.each(data.messages, function (key, value) {
+                    $('#errorMessage').append("<li style='text-decoration-style: solid; color: red'>"+value+"</li>");
+                })
             }
-
         },
         error: function (e) {
             $('#loadMoreBtn').prop('disabled', false);

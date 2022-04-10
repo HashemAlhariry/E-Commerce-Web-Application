@@ -167,7 +167,9 @@
 											</div><!-- End .custom-checkbox -->
 							    		</div><!-- End .form-footer -->
 
-                                        <div class="form-group"></div><!-- End .form-group -->
+                                        <div class="form-group">
+                                            <ul id="errorMessage"></ul>
+                                        </div><!-- End .form-group -->
 
 							    	</form>
 							    	<div class="form-choice">
