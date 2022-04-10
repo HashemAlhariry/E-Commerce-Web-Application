@@ -1136,6 +1136,9 @@
                 window.document.getElementById("watchCatCheckBox").checked = true;
             }
         }
+        addToCart(-1)
+        addToWishList(-1)
+
 
     };
     // function getPageProducts(pageNumber) {

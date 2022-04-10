@@ -1,7 +1,13 @@
 package com.ecommerce;
 
+import com.ecommerce.presentation.beans.CartItemBean;
+import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.CartID;
 import com.ecommerce.repositories.impl.CartRepositoryImpl;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainTest {
     public static void main(String[] args) {

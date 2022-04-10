@@ -40,7 +40,7 @@ public class SignUpServlet extends HttpServlet {
 
         SignUpBean signUpBean = registerServicesImpl.registerUser(userRegistrationBean);
         resp.sendRedirect("login");
-        // no need for setting the attribute on the session after registration
+        // no need for setting the attribute on the session after registration //TODO
         req.getSession().setAttribute("userDto", signUpBean);
 
     }

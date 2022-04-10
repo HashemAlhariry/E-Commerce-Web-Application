@@ -3,6 +3,8 @@ package com.ecommerce.presentation.beans;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Getter @Setter
 public class CartItemBean {
     private ProductBean productBean;
@@ -30,5 +32,18 @@ public class CartItemBean {
                 ", requiredQuantity=" + requiredQuantity +
                 ", state=" + state +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CartItemBean that = (CartItemBean) o;
+        return productBean.equals(that.productBean);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productBean);
     }
 }

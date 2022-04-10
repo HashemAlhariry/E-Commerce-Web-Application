@@ -119,7 +119,7 @@
             <div class="container">
                 <h2 class="title text-center mb-4">Explore Popular Categories</h2><!-- End .title text-center -->
                 <h2>
-                    hahahahahahahahaahhahahah  ${sessionScope.userBean.email}
+                    ${sessionScope.userBean.email}
                 ${sessionScope.userBean.pass}
                 ${sessionScope.userBean.role}</h2>
                 <div class="cat-blocks-container">
@@ -181,6 +181,8 @@
                                     }
                                 }
                             }'>
+                            <div id="hiddenCart" >${requestScope.cartItemBeans}</div>
+                            <div id="loggedInCheck" >${sessionScope.loggedIn}</div>
                             <c:forEach var="product" items="${newArrivals}">
 
 
@@ -202,6 +204,7 @@
                                                title="Quick view"><span>quick view</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
+
 
                                     <div class="product-body">
                                         <div class="product-cat">
@@ -542,6 +545,24 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/demos/demo-4.js"></script>
         <script>
+            window.onload= (event) => {
+                console.log("on documentLoad")
+                if(!navigator.cookieEnabled) {
+                    window.location.href = "un-enabled-cookie";
+                }else{
+                    console.log("on documentLoad else condition");
+                    hiddenCart = document.getElementById("hiddenCart");
+                    loggedIn = document.getElementById("loggedInCheck");
+                    console.log(hiddenCart);
+                    if(loggedIn.textContent === "true" && hiddenCart.textContent !== null && hiddenCart.textContent !== "" && loggedIn !== null){
+                        localStorage.setItem("cartItems",hiddenCart.textContent);
+                        hiddenCart.remove();
+                    }
+                    addToCart(-1);
+                    addToWishList(-1);
+                }
+
+            };
             function addToCart(productId){
                 //get all available id in local storage
                 //update list

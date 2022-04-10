@@ -67,14 +67,17 @@ public class LoginUserServlet extends HttpServlet {
                     //get user cart from json local database
                     List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCart(cart,cartService);
 
+
                     //get user cart from Database
                     List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());
+
                     List<CartItemBean> cartItemBeans = mergeUserCarts(cartItemBeanListFromJSPJson,cartItemBeanListFromDataBase);
                     List<ViewCartItem> viewCartItems = fromCartItemBeansToViewCartItems(cartItemBeans);
                     ObjectMapper objectMapper = new ObjectMapper();
                     String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
 
-                    request.setAttribute("cartItemBeans",viewCartItems);
+                    request.setAttribute("cartItemBeans",json);
+                    request.getSession().setAttribute("loggedIn","true");
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "index.jsp");
                     requestDispatcher.forward(request, response);
                 }
