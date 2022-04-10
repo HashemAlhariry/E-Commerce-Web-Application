@@ -10,7 +10,7 @@ import jakarta.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Long> implements UserRepository {
+public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> implements UserRepository {
 
     private static final UserRepositoryImpl INSTANCE = new UserRepositoryImpl();
     protected final EntityManager entityManager = Connector.getInstance().getEntityManager();

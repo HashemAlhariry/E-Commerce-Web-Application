@@ -62,9 +62,14 @@ public class OrderDetailsServlet extends HttpServlet {
                 if(cartItem.getRequiredQuantity()<=cartItem.getProductBean().getQuantity()){
                     subtotal=subtotal.add( cartItem.getProductBean().getPrice().multiply(BigDecimal.valueOf(cartItem.getRequiredQuantity())) );
                     availabilityProducts.add("Required quantity Product for " + cartItem.getProductBean().getName() + " are " + cartItem.getRequiredQuantity());
+                    //availabilityProducts.add("Required quantity Product for " + cartItem.getProductBean().getName() + " are " + cartItem.getRequiredQuantity());
+                    cartItem.getProductBean().setName("Required quantity Product for " + cartItem.getProductBean().getName() + " are " + cartItem.getRequiredQuantity());
                 }else{
                     subtotal=subtotal.add( cartItem.getProductBean().getPrice().multiply(BigDecimal.valueOf(cartItem.getProductBean().getQuantity())) );
                     availabilityProducts.add("Only available Product for " + cartItem.getProductBean().getName() + " are " + cartItem.getProductBean().getQuantity());
+                    //availabilityProducts.add("Only available Product for " + cartItem.getProductBean().getName() + " are " + cartItem.getProductBean().getQuantity());
+                    cartItem.getProductBean().setName("Only available Product for " + cartItem.getProductBean().getName() + " are " + cartItem.getProductBean().getQuantity());
+
                 }
             }
 

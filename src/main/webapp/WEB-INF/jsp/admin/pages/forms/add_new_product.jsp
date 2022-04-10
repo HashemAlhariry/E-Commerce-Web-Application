@@ -110,7 +110,7 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <h4 class="card-title">Main photo</h4>
-                                                            <input id="img1" name="img1" type="file" class="dropify" required accept="image/jpeg, image/png, image/tiff, image/bmp"/>
+                                                            <input id="img1" name="img1" type="file" class="dropify" required accept="image/jpeg, image/png, image/tiff, image/bmp" value="https://amazonya.s3.eu-central-1.amazonaws.com/60ff8e50-3b00-4db2-b17a-0d6a6b0f1e353-apple61i8Vjb17SL._AC_SX679_.jpg"/>
                                                             <div id="img1-error"></div>
                                                         </div>
                                                     </div>

@@ -1,3 +1,6 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,32 +54,35 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">jquery-steps wizard</h4>
-                  <form id="example-form" action="#">
+                  <form id="example-form" class="signupForm" method="get" action="admin-update-product">
                     <div>
                       <h3>Product Details</h3>
                       <section>
-                        <h4>Account</h4>
+                        <h4>Product Name</h4>
                         <div class="form-group">
-                          <label>Email address</label>
-                          <input type="email" class="form-control" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
+                          <label>Product Id : ${editProduct.id} </label>
+                          <input id="productId" type="hidden" name="productId" value="${editProduct.id}" class="form-control" aria-describedby="emailHelp"
+                                 placeholder="Product Id">
+                          <label>Name </label>
+                          <input id="productName" type="text" name="productName" value="${editProduct.name}" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Product Name">
+                        </div>
+                        <div class="form-group">
+                          <label>Quantity </label>
+                          <input id="productQuantity" type="number" name="productQuantity" value="${editProduct.quantity}" class="form-control" aria-describedby="emailHelp"
+                                 placeholder="Product Quantity">
                         </div>
                         <div class="form-group">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text bg-primary text-white">L.E</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                            <div class="input-group-append">
-                              <span class="input-group-text">.00</span>
-                            </div>
+                            <input id="productPrice" type="number" name="productPrice" value="${editProduct.price}" class="form-control" aria-label="Amount (to the nearest dollar)">
                           </div>
                         </div>
                         <div class="form-group">
                           <label>Description</label>
-                          <textarea class="form-control" rows="3"></textarea>
+                          <textarea class="form-control" name="productDescription" rows="3">${editProduct.description}</textarea>
                         </div>
                       </section>
                       <h3>Imgaes</h3>
@@ -84,11 +90,35 @@
                         <h4>Image</h4>
                         <div class="form-group">
                           <div class="row">
-                            <div class="col-lg-6 grid-margin stretch-card">
+                            <div class="col-lg-4 grid-margin stretch-card">
                               <div class="card">
                                 <div class="card-body">
-                                  <h4 class="card-title">You can add a max file size</h4>
-                                  <input type="file" class="dropify" data-max-file-size="30kb" />
+                                  <h4 class="card-title">Profile Image</h4>
+                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4 grid-margin stretch-card">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">Image2</h4>
+                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4 grid-margin stretch-card">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">Image 3</h4>
+                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4 grid-margin stretch-card">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h4 class="card-title">Image 4</h4>
+                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
                                 </div>
                               </div>
                             </div>
@@ -101,14 +131,22 @@
                         <h4>Category</h4>
                         <div class="form-group">
                           <label>Single select box using select 2</label>
-                          <select class="js-example-basic-single w-100">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AM">America</option>
-                            <option value="CA">Canada</option>
-                            <option value="RU">Russia</option>
+                          <select name="productCategory" class="js-example-basic-single w-100">
+                            <option value="1">Mobile</option>
+                            <option value="2">Smart Watches</option>
+                            <option value="3">LapTop</option>
                           </select>
                         </div>
+                          <h4>State</h4>
+                          <div class="form-group">
+                            <select name="productState" class="js-example-basic-single w-100" data-value="${editProduct.state}">
+                              <option value="NEW">NEW</option>
+                              <option value="OUT_OF_STOCK">OUT OF STOKE</option>
+                              <option value="ON_SALE">ON SALE</option>
+                              <option value="BEST_SELLER">BEST SELLER</option>
+                              <option value="ARCHIVED">ARCHIVED</option>
+                            </select>
+                          </div>
                       </section>
                       <h3>Finish</h3>
                       <section>
@@ -121,6 +159,7 @@
                         </div>
                       </section>
                     </div>
+                    <input class="btn btn-success" type="submit" value="update">
                   </form>
                 </div>
               </div>
@@ -156,8 +195,10 @@
   <script src="assets/admin/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="assets/admin/js/edit-product-validation.js"></script>
   <script src="assets/admin/js/wizard.js"></script>
   <script src="assets/admin/js/dropify.js"></script>
+  <script src="assets/admin/js/jquery-file-upload.js"></script>
 
   <!-- End custom js for this page-->
 </body>

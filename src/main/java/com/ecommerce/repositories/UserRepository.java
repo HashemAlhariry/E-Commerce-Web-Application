@@ -1,12 +1,11 @@
 package com.ecommerce.repositories;
- 
-import com.ecommerce.repositories.entites.Role;
+
 import com.ecommerce.repositories.entites.UserEntity;
 import jakarta.persistence.NoResultException;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface UserRepository extends Repository<UserEntity,Integer>{
 
     
     List<UserEntity> getUserByEmail(String email);

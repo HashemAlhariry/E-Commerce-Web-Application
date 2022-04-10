@@ -81,13 +81,13 @@
                                             <td class="product-col">
                                                 <div class="product">
                                                     <figure class="product-media">
-                                                        <a href="#">
-                                                            <img src="${cartItem.productBean.images.iterator().next()} " alt="Product image">
+                                                        <a href="single-product-page?productId=${cartItem.productBean.id}">
+                                                            <img src="${cartItem.productBean.mainImage} " alt="Product image">
                                                         </a>
                                                     </figure>
 
                                                     <h3 class="product-title">
-                                                        <a href="#">${cartItem.productBean.name}</a>
+                                                        <a href="single-product-page?productId=${cartItem.productBean.id}">${cartItem.productBean.name}</a>
                                                     </h3><!-- End .product-title -->
                                                 </div><!-- End .product -->
                                             </td>

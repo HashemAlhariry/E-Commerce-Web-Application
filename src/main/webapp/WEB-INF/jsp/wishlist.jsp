@@ -76,13 +76,13 @@
 								<td class="product-col">
 									<div class="product">
 										<figure class="product-media">
-											<a href="#">
-												<img src=${wishlistProduct.images.iterator().next()} alt="assets/images/products/table/product-2.jpg">
+											<a href="single-product-page?productId=${wishlistProduct.id}">
+												<img src=${wishlistProduct.mainImage} alt="assets/images/products/table/product-2.jpg">
 											</a>
 										</figure>
 
 										<h3 class="product-title">
-											<a href="#">${wishlistProduct.name}</a>
+											<a href="single-product-page?productId=${wishlistProduct.id}">${wishlistProduct.name}</a>
 										</h3><!-- End .product-title -->
 									</div><!-- End .product -->
 								</td>

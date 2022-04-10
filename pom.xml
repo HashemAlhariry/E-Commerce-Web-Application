@@ -86,6 +86,32 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.8.0-beta4</version>
+        </dependency>
+        <!-- email -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.5</version>
+        </dependency>
+
+
+        <!-- Hibernate Validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${org.hibernate.validator.version}</version>
+        </dependency>
 
         <!-- Mappers  -->
         <dependency>
@@ -249,7 +275,7 @@
                 <configuration>
                     <username>admin</username>
                     <password>admin1234</password>
-                    <url>http://localhost:8088/manager/text</url>
+                    <url>http://localhost:9191/manager/text</url>
                     <path>/amazonya</path>
 
 

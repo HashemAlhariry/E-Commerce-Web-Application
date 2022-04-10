@@ -17,6 +17,7 @@ import com.ecommerce.utils.S3Util;
 import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.http.Part;
 
+import java.math.BigDecimal;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
@@ -100,7 +101,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public boolean delete(ProductEntity entity) {
-        return false;
+        return productRepository.delete(entity);
     }
 
     @Override
@@ -115,7 +116,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductEntity update(ProductEntity entity) {
-        return null;
+        System.out.println("inside th repo"); return productRepository.update(entity);
     }
 
     @Override
@@ -173,8 +174,8 @@ public class ProductServiceImpl implements ProductService {
         int countOfProductsPerPage = 12;
         int numberOfPages = (int)Math.ceil((float)totalCount/countOfProductsPerPage);
         if (pageNumber <= numberOfPages){
-//            List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageProducts(pageNumber,countOfProductsPerPage);
-            List<ProductEntity> filteredProductEntities =  productRepository.getFilteredProducts(pageNumber,recordsPerPage,categoriesIds);
+            //List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageProducts(pageNumber,countOfProductsPerPage);
+            List<ProductEntity> filteredProductEntities =  productRepository.getFilteredProducts(pageNumber,countOfProductsPerPage,categoriesIds);
             List<ProductBean> productBeansOfSinglePage = ProductMapper.INSTANCE.listEntitiesToBeans(filteredProductEntities);
             return productBeansOfSinglePage;
         }else{
@@ -184,7 +185,19 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public long getProductsCountInCategories(String...categoriesIdArr) {
-        List<String> categoriesId = Arrays.asList(categoriesIdArr);
+        java.util.List<String> categoriesId = java.util.Arrays.asList(categoriesIdArr);
         return productRepository.countProductsOfCertainCategories(categoriesId);
     }
+    @Override
+    public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {return productRepository.findProductByPrice(productPrice);}
+
+    @Override
+    public List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id) {
+        return productRepository.findProductByPriceAndCategoryId(productPrice,id);}
+
+    @Override
+    public List<ProductEntity> relatedProducts(int id) {
+        return productRepository.relatedProducts(id);
+    }
+
 }

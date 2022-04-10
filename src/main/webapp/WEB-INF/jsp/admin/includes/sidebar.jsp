@@ -19,13 +19,13 @@
 <%--            </a>--%>
 <%--        </li>--%>
         <li class="nav-item">
-            <a class="nav-link" href="pages/samples/order_viewer.html">
+            <a class="nav-link" href="admin-order-view">
                 <i class="fas fa-bell menu-icon"></i>
                 <span class="menu-title">Orders</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/tables/users.html">
+            <a class="nav-link" href="admin-view-users">
                 <i class="fas fa-minus-square menu-icon"></i>
                 <span class="menu-title">Users</span>
             </a>

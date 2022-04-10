@@ -4,8 +4,11 @@ package com.ecommerce.repositories.impl;
 import com.ecommerce.repositories.ProductRepository;
 import com.ecommerce.repositories.entites.ProductEntity;
 
+import com.ecommerce.repositories.entites.ProductState;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+
+import java.math.BigDecimal;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -44,6 +47,32 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
         query.setParameter("product_name", productName);
         return  query.getResultList();
     }
+
+    @Override
+    public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {
+        TypedQuery<ProductEntity> query = entityManager.createNamedQuery("findProductByPrice" , ProductEntity.class);
+        query.setParameter("product_price", productPrice);
+        return  query.getResultList();
+
+    }
+
+    @Override
+    public List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id) {
+        TypedQuery<ProductEntity> query = entityManager.createNamedQuery("findProductByPriceAndCategoryId" , ProductEntity.class);
+        query.setParameter("product_price", productPrice);
+        query.setParameter("category_id", id);
+        return  query.getResultList();
+    }
+
+    @Override
+    public boolean delete(ProductEntity entity) {
+        entity.setState(ProductState.ARCHIVED);
+        entityManager.getTransaction().begin();
+        entity=entityManager.merge(entity);
+        entityManager.getTransaction().commit();
+        return true;
+    }
+
 
 //    @Override
 //    public int findAllProductsNumber() {
@@ -102,5 +131,12 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
 
         long result =  entityManager.createQuery(criteriaQuery).getSingleResult();
         return result;
+    }
+
+    @Override
+    public List<ProductEntity> relatedProducts(int id) {
+        TypedQuery<ProductEntity> query = entityManager.createNamedQuery("relatedProducts", ProductEntity.class);
+        query.setParameter("category_id", id);
+        return  query.setMaxResults(4).getResultList();
     }
 }

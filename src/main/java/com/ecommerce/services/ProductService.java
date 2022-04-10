@@ -6,6 +6,7 @@ import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductService {
@@ -21,7 +22,14 @@ public interface ProductService {
     List<ProductBean> getProductsOfPage(int pageNumber);
     int getAllProductsCount();
     List<ProductEntity> findProductByName(String productName);
+    List<ProductEntity> findProductByPrice(BigDecimal productPrice);
+    List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id);
+
+
     List<ProductBean> getFilteredProductsBeans(int pageNumber, int recordsPerPage, List<String> categoriesIds);
     long getProductsCountInCategories(String...categoriesIdArr);
+
+    List<ProductEntity> relatedProducts(int id);
+
 
 }

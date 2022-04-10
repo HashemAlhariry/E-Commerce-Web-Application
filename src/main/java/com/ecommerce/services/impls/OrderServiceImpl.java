@@ -3,6 +3,7 @@ package com.ecommerce.services.impls;
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.presentation.beans.OrderBean;
 import com.ecommerce.presentation.beans.OrderDetailsBean;
+import com.ecommerce.repositories.OrderRepository;
 import com.ecommerce.repositories.entites.*;
 import com.ecommerce.repositories.impl.OrderDetailsRepositoryImpl;
 import com.ecommerce.repositories.impl.OrderRepositoryImpl;
@@ -15,6 +16,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+
+
+
+
 public class OrderServiceImpl implements OrderService {
 
     private OrderServiceImpl(){}
@@ -22,7 +27,37 @@ public class OrderServiceImpl implements OrderService {
     public static OrderServiceImpl getInstance(){
         return INSTANCE;
     }
+    private final OrderRepository orderRepository = OrderRepositoryImpl.getInstance();
 
+    @Override
+    public OrderEntity save(OrderEntity entity) {
+        return null;
+    }
+
+    @Override
+    public boolean delete(OrderEntity entity) {
+        return false;
+    }
+
+    @Override
+    public OrderEntity findById(int id) {
+        return orderRepository.findById(id);
+    }
+
+    @Override
+    public List<OrderEntity> findAll() {
+        return orderRepository.findAll();
+    }
+
+    @Override
+    public List<OrderEntity> findAllByUserId(int userId) {
+        return orderRepository.findAllByUserId(userId);
+    }
+
+    @Override
+    public OrderEntity update(OrderEntity entity) {
+        return null;
+    }
 
     // update here
     @Override
