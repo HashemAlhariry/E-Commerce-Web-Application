@@ -58,9 +58,9 @@
                                 </figure>
 
                                 <h3 class="product-title">
-                                    <a href="#">${cartItem.productBean.name}</a>
-                                </h3><!-- End .product-title -->
-                            </div><!-- End .product -->
+                                    <a href="single-product-page?productId=${product.id}">${cartItem.productBean.name}</a>
+                                </h3>
+                            </div>
                         </td>
                     </tr>
                 </c:forEach>

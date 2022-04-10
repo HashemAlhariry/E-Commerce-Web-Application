@@ -188,11 +188,16 @@ public class ProductServiceImpl implements ProductService {
         java.util.List<String> categoriesId = java.util.Arrays.asList(categoriesIdArr);
         return productRepository.countProductsOfCertainCategories(categoriesId);
     }
-
     @Override
     public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {return productRepository.findProductByPrice(productPrice);}
 
     @Override
     public List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id) {
         return productRepository.findProductByPriceAndCategoryId(productPrice,id);}
+
+    @Override
+    public List<ProductEntity> relatedProducts(int id) {
+        return productRepository.relatedProducts(id);
+    }
+
 }

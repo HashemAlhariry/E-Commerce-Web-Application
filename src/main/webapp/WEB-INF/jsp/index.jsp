@@ -189,7 +189,7 @@
                                 <div class="product product-2">
                                     <figure class="product-media">
                                         <span class="product-label label-circle label-top"><c:out value="${product.state}"/></span>
-                                        <a href="product.html">
+                                        <a href="single-product-page?productId=${product.id}">
                                             <img src="${product.mainImage}" alt="Product image"
                                                  class="product-image" style="height:218px">
                                         </a>

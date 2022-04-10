@@ -1,10 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- molla/cart.html  22 Nov 2019 09:55:06 GMT -->
+<!-- molla/login.html  22 Nov 2019 10:04:03 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,160 +44,154 @@
 <body>
 <div class="page-wrapper">
     <%@ include file="includes/header.jsp" %>
-
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
-            <div class="container">
-                <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
-            </div><!-- End .container -->
-        </div><!-- End .page-header -->
-        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="home">Home</a></li>
-                    <li class="breadcrumb-item"><a href="shop">Shop</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Login</li>
                 </ol>
             </div><!-- End .container -->
         </nav><!-- End .breadcrumb-nav -->
+        <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('https://engineering.fb.com/wp-content/uploads/2020/10/Nemo_hero.jpg')">
+            <div class="container">
+                <h1 background-color="black"> Update Your Profile </h1>
+                <div class="form-box">
+                    <div class="form-tab">
+<%--                        <ul class="nav nav-pills nav-fill" role="tablist">--%>
+<%--                            <div class="form-tab">--%>
+<%--                                <ul class="nav nav-pills nav-fill" role="tablist">--%>
+<%--                                    <li class="nav-item">--%>
+<%--                                        <a class="nav-link" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false"></a>--%>
+<%--                                    </li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                        <div class="tab-content">--%>
+<%--                            <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">--%>
+<%--                                <form action="login" method="POST">--%>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="signup-email-2">email address *</label>--%>
+<%--                                        <input type="text" class="form-control" id="signup-email-2" name="signup-email" required>--%>
+<%--                                    </div><!-- End .form-group -->--%>
 
-        <div class="page-content">
-            <div class="cart" id="cart">
-                <c:if test="${!empty(cartItemBeans) }">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <table class="table table-cart table-mobile">
-                                    <thead>
-                                    <tr>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="signup-password-2">Password *</label>--%>
+<%--                                        <input type="password" class="form-control" id="signup-password-2" name="signup-password" required>--%>
+<%--                                    </div><!-- End .form-group -->--%>
 
-                                    <tbody>
-                                    <c:forEach items="${cartItemBeans}" var="cartItem" >
-                                        <tr id="productRow${cartItem.productBean.id}">
-                                            <td class="product-col">
-                                                <div class="product">
-                                                    <figure class="product-media">
-                                                        <a href="single-product-page?productId=${cartItem.productBean.id}">
-                                                            <img src="${cartItem.productBean.mainImage} " alt="Product image">
-                                                        </a>
-                                                    </figure>
+<%--                                    <div class="form-footer">--%>
+<%--                                        <button type="submit" class="btn btn-outline-primary-2">--%>
+<%--                                            <span>LOG IN</span>--%>
+<%--                                            <i class="icon-long-arrow-right"></i>--%>
+<%--                                        </button>--%>
 
-                                                    <h3 class="product-title">
-                                                        <a href="single-product-page?productId=${cartItem.productBean.id}">${cartItem.productBean.name}</a>
-                                                    </h3><!-- End .product-title -->
-                                                </div><!-- End .product -->
-                                            </td>
-                                            <td class="price-col">${cartItem.productBean.price} EGP</td>
-                                            <td class="quantity-col">
-                                                <div class="cart-product-quantity">
-                                                    <input type="number" id="${cartItem.productBean.id}" name="quantityInput" class="form-control" value="${cartItem.requiredQuantity}" min="1" max="${cartItem.productBean.quantity}" step="1" data-decimals="0" required>
-                                                </div><!-- End .cart-product-quantity -->
-                                            </td>
-                                            <td class="total-col" style="font-size: small">${(cartItem.productBean.price)*(cartItem.requiredQuantity)} EGP</td>
-                                            <td class="remove-col"><button class="btn-remove" onclick="removeProduct(${cartItem.productBean.id},${cartItem.productBean.price})"><i class="icon-close"></i></button></td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
+<%--                                        <div class="custom-control custom-checkbox">--%>
+<%--                                            <input type="checkbox" class="custom-control-input" id="signin-remember-2">--%>
+<%--                                            <label class="custom-control-label" for="signin-remember-2">Remember Me</label>--%>
+<%--                                        </div><!-- End .custom-checkbox -->--%>
 
-                                </table><!-- End .table table-wishlist -->
+<%--                                        <a href="#" class="forgot-link">Forgot Your Password?</a>--%>
+<%--                                    </div><!-- End .form-footer -->--%>
+<%--                                </form>--%>
+<%--                                <div class="form-choice">--%>
+<%--                                    <p class="text-center">or sign in with</p>--%>
+<%--                                    <div class="row">--%>
+<%--                                        <div class="col-sm-6">--%>
+<%--                                            <a href="#" class="btn btn-login btn-g">--%>
+<%--                                                <i class="icon-google"></i>--%>
+<%--                                                Login With Google--%>
+<%--                                            </a>--%>
+<%--                                        </div><!-- End .col-6 -->--%>
+<%--                                        <div class="col-sm-6">--%>
+<%--                                            <a href="#" class="btn btn-login btn-f">--%>
+<%--                                                <i class="icon-facebook-f"></i>--%>
+<%--                                                Login With Facebook--%>
+<%--                                            </a>--%>
+<%--                                        </div><!-- End .col-6 -->--%>
+<%--                                    </div><!-- End .row -->--%>
+<%--                                </div><!-- End .form-choice -->--%>
+<%--                            </div><!-- .End .tab-pane -->--%>
+<%--                            <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">--%>
+                                <form action="updateprofile" method="POST">
+                                    <div class="form-group">
+                                        <label for="update-name-2">name </label>
+                                        <input  type="text" class="form-control" id="update-name-2" name="update-name" >
+                                    </div><!-- End .form-group -->
 
-                                <div class="cart-bottom">
-                                    <div class="cart-discount">
-                                        <form action="#">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" required placeholder="coupon code">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary-2" type="submit"><i class="icon-long-arrow-right"></i></button>
-                                                </div><!-- .End .input-group-append -->
-                                            </div><!-- End .input-group -->
-                                        </form>
-                                    </div><!-- End .cart-discount -->
+                                    <div class="form-group">
+                                        <label for="update-birthday-2">birthday date </label>
+                                        <input  type="date" class="form-control" id="update-birthday-2" name="update-birthday" >
+                                    </div><!-- End .form-group -->
 
-                                    <a onclick="updateCart()" class="btn btn-outline-dark-2"><span>UPDATE CART</span><i class="icon-refresh"></i></a>
-                                </div><!-- End .cart-bottom -->
-                            </div><!-- End .col-lg-9 -->
-                            <aside class="col-lg-3">
-                                <div class="summary summary-cart">
-                                    <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="update-email-2">email </label>--%>
+<%--                                        <input type="email" class="form-control" id="update-email-2" name="update-email" >--%>
+<%--                                    </div><!-- End .form-group -->--%>
 
-                                    <table class="table table-summary">
-                                        <tbody>
-                                        <tr class="summary-subtotal">
-                                            <td >Subtotal:</td>
 
-                                            <td id="subTotalValue">${subTotal} EGP</td>
+<%--                                    <div class="form-group">--%>
+<%--                                        <label for="update-password-2">Password </label>--%>
+<%--                                        <input type="password" class="form-control" id="update-password-2" name="update-password" >--%>
+<%--                                    </div><!-- End .form-group -->--%>
 
-                                        </tr><!-- End .summary-subtotal -->
-                                        <tr class="summary-shipping">
-                                            <td>Shipping:</td>
-                                            <td>&nbsp;</td>
-                                        </tr>
+                                    <%--                                        <div class="form-group">--%>
+                                    <%--                                            <label for="register-jop-2">job *</label>--%>
+                                    <%--                                            <input type="text" class="form-control" id="register-jop-2" name="register-job" required>--%>
+                                    <%--                                        </div><!-- End .form-group -->--%>
 
-                                        <tr class="summary-shipping-row">
-                                            <td>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="free-shipping">Free Shipping</label>
-                                                </div><!-- End .custom-control -->
-                                            </td>
-                                            <td>0</td>
-                                        </tr><!-- End .summary-shipping-row -->
+                                    <div class="form-group">
+                                        <label for="update-address-2">address </label>
+                                        <input type="text" class="form-control" id="update-address-2" name="update-address" >
+                                    </div><!-- End .form-group -->
 
-                                        <tr class="summary-shipping-row">
-                                            <td>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="standart-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="standart-shipping">Standart:</label>
-                                                </div><!-- End .custom-control -->
-                                            </td>
-                                            <td>10</td>
-                                        </tr><!-- End .summary-shipping-row -->
+                                    <%--                                        <div class="form-group">--%>
+                                    <%--                                            <label for="register-credit limit-2">credit limit *</label>--%>
+                                    <%--                                            <input type="text" class="form-control" id="register-credit limit-2" name="register-credit limit" required>--%>
+                                    <%--                                        </div><!-- End .form-group -->--%>
 
-                                        <tr class="summary-shipping-row">
-                                            <td>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="express-shipping" name="shipping" class="custom-control-input">
-                                                    <label class="custom-control-label" for="express-shipping">Express:</label>
-                                                </div><!-- End .custom-control -->
-                                            </td>
-                                            <td>20</td>
-                                        </tr><!-- End .summary-shipping-row -->
+                                    <div class="form-footer">
+                                        <button type="submit" class="btn btn-outline-primary-2">
+                                            <span>submit</span>
+                                            <i class="icon-long-arrow-right"></i>
+                                        </button>
 
-                                        <tr class="summary-total">
-                                            <td>Total:</td>
-                                            <td id="totalValue">${subTotal}</td>
-                                        </tr><!-- End .summary-total -->
-                                        </tbody>
-                                  </table><!-- End .table table-summary -->
-
-                                <a href="order-details" id="checkoutButton" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
-                            </div><!-- End .summary -->
-
-                            <a href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
-                        </aside><!-- End .col-lg-3 -->
-                    </div><!-- End .row -->
-                </div><!-- End .container -->
-                </c:if>
-                <c:if test="${cartItemBeans.size()==0}" >
-                    <div class="text-center" style="padding-top: 10px;background-image: url('assets/images/page-header-bg.jpg'); margin-left: 150px;margin-right: 150px; align-self: center">
-                        <div class="container">
-                            <h4 style="margin-top: 10px;" class="page-title">Cart is Empty</h4>
-                            <a style="width: 0%;border-color: orange" href="shop" class="btn btn-outline-dark-2 btn-block mb-3"><span>Start SHOPPING</span><i class="icon-refresh"></i></a>
-                        </div><!-- End .container -->
-                    </div>
-                </c:if>
-            </div><!-- End .cart -->
-        </div><!-- End .page-content -->
+<%--                                        <div class="custom-control custom-checkbox">--%>
+<%--                                            <input type="checkbox" class="custom-control-input" id="register-policy-2" required>--%>
+<%--                                            <label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>--%>
+<%--                                        </div><!-- End .custom-checkbox -->--%>
+                                    </div><!-- End .form-footer -->
+                                </form>
+<%--                                <div class="form-choice">--%>
+<%--                                    <p class="text-center">or sign in with</p>--%>
+<%--                                    <div class="row">--%>
+<%--                                        <div class="col-sm-6">--%>
+<%--                                            <a href="#" class="btn btn-login btn-g">--%>
+<%--                                                <i class="icon-google"></i>--%>
+<%--                                                Login With Google--%>
+<%--                                            </a>--%>
+<%--                                        </div><!-- End .col-6 -->--%>
+<%--                                        <div class="col-sm-6">--%>
+<%--                                            <a href="#" class="btn btn-login  btn-f">--%>
+<%--                                                <i class="icon-facebook-f"></i>--%>
+<%--                                                Login With Facebook--%>
+<%--                                            </a>--%>
+<%--                                        </div><!-- End .col-6 -->--%>
+<%--                                    </div><!-- End .row -->--%>
+<%--                                </div><!-- End .form-choice -->--%>
+                            </div><!-- .End .tab-pane -->
+                        </div><!-- End .tab-content -->
+                    </div><!-- End .form-tab -->
+                </div><!-- End .form-box -->
+            </div><!-- End .container -->
+        </div><!-- End .login-page section-bg -->
     </main><!-- End .main -->
+<br></br>
+<br></br>
+<br></br>
 
-    <%@ include file="includes/footer.jsp" %><!-- End .footer -->
+
+   <%@ include file="includes/footer.jsp" %><!-- End .footer -->--%>
 </div><!-- End .page-wrapper -->
 <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
@@ -491,89 +488,10 @@
 <script src="assets/js/jquery.waypoints.min.js"></script>
 <script src="assets/js/superfish.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/bootstrap-input-spinner.js"></script>
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
 </body>
-<script>
-    function removeProduct(productId , productPrice){
-        console.log(productId+" awl marra ");
-        var localStorageContent = localStorage.getItem("cartItems");
-        let cartItems = JSON.parse(localStorageContent);
-        for(var i=0 ; i<cartItems.length ; i++){
-            if (cartItems[i].id === productId){
-                var quantity = cartItems[i].quantity;
-                cartItems.splice(i,1);
-                var oldSubTotal = parseInt(document.getElementById("subTotalValue").textContent);
-                var subTotal = oldSubTotal - (productPrice * quantity);
-                document.getElementById("subTotalValue").textContent = subTotal.toString()+" EGP";
-                var oldTotal = parseInt(document.getElementById("totalValue").textContent);
-                var total = oldTotal - (productPrice * quantity);
-                if(subTotal ===0){
-                    document.getElementById("totalValue").textContent = "0 EGP";
-                }
-                else{
-                    document.getElementById("totalValue").textContent = total.toString()+" EGP";
-                }
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                document.getElementById("productRow"+productId).remove();
-                break;
-            }
-        }
-        if(cartItems.length === 0){
-            console.log(cartItems.length)
-            document.getElementById("checkoutButton").style.visibility= 'hidden';
-        }
-        document.getElementById("cartItemsNumber").textContent =  cartItems.length;
-
-    }
-    const radioButtons = document.querySelectorAll('input[name="shipping"]');
-    for (const radioButton of radioButtons) {
-        radioButton.addEventListener('change', changeTotal);
-    }
-    function changeTotal(e){
-        if(this.checked){
-            const subTotal = parseInt(document.getElementById("subTotalValue").textContent);
-            const shippingValue = parseInt(this.parentElement.parentElement.nextElementSibling.innerText);
-            const total = subTotal + shippingValue;
-            document.getElementById("totalValue").textContent = total.toString()+" EGP";
-
-        }
-    }
-    function updateCart(){
-        const quantityInputs = document.querySelectorAll('input[name="quantityInput"]');
-        let subTotal = 0
-        for (const quantityInput of quantityInputs){
-            var localStorageContent = localStorage.getItem("cartItems");
-            let cartItems = JSON.parse(localStorageContent);
-            for(var i=0 ; i<cartItems.length ; i++){
-                if (cartItems[i].id === parseInt(quantityInput.id)){
-                    cartItems[i].quantity = quantityInput.value;
-                    break;
-                }
-            }
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            console.log(quantityInput.parentElement.parentElement.previousElementSibling.textContent.split(" ")[0]);
-            let productPrice = parseInt(quantityInput.parentElement.parentElement.previousElementSibling.textContent.split(" ")[0]);
-            let productTotalPrice = productPrice * quantityInput.value;
-            subTotal += productTotalPrice;
-            quantityInput.parentElement.parentElement.nextElementSibling.textContent = productTotalPrice+ " EGP";
-            //console.log(quantityInput.parentElement.previousElementSibling.textContent);
-        }
-        document.getElementById("subTotalValue").textContent = subTotal + " EGP";
-        const radioButtons = document.querySelectorAll('input[name="shipping"]');
-        for (const radioButton of radioButtons) {
-            console.log(radioButton.checked);
-            if(radioButton.checked){
-                const shippingValue = parseInt(radioButton.parentElement.parentElement.nextElementSibling.innerText);
-                subTotal += shippingValue;
-            }
-        }
-        document.getElementById("totalValue").textContent = subTotal.toString()+" EGP";
-    }
-
-</script>
 
 
-<!-- molla/cart.html  22 Nov 2019 09:55:06 GMT -->
+<!-- molla/login.html  22 Nov 2019 10:04:03 GMT -->
 </html>
