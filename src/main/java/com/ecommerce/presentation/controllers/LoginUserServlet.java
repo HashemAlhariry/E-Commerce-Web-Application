@@ -35,7 +35,7 @@ public class LoginUserServlet extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         HttpSession session = request.getSession(false);
 
-        if (cookies != null) {
+
             Cookie userIdCookie = getCookieByName(cookies, "UIDCookie");
             Cookie passwordCookie = getCookieByName(cookies, "passwordCookie");
 
@@ -48,12 +48,14 @@ public class LoginUserServlet extends HttpServlet {
                 response.sendRedirect("home");
             } else if (session != null && session.getAttribute("userBean") != null) {
                 response.sendRedirect("home");
+            }else{
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "login.jsp");
+                requestDispatcher.forward(request, response);
             }
 
-        }
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "login.jsp");
-        requestDispatcher.forward(request, response);
+
+
 
 //        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "login.jsp");
 //        requestDispatcher.forward(req, resp);
@@ -160,11 +162,13 @@ public class LoginUserServlet extends HttpServlet {
     private Cookie getCookieByName(Cookie[] cookies, String cookieName) {
         Cookie cookie;
         System.out.println("from getCookie method");
-        for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equalsIgnoreCase(cookieName)) {
-                cookie = cookies[i];
-                System.out.println("from getCookie method in if condition");
-                return cookie;
+        if(cookies != null){
+            for (int i = 0; i < cookies.length; i++) {
+                if (cookies[i].getName().equalsIgnoreCase(cookieName)) {
+                    cookie = cookies[i];
+                    System.out.println("from getCookie method in if condition");
+                    return cookie;
+                }
             }
         }
 

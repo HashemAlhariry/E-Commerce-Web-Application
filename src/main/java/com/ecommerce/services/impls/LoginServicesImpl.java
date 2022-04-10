@@ -32,7 +32,7 @@ public class LoginServicesImpl implements LoginServices {
 
     @Override
     public UserBean findUserById(int id) {
-        return UserMapper.INSTANCE.userEntityToUserBean(userRepository.findById((long) id));
+        return UserMapper.INSTANCE.userEntityToUserBean(userRepository.findById(id));
     }
 
 
