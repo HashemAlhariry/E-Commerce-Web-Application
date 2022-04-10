@@ -149,13 +149,14 @@
                                             <input type="text" class="form-control" id="register-address-2" name="register_address" required>
                                         </div><!-- End .form-group -->
 
+
 <%--                                        <div class="form-group">--%>
 <%--                                            <label for="register-credit limit-2">credit limit *</label>--%>
 <%--                                            <input type="text" class="form-control" id="register-credit limit-2" name="register-credit limit" required>--%>
 <%--                                        </div><!-- End .form-group -->--%>
 
                                         <div class="form-footer">
-							    			<button type="submit" class="btn btn-outline-primary-2">
+							    			<button type="button" id="register-submit" class="btn btn-outline-primary-2">
 			                					<span>SIGN UP</span>
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
@@ -165,6 +166,9 @@
 												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>
 											</div><!-- End .custom-checkbox -->
 							    		</div><!-- End .form-footer -->
+
+                                        <div class="form-group"></div><!-- End .form-group -->
+
 							    	</form>
 							    	<div class="form-choice">
 								    	<p class="text-center">or sign in with</p>

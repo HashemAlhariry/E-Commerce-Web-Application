@@ -32,4 +32,10 @@ public class UserServiceImpl implements UserService {
         List<UserEntity> userEntities = userRepository.getUserByEmail(email);
         return UserMapper.INSTANCE.userEntitiesToViewUserBeans(userEntities);
     }
+
+    @Override
+    public boolean checkUserEmail(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        return userEntity != null ;
+    }
 }

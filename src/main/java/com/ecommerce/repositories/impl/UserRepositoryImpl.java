@@ -32,17 +32,15 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
         return user;
     }
 
+    @Override
     public UserEntity findByEmail(String email) throws NoResultException {
         // update later to get user from DB Directly
         //entityManager.getTransaction().begin();
-        List<UserEntity> resultList = (ArrayList<UserEntity>) entityManager.createNamedQuery("user.findByEmail")
-                .setParameter("email", email).getResultList();
+        UserEntity userEntity = (UserEntity) entityManager.createNamedQuery("user.findByEmail")
+                .setParameter("email", email).getSingleResult();
         entityManager.getTransaction().commit();
-        for (UserEntity user : resultList) {
-            if (user.getEmail().equals(email))
-                return user;
-        }
-        return null;
+
+        return userEntity;
     }
 
 
