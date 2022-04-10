@@ -1,5 +1,6 @@
 package com.ecommerce.presentation.beans;
 
+import com.ecommerce.repositories.impl.UserRepositoryImpl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ public class SignUpBean {
     private String email;
     private String pass;
     private String address;
+    private int id;
 
 
     public SignUpBean( String userName, LocalDate dateOfBirth, String email, String pass, String address) {
@@ -33,7 +35,7 @@ public class SignUpBean {
     @Override
     public String toString() {
         return "LoginSignUpBean{" +
-                ", name='" + userName + '\'' +
+                "name='" + userName + '\'' +
                 ", birthday=" + dateOfBirth + '\'' +
                 ", email=" + email + '\'' +
                 ", password='" + pass + '\'' +
