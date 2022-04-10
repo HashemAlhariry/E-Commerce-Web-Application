@@ -25,7 +25,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/tables/users.html">
+            <a class="nav-link" href="admin-view-users">
                 <i class="fas fa-minus-square menu-icon"></i>
                 <span class="menu-title">Users</span>
             </a>
