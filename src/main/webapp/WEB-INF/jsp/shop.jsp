@@ -46,7 +46,7 @@
     <main class="main">
         <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
             <div class="container">
-                <h1 class="page-title">Grid 4 Columns<span>Shop</span></h1>
+                <h1 class="page-title">Shop All Products<span>Shop</span></h1>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
@@ -148,7 +148,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
@@ -207,7 +207,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
@@ -266,7 +266,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
@@ -325,7 +325,7 @@
 
                                                 <div class="product-action-vertical">
                                                     <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
@@ -385,7 +385,7 @@
 
                                                     <div class="product-action-vertical" >
                                                         <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                        <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
                                                     <div class="product-action">
@@ -480,9 +480,17 @@
                                             <div class="filter-item">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="laptopCatCheckBox">
-                                                    <label class="custom-control-label" for="laptopCatCheckBox">Computer & Laptop</label>
+                                                    <label class="custom-control-label" value="${currentCategories[1].categoryName}" for="laptopCatCheckBox">${currentCategories[1].categoryName}</label> <!-- TODO -->
                                                 </div><!-- End .custom-checkbox -->
                                                 <span class="item-count" id="categoryProductsNumber">${laptopsCount}</span>
+                                            </div><!-- End .filter-item -->
+
+                                            <div class="filter-item">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="watchCatCheckBox">
+                                                    <label class="custom-control-label" for="watchCatCheckBox">Smart Watches</label>
+                                                </div><!-- End .custom-checkbox -->
+                                                <span class="item-count">${watchesCount}</span>
                                             </div><!-- End .filter-item -->
 
                                             <div class="filter-item">
@@ -493,13 +501,7 @@
                                                 <span class="item-count">${mobilesCount}</span>
                                             </div><!-- End .filter-item -->
 
-                                            <div class="filter-item">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="watchCatCheckBox">
-                                                    <label class="custom-control-label" for="watchCatCheckBox">Smart Watches</label>
-                                                </div><!-- End .custom-checkbox -->
-                                                <span class="item-count">${watchesCount}</span>
-                                            </div><!-- End .filter-item -->
+
                                         </div><!-- End .filter-items -->
                                         <div style="margin-top: 25px;">
                                             <center>

@@ -74,6 +74,8 @@ public class ProductRepositoryImpl extends RepositoryImpl<ProductEntity, Long> i
         Predicate[] finalPredicates = new Predicate[predicatesList.size()];
         Predicate predicate = cb.or(predicatesList.toArray(finalPredicates));
         criteriaQuery.where(predicate);
+        criteriaQuery.orderBy(cb.desc(root.get("creationDate")));
+
 
         List<ProductEntity> result =
                 entityManager

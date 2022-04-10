@@ -38,6 +38,7 @@ public class SignUpServlet extends HttpServlet {
         SignUpBean userRegistrationBean = new SignUpBean( userName,  dateOfBirth,  email,  pass,  address);
 
         SignUpBean signUpBean = registerServicesImpl.registerUser(userRegistrationBean);
+        // leh hna y set attribute 3l session d 3ml register msh 3amel login //TODO
         req.getSession().setAttribute("userDto", signUpBean);
 
     }
