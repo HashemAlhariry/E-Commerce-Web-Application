@@ -1,19 +1,23 @@
 package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.CartItemBean;
+import com.ecommerce.presentation.beans.ResponseMessageBean;
 import com.ecommerce.presentation.beans.UserBean;
+import com.ecommerce.presentation.beans.ViewCartItem;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.LoginServices;
 import com.ecommerce.services.impls.CartServiceImpl;
 import com.ecommerce.services.impls.LoginServicesImpl;
 import com.ecommerce.utils.CommonString;
 import com.ecommerce.utils.Util;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,6 +49,9 @@ public class LoginUserServlet extends HttpServlet {
         UserBean userBean = userServiceImpl.findUserByEmail(email);
         if (userBean == null) {
                 // return user to login page with error message
+            List<String> messages = new ArrayList<>();
+            messages.add("There's something wrong in your Email or Password, Please try again");
+            ResponseMessageBean responseMessageBean = new ResponseMessageBean("failed", messages);
         }
         else {
 
@@ -62,9 +69,14 @@ public class LoginUserServlet extends HttpServlet {
 
                     //get user cart from Database
                     List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());
+                    List<CartItemBean> cartItemBeans = mergeUserCarts(cartItemBeanListFromJSPJson,cartItemBeanListFromDataBase);
+                    List<ViewCartItem> viewCartItems = fromCartItemBeansToViewCartItems(cartItemBeans);
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
 
-                
-                    response.sendRedirect("home");
+                    request.setAttribute("cartItemBeans",viewCartItems);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "index.jsp");
+                    requestDispatcher.forward(request, response);
                 }
                 else if(userBean.getRole().equals("ADMIN")){
                     // add id/password to cookie to user
@@ -79,6 +91,16 @@ public class LoginUserServlet extends HttpServlet {
                 // return user to login page with error message
             }
         }
+    }
+
+    private List<ViewCartItem> fromCartItemBeansToViewCartItems(List<CartItemBean> cartItemBeans) {
+        List<ViewCartItem> viewCartItems = new ArrayList<>();
+        ViewCartItem viewCartItem;
+        for(CartItemBean cartItemBean: cartItemBeans){
+            viewCartItem = new ViewCartItem(cartItemBean.getProductBean().getId(),cartItemBean.getRequiredQuantity());
+            viewCartItems.add(viewCartItem);
+        }
+        return viewCartItems;
     }
 
 
@@ -105,6 +127,16 @@ public class LoginUserServlet extends HttpServlet {
             response.addCookie(cookiePassword);
         }
 
+    }
+    private List<CartItemBean> mergeUserCarts(List<CartItemBean> cartItemBeanListFromJSPJson,List<CartItemBean> cartItemBeanListFromDataBase){
+        List<CartItemBean> cartItemBeans = new ArrayList<>();
+        cartItemBeans.addAll(cartItemBeanListFromJSPJson);
+        for(CartItemBean cartItemBean: cartItemBeanListFromDataBase){
+            if (!cartItemBeans.contains(cartItemBean)){
+                cartItemBeans.add(cartItemBean);
+            }
+        }
+        return cartItemBeans;
     }
 
 }

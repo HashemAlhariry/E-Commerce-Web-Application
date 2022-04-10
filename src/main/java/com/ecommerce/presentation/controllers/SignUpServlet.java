@@ -4,6 +4,7 @@ import com.ecommerce.presentation.beans.SignUpBean;
 import com.ecommerce.repositories.entites.Role;
 import com.ecommerce.services.RegisterServices;
 import com.ecommerce.services.impls.RegisterServicesImpl;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,12 +21,12 @@ public class SignUpServlet extends HttpServlet {
     private final RegisterServices  registerServicesImpl = RegisterServicesImpl.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
    }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String userName = req.getParameter("register-name");
         String date = req.getParameter("register-birthday");
@@ -38,6 +39,8 @@ public class SignUpServlet extends HttpServlet {
         SignUpBean userRegistrationBean = new SignUpBean( userName,  dateOfBirth,  email,  pass,  address);
 
         SignUpBean signUpBean = registerServicesImpl.registerUser(userRegistrationBean);
+        resp.sendRedirect("login");
+        // no need for setting the attribute on the session after registration
         req.getSession().setAttribute("userDto", signUpBean);
 
     }
