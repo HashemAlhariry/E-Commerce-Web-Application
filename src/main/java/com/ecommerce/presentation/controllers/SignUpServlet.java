@@ -1,5 +1,6 @@
 package com.ecommerce.presentation.controllers;
 
+import com.ecommerce.presentation.beans.SessionBean;
 import com.ecommerce.presentation.beans.SignUpBean;
 import com.ecommerce.repositories.entites.Role;
 import com.ecommerce.services.RegisterServices;
@@ -34,6 +35,12 @@ public class SignUpServlet extends HttpServlet {
         String address = req.getParameter("register-address");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateOfBirth = LocalDate.parse(date, dateTimeFormatter);
+
+
+        SessionBean sessionBean = new SessionBean();
+        sessionBean.setUserName(userName);
+        sessionBean.setDateOfBirth(dateOfBirth);
+        sessionBean.setAddress(address);
 
         SignUpBean userRegistrationBean = new SignUpBean(userName, dateOfBirth, email, pass, address);
         if (userRegistrationBean == null) {

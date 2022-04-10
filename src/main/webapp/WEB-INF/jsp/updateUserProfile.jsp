@@ -121,7 +121,7 @@
 
                                     <div class="form-group">
                                         <label for="update-birthday-2">birthday date </label>
-                                        <input type="date" class="form-control" id="update-birthday-2" name="update-birthday" >
+                                        <input  type="date" class="form-control" id="update-birthday-2" name="update-birthday" >
                                     </div><!-- End .form-group -->
 
 <%--                                    <div class="form-group">--%>

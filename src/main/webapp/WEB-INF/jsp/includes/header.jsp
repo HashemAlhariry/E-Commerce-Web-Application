@@ -28,7 +28,7 @@
                             </li>
                             <li><a href="login"  >Sign in / Sign up</a></li>
                             <%--<li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>--%>
-
+                            <li><a href="updateprofile"  > Update Profile </a></li>
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
