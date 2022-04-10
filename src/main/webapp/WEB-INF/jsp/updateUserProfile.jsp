@@ -41,7 +41,7 @@
     <script src="assets/js/amazonya/cookie-checker.js"></script>
 </head>
 
-<br>
+<body>
 <div class="page-wrapper">
     <%@ include file="includes/header.jsp" %>
     <main class="main">

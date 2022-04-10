@@ -1,16 +1,15 @@
 package com.ecommerce.presentation.controllers;
 
-import com.ecommerce.presentation.beans.SessionBean;
+
 import com.ecommerce.presentation.beans.SignUpBean;
-import com.ecommerce.repositories.entites.Role;
 import com.ecommerce.services.RegisterServices;
 import com.ecommerce.services.impls.RegisterServicesImpl;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -37,10 +36,7 @@ public class SignUpServlet extends HttpServlet {
         LocalDate dateOfBirth = LocalDate.parse(date, dateTimeFormatter);
 
 
-        SessionBean sessionBean = new SessionBean();
-        sessionBean.setUserName(userName);
-        sessionBean.setDateOfBirth(dateOfBirth);
-        sessionBean.setAddress(address);
+
 
         SignUpBean userRegistrationBean = new SignUpBean(userName, dateOfBirth, email, pass, address);
         if (userRegistrationBean == null) {
