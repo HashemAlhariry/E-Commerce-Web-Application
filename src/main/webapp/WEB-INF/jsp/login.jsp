@@ -112,7 +112,7 @@
 							    	</div><!-- End .form-choice -->
 							    </div>
 							    <div class="tab-pane fade " id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
-							    	<form action="registration" method="POST">
+							    	<form action="registration" id="regster-form" method="POST">
                                         <div class="form-group">
                                             <label for="register-name-2">name *</label>
                                             <input type="text" class="form-control" id="register-name-2" name="register_name" required>
@@ -481,16 +481,29 @@
             </div><!-- End .modal-content -->
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
-
+    <!-- plugins:js -->
+    <!-- plugins:js -->
+    <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="assets/admin/js/off-canvas.js"></script>
+    <script src="assets/admin/js/hoverable-collapse.js"></script>
+    <script src="assets/admin/js/misc.js"></script>
+    <script src="assets/admin/js/settings.js"></script>
+    <script src="assets/admin/js/todolist.js"></script>
+    <!-- endinject -->
     <!-- Plugins JS File -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/superfish.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
+<%--    <script src="assets/js/jquery.min.js"></script>--%>
+<%--    <script src="assets/js/bootstrap.bundle.min.js"></script>--%>
+<%--    <script src="assets/js/jquery.hoverIntent.min.js"></script>--%>
+<%--    <script src="assets/js/jquery.waypoints.min.js"></script>--%>
+<%--    <script src="assets/js/superfish.min.js"></script>--%>
+<%--    <script src="assets/js/owl.carousel.min.js"></script>--%>
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/register-validation.js"></script>
+
 </body>
 
 <script src="assets/js/amazonya/cookie-checker.js"></script>
