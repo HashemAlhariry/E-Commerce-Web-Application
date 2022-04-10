@@ -480,7 +480,7 @@
                                             <div class="filter-item">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="laptopCatCheckBox">
-                                                    <label class="custom-control-label" value="${currentCategories[1].categoryName}" for="laptopCatCheckBox">${currentCategories[1].categoryName}</label> <!-- TODO -->
+                                                    <label class="custom-control-label"  for="laptopCatCheckBox">Computers & Laptops</label> <!-- TODO -->
                                                 </div><!-- End .custom-checkbox -->
                                                 <span class="item-count" id="categoryProductsNumber">${laptopsCount}</span>
                                             </div><!-- End .filter-item -->
