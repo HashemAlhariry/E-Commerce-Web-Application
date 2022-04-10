@@ -46,31 +46,30 @@
     <div class="col-6 col-md-4 col-lg-4 col-xl-3">
         <div class="product">
             <figure class="product-media">
-                <a href="product.html">
+                <a href="single-product-page?productId=${product.id}">
                     <img src="${product.mainImage}" alt="Product image"
                          class="product-image" style="height:218px">
                 </a>
 
                 <div class="product-action-vertical">
-                    <a onclick="addToCart(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                 </div><!-- End .product-action -->
                 <div class="product-action">
-                    <a onclick="addToWishList(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                         <%--<a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>--%>
-                    <a href="quickView?productId=${product.id}"
-                       class="btn-product btn-quickview"
-                       title="Quick view"><span>quick view</span></a>
+
+                    <a href="quickView?productId=${product.id}" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
                 </div><!-- End .product-action -->
             </figure><!-- End .product-media -->
 
             <div class="product-body">
                 <div class="product-cat">
-                    <a href="#">${product.category.categoryName}</a>
+                    <a href="single-product-page?productId=${product.id}">${product.category.categoryName}</a>
                 </div><!-- End .product-cat -->
-                <h3 class="product-title"><a href="product.html">${product.name}</a></h3>
+                <h3 class="product-title"><a href="single-product-page?productId=${product.id}">${product.name}</a></h3>
                 <!-- End .product-title -->
                 <div class="product-price">
-                    ${product.price} EGP
+                        ${product.price} EGP
                 </div><!-- End .product-price -->
                 <div class="ratings-container">
                     <div class="ratings">

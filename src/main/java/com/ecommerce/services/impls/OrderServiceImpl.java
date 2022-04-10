@@ -1,16 +1,14 @@
 package com.ecommerce.services.impls;
 
-import com.ecommerce.repositories.CategoryRepository;
-import com.ecommerce.repositories.OrderRepository;
-import com.ecommerce.repositories.ProductRepository;
-import com.ecommerce.repositories.entites.OrderEntity;
-import com.ecommerce.repositories.impl.*;
-import com.ecommerce.services.OrderService;
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.presentation.beans.OrderBean;
 import com.ecommerce.presentation.beans.OrderDetailsBean;
+import com.ecommerce.repositories.OrderRepository;
 import com.ecommerce.repositories.entites.*;
+import com.ecommerce.repositories.impl.OrderDetailsRepositoryImpl;
 import com.ecommerce.repositories.impl.OrderRepositoryImpl;
+import com.ecommerce.repositories.impl.ProductRepositoryImpl;
+import com.ecommerce.repositories.impl.UserRepositoryImpl;
 import com.ecommerce.services.OrderService;
 import com.ecommerce.utils.mappers.OrderMapper;
 
@@ -49,6 +47,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<OrderEntity> findAll() {
         return orderRepository.findAll();
+    }
+
+    @Override
+    public List<OrderEntity> findAllByUserId(int userId) {
+        return orderRepository.findAllByUserId(userId);
     }
 
     @Override

@@ -17,7 +17,8 @@ public interface ProductRepository extends Repository<ProductEntity,Long> {
 //    int findAllProductsNumber();
     List<ProductEntity> getFilteredProducts(int pageNumber, int recordsPerPage, List<String> categoriesIds);
     long countProductsOfCertainCategories(List<String> categoriesIds);
+    List<ProductEntity> relatedProducts(int id);
 
-
+//    relatedProducts
 
 }

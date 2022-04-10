@@ -17,8 +17,8 @@ import java.util.Set;
         @NamedQuery(name = "findAllByCategoryId",query = "select p from ProductEntity p   where  p.category.id = :category_id"),
         @NamedQuery(name = "findProductByName",query = "select p from ProductEntity p   where  p.name  LIKE  CONCAT('%',:product_name,'%') "),
         @NamedQuery(name = "findProductByPrice",query = "select p from ProductEntity p   where  p.price  = :product_price OR p.price  < :product_price"),
-        @NamedQuery(name = "findProductByPriceAndCategoryId",query = "select p from ProductEntity p   where  (p.price  = :product_price OR p.price < :product_price) AND p.category.id = :category_id")
-
+        @NamedQuery(name = "findProductByPriceAndCategoryId",query = "select p from ProductEntity p   where  (p.price  = :product_price OR p.price < :product_price) AND p.category.id = :category_id"),
+        @NamedQuery(name = "relatedProducts",query = "select p from ProductEntity p where p.category.id = :category_id AND p.state not in  (com.ecommerce.repositories.entites.ProductState.ARCHIVED,com.ecommerce.repositories.entites.ProductState.OUT_OF_STOCK)  ORDER BY p.creationDate DESC,p.id DESC ")
 
 
 })

@@ -14,6 +14,9 @@ import java.util.Set;
 @Table(name = "orders")
 @Getter
 @Setter
+@NamedQueries({
+        @NamedQuery(name = "findAllByUserId", query = "select  o from OrderEntity o join o.orderDetails od where  od.user.id=:user_id")
+})
 public class OrderEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +36,7 @@ public class OrderEntity implements Serializable {
     private String email;
 
     @OneToMany(mappedBy = "order")
-    private Set<OrderDetailsEntity>orderDetails=new HashSet<>();
+    private Set<OrderDetailsEntity> orderDetails = new HashSet<>();
 
     public OrderEntity(OrderState state, LocalDateTime dateTime, BigDecimal totalPrice, String phoneNumber, String address, Set<OrderDetailsEntity> orderDetails) {
         this.state = state;
