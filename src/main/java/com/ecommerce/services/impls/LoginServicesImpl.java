@@ -1,6 +1,6 @@
 package com.ecommerce.services.impls;
 
-import com.ecommerce.presentation.beans.LoginUserBean;
+import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.repositories.entites.UserEntity;
 import com.ecommerce.repositories.impl.UserRepositoryImpl;
 import com.ecommerce.services.LoginServices;
@@ -18,13 +18,13 @@ public class LoginServicesImpl implements LoginServices {
         return INSTANCE;
     }
 
-    public LoginUserBean findUserByEmail(String email) {
+    public UserBean findUserByEmail(String email) {
         UserEntity user = userRepository.findByEmail(email);
         System.out.println(user);
         if (user == null)
             return null;
         else {
-            LoginUserBean userBean = UserMapper.INSTANCE.userEntityToBean(user);
+            UserBean userBean = UserMapper.INSTANCE.userEntityToUserBean(user);
             System.out.println(userBean);
             return userBean;
         }

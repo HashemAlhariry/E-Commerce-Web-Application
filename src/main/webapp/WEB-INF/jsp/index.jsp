@@ -118,7 +118,10 @@
 
             <div class="container">
                 <h2 class="title text-center mb-4">Explore Popular Categories</h2><!-- End .title text-center -->
-
+                <h2>
+                    hahahahahahahahaahhahahah  ${sessionScope.userBean.email}
+                ${sessionScope.userBean.pass}
+                ${sessionScope.userBean.role}</h2>
                 <div class="cat-blocks-container">
                     <div class="row">
                         <c:forEach var="category" items="${currentCategories}">

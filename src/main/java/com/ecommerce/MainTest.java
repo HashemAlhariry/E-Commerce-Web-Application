@@ -1,23 +1,20 @@
 package com.ecommerce;
 
-import com.ecommerce.repositories.ProductRepository;
-import com.ecommerce.repositories.entites.ProductEntity;
-import com.ecommerce.repositories.entites.Role;
-import com.ecommerce.repositories.entites.UserEntity;
-import com.ecommerce.repositories.impl.ProductRepositoryImpl;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-
-import com.ecommerce.repositories.entites.CategoryEntity;
-import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.ecommerce.repositories.entites.CartID;
+import com.ecommerce.repositories.impl.CartRepositoryImpl;
 
 public class MainTest {
     public static void main(String[] args) {
 
+        CartID cartID = new CartID();
+        cartID.setProductId(9);
+        cartID.setUserId(1);
+
+
+        CartRepositoryImpl cart = CartRepositoryImpl.getInstance();
+        //cart.getUserCart(1);
+        cart.findById(cartID);
+        System.out.println(  cart.findById(cartID));
    //     System.out.println(ProductMapper.INSTANCE.listEntitiesToBeans(productRepository.findAll()));
 //        TestEntity test = new TestEntity();
 //        test.setId(1);
