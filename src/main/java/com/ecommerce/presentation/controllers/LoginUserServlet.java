@@ -1,17 +1,24 @@
 package com.ecommerce.presentation.controllers;
 
-import com.ecommerce.presentation.beans.LoginUserBean;
+import com.ecommerce.presentation.beans.CartItemBean;
+import com.ecommerce.presentation.beans.ResponseMessageBean;
+import com.ecommerce.presentation.beans.UserBean;
+import com.ecommerce.presentation.beans.ViewCartItem;
+import com.ecommerce.services.CartService;
 import com.ecommerce.services.LoginServices;
+import com.ecommerce.services.impls.CartServiceImpl;
 import com.ecommerce.services.impls.LoginServicesImpl;
 import com.ecommerce.utils.CommonString;
+import com.ecommerce.utils.Util;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet(name = "login", urlPatterns = {"/login"})
@@ -19,7 +26,7 @@ import java.io.IOException;
 public class LoginUserServlet extends HttpServlet {
 
     private final LoginServices userServiceImpl = LoginServicesImpl.getInstance();
-
+    private final CartService cartService = CartServiceImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,37 +38,108 @@ public class LoginUserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String email = request.getParameter("signup-email");
+        String password = request.getParameter("signup-password");
+        String rememberMe = request.getParameter("rememberMe");
+        String cart = request.getParameter("cart");
+
+        System.out.println(cart);
+        UserBean userBean = userServiceImpl.findUserByEmail(email);
+        if (userBean == null) {
+                // return user to login page with error message
+            List<String> messages = new ArrayList<>();
+            messages.add("There's something wrong in your Email or Password, Please try again");
+            ResponseMessageBean responseMessageBean = new ResponseMessageBean("failed", messages);
+        }
+        else {
 
 
-        String email = req.getParameter("signup-email");
-        String password = req.getParameter("signup-password");
-        System.out.println("email" + email + "password" + password);
+            if (userBean.getEmail().equals(email) && userBean.getPass().equals(password)) {
 
-        LoginUserBean userDto = userServiceImpl.findUserByEmail(email);
-        if (userDto == null) {
-            resp.sendRedirect("login.jsp?notFound");
-        } else {
-            if (userDto.getEmail().equals(email) && userDto.getPass().equals(password))
-            //user role
-            {
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
-                HttpSession session = req.getSession();
-                // update name user
-                session.setAttribute("userDto", userDto);
 
-    //            } else if (userDto.getUserEmail().equals(email) && userDto.getUserPassword().equals(password))
-    //            //admin role
-    //            {
-    //              RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/index.jsp");
-    //                req.getSession().setAttribute("userDto", userDto);
-    //                resp.sendRedirect("dashboard");
-    //             requestDispatcher.forward(request, response);
-            } else {
-                resp.sendRedirect("login.jsp");
+                // add id/password to cookie to user
+                addCookiesToResponse(request,response,userBean,rememberMe);
+
+                if( userBean.getRole().equals("CUSTOMER")){
+
+                    //get user cart from json local database
+                    List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCart(cart,cartService);
+
+
+                    //get user cart from Database
+                    List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());
+
+                    List<CartItemBean> cartItemBeans = mergeUserCarts(cartItemBeanListFromJSPJson,cartItemBeanListFromDataBase);
+                    List<ViewCartItem> viewCartItems = fromCartItemBeansToViewCartItems(cartItemBeans);
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
+
+                    request.setAttribute("cartItemBeans",json);
+                    request.getSession().setAttribute("loggedIn","true");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "index.jsp");
+                    requestDispatcher.forward(request, response);
+                }
+                else if(userBean.getRole().equals("ADMIN")){
+                    // add id/password to cookie to user
+                    addCookiesToResponse(request,response,userBean,rememberMe);
+
+                    //redirect admin page
+                    response.sendRedirect("admin");
+                }
+
+            }
+            else {
+                // return user to login page with error message
             }
         }
+    }
 
+    private List<ViewCartItem> fromCartItemBeansToViewCartItems(List<CartItemBean> cartItemBeans) {
+        List<ViewCartItem> viewCartItems = new ArrayList<>();
+        ViewCartItem viewCartItem;
+        for(CartItemBean cartItemBean: cartItemBeans){
+            viewCartItem = new ViewCartItem(cartItemBean.getProductBean().getId(),cartItemBean.getRequiredQuantity());
+            viewCartItems.add(viewCartItem);
+        }
+        return viewCartItems;
+    }
+
+
+    private void addCookiesToResponse(HttpServletRequest request, HttpServletResponse response,UserBean userBean,String rememberMe){
+
+        HttpSession session = request.getSession();
+        //check role to redirect to home page or admin page
+        session.setAttribute("userBean", userBean);
+        //create cookie for user
+        if(rememberMe != null){
+            // encrypt user id and password and decrypt on use
+            String userId= String.valueOf(userBean.getId());
+            String userPassword = userBean.getPass();
+
+            Cookie cookieId = new Cookie("id", Util.encodeString(userId));
+            Cookie cookiePassword = new Cookie("pwd", Util.encodeString(userPassword));
+
+            //30 days for cookie age id
+            cookieId.setMaxAge(60*60*24*30);
+            response.addCookie(cookieId);
+
+            //30 days for cookie age password
+            cookiePassword.setMaxAge(60*60*24*30);
+            response.addCookie(cookiePassword);
+        }
 
     }
+    private List<CartItemBean> mergeUserCarts(List<CartItemBean> cartItemBeanListFromJSPJson,List<CartItemBean> cartItemBeanListFromDataBase){
+        List<CartItemBean> cartItemBeans = new ArrayList<>();
+        cartItemBeans.addAll(cartItemBeanListFromJSPJson);
+        for(CartItemBean cartItemBean: cartItemBeanListFromDataBase){
+            if (!cartItemBeans.contains(cartItemBean)){
+                cartItemBeans.add(cartItemBean);
+            }
+        }
+        return cartItemBeans;
+    }
+
 }

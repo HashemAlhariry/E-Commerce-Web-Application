@@ -4,6 +4,7 @@ import com.ecommerce.presentation.beans.LoginUserBean;
 import com.ecommerce.presentation.beans.SignUpBean;
 import com.ecommerce.presentation.beans.UserViewBean;
 import com.ecommerce.repositories.entites.Role;
+import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.repositories.entites.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,7 +22,6 @@ public interface UserMapper {
 
     LoginUserBean userEntityToBean(UserEntity userEntity);
 
-
     UserEntity userRegBeanToEntity(SignUpBean userBean);
 
     SignUpBean userRegEntityToBean(UserEntity userEntity);
@@ -37,5 +37,7 @@ public interface UserMapper {
     default String getRoleName(Role role) {
         return role.toString();
     }
+
+    UserBean userEntityToUserBean(UserEntity userEntity);
 
 }

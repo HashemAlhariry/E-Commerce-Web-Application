@@ -37,7 +37,7 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
         //entityManager.getTransaction().begin();
         List<UserEntity> resultList = (ArrayList<UserEntity>) entityManager.createNamedQuery("user.findByEmail")
                 .setParameter("email", email).getResultList();
-
+        entityManager.getTransaction().commit();
         for (UserEntity user : resultList) {
             if (user.getEmail().equals(email))
                 return user;
