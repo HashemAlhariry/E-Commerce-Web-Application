@@ -115,24 +115,29 @@
 							    	<form action="registration" method="POST">
                                         <div class="form-group">
                                             <label for="register-name-2">name *</label>
-                                            <input type="text" class="form-control" id="register-name-2" name="register-name" required>
+                                            <input type="text" class="form-control" id="register-name-2" name="register_name" required>
                                         </div><!-- End .form-group -->
 
                                         <div class="form-group">
                                             <label for="register-birthday-2">birthday date *</label>
-                                            <input type="date" class="form-control" id="register-birthday-2" name="register-birthday" required>
+                                            <input type="date" class="form-control" id="register-birthday-2" name="register_birthday" required>
                                         </div><!-- End .form-group -->
 
 							    		<div class="form-group">
 							    			<label for="register-email-2">email *</label>
-							    			<input type="email" class="form-control" id="register-email-2" name="register-email" required>
+							    			<input type="email" class="form-control" id="register-email-2" name="register_email" required>
 							    		</div><!-- End .form-group -->
 
 
 							    		<div class="form-group">
 							    			<label for="register-password-2">Password *</label>
-							    			<input type="password" class="form-control" id="register-password-2" name="register-password" required>
+							    			<input type="password" class="form-control" id="register-password-2" name="register_password" required>
 							    		</div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-password-2">Confirm Password *</label>
+                                            <input type="password" class="form-control" id="confirm-register-password-2" name="confirm_register_password" required>
+                                        </div><!-- End .form-group -->
 
 <%--                                        <div class="form-group">--%>
 <%--                                            <label for="register-jop-2">job *</label>--%>
@@ -141,7 +146,7 @@
 
                                         <div class="form-group">
                                             <label for="register-address-2">address *</label>
-                                            <input type="text" class="form-control" id="register-address-2" name="register-address" required>
+                                            <input type="text" class="form-control" id="register-address-2" name="register_address" required>
                                         </div><!-- End .form-group -->
 
 <%--                                        <div class="form-group">--%>
@@ -156,7 +161,7 @@
 			                				</button>
 
 			                				<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="register-policy-2" required>
+												<input type="checkbox" class="custom-control-input" name="agree" id="register-policy-2" required>
 												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>
 											</div><!-- End .custom-checkbox -->
 							    		</div><!-- End .form-footer -->
