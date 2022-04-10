@@ -201,6 +201,10 @@
                                             <a href="comingsoon">Coming Soon</a>
                                         </li>
 
+<%--                                        <li>--%>
+<%--                                            <a href="updateprofile">apdate</a>--%>
+<%--                                        </li>--%>
+
                                     </ul>
                                 </li>
 

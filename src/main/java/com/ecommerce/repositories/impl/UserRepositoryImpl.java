@@ -45,6 +45,8 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Long> impleme
         return null;
     }
 
+
+
     @Override
     public UserEntity saveUser(UserEntity user) {
         //System.out.println("saveUser" + user.getEmail());
@@ -53,6 +55,37 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Long> impleme
         entityManager.getTransaction().commit();
         System.out.println("User saved " + user);
         return user;
+    }
+
+
+
+    @Override
+    public UserEntity findById(int id) {
+        entityManager.getTransaction().begin();
+        List<UserEntity> resultList = (ArrayList<UserEntity>) entityManager.createNamedQuery("user.findById")
+                .setParameter("id", id).getResultList();
+        System.out.println(resultList);
+        System.out.println("kkkkkkkkk");
+        for (UserEntity user : resultList) {
+            if (user.getId() == (id))
+                return user;
+        }
+        return null;
+    }
+
+
+    @Override
+    public UserEntity updateUser(UserEntity user) {
+        int id =user.getId();
+        System.out.println(id);
+        UserEntity userid = findById(id);
+        System.out.println(userid);
+        entityManager.getTransaction().begin();
+        UserEntity userUpdated = entityManager.merge(userid);
+        entityManager.getTransaction().commit();
+        System.out.println("User updated " + userUpdated);
+        return userUpdated;
+
     }
 
 }

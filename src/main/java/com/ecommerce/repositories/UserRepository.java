@@ -12,6 +12,10 @@ public interface UserRepository {
     List<UserEntity> getUserByEmail(String email);
     UserEntity findByEmail(String email) throws NoResultException;
     UserEntity saveUser(UserEntity user);
+    UserEntity updateUser(UserEntity user);
+    //UserEntity findById(UserEntity id);
+    UserEntity findById(int id);
+
 
 
 }
