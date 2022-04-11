@@ -34,7 +34,7 @@ function sendData(form_data) {
                 console.log("ERROR : ", "same email");
 
                 // $.each(data.messages, function (key, value) {
-                    console.log("inside Error same email")
+                    console.log("inside Error same email : ",data.messages[0])
                     $('#errorMessage').append("<li style='text-decoration-style: solid; color: red'>"+data.messages+"</li>");
                 // })
             }
