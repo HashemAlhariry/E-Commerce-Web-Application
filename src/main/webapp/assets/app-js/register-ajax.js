@@ -18,7 +18,6 @@ $('#register-submit').click(function () {
 
 function sendData(form_data) {
     $('#register-submit').prop('disabled', true);
-    $('#loader').modal('show');
 
     $.ajax({
         url: 'registration',
@@ -28,19 +27,16 @@ function sendData(form_data) {
         timeout: 600000,
         success: function (data) {
             $('#register-submit').prop('disabled', false);
-            $('#loader').modal('hide');
             let resp = JSON.parse(data);
             if(resp.state === 'success'){
                 window.location.href = "login";
             }
             else{
-                $('#loader').modal('hide');
                 $('#errorMessage').append("<li style='text-decoration-style: solid; color: red'>This Email is already exist</li>");
             }
         },
         error: function (e) {
             $('#loadMoreBtn').prop('disabled', false);
-            $('#loader').modal('hide');
             console.log("ERROR : ", e);
         }
 
