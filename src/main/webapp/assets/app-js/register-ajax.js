@@ -18,6 +18,8 @@ $('#register-submit').click(function () {
 
 function sendData(form_data) {
     $('#register-submit').prop('disabled', true);
+    $('#loader').modal('show');
+
     $.ajax({
         url: 'registration',
         type: 'POST',
@@ -25,18 +27,14 @@ function sendData(form_data) {
         data: form_data,
         success: function (data) {
             $('#register-submit').prop('disabled', false);
+            $('#loader').modal('hide');
             let resp = JSON.parse(data);
             if(resp.state === 'success'){
-                console.log("success : ", "new email");
                 window.location.href = "login";
             }
             else{
-                console.log("ERROR : ", "same email");
-
-                // $.each(data.messages, function (key, value) {
-                    console.log("inside Error same email : ",data.messages[0])
-                    $('#errorMessage').append("<li style='text-decoration-style: solid; color: red'>"+data.messages+"</li>");
-                // })
+                $('#loader').modal('hide');
+                $('#errorMessage').append("<li style='text-decoration-style: solid; color: red'>This Email is already exist</li>");
             }
         },
         error: function (e) {

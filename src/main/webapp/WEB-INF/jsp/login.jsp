@@ -487,6 +487,15 @@
             </div><!-- End .modal-content -->
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
+    <div class="modal fade bd-example-modal-sm" id="loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="loader-demo-box">
+                    <div class="pixel-loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- plugins:js -->
     <!-- plugins:js -->
     <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
