@@ -27,9 +27,12 @@ function sendData(form_data) {
             $('#register-submit').prop('disabled', false);
             let resp = JSON.parse(data);
             if(resp.state === 'success'){
+                console.log("success : ", "new email");
                 window.location.href = "login";
             }
             else{
+                console.log("ERROR : ", "same email");
+
                 $.each(data.messages, function (key, value) {
                     $('#errorMessage').append("<li style='text-decoration-style: solid; color: red'>"+value+"</li>");
                 })

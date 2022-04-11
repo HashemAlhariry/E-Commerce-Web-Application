@@ -498,6 +498,8 @@
     <script src="assets/admin/js/misc.js"></script>
     <script src="assets/admin/js/settings.js"></script>
     <script src="assets/admin/js/todolist.js"></script>
+    <script src="assets/app-js/register-ajax.js"></script>
+
     <!-- endinject -->
     <!-- Plugins JS File -->
 <%--    <script src="assets/js/jquery.min.js"></script>--%>

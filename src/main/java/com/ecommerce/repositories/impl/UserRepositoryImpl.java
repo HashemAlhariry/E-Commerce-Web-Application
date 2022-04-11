@@ -2,6 +2,7 @@ package com.ecommerce.repositories.impl;
 
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.repositories.UserRepository;
+import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.repositories.entites.UserEntity;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.EntityManager;
@@ -35,12 +36,15 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
     @Override
     public UserEntity findByEmail(String email) throws NoResultException {
         // update later to get user from DB Directly
-        //entityManager.getTransaction().begin();
-        UserEntity userEntity = (UserEntity) entityManager.createNamedQuery("user.findByEmail")
-                .setParameter("email", email).getSingleResult();
-        entityManager.getTransaction().commit();
+//        entityManager.getTransaction().begin();
+//        UserEntity userEntity = (UserEntity) entityManager.createNamedQuery("user.findByEmail")
+//                .setParameter("email", email).getSingleResult();
+//        entityManager.getTransaction().commit();
+        ///////////////
+        TypedQuery<UserEntity> query = entityManager.createNamedQuery("user.findByEmail", UserEntity.class);
+        query.setParameter("email", email);
 
-        return userEntity;
+        return query.getSingleResult();
     }
 
 
