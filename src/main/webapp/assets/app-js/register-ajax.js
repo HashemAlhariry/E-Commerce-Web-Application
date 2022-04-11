@@ -25,6 +25,7 @@ function sendData(form_data) {
         type: 'POST',
         contentType: 'application/x-www-form-urlencoded',
         data: form_data,
+        timeout: 600000,
         success: function (data) {
             $('#register-submit').prop('disabled', false);
             $('#loader').modal('hide');
