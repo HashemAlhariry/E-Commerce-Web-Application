@@ -18,7 +18,7 @@ $('#register-submit').click(function () {
 
 function sendData(form_data) {
     $('#register-submit').prop('disabled', true);
-
+    $('#errorMessage').clear();
     $.ajax({
         url: 'registration',
         type: 'POST',
