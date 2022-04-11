@@ -18,7 +18,7 @@ $('#register-submit').click(function () {
 
 function sendData(form_data) {
     $('#register-submit').prop('disabled', true);
-    $('#errorMessage').remove();
+    $('#errorMessage').empty();
     $.ajax({
         url: 'registration',
         type: 'POST',
@@ -29,8 +29,8 @@ function sendData(form_data) {
             $('#register-submit').prop('disabled', false);
             let resp = JSON.parse(data);
             if(resp.state === 'success'){
-                // window.location.href = "login";
-                $('#signin-tab').ariaSelected(true);
+                window.location.href = "login";
+                // $('#signin-tab').ariaSelected = "true";
             }
             else{
                 $('#errorMessage').append("<li style='text-decoration-style: solid; color: red'>This Email is already exist</li>");
