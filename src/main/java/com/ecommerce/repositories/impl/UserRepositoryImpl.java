@@ -43,8 +43,12 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
         ///////////////
         TypedQuery<UserEntity> query = entityManager.createNamedQuery("user.findByEmail", UserEntity.class);
         query.setParameter("email", email);
-
-        return query.getSingleResult();
+        System.out.println("query Result : "+ query.getSingleResult());
+        if ( query.getSingleResult()!=null)
+        {
+            return query.getSingleResult();
+        }
+        return null;
     }
 
 
