@@ -208,7 +208,7 @@
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">Laptops</a>
+                                            <a href="categorized-product?categoryId=${product.category.categoryId}">${product.category.categoryName}</a>
                                         </div><!-- End .product-cat -->
                                         <h3 class="product-title"><a href="product.html"><c:out value="${product.name}"/></a>
                                         </h3><!-- End .product-title -->
