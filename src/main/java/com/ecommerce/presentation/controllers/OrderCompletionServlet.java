@@ -20,6 +20,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -54,6 +55,9 @@ public class OrderCompletionServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String jsonString = request.getParameter("cart");
         String paymentMethod= request.getParameter("paymentMethod");
+        HttpSession session = request.getSession();
+
+
 
         if(jsonString!=null){
 
@@ -86,7 +90,11 @@ public class OrderCompletionServlet extends HttpServlet {
                 // order successfully added to DB send client to order successfully page
                 if(orderAddedToDB){
 
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "order-successfully.jsp");
+                    session.setAttribute("userEmail", email);
+                    session.setAttribute("total",total.intValue()*100);
+                    session.setAttribute("mobileNumber",phoneNumber);
+
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "stripe-payment.jsp");
                     requestDispatcher.forward(request, response);
 
                 }else{
