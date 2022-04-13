@@ -48,51 +48,54 @@
                     <div class="statistics-item">
                       <p>
                         <i class="icon-sm fa fa-user mr-2"></i>
-                        New users
+                        statistics Users
                       </p>
-                      <h2>54000</h2>
-                      <label class="badge badge-outline-success badge-pill">2.7% increase</label>
+                       <h2>${statisticsBean.statisticsUsers}</h2>
+
+<%--                       <input value="${statisticsBean.completedOrders}" type="text" > --%>
+
+                      <label class="badge badge-outline-success badge-pill">75% increase</label>
                     </div>
                     <div class="statistics-item">
                       <p>
                         <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                        Avg Time
+                          completed Orders
                       </p>
-                      <h2>123.50</h2>
-                      <label class="badge badge-outline-danger badge-pill">30% decrease</label>
+                      <h2>${statisticsBean.completedOrders}</h2>
+                      <label class="badge badge-outline-success badge-pill" >30% increase </label>
                     </div>
                     <div class="statistics-item">
                       <p>
                         <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                        Downloads
+                          waiting Order
                       </p>
-                      <h2>3500</h2>
+                      <h2>${statisticsBean.waitingOrder}</h2>
                       <label class="badge badge-outline-success badge-pill">12% increase</label>
                     </div>
                     <div class="statistics-item">
                       <p>
                         <i class="icon-sm fas fa-check-circle mr-2"></i>
-                        Update
+                          not Completed Orders
                       </p>
-                      <h2>7500</h2>
-                      <label class="badge badge-outline-success badge-pill">57% increase</label>
+                      <h2>${statisticsBean.notCompletedOrders}</h2>
+                      <label class="badge badge-outline-danger badge-pill">57% decrease</label>
                     </div>
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fas fa-chart-line mr-2"></i>
-                        Sales
-                      </p>
-                      <h2>9000</h2>
-                      <label class="badge badge-outline-success badge-pill">10% increase</label>
-                    </div>
-                    <div class="statistics-item">
-                      <p>
-                        <i class="icon-sm fas fa-circle-notch mr-2"></i>
-                        Pending
-                      </p>
-                      <h2>7500</h2>
-                      <label class="badge badge-outline-danger badge-pill">16% decrease</label>
-                    </div>
+<%--                    <div class="statistics-item">--%>
+<%--                      <p>--%>
+<%--                        <i class="icon-sm fas fa-chart-line mr-2"></i>--%>
+<%--                          all Products--%>
+<%--                      </p>--%>
+<%--                      <h2>${statisticsBean.allProducts}</h2>--%>
+<%--                      <label class="badge badge-outline-success badge-pill">10% increase</label>--%>
+<%--                    </div>--%>
+<%--                    <div class="statistics-item">--%>
+<%--                      <p>--%>
+<%--                        <i class="icon-sm fas fa-circle-notch mr-2"></i>--%>
+<%--                        Pending--%>
+<%--                      </p>--%>
+<%--                      <h2>7500</h2>--%>
+<%--                      <label class="badge badge-outline-danger badge-pill">16% decrease</label>--%>
+<%--                    </div>--%>
                   </div>
                 </div>
               </div>
@@ -116,9 +119,9 @@
                 <div class="card-body">
                   <h4 class="card-title">
                     <i class="fas fa-chart-line"></i>
-                    Sales
+                    products
                   </h4>
-                  <h2 class="mb-5">56000 <span class="text-muted h4 font-weight-normal">Sales</span></h2>
+                  <h2 class="mb-5">${statisticsBean.allProducts} <span class="text-muted h4 font-weight-normal">products</span></h2>
                   <canvas id="sales-chart"></canvas>
                 </div>
               </div>
