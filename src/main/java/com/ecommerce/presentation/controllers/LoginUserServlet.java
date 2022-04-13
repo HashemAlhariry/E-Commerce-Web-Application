@@ -42,9 +42,10 @@ public class LoginUserServlet extends HttpServlet {
             if (userIdCookie != null && passwordCookie != null) {
                 if (session == null) {
                     session = request.getSession(true);
-                    UserBean userBean = userServiceImpl.findUserById(Integer.parseInt(userIdCookie.getValue()));
-                    session.setAttribute("userBean", userBean);
                 }
+                UserBean userBean = userServiceImpl.findUserById(Integer.parseInt(userIdCookie.getValue()));
+                session.setAttribute("userBean", userBean);
+                session.setAttribute("loggedIn", "true");
                 response.sendRedirect("home");
             } else if (session != null && session.getAttribute("userBean") != null) {
                 response.sendRedirect("home");
@@ -83,6 +84,7 @@ public class LoginUserServlet extends HttpServlet {
                 session = request.getSession(true);
             }
             session.setAttribute("userBean", userBean);
+            session.setAttribute("loggedIn","true");
             if( userBean.getRole().equals("CUSTOMER")){
 
                 //get user cart from json local database
@@ -98,7 +100,6 @@ public class LoginUserServlet extends HttpServlet {
                 String cartJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
 
                 session.setAttribute("cartItemBeans",cartJson);
-                session.setAttribute("loggedIn","true");
                 response.sendRedirect("home");
             }else if(userBean.getRole().equals("ADMIN")){
                 // add id/password to cookie to user

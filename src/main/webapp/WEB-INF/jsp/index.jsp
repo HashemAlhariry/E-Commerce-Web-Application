@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="assets/css/demos/demo-4.css">
 
     <script src="assets/js/amazonya/cookie-checker.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 
 </head>
 
@@ -181,8 +183,6 @@
                                     }
                                 }
                             }'>
-                            <div id="hiddenCart" hidden>${sessionScope.cartItemBeans}</div>
-                            <div id="loggedInCheck" hidden>${sessionScope.loggedIn}</div>
                             <c:forEach var="product" items="${newArrivals}">
 
 
@@ -230,6 +230,8 @@
 
                 </div><!-- End .tab-content -->
             </div><!-- End .container -->
+            <div id="hiddenCart" hidden>${sessionScope.cartItemBeans}</div>
+            <div id="loggedInCheck" hidden>${sessionScope.loggedIn}</div>
 
             <div class="mb-6"></div>
             <!-- End .mb-6 -->
