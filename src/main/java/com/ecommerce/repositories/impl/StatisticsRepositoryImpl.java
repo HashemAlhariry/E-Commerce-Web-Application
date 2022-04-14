@@ -48,33 +48,47 @@ public class StatisticsRepositoryImpl implements StatisticsRepository {
 
     @Override
     public int getCompletedOrders() {
+        List<OrderEntity> resultList = entityManager.createQuery("SELECT o FROM OrderEntity o").getResultList();
+        int counter = 0;
+        if (!resultList.isEmpty()) {
+            for (OrderEntity order : resultList) {
+                if (order.getState().equals(OrderState.ARRIVED))
+                    counter++;
+                }
 
-        Query query = entityManager.createNamedQuery("orders.completedOrder");
-        List<ProductEntity> resultList = query.getResultList();
-        System.out.println(resultList.size());
-        return resultList.size();
-
+        }
+        return counter;
     }
+
 
     @Override
     public int getNotCompletedOrders() {
+        List<OrderEntity> resultList = entityManager.createQuery("SELECT o FROM OrderEntity o").getResultList();
+        int counter = 0;
+        if (!resultList.isEmpty()) {
+            for (OrderEntity order : resultList) {
+                if (order.getState().equals(OrderState.CANCELLED))
+                    counter++;
+            }
 
-        Query query = entityManager.createNamedQuery("orders.notCompletedOrder");
-        List<ProductEntity> resultList = query.getResultList();
-        System.out.println(resultList.size());
-        return resultList.size();
-
+        }
+        return counter;
     }
 
 
     @Override
     public int getWaitingOrders() {
-        Query query = entityManager.createNamedQuery("orders.pending");
-        List<ProductEntity> resultList = query.getResultList();
-        System.out.println(resultList.size());
-        return resultList.size();
-    }
+        List<OrderEntity> resultList = entityManager.createQuery("SELECT o FROM OrderEntity o").getResultList();
+        int counter = 0;
+        if (!resultList.isEmpty()) {
+            for (OrderEntity order : resultList) {
+                if (order.getState().equals(OrderState.PENDING))
+                    counter++;
+            }
 
+        }
+        return counter;
+    }
 
 
 }
