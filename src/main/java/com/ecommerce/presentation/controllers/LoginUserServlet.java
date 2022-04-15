@@ -88,7 +88,7 @@ public class LoginUserServlet extends HttpServlet {
             if( userBean.getRole().equals("CUSTOMER")){
 
                 //get user cart from json local database
-                List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCart(cart,cartService);
+                List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCartItemBeans(cart,cartService);
 
                 //get user cart from Database
                 List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());

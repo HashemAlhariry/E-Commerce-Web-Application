@@ -8,4 +8,5 @@ import java.util.List;
 public interface CartRepository extends Repository<CartEntity, CartID>{
 
     public List<CartEntity> getUserCart(int id);
+    public void deleteUserCart(int id);
 }

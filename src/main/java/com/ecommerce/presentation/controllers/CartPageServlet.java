@@ -38,7 +38,7 @@ public class CartPageServlet extends HttpServlet {
         BigDecimal subtotal=BigDecimal.ZERO;
 
         String jsonString = request.getParameter("cart");
-        List<CartItemBean> cartItemBeans = Util.parseCartJsonToCart(jsonString,cartService);
+        List<CartItemBean> cartItemBeans = Util.parseCartJsonToCartItemBeans(jsonString,cartService);
 
         for (CartItemBean cartItem: cartItemBeans) {
             subtotal=subtotal.add(cartItem.getProductBean().getPrice().multiply(new BigDecimal(cartItem.getRequiredQuantity())));

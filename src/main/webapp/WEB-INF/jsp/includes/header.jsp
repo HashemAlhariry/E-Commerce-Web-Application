@@ -373,14 +373,15 @@
 
     function logout(){
         console.log("logging Out");
-        var cart = localStorage.getItem("cartItems")
+        var cartItems = localStorage.getItem("cartItems")
+        var cartJson = {"cartItems":cartItems}
         var signUpElement = document.getElementById("signupElement").firstElementChild;
         console.log(signUpElement);
         $.ajax({
             url: 'logout',
             type: 'POST',
             contentType: 'application/x-www-form-urlencoded',
-            data: cart,
+            data: cartJson,
             dataType: 'json',
             success: function (data) {
                 localStorage.setItem("cartItems",JSON.stringify(data));

@@ -29,4 +29,12 @@ public class CartRepositoryImpl extends RepositoryImpl<CartEntity, CartID> imple
         List<CartEntity> cartEntities = query.getResultList();
         return cartEntities;
     }
+
+    @Override
+    public void deleteUserCart(int id) {
+        Query query= entityManager.createQuery("delete  from "+ CartEntity.class.getSimpleName() +" c where c.id.userId = "+id);
+        entityManager.getTransaction().begin();
+        query.executeUpdate();
+        entityManager.getTransaction().commit();
+    }
 }
