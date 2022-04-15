@@ -15,8 +15,20 @@ import java.util.Set;
 @Getter
 @Setter
 @NamedQueries({
-        @NamedQuery(name = "findAllByUserId", query = "select  o from OrderEntity o join o.orderDetails od where  od.user.id=:user_id")
+        @NamedQuery(name = "findAllByUserId",
+                query = "select  o from OrderEntity o join o.orderDetails od where  od.user.id=:user_id"),
+
+        @NamedQuery(name = "orders.completedOrder",
+                query = "SELECT COUNT(o.id) from OrderEntity  o where o.state = com.ecommerce.repositories.entites.OrderState.ARRIVED"),
+
+        @NamedQuery(name = "orders.pending",
+                query = "SELECT COUNT(o.id) from OrderEntity  o where o.state = com.ecommerce.repositories.entites.OrderState.PENDING"),
+
+        @NamedQuery(name = "orders.notCompletedOrder",
+                query = "SELECT COUNT(o.id) from OrderEntity  o where o.state = com.ecommerce.repositories.entites.OrderState.CANCELLED"),
+
 })
+
 public class OrderEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
