@@ -98,7 +98,9 @@ public class CartServiceImpl implements CartService {
     @Override
     public void saveUserCart(String cartJson, int userId) throws JsonProcessingException {
         List<CartEntity> cartEntitiesFromJson = getCartEntitiesFromJson(cartJson, userId);
-        cartRepository.deleteUserCart(userId);
-        cartEntitiesFromJson.forEach(cartRepository::save);
+        //cartRepository.deleteUserCart(userId);
+        List<CartEntity> cartEntitiesFromDataBase = cartRepository.getUserCartByUserId(userId);
+        cartEntitiesFromDataBase.forEach(cartRepository::delete);
+        cartEntitiesFromJson.forEach(cartRepository::update);
     }
 }

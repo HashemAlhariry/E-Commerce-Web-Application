@@ -42,7 +42,7 @@ public class UserEntity {
     @JoinTable(name = "cart",
             joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)})*/
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user")//,cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CartEntity>cart;
 
     @OneToMany(mappedBy = "user")

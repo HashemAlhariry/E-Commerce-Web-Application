@@ -31,4 +31,10 @@ public class CartRepositoryImpl extends RepositoryImpl<CartEntity, CartID> imple
         query.executeUpdate();
         entityManager.getTransaction().commit();
     }
+
+    @Override
+    public List<CartEntity> getUserCartByUserId(int userId) {
+        Query query = entityManager.createQuery("select c from  "+CartEntity.class.getSimpleName()+" c where c.user.id = "+ userId);
+        return query.getResultList();
+    }
 }
