@@ -43,7 +43,7 @@ public class LoginUserServlet extends HttpServlet {
                 if (session == null) {
                     session = request.getSession(true);
                 }
-                UserBean userBean = loginServiceImpl.findUserById(Integer.parseInt(userIdCookie.getValue()));
+                UserBean userBean = loginServiceImpl.findUserById(Integer.parseInt(Util.decodeString(userIdCookie.getValue())));
                 session.setAttribute("userBean", userBean);
                 session.setAttribute("loggedIn", "true");
                 response.sendRedirect("home");
