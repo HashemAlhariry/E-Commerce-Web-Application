@@ -25,7 +25,7 @@ import java.util.List;
 
 public class LoginUserServlet extends HttpServlet {
 
-    private final LoginServices userServiceImpl = LoginServicesImpl.getInstance();
+    private final LoginServices loginServiceImpl = LoginServicesImpl.getInstance();
     private final CartService cartService = CartServiceImpl.getInstance();
 
     @Override
@@ -43,7 +43,7 @@ public class LoginUserServlet extends HttpServlet {
                 if (session == null) {
                     session = request.getSession(true);
                 }
-                UserBean userBean = userServiceImpl.findUserById(Integer.parseInt(userIdCookie.getValue()));
+                UserBean userBean = loginServiceImpl.findUserById(Integer.parseInt(userIdCookie.getValue()));
                 session.setAttribute("userBean", userBean);
                 session.setAttribute("loggedIn", "true");
                 response.sendRedirect("home");
@@ -74,7 +74,7 @@ public class LoginUserServlet extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         HttpSession session = request.getSession(false);
 
-        UserBean userBean = userServiceImpl.findUserByEmail(email);
+        UserBean userBean = loginServiceImpl.findUserByEmail(email);
         if (userBean != null) // check against Data Base
         {
             if (userBean.getEmail().equals(email) && userBean.getPass().equals(password) && rememberMe != null) {
