@@ -32,6 +32,11 @@ public class LoginUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    // prevent caching in login page ,so you cannot access it while pressing the back button
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setDateHeader("Expires", 0); // Proxies.
+
 
         Cookie[] cookies = request.getCookies();
         HttpSession session = request.getSession(false);
@@ -81,9 +86,8 @@ public class LoginUserServlet extends HttpServlet {
         UserBean userBean = loginServiceImpl.findUserByEmail(email);
         if (userBean != null) // check against Data Base
         {
-            if (userBean.getEmail().equals(email) && userBean.getPass().equals(password) && rememberMe != null) {
-                addCookiesToResponse(response,userBean);
-
+            if (userBean.getEmail().equals(email) && userBean.getPass().equals(password) ) {
+                if(rememberMe != null) addCookiesToResponse(response,userBean);
                 if (session == null) {
                     session = request.getSession(true);
                 }
@@ -107,7 +111,7 @@ public class LoginUserServlet extends HttpServlet {
                     response.sendRedirect("home");
                 }else if(userBean.getRole().equals("ADMIN")){
                     // add id/password to cookie to user
-                    addCookiesToResponse(response,userBean);
+                    //addCookiesToResponse(response,userBean);
 
                     //redirect admin page
                     response.sendRedirect("admin");
