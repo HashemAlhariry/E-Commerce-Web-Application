@@ -18,7 +18,7 @@ public class EntityMangerUtil {
     }
 
     public EntityManager getEntityManager(String id) {
-        return entityManagers.getOrDefault(id, Connector.getInstance().getEntityManager());
+        return entityManagers.putIfAbsent(id, Connector.getInstance().getEntityManager());
     }
 
     public void closeEntityManager(String id) {
