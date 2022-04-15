@@ -29,9 +29,7 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
     @Override
     public boolean delete(T entity) {
         entityManager.getTransaction().begin();
-        //entityManager.refresh(entity);
         entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
-        entityManager.clear();
         entityManager.getTransaction().commit();
         return true;
     }
