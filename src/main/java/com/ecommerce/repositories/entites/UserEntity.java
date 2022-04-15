@@ -14,9 +14,7 @@ import java.util.Set;
 
 @NamedQueries({
         @NamedQuery(name = "user.findByEmail",
-                query = "SELECT u from UserEntity u where u.email=:email"),
-        @NamedQuery(name = "user.findById",
-                query = "select u from UserEntity u where  u.id = :id"),
+                query = "SELECT u from UserEntity u where u.email=:email")
 })
 
 @Getter
