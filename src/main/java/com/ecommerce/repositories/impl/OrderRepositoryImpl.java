@@ -1,5 +1,6 @@
 package com.ecommerce.repositories.impl;
 
+import com.ecommerce.handlers.EntityMangerUtil;
 import com.ecommerce.repositories.OrderRepository;
 import com.ecommerce.repositories.entites.OrderEntity;
 import jakarta.persistence.TypedQuery;
@@ -7,14 +8,9 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class OrderRepositoryImpl extends RepositoryImpl<OrderEntity, Integer> implements OrderRepository {
-    private static final OrderRepositoryImpl INSTANCE = new OrderRepositoryImpl();
+    public OrderRepositoryImpl(String entityMangerId) {
+        super(EntityMangerUtil.getInstance().getEntityManager(entityMangerId));
 
-    private OrderRepositoryImpl() {
-
-    }
-
-    public static OrderRepositoryImpl getInstance() {
-        return INSTANCE;
     }
 
     @Override

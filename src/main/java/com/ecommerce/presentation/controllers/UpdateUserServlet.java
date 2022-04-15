@@ -2,10 +2,6 @@ package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.LoginUserBean;
 import com.ecommerce.presentation.beans.SignUpBean;
-import com.ecommerce.repositories.entites.Role;
-import com.ecommerce.services.RegisterServices;
-import com.ecommerce.services.impls.LoginServicesImpl;
-import com.ecommerce.services.impls.RegisterServicesImpl;
 import com.ecommerce.services.impls.UserUpdateServicesImpl;
 import com.ecommerce.utils.CommonString;
 import jakarta.servlet.RequestDispatcher;
@@ -14,8 +10,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -24,13 +20,12 @@ import java.time.format.DateTimeFormatter;
 public class UpdateUserServlet extends HttpServlet {
 
     //private final LoginServicesImpl loginServicesImpl = LoginServicesImpl.getInstance();
-    private final UserUpdateServicesImpl userUpdateServicesImpl = UserUpdateServicesImpl.getInstance();
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-       // req.setAttribute("data", req.getSession().getAttribute("userDto"));
+        // req.setAttribute("data", req.getSession().getAttribute("userDto"));
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "updateUserProfile.jsp");
         requestDispatcher.forward(req, resp);
     }
@@ -38,7 +33,7 @@ public class UpdateUserServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        UserUpdateServicesImpl userUpdateServicesImpl = new UserUpdateServicesImpl((String) req.getAttribute("reqId"));
         LoginUserBean loginUserBean = (LoginUserBean) req.getSession().getAttribute("userDto");
         SignUpBean userUpdateBean = new SignUpBean();
         userUpdateBean.setEmail(loginUserBean.getEmail());

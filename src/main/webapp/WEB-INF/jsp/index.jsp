@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="assets/css/demos/demo-4.css">
 
     <script src="assets/js/amazonya/cookie-checker.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 
 </head>
 
@@ -181,8 +183,6 @@
                                     }
                                 }
                             }'>
-                            <div id="hiddenCart" hidden>${sessionScope.cartItemBeans}</div>
-                            <div id="loggedInCheck" hidden>${sessionScope.loggedIn}</div>
                             <c:forEach var="product" items="${newArrivals}">
 
 
@@ -208,9 +208,9 @@
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">Laptops</a>
+                                            <a href="categorized-product?categoryId=${product.category.categoryId}">${product.category.categoryName}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html"><c:out value="${product.name}"/></a>
+                                        <h3 class="product-title"><a href="single-product-page?productId=${product.id}"><c:out value="${product.name}"/></a>
                                         </h3><!-- End .product-title -->
                                         <div class="product-price">
                                             <c:out value="${product.price} EGP"/>
@@ -230,6 +230,8 @@
 
                 </div><!-- End .tab-content -->
             </div><!-- End .container -->
+            <div id="hiddenCart" hidden>${sessionScope.cartItemBeans}</div>
+            <div id="loggedInCheck" hidden>${sessionScope.loggedIn}</div>
 
             <div class="mb-6"></div>
             <!-- End .mb-6 -->

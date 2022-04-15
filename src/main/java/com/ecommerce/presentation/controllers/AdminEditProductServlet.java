@@ -10,35 +10,32 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.HttpConstraint;
-import jakarta.servlet.annotation.HttpMethodConstraint;
-import jakarta.servlet.annotation.ServletSecurity;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+
 @WebServlet(name = "admin-edit-product", urlPatterns = {"/admin-edit-product"})
 //@ServletSecurity(httpMethodConstraints = {@HttpMethodConstraint(value = "Get" , rolesAllowed = "admin"),@HttpMethodConstraint(value = "Post" , rolesAllowed = "admin")})
 public class AdminEditProductServlet extends HttpServlet {
 
     private ServletContext servletContext;
-    ProductService productService;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService = ProductServiceImpl.getInstance();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long idNumber=Long.parseLong(req.getParameter("productId"));
+        ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
+        Long idNumber = Long.parseLong(req.getParameter("productId"));
         ProductEntity productEntity = productService.findById(idNumber);
         ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(productEntity);
-        req.setAttribute("editProduct",productBean);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/forms/edit_product.jsp");
+        req.setAttribute("editProduct", productBean);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "admin/pages/forms/edit_product.jsp");
         requestDispatcher.forward(req, resp);
     }
 

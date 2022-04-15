@@ -9,7 +9,7 @@
                 <a href="tel:#"><i class="icon-phone"></i>Call: +20 114 905 6691</a>
             </div><!-- End .header-left -->
 
-            <div class="header-right">
+            <div class="header-right" id="replaceable">
 
                 <ul class="top-menu">
                     <li>
@@ -26,9 +26,33 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
-                            <li><a href="login"  >Sign in / Sign up</a></li>
+
                             <%--<li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>--%>
-                            <li><a href="updateprofile"  > Update Profile </a></li>
+                            <c:choose>
+                                <c:when test="${(!empty loggedIn)&&(loggedIn =='true')}" >
+                                    <li id="profileIcon">
+                                        <div class="header-dropdown" >
+<%--                                            <a>Profile</a>--%>
+                                            <div class="icon">
+                                                <i class='fas fa-user-alt sf-with-ul' style='font-size:24px'></i>
+                                            </div>
+                                            <div class="header-menu">
+                                                <ul>
+                                                    <li><a >${sessionScope.userBean.email}</a></li>
+                                                    <li><a href="updateprofile">Profile</a></li>
+                                                    <li style="font-family: Arial"><a onclick="logout()">Logout</a></li>
+                                                </ul>
+                                            </div><!-- End .header-menu -->
+                                        </div>
+                                    </li>
+                                    <li id="signupElement" hidden><a href="login"  >Sign in / Sign up</a></li>
+<%--                                    <li><a href="updateprofile"  > Update Profile </a></li>--%>
+                                </c:when>
+                                <c:otherwise>
+                                    <li id="signupElement"><a href="login"  >Sign in / Sign up</a></li>
+                                </c:otherwise>
+                            </c:choose>
+
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
@@ -46,7 +70,7 @@
                 </button>
 
                 <a href="home" class="logo">
-                    <img src="assets/images/demos/demo-3/logo-footer.png" alt="Molla Logo" width="105" height="25">
+                    <img src="assets/images/LogoSample_ByTailorBrands1.jpg" alt="Molla Logo" width="205" height="25">
                 </a>
             </div><!-- End .header-left -->
 
@@ -221,9 +245,14 @@
 </header>
 <!-- End .header -->
 
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <script>
 
+    function CartItem(id, quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
     window.onload = (event) => {
 
         addToCart(-1);
@@ -268,10 +297,7 @@
 
     }
 
-    function CartItem(id, quantity) {
-        this.id = id;
-        this.quantity = quantity;
-    }
+
 
     function setRedirect(){
         var Json = localStorage.getItem("cartItems");
@@ -345,7 +371,37 @@
 
     }
 
-    /*
+    function logout(){
+        console.log("logging Out");
+        var cartItems = localStorage.getItem("cartItems")
+        var cartJson = {"cartItems":cartItems}
+        var signUpElement = document.getElementById("signupElement").firstElementChild;
+        console.log(signUpElement);
+        $.ajax({
+            url: 'logout',
+            type: 'POST',
+            contentType: 'application/x-www-form-urlencoded',
+            data: cartJson,
+            dataType: 'json',
+            success: function (data) {
+                localStorage.setItem("cartItems",JSON.stringify(data));
+                // $("#profileIcon").html("<li><a href="login" id="singupElement" >Sign in / Sign up</a></li>");
+                if(window.location.href.endsWith('updateprofile')){
+                    window.location.href = "login";
+                }
+                document.getElementById("profileIcon").firstElementChild.replaceWith(signUpElement);
+                addToCart(-1);
+                addToWishList(-1);
+            }
+        })
+    };
+
+
+
+
+
+
+/*
     $('#cartIcon').click(function () {
 
         var jsonData = localStorage.getItem("cartItems");

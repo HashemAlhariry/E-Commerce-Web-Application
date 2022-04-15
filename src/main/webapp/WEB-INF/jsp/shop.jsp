@@ -352,7 +352,7 @@
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
                                                             <a href="#" class="active">
-                                                                <img src="${image}" alt="product desc">
+                                                                <img src="${image}" alt="product desc" style="height: 218px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
                                                     </c:forEach>

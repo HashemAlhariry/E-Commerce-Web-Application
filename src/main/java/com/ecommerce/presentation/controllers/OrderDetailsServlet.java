@@ -37,7 +37,7 @@ public class OrderDetailsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 
-        CartService cartService = CartServiceImpl.getInstance();
+        CartService cartService = new CartServiceImpl((String) request.getAttribute("reqId"));
         String jsonString = request.getParameter("cart");
         if(jsonString!=null) {
 

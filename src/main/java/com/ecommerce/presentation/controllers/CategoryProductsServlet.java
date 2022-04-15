@@ -23,24 +23,24 @@ import java.util.List;
 
 public class CategoryProductsServlet extends HttpServlet {
     ServletContext servletContext;
-    ProductService productService;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService = ProductServiceImpl.getInstance();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
+
         if (req.getParameterValues("categoryId") != null) {
             int categoryId = Integer.parseInt(req.getParameter("categoryId"));
 
             List<ProductBean> categorizedProductsBeans = productService.getFilteredProductsBeans(1, 12, new ArrayList<>(List.of(req.getParameter("categoryId"))));
             req.setAttribute("categorizedProducts", categorizedProductsBeans);
             req.setAttribute("categoryId", categoryId);
-            List<CategoryBean>categoryBeans=(List<CategoryBean>)servletContext.getAttribute("currentCategories");
-            req.setAttribute("category",categoryBeans.stream().filter(c->c.getCategoryId()==categoryId).findFirst().get());
+            List<CategoryBean> categoryBeans = (List<CategoryBean>) servletContext.getAttribute("currentCategories");
+            req.setAttribute("category", categoryBeans.stream().filter(c -> c.getCategoryId() == categoryId).findFirst().get());
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "category-products.jsp");
             requestDispatcher.forward(req, resp);
         }
@@ -53,13 +53,15 @@ public class CategoryProductsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
+
         PrintWriter out = resp.getWriter();
 
         if (req.getParameterValues("categoryId") != null) {
             int categoryId = Integer.parseInt(req.getParameter("categoryId"));
             int loadPage = Integer.parseInt(req.getParameter("loadPage"));
             List<ProductBean> categorizedProductsBeans = productService.getFilteredProductsBeans(loadPage, 12, new ArrayList<>(List.of(req.getParameter("categoryId"))));
-            if (categorizedProductsBeans==null||categorizedProductsBeans.isEmpty()) {
+            if (categorizedProductsBeans == null || categorizedProductsBeans.isEmpty()) {
                 out.write("noMore");
             } else {
                 System.out.println(categorizedProductsBeans.size());

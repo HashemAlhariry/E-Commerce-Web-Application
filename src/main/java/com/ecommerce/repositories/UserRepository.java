@@ -12,8 +12,6 @@ public interface UserRepository extends Repository<UserEntity,Integer>{
     UserEntity findByEmail(String email) throws NoResultException;
     UserEntity saveUser(UserEntity user);
     UserEntity updateUser(UserEntity user);
-    //UserEntity findById(UserEntity id);
-    UserEntity findById(int id);
 
 
 

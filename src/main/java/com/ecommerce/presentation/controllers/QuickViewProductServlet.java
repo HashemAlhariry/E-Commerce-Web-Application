@@ -21,16 +21,16 @@ import java.io.IOException;
 public class QuickViewProductServlet extends HttpServlet {
 
     ServletContext servletContext;
-    ProductService productService;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService = ProductServiceImpl.getInstance();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductService productService=new ProductServiceImpl((String) req.getAttribute("reqId"));
+
         Long productId = Long.parseLong(req.getParameter("productId"));
         ProductEntity productEntity = productService.findById(productId);
         ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(productEntity);

@@ -17,22 +17,20 @@ import com.ecommerce.utils.S3Util;
 import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.http.Part;
 
-import java.math.BigDecimal;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class ProductServiceImpl implements ProductService {
-    private static final ProductServiceImpl INSTANCE = new ProductServiceImpl();
-    private final CategoryRepository categoryRepository = CategoryRepositoryImpl.getInstance();
-    private final ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
 
-    private ProductServiceImpl() {
+    public ProductServiceImpl(String reqId) {
+        categoryRepository = new CategoryRepositoryImpl(reqId);
+        productRepository = new ProductRepositoryImpl(reqId);
     }
 
-    public static ProductServiceImpl getInstance() {
-        return INSTANCE;
-    }
 
     @Override
     public ProductEntity save(AddProductBean addProductBean) throws IOException, CustomValidationException {
@@ -42,9 +40,9 @@ public class ProductServiceImpl implements ProductService {
             throw new CustomValidationException("Images must be 1 at least");
         }
 
-        Part mainImagePart=addProductBean.getImages().get(0);
+        Part mainImagePart = addProductBean.getImages().get(0);
         addProductBean.getImages().remove(0);
-        String mainImgURI=saveMainImage(mainImagePart);
+        String mainImgURI = saveMainImage(mainImagePart);
 
         if (mainImgURI.isEmpty()) {
             throw new CustomValidationException("Couldn't save main image");
@@ -60,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
         ProductEntity productEntity = ProductMapper.INSTANCE.addProductBeanToEntity(addProductBean);
         productEntity.setMainImage(mainImgURI);
         productEntity.setImages(images);
-        productEntity.setCreationDate(LocalDate.now());
+        productEntity.setCreationDate(LocalDateTime.now());
         productEntity.setCategory(category);
         productEntity.setState(ProductState.NEW);
         productRepository.save(productEntity);
@@ -116,7 +114,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductEntity update(ProductEntity entity) {
-        System.out.println("inside th repo"); return productRepository.update(entity);
+        System.out.println("inside th repo");
+        return productRepository.update(entity);
     }
 
     @Override
@@ -172,28 +171,32 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductBean> getFilteredProductsBeans(int pageNumber, int recordsPerPage, List<String> categoriesIds) {
         int totalCount = getAllProductsCount();
         int countOfProductsPerPage = 12;
-        int numberOfPages = (int)Math.ceil((float)totalCount/countOfProductsPerPage);
-        if (pageNumber <= numberOfPages){
+        int numberOfPages = (int) Math.ceil((float) totalCount / countOfProductsPerPage);
+        if (pageNumber <= numberOfPages) {
             //List<ProductEntity> productEntitiesOfSinglePage = productRepository.getSinglePageProducts(pageNumber,countOfProductsPerPage);
-            List<ProductEntity> filteredProductEntities =  productRepository.getFilteredProducts(pageNumber,countOfProductsPerPage,categoriesIds);
+            List<ProductEntity> filteredProductEntities = productRepository.getFilteredProducts(pageNumber, countOfProductsPerPage, categoriesIds);
             List<ProductBean> productBeansOfSinglePage = ProductMapper.INSTANCE.listEntitiesToBeans(filteredProductEntities);
             return productBeansOfSinglePage;
-        }else{
+        } else {
             return null;
         }
     }
 
     @Override
-    public long getProductsCountInCategories(String...categoriesIdArr) {
+    public long getProductsCountInCategories(String... categoriesIdArr) {
         java.util.List<String> categoriesId = java.util.Arrays.asList(categoriesIdArr);
         return productRepository.countProductsOfCertainCategories(categoriesId);
     }
+
     @Override
-    public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {return productRepository.findProductByPrice(productPrice);}
+    public List<ProductEntity> findProductByPrice(BigDecimal productPrice) {
+        return productRepository.findProductByPrice(productPrice);
+    }
 
     @Override
     public List<ProductEntity> findProductByPriceAndCategoryId(BigDecimal productPrice, int id) {
-        return productRepository.findProductByPriceAndCategoryId(productPrice,id);}
+        return productRepository.findProductByPriceAndCategoryId(productPrice, id);
+    }
 
     @Override
     public List<ProductEntity> relatedProducts(int id) {

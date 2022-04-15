@@ -35,7 +35,7 @@ import java.util.List;
 public class AdminAddProductServlet extends HttpServlet {
 
     private ServletContext servletContext;
-    private ProductService productService = ProductServiceImpl.getInstance();
+
 
     @Override
     public void init(ServletConfig config) {
@@ -50,6 +50,7 @@ public class AdminAddProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
         PrintWriter out = resp.getWriter();
         List<String> messages = new ArrayList<>();
         try {

@@ -21,17 +21,16 @@ import java.util.List;
 public class AdminViewUsersServlets extends HttpServlet {
 
     private ServletContext servletContext;
-    private UserService userService;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        userService = UserServiceImpl.getInstance();
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserService userService = new UserServiceImpl((String) req.getAttribute("reqId"));
         List<UserViewBean> allUsers = userService.viewAll();
         System.out.println(allUsers.toString());
         req.setAttribute("allUsers", allUsers);
@@ -42,6 +41,7 @@ public class AdminViewUsersServlets extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserService userService = new UserServiceImpl((String) req.getAttribute("reqId"));
         String email = req.getParameter("email");
         if (email != null) email = email.trim();
         List<UserViewBean> allUsers = userService.viewUserByEmail(email);

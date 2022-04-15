@@ -17,11 +17,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
-@WebServlet(name = "cart",urlPatterns = {"/cart"})
+@WebServlet(name = "cart", urlPatterns = {"/cart"})
 public class CartPageServlet extends HttpServlet {
-    CartService cartService;
     public void init(ServletConfig config) {
-        cartService = CartServiceImpl.getInstance();
     }
 
     @Override
@@ -34,18 +32,20 @@ public class CartPageServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CartService cartService = new CartServiceImpl((String) request.getAttribute("reqId"));
 
-        BigDecimal subtotal=BigDecimal.ZERO;
+
+        BigDecimal subtotal = BigDecimal.ZERO;
 
         String jsonString = request.getParameter("cart");
-        List<CartItemBean> cartItemBeans = Util.parseCartJsonToCart(jsonString,cartService);
+        List<CartItemBean> cartItemBeans = Util.parseCartJsonToCartItemBeans(jsonString, cartService);
 
-        for (CartItemBean cartItem: cartItemBeans) {
-            subtotal=subtotal.add(cartItem.getProductBean().getPrice().multiply(new BigDecimal(cartItem.getRequiredQuantity())));
+        for (CartItemBean cartItem : cartItemBeans) {
+            subtotal = subtotal.add(cartItem.getProductBean().getPrice().multiply(new BigDecimal(cartItem.getRequiredQuantity())));
         }
 
-        request.setAttribute("cartItemBeans",cartItemBeans);
-        request.setAttribute("subTotal",subtotal);
+        request.setAttribute("cartItemBeans", cartItemBeans);
+        request.setAttribute("subTotal", subtotal);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
         requestDispatcher.forward(request, response);
     }
