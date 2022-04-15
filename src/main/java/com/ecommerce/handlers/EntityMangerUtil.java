@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class EntityMangerUtil {
     private Map<String, EntityManager> entityManagers = new HashMap<>();
-    public static EntityMangerUtil INSTANCE = new EntityMangerUtil();
+    public static final EntityMangerUtil INSTANCE = new EntityMangerUtil();
 
     private EntityMangerUtil() {
 
@@ -18,7 +18,12 @@ public class EntityMangerUtil {
     }
 
     public EntityManager getEntityManager(String id) {
-        return entityManagers.putIfAbsent(id, Connector.getInstance().getEntityManager());
+        EntityManager entityManager = entityManagers.get(id);
+        if (entityManager == null) {
+            entityManager = Connector.getInstance().getEntityManager();
+            entityManagers.put(id, entityManager);
+        }
+        return entityManager;
     }
 
     public void closeEntityManager(String id) {
