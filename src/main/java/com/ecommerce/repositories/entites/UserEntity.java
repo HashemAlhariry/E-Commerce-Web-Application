@@ -38,11 +38,7 @@ public class UserEntity {
     @Column(nullable = false)
     private BigDecimal creditLimit = new BigDecimal(0);
 
-   /* @ManyToMany
-    @JoinTable(name = "cart",
-            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)})*/
-    @OneToMany(mappedBy = "user")//,cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user")
     private Set<CartEntity>cart;
 
     @OneToMany(mappedBy = "user")
