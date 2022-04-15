@@ -17,9 +17,9 @@ import com.ecommerce.utils.S3Util;
 import com.ecommerce.utils.mappers.ProductMapper;
 import jakarta.servlet.http.Part;
 
-import java.math.BigDecimal;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class ProductServiceImpl implements ProductService {
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
         ProductEntity productEntity = ProductMapper.INSTANCE.addProductBeanToEntity(addProductBean);
         productEntity.setMainImage(mainImgURI);
         productEntity.setImages(images);
-        productEntity.setCreationDate(LocalDate.now());
+        productEntity.setCreationDate(LocalDateTime.now());
         productEntity.setCategory(category);
         productEntity.setState(ProductState.NEW);
         productRepository.save(productEntity);
