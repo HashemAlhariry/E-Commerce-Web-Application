@@ -39,6 +39,17 @@
   </servlet-mapping>
 
 
+  <context-param>
+    <param-name>stripePublicKey</param-name>
+    <param-value>pk_test_51KmFuOJKNiBLygtkyrLQtjXf9p2BqxMmRR2miQElRuUeFWe9bN3BCx5zZz2KIfCxnV0ryIp1R1jMGsHYvIAfRSt900kuf0CNie</param-value>
+  </context-param>
+  <context-param>
+    <param-name>stripeSecretKey</param-name>
+    <param-value>sk_test_51KmFuOJKNiBLygtk6E5HrXrgvfZrOL2EZKznB7OEHUrkwhEYqkxZYawuFAxLRNRuWsEHGvrGcOUCYMjfd1386MLc00V9X96pId</param-value>
+  </context-param>
+
+
+
 
 
 </web-app>

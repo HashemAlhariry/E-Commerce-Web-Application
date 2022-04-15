@@ -20,6 +20,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -27,8 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-@WebServlet(name = "order-completion", urlPatterns = {"/order-completion"})
+@WebServlet(name = "order-completion", urlPatterns = { "/order-completion" })
 public class OrderCompletionServlet extends HttpServlet {
 
     @Override
@@ -53,12 +53,14 @@ public class OrderCompletionServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String jsonString = request.getParameter("cart");
         String paymentMethod = request.getParameter("paymentMethod");
+        HttpSession session = request.getSession();
 
         if (jsonString != null) {
 
             ObjectMapper jacksonMapper = new ObjectMapper();
-            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>() {
-            });
+            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString,
+                    new TypeReference<List<ViewCartItem>>() {
+                    });
             System.out.println(viewCartItems.size());
             List<CartItemBean> cartItemBeans;
             // to remove product with quantity 0
@@ -86,23 +88,27 @@ public class OrderCompletionServlet extends HttpServlet {
                 // order successfully added to DB send client to order successfully page
                 if (orderAddedToDB) {
 
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "order-successfully.jsp");
+                    session.setAttribute("userEmail", email);
+                    session.setAttribute("total", total.intValue() * 100);
+                    session.setAttribute("mobileNumber", phoneNumber);
+
+                    RequestDispatcher requestDispatcher = request
+                            .getRequestDispatcher(CommonString.HOME_URL + "stripe-payment.jsp");
                     requestDispatcher.forward(request, response);
 
                 } else {
 
                     // return user to cart with error message
                     // update later
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
+                    RequestDispatcher requestDispatcher = request
+                            .getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
                     requestDispatcher.forward(request, response);
 
                 }
 
             }
 
-
         }
     }
-
 
 }
