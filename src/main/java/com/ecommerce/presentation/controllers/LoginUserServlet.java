@@ -47,10 +47,11 @@ public class LoginUserServlet extends HttpServlet {
                 UserBean userBean = loginServiceImpl.findUserById(Integer.parseInt(Util.decodeString(userIdCookie.getValue())));
                 session.setAttribute("userBean", userBean);
                 session.setAttribute("loggedIn", "true");
-                response.sendRedirect("home");
+                if( userBean.getRole().equalsIgnoreCase("ADMIN")) response.sendRedirect("admin");
+                else response.sendRedirect("home");
             } else if (session != null && session.getAttribute("userBean") != null) {
-                if( ((UserBean)session.getAttribute("userBean")).getRole().equals("ADMIN"))
-                    response.sendRedirect("admin");
+                UserBean userBean = (UserBean) session.getAttribute("userBean");
+                if( userBean.getRole().equalsIgnoreCase("ADMIN")) response.sendRedirect("admin");
                 else response.sendRedirect("home");
             }else{
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "login.jsp");
@@ -82,35 +83,41 @@ public class LoginUserServlet extends HttpServlet {
         {
             if (userBean.getEmail().equals(email) && userBean.getPass().equals(password) && rememberMe != null) {
                 addCookiesToResponse(response,userBean);
+
+                if (session == null) {
+                    session = request.getSession(true);
+                }
+                session.setAttribute("userBean", userBean);
+                session.setAttribute("loggedIn","true");
+                if( userBean.getRole().equals("CUSTOMER")){
+
+                    //get user cart from json local database
+                    List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCartItemBeans(cart,cartService);
+
+                    //get user cart from Database
+                    List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());
+
+                    List<CartItemBean> cartItemBeans = mergeUserCarts(cartItemBeanListFromJSPJson,cartItemBeanListFromDataBase);
+                    List<ViewCartItem> viewCartItems = fromCartItemBeansToViewCartItems(cartItemBeans);
+
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    String cartJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
+
+                    session.setAttribute("cartItemBeans",cartJson);
+                    response.sendRedirect("home");
+                }else if(userBean.getRole().equals("ADMIN")){
+                    // add id/password to cookie to user
+                    addCookiesToResponse(response,userBean);
+
+                    //redirect admin page
+                    response.sendRedirect("admin");
+                }
+            }else {
+                request.setAttribute("errorMessage","Something wrong in Email or Password");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL+"login.jsp");
+                requestDispatcher.forward(request,response);
             }
-            if (session == null) {
-                session = request.getSession(true);
-            }
-            session.setAttribute("userBean", userBean);
-            session.setAttribute("loggedIn","true");
-            if( userBean.getRole().equals("CUSTOMER")){
 
-                //get user cart from json local database
-                List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCartItemBeans(cart,cartService);
-
-                //get user cart from Database
-                List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());
-
-                List<CartItemBean> cartItemBeans = mergeUserCarts(cartItemBeanListFromJSPJson,cartItemBeanListFromDataBase);
-                List<ViewCartItem> viewCartItems = fromCartItemBeansToViewCartItems(cartItemBeans);
-
-                ObjectMapper objectMapper = new ObjectMapper();
-                String cartJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
-
-                session.setAttribute("cartItemBeans",cartJson);
-                response.sendRedirect("home");
-            }else if(userBean.getRole().equals("ADMIN")){
-                // add id/password to cookie to user
-                addCookiesToResponse(response,userBean);
-
-                //redirect admin page
-                response.sendRedirect("admin");
-            }
         } else {
             request.setAttribute("errorMessage","Something wrong in Email or Password");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL+"login.jsp");
