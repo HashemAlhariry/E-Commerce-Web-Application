@@ -1,6 +1,7 @@
 package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.ProductBean;
+import com.ecommerce.presentation.beans.ResponseMessageBean;
 import com.ecommerce.repositories.entites.CategoryEntity;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.repositories.entites.ProductState;
@@ -11,6 +12,7 @@ import com.ecommerce.services.impls.ProductServiceImpl;
 import com.ecommerce.utils.CommonString;
 import com.ecommerce.utils.mappers.ProductMapper;
 import com.fasterxml.jackson.core.io.BigDecimalParser;
+import com.google.gson.Gson;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
@@ -22,7 +24,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.mapstruct.Mapper;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 @WebServlet(name = "admin-update-product", urlPatterns = {"/admin-update-product"})
 
@@ -43,11 +47,19 @@ public class AdminUpdateProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        List<String> messages = new ArrayList<>();
+
         Long productID = Long.parseLong(req.getParameter("productId"));
         ProductEntity productEntity = productService.findById(productID);
 
         int categoryId = Integer.parseInt(req.getParameter("productCategory"));
         CategoryEntity categoryEntity = categoryServices.findById(categoryId);
+
 
         BigDecimal bigDecimalPrice = BigDecimalParser.parse(req.getParameter("productPrice"));
 
@@ -60,12 +72,12 @@ public class AdminUpdateProductServlet extends HttpServlet {
 
         productService.update(productEntity);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin-edit-product");
-        requestDispatcher.forward(req, resp);
-    }
+        messages.add("Updated Successfully");
+        ResponseMessageBean responseMessageBean = new ResponseMessageBean("success", messages);
+        out.println(new Gson().toJson(responseMessageBean));
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        RequestDispatcher requestDispatcher = req.getRequestDispatcher("admin-edit-product");
+//        requestDispatcher.forward(req, resp);
 
     }
 }
