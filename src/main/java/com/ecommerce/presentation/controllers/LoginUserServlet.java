@@ -4,6 +4,7 @@ import com.ecommerce.presentation.beans.CartItemBean;
 import com.ecommerce.presentation.beans.ResponseMessageBean;
 import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.presentation.beans.ViewCartItem;
+import com.ecommerce.repositories.entites.UserEntity;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.LoginServices;
 import com.ecommerce.services.impls.CartServiceImpl;
@@ -48,7 +49,9 @@ public class LoginUserServlet extends HttpServlet {
                 session.setAttribute("loggedIn", "true");
                 response.sendRedirect("home");
             } else if (session != null && session.getAttribute("userBean") != null) {
-                response.sendRedirect("home");
+                if( ((UserBean)session.getAttribute("userBean")).getRole().equals("ADMIN"))
+                    response.sendRedirect("admin");
+                else response.sendRedirect("home");
             }else{
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "login.jsp");
                 requestDispatcher.forward(request, response);
