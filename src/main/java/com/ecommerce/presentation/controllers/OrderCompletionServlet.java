@@ -28,68 +28,68 @@ import java.util.Date;
 import java.util.List;
 
 
-
 @WebServlet(name = "order-completion", urlPatterns = {"/order-completion"})
 public class OrderCompletionServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher( "home");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("home");
         requestDispatcher.forward(request, response);
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        boolean orderAddedToDB=false;
-        CartService cartService = CartServiceImpl.getInstance();
-        OrderService orderService = OrderServiceImpl.getInstance();
+        boolean orderAddedToDB = false;
+        CartService cartService = new CartServiceImpl((String) request.getAttribute("reqId"));
+        OrderService orderService = new OrderServiceImpl((String) request.getAttribute("reqId"));
 
         // update here to get user id from logged in user
-        int userId=-1;
+        int userId = -1;
 
         // maybe used for admin statistics or sending vouchers to users
         String email = request.getParameter("userEmail");
-        String address =  request.getParameter("userAddress");
+        String address = request.getParameter("userAddress");
         String phoneNumber = request.getParameter("phoneNumber");
         String jsonString = request.getParameter("cart");
-        String paymentMethod= request.getParameter("paymentMethod");
+        String paymentMethod = request.getParameter("paymentMethod");
 
-        if(jsonString!=null){
+        if (jsonString != null) {
 
             ObjectMapper jacksonMapper = new ObjectMapper();
-            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>(){});
+            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>() {
+            });
             System.out.println(viewCartItems.size());
             List<CartItemBean> cartItemBeans;
             // to remove product with quantity 0
-            List<CartItemBean> cartItemBeansUpdated=new ArrayList<>();
+            List<CartItemBean> cartItemBeansUpdated = new ArrayList<>();
 
-            if(viewCartItems.size()>0){
+            if (viewCartItems.size() > 0) {
 
                 cartItemBeans = cartService.getCartItemBeans(viewCartItems);
 
                 // remove products cart bean , quantity = 0
-                for (CartItemBean cartItemBean: cartItemBeans){
-                    if(cartItemBean.getProductBean().getQuantity()!=0) {
+                for (CartItemBean cartItemBean : cartItemBeans) {
+                    if (cartItemBean.getProductBean().getQuantity() != 0) {
                         cartItemBeansUpdated.add(cartItemBean);
                     }
                 }
 
                 BigDecimal total = Util.getTotalPrice(cartItemBeans);
-                OrderBean orderBean= new OrderBean(address,new Date(),phoneNumber, OrderState.PENDING,  total,email);
-                List<OrderDetailsBean> orderDetailsBeanList = Util.getOrderDetailsBeans(cartItemBeansUpdated,userId);
+                OrderBean orderBean = new OrderBean(address, new Date(), phoneNumber, OrderState.PENDING, total, email);
+                List<OrderDetailsBean> orderDetailsBeanList = Util.getOrderDetailsBeans(cartItemBeansUpdated, userId);
                 System.out.println(orderBean);
                 System.out.println(orderDetailsBeanList);
 
-                orderAddedToDB = orderService.submitOrder(orderBean,orderDetailsBeanList,email);
+                orderAddedToDB = orderService.submitOrder(orderBean, orderDetailsBeanList, email);
 
                 // order successfully added to DB send client to order successfully page
-                if(orderAddedToDB){
+                if (orderAddedToDB) {
 
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "order-successfully.jsp");
                     requestDispatcher.forward(request, response);
 
-                }else{
+                } else {
 
                     // return user to cart with error message
                     // update later
@@ -103,9 +103,6 @@ public class OrderCompletionServlet extends HttpServlet {
 
         }
     }
-
-
-
 
 
 }

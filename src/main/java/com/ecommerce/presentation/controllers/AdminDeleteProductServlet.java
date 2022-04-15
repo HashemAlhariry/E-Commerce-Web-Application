@@ -2,8 +2,6 @@ package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.services.ProductService;
 import com.ecommerce.services.impls.ProductServiceImpl;
-import com.ecommerce.utils.CommonString;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -18,16 +16,16 @@ import java.io.IOException;
 public class AdminDeleteProductServlet extends HttpServlet {
 
     private ServletContext servletContext;
-    ProductService productService;
+
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService = ProductServiceImpl.getInstance();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductService productService=new ProductServiceImpl((String) req.getAttribute("reqId"));
         System.out.println("delete id request param = "+req.getParameter("productId"));
         Long idNumber=Long.parseLong(req.getParameter("productId"));
         System.out.println("long number"+idNumber);

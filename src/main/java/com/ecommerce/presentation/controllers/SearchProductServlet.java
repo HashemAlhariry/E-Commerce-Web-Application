@@ -19,17 +19,18 @@ import java.util.List;
 
 public class SearchProductServlet extends HttpServlet {
     ServletContext servletContext;
-    ProductService productService;
+
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService= ProductServiceImpl.getInstance();
     }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductService productService = new ProductServiceImpl((String) request.getAttribute("reqId"));
+
         List<ProductEntity> searchedProducts = productService.findProductByName(request.getParameter("product-name"));
-        List<ProductBean>searchedProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(searchedProducts);
-        request.setAttribute("allProducts",searchedProductsBeans);
+        List<ProductBean> searchedProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(searchedProducts);
+        request.setAttribute("allProducts", searchedProductsBeans);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "shop.jsp");
         requestDispatcher.forward(request, response);
     }

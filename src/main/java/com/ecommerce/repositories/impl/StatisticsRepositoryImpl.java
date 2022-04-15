@@ -1,6 +1,6 @@
 package com.ecommerce.repositories.impl;
 
-import com.ecommerce.handlers.Connector;
+import com.ecommerce.handlers.EntityMangerUtil;
 import com.ecommerce.repositories.StatisticsRepository;
 import com.ecommerce.repositories.entites.OrderEntity;
 import com.ecommerce.repositories.entites.OrderState;
@@ -9,32 +9,26 @@ import com.ecommerce.repositories.entites.UserEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
-
 import java.util.List;
 
 public class StatisticsRepositoryImpl implements StatisticsRepository {
 
-    private static final StatisticsRepositoryImpl INSTANCE = new StatisticsRepositoryImpl();
-    protected final EntityManager entityManager = Connector.getInstance().getEntityManager();
+    protected final EntityManager entityManager;
 
-    private StatisticsRepositoryImpl() {
+    public StatisticsRepositoryImpl(String entityMangerId) {
+        this.entityManager = EntityMangerUtil.getInstance().getEntityManager(entityMangerId);
 
     }
-
-    public static StatisticsRepositoryImpl getInstance() {
-        return INSTANCE;
-    }
-
 
 
     @Override
-        public int getStatisticsUsers() {
-            Query query = entityManager.createQuery(" SELECT u FROM UserEntity u");
-            List<UserEntity> resultList = query.getResultList();
-            System.out.println(resultList.size());
-            return resultList.size();
+    public int getStatisticsUsers() {
+        Query query = entityManager.createQuery(" SELECT u FROM UserEntity u");
+        List<UserEntity> resultList = query.getResultList();
+        System.out.println(resultList.size());
+        return resultList.size();
 
-        }
+    }
 
     @Override
     public int getAllProducts() {
@@ -54,7 +48,7 @@ public class StatisticsRepositoryImpl implements StatisticsRepository {
             for (OrderEntity order : resultList) {
                 if (order.getState().equals(OrderState.ARRIVED))
                     counter++;
-                }
+            }
 
         }
         return counter;

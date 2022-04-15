@@ -23,23 +23,23 @@ import java.util.List;
 public class AdminProductView extends HttpServlet {
 
     private ServletContext servletContext;
-    ProductService productService;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService= ProductServiceImpl.getInstance();
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
+
         List<ProductEntity> allProducts = productService.findAll();
         System.out.println(allProducts);
         List<ProductBean> allProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(allProducts);
         System.out.println(allProductsBeans);
-        req.setAttribute("allProducts",allProductsBeans);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/pages/tables/products_view.jsp");
+        req.setAttribute("allProducts", allProductsBeans);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "admin/pages/tables/products_view.jsp");
         requestDispatcher.forward(req, resp);
     }
 

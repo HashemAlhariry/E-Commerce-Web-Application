@@ -1,7 +1,6 @@
 package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.UserBean;
-import com.ecommerce.presentation.beans.ViewCartItem;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.impls.CartServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,16 +11,13 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name="logout", urlPatterns = {"/logout"})
 public class LogoutServlet extends HttpServlet {
-    CartService cartService;
+
     @Override
     public void init(ServletConfig config) {
-        cartService = CartServiceImpl.getInstance();
     }
 
     @Override
@@ -32,7 +28,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        CartService cartService=new CartServiceImpl((String) request.getAttribute("reqId"));
         PrintWriter out = response.getWriter();
         String cartJson = request.getParameter("cartItems");
         System.out.println(cartJson+"cartJson");

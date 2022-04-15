@@ -16,7 +16,6 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(name = "SignUp", urlPatterns = "/registration")
 public class SignUpServlet extends HttpServlet {
 
-    private final RegisterServices registerServicesImpl = RegisterServicesImpl.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,7 +24,7 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        RegisterServices registerServicesImpl = new RegisterServicesImpl((String) req.getAttribute("reqId"));
         String userName = req.getParameter("register-name");
         String date = req.getParameter("register-birthday");
         String email = req.getParameter("register-email");
@@ -41,7 +40,7 @@ public class SignUpServlet extends HttpServlet {
         } else {
             SignUpBean signUpBean = registerServicesImpl.registerUser(userRegistrationBean);
             // leh hna y set attribute 3l session d 3ml register msh 3amel login //TODO
-        req.getSession().setAttribute("userDto", signUpBean);
+            req.getSession().setAttribute("userDto", signUpBean);
 
         }
 

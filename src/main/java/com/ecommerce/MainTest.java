@@ -1,35 +1,12 @@
 package com.ecommerce;
 
-import com.ecommerce.handlers.Connector;
-import com.ecommerce.presentation.beans.ProductBean;
-import com.ecommerce.repositories.CartRepository;
-import com.ecommerce.repositories.ProductRepository;
-import com.ecommerce.repositories.UserRepository;
-import com.ecommerce.repositories.entites.*;
-import com.ecommerce.repositories.impl.CartRepositoryImpl;
-import com.ecommerce.repositories.impl.ProductRepositoryImpl;
-import com.ecommerce.repositories.impl.UserRepositoryImpl;
-import com.ecommerce.services.ProductService;
-import com.ecommerce.services.impls.ProductServiceImpl;
-import com.ecommerce.tld.util.ProductListSorting;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-
-import com.ecommerce.repositories.impl.CategoryRepositoryImpl;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.*;
-
 public class MainTest {
     public static void main(String[] args) {
 
 //        CartRepository cartRepository = CartRepositoryImpl.getInstance();
 //        cartRepository.deleteUserCart(2);
 
-            UserEntity user = UserRepositoryImpl.getInstance().findById(2);
+//            UserEntity user = UserRepositoryImpl.getInstance().findById(2);
 
 
 

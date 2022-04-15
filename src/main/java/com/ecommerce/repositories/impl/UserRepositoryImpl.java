@@ -1,26 +1,19 @@
 package com.ecommerce.repositories.impl;
 
-import com.ecommerce.handlers.Connector;
+import com.ecommerce.handlers.EntityMangerUtil;
 import com.ecommerce.repositories.UserRepository;
 import com.ecommerce.repositories.entites.UserEntity;
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> implements UserRepository {
 
-    private static final UserRepositoryImpl INSTANCE = new UserRepositoryImpl();
-    protected final EntityManager entityManager = Connector.getInstance().getEntityManager();
+    public UserRepositoryImpl(String entityMangerId) {
+        super(EntityMangerUtil.getInstance().getEntityManager(entityMangerId));
 
-    private UserRepositoryImpl() {
-
-    }
-
-    public static UserRepositoryImpl getInstance() {
-        return INSTANCE;
     }
 
     @Override
@@ -44,7 +37,6 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
     }
 
 
-
     @Override
     public UserEntity saveUser(UserEntity user) {
         //System.out.println("saveUser" + user.getEmail());
@@ -58,7 +50,7 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
 
     @Override
     public UserEntity updateUser(UserEntity user) {
-        int id =user.getId();
+        int id = user.getId();
         System.out.println(id);
         UserEntity userid = findById(id);
         System.out.println(userid);

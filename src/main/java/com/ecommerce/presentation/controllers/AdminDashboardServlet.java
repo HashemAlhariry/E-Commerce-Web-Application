@@ -2,9 +2,7 @@ package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.StatisticsBean;
 import com.ecommerce.services.AdminDashoardServices;
-import com.ecommerce.services.LoginServices;
 import com.ecommerce.services.impls.AdminDashoardServicesImpl;
-import com.ecommerce.services.impls.LoginServicesImpl;
 import com.ecommerce.utils.CommonString;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 
@@ -20,13 +19,14 @@ import java.io.IOException;
 
 public class AdminDashboardServlet extends HttpServlet {
 
-    private final AdminDashoardServices adminDashoardServices = AdminDashoardServicesImpl.getInstance();
+
 
 
     StatisticsBean statisticsBean = new StatisticsBean();
 
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            AdminDashoardServices adminDashoardServices =new AdminDashoardServicesImpl((String) req.getAttribute("reqId"));
             RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL +"admin/index.jsp");
             int completedOrders = adminDashoardServices.getCompletedOrders();
             int notCompletedOrders = adminDashoardServices.getNotCompletedOrders();

@@ -8,15 +8,12 @@ import com.ecommerce.services.CategoryServices;
 import java.util.List;
 
 public class CategoryServicesImpl implements CategoryServices {
-    private static final CategoryServicesImpl INSTANCE = new CategoryServicesImpl();
-    private final CategoryRepository categoryRepository = CategoryRepositoryImpl.getInstance();
+    private final CategoryRepository categoryRepository;
 
-    private CategoryServicesImpl() {
+    public CategoryServicesImpl(String reqId) {
+        categoryRepository = new CategoryRepositoryImpl(reqId);
     }
 
-    public static CategoryServicesImpl getInstance(){
-        return INSTANCE;
-    }
     @Override
     public List<CategoryEntity> findAll() {
         return categoryRepository.findAll();
