@@ -127,55 +127,56 @@
                         </div><!-- End .toolbox -->
 
                         <div class="products mb-3">
+<%--                            TODO ARCHIVED STATE CONDITION OF NOT SHOWING THE PRODUCTS--%>
                             <div class="row justify-content-center" id="productsContainer">
                                 <c:forEach items="${allProducts}" var="product">
-                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
-                                        <div class="product product-7 text-center">
-                                            <figure class="product-media">
-                                                <c:if test="${!empty product.state}">
-                                                    <span class="product-label label-new">${product.state}</span>
-                                                </c:if>
-                                                <a href="shop">
-                                                    <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
-                                                </a>
+                                        <div class="col-6 col-md-4 col-lg-4 col-xl-3" id="productsView">
+                                            <div class="product product-7 text-center">
+                                                <figure class="product-media">
+                                                    <c:if test="${!empty product.state}">
+                                                        <span class="product-label label-new">${product.state}</span>
+                                                    </c:if>
+                                                    <a href="single-product-page?productId=${product.id}">
+                                                        <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
+                                                    </a>
 
-                                                <div class="product-action-vertical">
-                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                </div><!-- End .product-action-vertical -->
+                                                    <div class="product-action-vertical">
+                                                        <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable" style="cursor: pointer"><span>add to wishlist</span></a>
+                                                        <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                                    </div><!-- End .product-action-vertical -->
 
-                                                <div class="product-action">
-                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                </div><!-- End .product-action -->
-                                            </figure><!-- End .product-media -->
+                                                    <div class="product-action">
+                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
+                                                    </div><!-- End .product-action -->
+                                                </figure><!-- End .product-media -->
 
-                                            <div class="product-body">
-                                                <div class="product-cat">
-                                                    <a href="#">${product.category.categoryName}</a>
-                                                </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
-                                                <div class="product-price">
-                                                        ${product.price} EGP
-                                                </div><!-- End .product-price -->
-                                                <div class="ratings-container">
-                                                    <div class="ratings">
-                                                        <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
-                                                    </div><!-- End .ratings -->
-<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
-                                                </div><!-- End .rating-container -->
+                                                <div class="product-body">
+                                                    <div class="product-cat">
+                                                        <a href="categorized-product?categoryId=${product.category.categoryId}">${product.category.categoryName}</a>
+                                                    </div><!-- End .product-cat -->
+                                                    <h3 class="product-title"><a href="single-product-page?productId=${product.id}">${product.name}</a></h3><!-- End .product-title -->
+                                                    <div class="product-price">
+                                                            ${product.price} EGP
+                                                    </div><!-- End .product-price -->
+                                                    <div class="ratings-container">
+                                                        <div class="ratings">
+                                                            <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
+                                                        </div><!-- End .ratings -->
+                                                            <%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
+                                                    </div><!-- End .rating-container -->
 
-                                                <div class="product-nav product-nav-thumbs">
-                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
-                                                        <c:if test="${!loop.last }">
-                                                            <a href="#" class="active">
-                                                                <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
-                                                            </a>
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </div><!-- End .product-nav -->
-                                            </div><!-- End .product-body -->
-                                        </div><!-- End .product -->
-                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                                    <div class="product-nav product-nav-thumbs">
+                                                        <c:forEach items="${product.images}" var="image" varStatus="loop">
+                                                            <c:if test="${!loop.last }">
+                                                                <a class="active" style="cursor: default">
+                                                                    <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
+                                                                </a>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </div><!-- End .product-nav -->
+                                                </div><!-- End .product-body -->
+                                            </div><!-- End .product -->
+                                        </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
                                 </c:forEach>
 
                             </div>
@@ -187,25 +188,25 @@
                                                 <c:if test="${!empty product.state}">
                                                     <span class="product-label label-new">${product.state}</span>
                                                 </c:if>
-                                                <a href="shop">
+                                                <a href="single-product-page?productId=${product.id}">
                                                     <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable" style="cursor: pointer"><span>add to wishlist</span></a>
                                                     <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
-                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#">${product.category.categoryName}</a>
+                                                    <a href="categorized-product?categoryId=${product.category.categoryId}">${product.category.categoryName}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="single-product-page?productId=${product.id}">${product.name}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                         ${product.price} EGP
                                                 </div><!-- End .product-price -->
@@ -219,7 +220,7 @@
                                                 <div class="product-nav product-nav-thumbs">
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
-                                                            <a href="#" class="active">
+                                                            <a class="active" style="cursor: default">
                                                                 <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
@@ -227,7 +228,8 @@
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
-                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->                                </c:forEach>
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                </c:forEach>
 
                             </div>
                             <div class="row justify-content-center" id="sortByPriceAsc" hidden>
@@ -238,25 +240,25 @@
                                                 <c:if test="${!empty product.state}">
                                                     <span class="product-label label-new">${product.state}</span>
                                                 </c:if>
-                                                <a href="shop">
+                                                <a href="single-product-page?productId=${product.id}">
                                                     <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable" style="cursor: pointer"><span>add to wishlist</span></a>
                                                     <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
-                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#">${product.category.categoryName}</a>
+                                                    <a href="categorized-product?categoryId=${product.category.categoryId}">${product.category.categoryName}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="single-product-page?productId=${product.id}">${product.name}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                         ${product.price} EGP
                                                 </div><!-- End .product-price -->
@@ -270,7 +272,7 @@
                                                 <div class="product-nav product-nav-thumbs">
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
-                                                            <a href="#" class="active">
+                                                            <a class="active" style="cursor: default">
                                                                 <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
@@ -278,7 +280,8 @@
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
-                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->                                </c:forEach>
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                </c:forEach>
 
                             </div>
                             <div class="row justify-content-center" id="sortByDate" hidden>
@@ -289,25 +292,25 @@
                                                 <c:if test="${!empty product.state}">
                                                     <span class="product-label label-new">${product.state}</span>
                                                 </c:if>
-                                                <a href="shop">
+                                                <a href="single-product-page?productId=${product.id}">
                                                     <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
                                                 </a>
 
                                                 <div class="product-action-vertical">
-                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable" style="cursor: pointer"><span>add to wishlist</span></a>
                                                     <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                 </div><!-- End .product-action-vertical -->
 
                                                 <div class="product-action">
-                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#">${product.category.categoryName}</a>
+                                                    <a href="categorized-product?categoryId=${product.category.categoryId}">${product.category.categoryName}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">${product.name}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="single-product-page?productId=${product.id}">${product.name}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                         ${product.price} EGP
                                                 </div><!-- End .product-price -->
@@ -321,7 +324,7 @@
                                                 <div class="product-nav product-nav-thumbs">
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
-                                                            <a href="#" class="active">
+                                                            <a class="active" style="cursor: default">
                                                                 <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
@@ -329,7 +332,8 @@
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
-                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->                                </c:forEach>
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                                </c:forEach>
 
                             </div>
                             <div class="row justify-content-center" id="watchAndLapContainer" hidden>
