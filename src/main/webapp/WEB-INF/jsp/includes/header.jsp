@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <header class="header header-intro-clearance header-4">
@@ -199,6 +200,11 @@
                             <a href="home" class="our-sf-with-ul">Home</a>
 
                                 </li>
+                        <c:if test="${(!empty userBean)&&(fn:containsIgnoreCase(userBean.role,'ADMIN'))}">
+                            <li class="megamenu-container ">
+                                <a href="admin" class="our-sf-with-ul">Admin</a>
+                            </li>
+                        </c:if>
 
                                 <li>
                                     <a href="shop" class="our-sf-with-ul">Shop</a>

@@ -1,5 +1,6 @@
 package com.ecommerce.handlers.filters;
 
+import com.ecommerce.utils.CommonString;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,7 +25,8 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(request,response);
         else {
             request.setAttribute("errorMessage", "you must login to view this page");
-            httpResponse.sendRedirect("login");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL+"login.jsp");
+            requestDispatcher.forward(request,response);
         }
     }
 

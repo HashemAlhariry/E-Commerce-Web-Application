@@ -1,6 +1,7 @@
 package com.ecommerce.handlers.filters;
 
 import com.ecommerce.presentation.beans.UserBean;
+import com.ecommerce.utils.CommonString;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,8 +17,7 @@ public class AuthorizationFilter implements Filter {
         if (userBean != null && userBean.getRole().equalsIgnoreCase("ADMIN") ) {
             filterChain.doFilter(request, response);
         } else {
-            request.setAttribute("errorMessage", "you dont have authority to view this page , please login as admin");
-            ((HttpServletResponse) response).sendRedirect("login");
+            ((HttpServletResponse) response).sendRedirect("404");
         }
     }
 }
