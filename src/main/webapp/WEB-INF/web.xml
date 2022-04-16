@@ -4,52 +4,124 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
-  <display-name>E-Commerce web app</display-name>
-  <jsp-config>
-    <jsp-property-group>
-      <url-pattern>*.jsp</url-pattern>
-      <page-encoding>UTF-8</page-encoding>
-    </jsp-property-group>
-  </jsp-config>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/404</location>
-  </error-page>
-  <error-page>
-    <exception-type>java.lang.NumberFormatException</exception-type>
-    <location>/illegal</location>
-  </error-page>
-  <error-page>
-    <exception-type>com.ecommerce.exceptions.IllegalInputException</exception-type>
-    <location>/illegal</location>
-  </error-page>
+    <display-name>E-Commerce web app</display-name>
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.NumberFormatException</exception-type>
+        <location>/illegal</location>
+    </error-page>
+    <error-page>
+        <exception-type>com.ecommerce.exceptions.IllegalInputException</exception-type>
+        <location>/illegal</location>
+    </error-page>
+    <!--LoginFilter-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.ecommerce.handlers.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--LoginFilter-->
 
-<!--  <welcome-file-list>-->
-<!--    <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>-->
-
-<!--  </welcome-file-list>-->
-  <servlet>
-    <servlet-name>SearchProductServlet</servlet-name>
-    <servlet-class>com.ecommerce.presentation.controllers.SearchProductServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>SearchProductServlet</servlet-name>
-    <url-pattern>/searchproduct</url-pattern>
-  </servlet-mapping>
-
-
-  <context-param>
-    <param-name>stripePublicKey</param-name>
-    <param-value>pk_test_51KmFuOJKNiBLygtkyrLQtjXf9p2BqxMmRR2miQElRuUeFWe9bN3BCx5zZz2KIfCxnV0ryIp1R1jMGsHYvIAfRSt900kuf0CNie</param-value>
-  </context-param>
-  <context-param>
-    <param-name>stripeSecretKey</param-name>
-    <param-value>sk_test_51KmFuOJKNiBLygtk6E5HrXrgvfZrOL2EZKznB7OEHUrkwhEYqkxZYawuFAxLRNRuWsEHGvrGcOUCYMjfd1386MLc00V9X96pId</param-value>
-  </context-param>
+    <!--AuthenticationFilter-->
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>com.ecommerce.handlers.filters.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/updateprofile</url-pattern>
+    </filter-mapping>
+    <!--AuthenticationFilter-->
 
 
+    <!--AuthorizationFilter-->
+    <filter>
+        <filter-name>AuthorizationFilter</filter-name>
+        <filter-class>com.ecommerce.handlers.filters.AuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-add-product</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-delete-product</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-edit-product</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-product</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-product-search</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-update-product</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-order-detail-view</url-pattern>
+    </filter-mapping>
 
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-order-view</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/admin-view-users</url-pattern>
+    </filter-mapping>
+    <!--AuthorizationFilter-->
+
+
+    <!--  <welcome-file-list>-->
+    <!--    <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>-->
+
+    <!--  </welcome-file-list>-->
+    <servlet>
+        <servlet-name>SearchProductServlet</servlet-name>
+        <servlet-class>com.ecommerce.presentation.controllers.SearchProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchProductServlet</servlet-name>
+        <url-pattern>/searchproduct</url-pattern>
+    </servlet-mapping>
+
+
+    <context-param>
+        <param-name>stripePublicKey</param-name>
+        <param-value>
+            pk_test_51KmFuOJKNiBLygtkyrLQtjXf9p2BqxMmRR2miQElRuUeFWe9bN3BCx5zZz2KIfCxnV0ryIp1R1jMGsHYvIAfRSt900kuf0CNie
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>stripeSecretKey</param-name>
+        <param-value>
+            sk_test_51KmFuOJKNiBLygtk6E5HrXrgvfZrOL2EZKznB7OEHUrkwhEYqkxZYawuFAxLRNRuWsEHGvrGcOUCYMjfd1386MLc00V9X96pId
+        </param-value>
+    </context-param>
 
 
 </web-app>
