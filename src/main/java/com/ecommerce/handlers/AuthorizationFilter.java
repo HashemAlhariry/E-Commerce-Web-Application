@@ -17,7 +17,7 @@ public class AuthorizationFilter implements Filter {
             filterChain.doFilter(request, response);
         } else {
             request.setAttribute("errorMessage", "you dont have authority to view this page , please login as admin");
-            ((HttpServletResponse) response).sendRedirect("login?authorize=false");
+            ((HttpServletResponse) response).sendRedirect("login");
         }
     }
 }
