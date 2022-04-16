@@ -136,14 +136,7 @@
                                                     <span class="product-label label-new">${product.state}</span>
                                                 </c:if>
                                                 <a href="shop">
-                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
-
-                                                        <c:if test="${loop.last }">
-                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
-                                                        </c:if>
-
-                                                    </c:forEach>
-
+                                                    <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
                                                 </a>
 
                                                 <div class="product-action-vertical">
@@ -175,7 +168,7 @@
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
                                                             <a href="#" class="active">
-                                                                <img src="${image}" alt="product desc">
+                                                                <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
                                                     </c:forEach>
@@ -195,14 +188,7 @@
                                                     <span class="product-label label-new">${product.state}</span>
                                                 </c:if>
                                                 <a href="shop">
-                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
-
-                                                        <c:if test="${loop.last }">
-                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
-                                                        </c:if>
-
-                                                    </c:forEach>
-
+                                                    <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
                                                 </a>
 
                                                 <div class="product-action-vertical">
@@ -227,22 +213,21 @@
                                                     <div class="ratings">
                                                         <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
-<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
+                                                        <%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
                                                 </div><!-- End .rating-container -->
 
                                                 <div class="product-nav product-nav-thumbs">
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
                                                             <a href="#" class="active">
-                                                                <img src="${image}" alt="product desc">
+                                                                <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
                                                     </c:forEach>
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
-                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                </c:forEach>
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->                                </c:forEach>
 
                             </div>
                             <div class="row justify-content-center" id="sortByPriceAsc" hidden>
@@ -254,14 +239,7 @@
                                                     <span class="product-label label-new">${product.state}</span>
                                                 </c:if>
                                                 <a href="shop">
-                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
-
-                                                        <c:if test="${loop.last }">
-                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
-                                                        </c:if>
-
-                                                    </c:forEach>
-
+                                                    <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
                                                 </a>
 
                                                 <div class="product-action-vertical">
@@ -286,22 +264,21 @@
                                                     <div class="ratings">
                                                         <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
-<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
+                                                        <%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
                                                 </div><!-- End .rating-container -->
 
                                                 <div class="product-nav product-nav-thumbs">
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
                                                             <a href="#" class="active">
-                                                                <img src="${image}" alt="product desc">
+                                                                <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
                                                     </c:forEach>
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
-                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                </c:forEach>
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->                                </c:forEach>
 
                             </div>
                             <div class="row justify-content-center" id="sortByDate" hidden>
@@ -313,14 +290,7 @@
                                                     <span class="product-label label-new">${product.state}</span>
                                                 </c:if>
                                                 <a href="shop">
-                                                    <c:forEach items="${product.images}" var="image" varStatus="loop">
-
-                                                        <c:if test="${loop.last }">
-                                                            <img src="${image}" alt="Product image" class="product-image" style="height: 218px;">
-                                                        </c:if>
-
-                                                    </c:forEach>
-
+                                                    <img src="${product.mainImage}" alt="Product image" class="product-image" style="height: 218px;">
                                                 </a>
 
                                                 <div class="product-action-vertical">
@@ -345,22 +315,21 @@
                                                     <div class="ratings">
                                                         <div class="ratings-val" style="width: ${(product.rating)*10}%;"></div><!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
-<%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
+                                                        <%--                                                    <span class="ratings-text">( 2 Reviews )</span>--%>
                                                 </div><!-- End .rating-container -->
 
                                                 <div class="product-nav product-nav-thumbs">
                                                     <c:forEach items="${product.images}" var="image" varStatus="loop">
                                                         <c:if test="${!loop.last }">
                                                             <a href="#" class="active">
-                                                                <img src="${image}" alt="product desc" style="height: 218px;margin-left: auto;margin-right: auto;">
+                                                                <img src="${image}" alt="product desc" style="height: 33px;margin-left: auto;margin-right: auto;">
                                                             </a>
                                                         </c:if>
                                                     </c:forEach>
                                                 </div><!-- End .product-nav -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
-                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                </c:forEach>
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->                                </c:forEach>
 
                             </div>
                             <div class="row justify-content-center" id="watchAndLapContainer" hidden>

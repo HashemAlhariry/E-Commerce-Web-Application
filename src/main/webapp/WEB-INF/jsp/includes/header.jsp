@@ -388,8 +388,7 @@
                 // $("#profileIcon").html("<li><a href="login" id="singupElement" >Sign in / Sign up</a></li>");
                 if(window.location.href.endsWith('updateprofile')){
                     window.location.href = "login";
-                }
-                document.getElementById("profileIcon").firstElementChild.replaceWith(signUpElement);
+                }else{document.getElementById("profileIcon").firstElementChild.replaceWith(signUpElement);}
                 addToCart(-1);
                 addToWishList(-1);
             }

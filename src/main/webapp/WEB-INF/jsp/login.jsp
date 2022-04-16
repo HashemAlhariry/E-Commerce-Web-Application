@@ -44,6 +44,14 @@
         <%@ include file="includes/header.jsp" %>
 
         <main class="main">
+            <c:if test="${!empty errorMessage}">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Error</strong> ${errorMessage}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
