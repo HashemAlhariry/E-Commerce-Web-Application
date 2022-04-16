@@ -1,4 +1,4 @@
-package com.ecommerce.handlers;
+package com.ecommerce.handlers.filters;
 
 import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.services.LoginServices;

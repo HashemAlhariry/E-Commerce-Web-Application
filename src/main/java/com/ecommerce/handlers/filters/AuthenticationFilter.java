@@ -1,4 +1,4 @@
-package com.ecommerce.handlers;
+package com.ecommerce.handlers.filters;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,8 +22,10 @@ public class AuthenticationFilter implements Filter {
         String loggedIn = (String)session.getAttribute("loggedIn");
         if(loggedIn != null && loggedIn.equalsIgnoreCase("true"))
             chain.doFilter(request,response);
-        else
+        else {
+            request.setAttribute("errorMessage", "you must login to view this page");
             httpResponse.sendRedirect("login");
+        }
     }
 
     @Override
