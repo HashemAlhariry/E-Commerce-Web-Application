@@ -70,7 +70,7 @@
                 </button>
 
                 <a href="home" class="logo">
-                    <img src="assets/images/LogoSample_ByTailorBrands1.jpg" alt="Molla Logo" width="205" height="25">
+                    <img src="assets/images/amazonya_logo.png" alt="Amazonya Logo" width="205" height="25">
                 </a>
             </div><!-- End .header-left -->
 

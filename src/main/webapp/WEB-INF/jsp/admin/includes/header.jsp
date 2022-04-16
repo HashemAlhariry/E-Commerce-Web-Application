@@ -1,6 +1,6 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a href="admin"><img src="assets/images/LogoSample_ByTailorBrands1.jpg" alt="logo" width="175" height="150" /></a>
+        <a href="admin"><img src="assets/images/amazonya_logo.png" alt="logo" width="205px" height="70px" /></a>
 <%--        <a class="navbar-brand brand-logo-mini" href="admin"><img src="assets/images/LogoSample_ByTailorBrands1.jpg" alt="logo" width="205" height="25" /></a>--%>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
