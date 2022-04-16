@@ -89,21 +89,23 @@ public class LoginUserServlet extends HttpServlet {
                 }
                 session.setAttribute("userBean", userBean);
                 session.setAttribute("loggedIn","true");
+
+                //get user cart from json local database
+                List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCartItemBeans(cart,cartService);
+
+                //get user cart from Database
+                List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());
+
+                List<CartItemBean> cartItemBeans = mergeUserCarts(cartItemBeanListFromJSPJson,cartItemBeanListFromDataBase);
+                List<ViewCartItem> viewCartItems = fromCartItemBeansToViewCartItems(cartItemBeans);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                String cartJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
+
+                session.setAttribute("cartItemBeans",cartJson);
+
                 if( userBean.getRole().equals("CUSTOMER")){
 
-                    //get user cart from json local database
-                    List<CartItemBean> cartItemBeanListFromJSPJson = Util.parseCartJsonToCartItemBeans(cart,cartService);
-
-                    //get user cart from Database
-                    List<CartItemBean> cartItemBeanListFromDataBase = cartService.getUserCartFromDataBase(userBean.getId());
-
-                    List<CartItemBean> cartItemBeans = mergeUserCarts(cartItemBeanListFromJSPJson,cartItemBeanListFromDataBase);
-                    List<ViewCartItem> viewCartItems = fromCartItemBeansToViewCartItems(cartItemBeans);
-
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    String cartJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
-
-                    session.setAttribute("cartItemBeans",cartJson);
                     response.sendRedirect("home");
                 }else if(userBean.getRole().equals("ADMIN")){
                     // add id/password to cookie to user
