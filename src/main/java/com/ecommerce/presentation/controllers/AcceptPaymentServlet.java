@@ -43,11 +43,10 @@ public class AcceptPaymentServlet extends HttpServlet {
             params.put("currency", "egp");
             params.put("source", userBillingData.get("stripeToken"));
             params.put("receipt_email", session.getAttribute("userEmail"));
-
             Charge charge;
             charge = Charge.create(params);
 
-            // example of chare id chargeID ch_3KnqbQJKNiBLygtk1W75evrE
+            // example of charge id chargeID ch_3KnqbQJKNiBLygtk1W75evrE
             String chargeID = charge.getId();
             // save later to db
 

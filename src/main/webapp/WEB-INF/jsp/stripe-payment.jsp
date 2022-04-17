@@ -47,12 +47,12 @@
                 <script
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="pk_test_51KmFuOJKNiBLygtkyrLQtjXf9p2BqxMmRR2miQElRuUeFWe9bN3BCx5zZz2KIfCxnV0ryIp1R1jMGsHYvIAfRSt900kuf0CNie"
-                        data-amount="999"
-                        data-name="TestBiz"
-                        data-description="Example charge"
+                        data-amount="${total}"
+                        data-name="Amazonya"
+                        data-description="you online store"
                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                         data-locale="auto"
-                        data-currency="eur">
+                        data-currency="egp">
                 </script>
             </form>
         </center>
