@@ -6,6 +6,7 @@ import com.ecommerce.services.impls.UserServiceImpl;
 import com.ecommerce.utils.MailUtil;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import org.apache.commons.mail.EmailException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet(name = "forgotPassword", urlPatterns = {"/forgotPassword"})
 public class ForgotPasswordServlet extends HttpServlet {
 
     @Override
@@ -29,19 +31,19 @@ public class ForgotPasswordServlet extends HttpServlet {
         UserService userService = new UserServiceImpl((String)request.getAttribute("reqId"));
         PrintWriter out = response.getWriter();
 
-        String receiverEmail =  request.getParameter("userEmail");
+        String receiverEmail =  request.getParameter("recoveryEmail");
         UserBean userBean = userService.getUserByEmail(receiverEmail);
         if(userBean != null){
             MailUtil mailUtil = MailUtil.getInstance();
             try {
-                mailUtil.sendForgottenPassword(receiverEmail, userBean.getPass());
-                out.println("Email has been already sent to you, Check you Email to recover your password ");
+                mailUtil.sendForgottenPassword("ahmdashrf0097@gmail.com", userBean.getPass());
+                out.println("Email Address has been already sent to you, Check your MailBox to recover your password ");
             } catch (EmailException e) {
                 out.println(e.getMessage());
             }
         }
         else{
-            out.println("The Email is Wrongly Entered, you might need to ch eck it again");
+            out.println("The Email Address is Wrongly Entered, you might need to check it again");
         }
 
     }
