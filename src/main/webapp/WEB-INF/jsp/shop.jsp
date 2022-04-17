@@ -146,9 +146,23 @@
                                                         <a href="quickView?productId=${product.id}" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                                     </div><!-- End .product-action-vertical -->
 
-                                                    <div class="product-action">
-                                                        <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
-                                                    </div><!-- End .product-action -->
+<%--                                                    <c:if test="${product.quantity>0}">--%>
+<%--                                                        <div class="product-action">--%>
+<%--                                                            <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>--%>
+<%--                                                        </div><!-- End .product-action -->--%>
+<%--                                                    </c:if>--%>
+                                                    <c:choose>
+                                                        <c:when test="${product.quantity>0}">
+                                                            <div class="product-action">
+                                                                <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
+                                                            </div><!-- End .product-action -->
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <div class="product-action">
+                                                                <a class="btn-product btn-cart" style="cursor: default"><span style="color: red">Out Of Stock</span></a>
+                                                            </div><!-- End .product-action -->
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </figure><!-- End .product-media -->
 
                                                 <div class="product-body">
