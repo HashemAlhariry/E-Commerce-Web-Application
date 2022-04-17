@@ -30,8 +30,9 @@ public class SearchProductServlet extends HttpServlet {
 
         List<ProductEntity> searchedProducts = productService.findProductByName(request.getParameter("product-name"));
         List<ProductBean> searchedProductsBeans = ProductMapper.INSTANCE.listEntitiesToBeans(searchedProducts);
+        request.setAttribute("productName", request.getParameter("product-name"));
         request.setAttribute("allProducts", searchedProductsBeans);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "shop.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "searched-products.jsp");
         requestDispatcher.forward(request, response);
     }
 }
