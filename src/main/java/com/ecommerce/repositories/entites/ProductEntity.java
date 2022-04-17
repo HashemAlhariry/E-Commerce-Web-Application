@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,7 +55,7 @@ public class ProductEntity {
 //    @Size(min = 1)
     private Set<String> images = new HashSet<>();
 
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private CategoryEntity category;

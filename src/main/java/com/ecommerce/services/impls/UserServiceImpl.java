@@ -10,15 +10,11 @@ import com.ecommerce.utils.mappers.UserMapper;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private static final UserServiceImpl INSTANCE = new UserServiceImpl();
 
-    private UserRepository userRepository = UserRepositoryImpl.getInstance();
+    private UserRepository userRepository;
 
-    private UserServiceImpl() {
-    }
-
-    public static UserServiceImpl getInstance() {
-        return INSTANCE;
+    public UserServiceImpl(String reqId) {
+        userRepository = new UserRepositoryImpl(reqId);
     }
 
     @Override

@@ -14,7 +14,8 @@ import java.util.Set;
 
 @NamedQueries({
         @NamedQuery(name = "user.findByEmail", query = "SELECT u from UserEntity u where u.email=:email"),
-        @NamedQuery(name = "user.findById",query = "select u from UserEntity u where  u.id = :id"),
+        @NamedQuery(name = "user.findById",query = "select u from UserEntity u where  u.id = :id")
+
 })
 
 @Getter
@@ -38,10 +39,6 @@ public class UserEntity {
     @Column(nullable = false)
     private BigDecimal creditLimit = new BigDecimal(0);
 
-   /* @ManyToMany
-    @JoinTable(name = "cart",
-            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)})*/
     @OneToMany(mappedBy = "user")
     private Set<CartEntity>cart;
 

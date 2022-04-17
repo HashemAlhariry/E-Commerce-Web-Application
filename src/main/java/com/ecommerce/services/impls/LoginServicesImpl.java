@@ -7,15 +7,11 @@ import com.ecommerce.services.LoginServices;
 import com.ecommerce.utils.mappers.UserMapper;
 
 public class LoginServicesImpl implements LoginServices {
+    private final UserRepositoryImpl userRepository;
 
-    private final static LoginServicesImpl INSTANCE = new LoginServicesImpl();
+    public LoginServicesImpl(String reqId) {
+        this.userRepository = new UserRepositoryImpl(reqId);
 
-
-    private final UserRepositoryImpl userRepository = UserRepositoryImpl.getInstance();
-
-
-    public static LoginServicesImpl getInstance() {
-        return INSTANCE;
     }
 
     public UserBean findUserByEmail(String email) {
@@ -30,6 +26,10 @@ public class LoginServicesImpl implements LoginServices {
         }
     }
 
+    @Override
+    public UserBean findUserById(int id) {
+        return UserMapper.INSTANCE.userEntityToUserBean(userRepository.findById(id));
+    }
 
 
 }

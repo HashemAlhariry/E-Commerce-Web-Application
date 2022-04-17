@@ -16,20 +16,18 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(name = "filter", urlPatterns = {"/filter"})
 public class FiltrationServlet extends HttpServlet {
     ServletContext servletContext;
-    ProductService productService;
 
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService= ProductServiceImpl.getInstance();
     }
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        ProductService productService=new ProductServiceImpl((String) request.getAttribute("reqId"));
 
         String laptopsCheck = request.getParameter("laptops");
         String mobilesCheck = request.getParameter("mobiles");

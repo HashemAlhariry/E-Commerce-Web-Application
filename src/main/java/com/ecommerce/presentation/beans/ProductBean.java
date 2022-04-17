@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -24,7 +24,7 @@ public class ProductBean {
     private int totalPurchasesNumber;
     private String mainImage;
     private Set<String> images = new HashSet<>();
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     private CategoryBean category;
 
     public  ProductBean(){}

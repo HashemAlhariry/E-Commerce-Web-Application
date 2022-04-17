@@ -64,8 +64,8 @@ public class Util {
     }
 
     //parse Json from local storage to get list of cart item beans
-    public static List<CartItemBean> parseCartJsonToCart(String jsonString, CartService cartService) throws JsonProcessingException {
-        if(jsonString!=null) {
+    public static List<CartItemBean> parseCartJsonToCartItemBeans(String jsonString, CartService cartService) throws JsonProcessingException {
+        if(jsonString!=null||jsonString.isEmpty()) {
 
                 ObjectMapper jacksonMapper = new ObjectMapper();
                 List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>() {});

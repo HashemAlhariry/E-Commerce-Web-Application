@@ -17,21 +17,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
 @WebServlet(name = "admin-product-search", urlPatterns = {"/admin-product-search"})
 
 public class AdminSearchProductServlet extends HttpServlet {
     ServletContext servletContext;
-    ProductService productService;
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService= ProductServiceImpl.getInstance();
     }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductService productService = new ProductServiceImpl((String) request.getAttribute("reqId"));
+
         List<ProductEntity> searchedProducts=null;
         if (Integer.parseInt(request.getParameter("categoryId"))<=0 && request.getParameter("productPrice").equals(""))
         {
