@@ -1,5 +1,6 @@
 package com.ecommerce.services.impls;
 
+import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.presentation.beans.UserViewBean;
 import com.ecommerce.repositories.UserRepository;
 import com.ecommerce.repositories.entites.UserEntity;
@@ -27,5 +28,14 @@ public class UserServiceImpl implements UserService {
     public List<UserViewBean> viewUserByEmail(String email) {
         List<UserEntity> userEntities = userRepository.getUserByEmail(email);
         return UserMapper.INSTANCE.userEntitiesToViewUserBeans(userEntities);
+    }
+
+    @Override
+    public UserBean getUserByEmail(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        if(userEntity != null){
+            return UserMapper.INSTANCE.userEntityToUserBean(userEntity);
+        }
+        return null;
     }
 }
