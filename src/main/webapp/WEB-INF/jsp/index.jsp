@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="assets/css/demos/demo-4.css">
 
     <script src="assets/js/amazonya/cookie-checker.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 
 </head>
 
@@ -118,7 +120,10 @@
 
             <div class="container">
                 <h2 class="title text-center mb-4">Explore Popular Categories</h2><!-- End .title text-center -->
-
+                <h2>
+                    ${sessionScope.userBean.email}
+                ${sessionScope.userBean.pass}
+                ${sessionScope.userBean.role}</h2>
                 <div class="cat-blocks-container">
                     <div class="row">
                         <c:forEach var="category" items="${currentCategories}">
@@ -200,11 +205,12 @@
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
+
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">Laptops</a>
+                                            <a href="categorized-product?categoryId=${product.category.categoryId}">${product.category.categoryName}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html"><c:out value="${product.name}"/></a>
+                                        <h3 class="product-title"><a href="single-product-page?productId=${product.id}"><c:out value="${product.name}"/></a>
                                         </h3><!-- End .product-title -->
                                         <div class="product-price">
                                             <c:out value="${product.price} EGP"/>
@@ -224,6 +230,8 @@
 
                 </div><!-- End .tab-content -->
             </div><!-- End .container -->
+            <div id="hiddenCart" hidden>${sessionScope.cartItemBeans}</div>
+            <div id="loggedInCheck" hidden>${sessionScope.loggedIn}</div>
 
             <div class="mb-6"></div>
             <!-- End .mb-6 -->
@@ -539,6 +547,24 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/demos/demo-4.js"></script>
         <script>
+            window.onload= (event) => {
+                console.log("on documentLoad")
+                if(!navigator.cookieEnabled) {
+                    window.location.href = "un-enabled-cookie";
+                }else{
+                    console.log("on documentLoad else condition");
+                    hiddenCart = document.getElementById("hiddenCart");
+                    loggedIn = document.getElementById("loggedInCheck");
+                    console.log(hiddenCart);
+                    if(loggedIn.textContent === "true" && hiddenCart.textContent !== null && hiddenCart.textContent !== "" && loggedIn !== null){
+                        localStorage.setItem("cartItems",hiddenCart.textContent);
+                        hiddenCart.remove();
+                    }
+                    addToCart(-1);
+                    addToWishList(-1);
+                }
+
+            };
             function addToCart(productId){
                 //get all available id in local storage
                 //update list

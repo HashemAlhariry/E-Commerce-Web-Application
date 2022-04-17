@@ -1,22 +1,16 @@
 package com.ecommerce.repositories.impl;
 
+import com.ecommerce.handlers.EntityMangerUtil;
 import com.ecommerce.repositories.OrderDetailRepository;
-import com.ecommerce.repositories.OrderRepository;
 import com.ecommerce.repositories.entites.OrderDetailsEntity;
-import com.ecommerce.repositories.entites.ProductEntity;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
 public class OrderDetailRepositoryImpl extends RepositoryImpl<OrderDetailsEntity, Integer> implements OrderDetailRepository {
-    private static final OrderDetailRepositoryImpl INSTANCE = new OrderDetailRepositoryImpl();
+    public OrderDetailRepositoryImpl(String entityMangerId) {
+        super(EntityMangerUtil.getInstance().getEntityManager(entityMangerId));
 
-    private OrderDetailRepositoryImpl() {
-
-    }
-
-    public static OrderDetailRepositoryImpl getInstance() {
-        return INSTANCE;
     }
 
     @Override

@@ -1,35 +1,35 @@
 package com.ecommerce.services.impls;
 
-import com.ecommerce.presentation.beans.LoginUserBean;
+import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.repositories.entites.UserEntity;
 import com.ecommerce.repositories.impl.UserRepositoryImpl;
 import com.ecommerce.services.LoginServices;
 import com.ecommerce.utils.mappers.UserMapper;
 
 public class LoginServicesImpl implements LoginServices {
+    private final UserRepositoryImpl userRepository;
 
-    private final static LoginServicesImpl INSTANCE = new LoginServicesImpl();
+    public LoginServicesImpl(String reqId) {
+        this.userRepository = new UserRepositoryImpl(reqId);
 
-
-    private final UserRepositoryImpl userRepository = UserRepositoryImpl.getInstance();
-
-
-    public static LoginServicesImpl getInstance() {
-        return INSTANCE;
     }
 
-    public LoginUserBean findUserByEmail(String email) {
+    public UserBean findUserByEmail(String email) {
         UserEntity user = userRepository.findByEmail(email);
         System.out.println(user);
         if (user == null)
             return null;
         else {
-            LoginUserBean userBean = UserMapper.INSTANCE.userEntityToBean(user);
+            UserBean userBean = UserMapper.INSTANCE.userEntityToUserBean(user);
             System.out.println(userBean);
             return userBean;
         }
     }
 
+    @Override
+    public UserBean findUserById(int id) {
+        return UserMapper.INSTANCE.userEntityToUserBean(userRepository.findById(id));
+    }
 
 
 }

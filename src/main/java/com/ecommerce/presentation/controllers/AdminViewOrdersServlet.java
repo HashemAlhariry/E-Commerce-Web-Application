@@ -23,17 +23,16 @@ import java.util.List;
 public class AdminViewOrdersServlet extends HttpServlet {
 
     private ServletContext servletContext;
-    OrderService orderService;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        orderService = OrderServiceImpl.getInstance();
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        OrderService orderService = new OrderServiceImpl((String) req.getAttribute("reqId"));
         List<OrderEntity> allOrders = null;
         if (req.getParameter("user") != null) {
             int userId = Integer.parseInt(req.getParameter("user"));

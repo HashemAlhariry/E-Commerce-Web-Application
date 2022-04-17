@@ -14,7 +14,7 @@ import java.util.Set;
 
 @NamedQueries({
         @NamedQuery(name = "user.findByEmail",
-                query = "SELECT u from UserEntity u where u.email=:email"),
+                query = "SELECT u from UserEntity u where u.email=:email")
 })
 
 @Getter
@@ -38,10 +38,6 @@ public class UserEntity {
     @Column(nullable = false)
     private BigDecimal creditLimit = new BigDecimal(0);
 
-   /* @ManyToMany
-    @JoinTable(name = "cart",
-            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)})*/
     @OneToMany(mappedBy = "user")
     private Set<CartEntity>cart;
 
@@ -60,5 +56,15 @@ public class UserEntity {
         this.dateOfBirth = dateOfBirth;
         this.role = role;
         this.creditLimit = creditLimit;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
+                '}';
     }
 }

@@ -1,9 +1,7 @@
 package com.ecommerce.services.impls;
 
 import com.ecommerce.repositories.OrderDetailRepository;
-import com.ecommerce.repositories.OrderRepository;
 import com.ecommerce.repositories.entites.OrderDetailsEntity;
-import com.ecommerce.repositories.entites.OrderEntity;
 import com.ecommerce.repositories.impl.OrderDetailRepositoryImpl;
 import com.ecommerce.services.OrderDetailsService;
 
@@ -11,13 +9,10 @@ import java.util.List;
 
 public class OrderDetailsServiceImpl implements OrderDetailsService {
 
-    private static final OrderDetailsServiceImpl INSTANCE = new OrderDetailsServiceImpl();
-    private final OrderDetailRepository orderDetailRepository = OrderDetailRepositoryImpl.getInstance();
-    private OrderDetailsServiceImpl() {
-    }
+    private final OrderDetailRepository orderDetailRepository;
 
-    public static OrderDetailsServiceImpl getInstance(){
-        return INSTANCE;
+    public OrderDetailsServiceImpl(String reqId) {
+        orderDetailRepository = new OrderDetailRepositoryImpl(reqId);
     }
 
 
@@ -45,4 +40,6 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     public List<OrderDetailsEntity> findAll() {
         return null;
     }
+
+
 }

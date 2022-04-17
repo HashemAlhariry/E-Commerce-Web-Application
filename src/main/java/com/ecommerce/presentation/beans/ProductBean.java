@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter @Setter
@@ -23,7 +24,7 @@ public class ProductBean {
     private int totalPurchasesNumber;
     private String mainImage;
     private Set<String> images = new HashSet<>();
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     private CategoryBean category;
 
     public  ProductBean(){}
@@ -66,5 +67,18 @@ public class ProductBean {
                 ", creationDate=" + creationDate +
                 ", category=" + category +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductBean that = (ProductBean) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

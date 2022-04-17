@@ -1,9 +1,10 @@
 package com.ecommerce.services;
 
-import com.ecommerce.presentation.beans.LoginUserBean;
+import com.ecommerce.presentation.beans.UserBean;
 
 public interface LoginServices {
 
 
-    LoginUserBean findUserByEmail(String email);
+    UserBean findUserByEmail(String email);
+    UserBean findUserById(int id);
 }

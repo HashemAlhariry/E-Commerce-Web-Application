@@ -1,6 +1,5 @@
 package com.ecommerce.repositories.impl;
 
-import com.ecommerce.handlers.Connector;
 import com.ecommerce.repositories.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -10,10 +9,11 @@ import java.util.List;
 
 public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
 
-    protected final EntityManager entityManager = Connector.getInstance().getEntityManager();
+    protected final EntityManager entityManager;
     private final Class<T> clazz;
 
-    protected RepositoryImpl() {
+    protected RepositoryImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
         clazz = (Class<T>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
     }
@@ -29,20 +29,20 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
     @Override
     public boolean delete(T entity) {
         entityManager.getTransaction().begin();
-        entityManager.remove(entity);
+        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
         entityManager.getTransaction().commit();
         return true;
     }
 
     @Override
     public T findById(I id) {
-            //entityManager.refresh(id);
+        //entityManager.refresh(id);
         return entityManager.find(clazz, id);
     }
 
     @Override
     public List<T> findAll() {
-        List<T> resultList = (List<T>) entityManager.createQuery("FROM "+clazz.getSimpleName()).getResultList();
+        List<T> resultList = (List<T>) entityManager.createQuery("FROM " + clazz.getSimpleName()).getResultList();
         return resultList;
     }
 
@@ -58,17 +58,17 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
     @Override
     public int getCount() {
         Query queryTotal = entityManager.createQuery
-                ("Select count(p) from "+ clazz.getSimpleName()+" p");
-        long countResult = (long)queryTotal.getSingleResult();
-        return (int)countResult;
+                ("Select count(p) from " + clazz.getSimpleName() + " p");
+        long countResult = (long) queryTotal.getSingleResult();
+        return (int) countResult;
     }
 
     @Override
-    public List<T> getSinglePageContent(int pageNumber, int recordsPerPage){
-        Query query = entityManager.createQuery("FROM "+clazz.getSimpleName());
-        query.setFirstResult((pageNumber-1) * recordsPerPage);
+    public List<T> getSinglePageContent(int pageNumber, int recordsPerPage) {
+        Query query = entityManager.createQuery("FROM " + clazz.getSimpleName());
+        query.setFirstResult((pageNumber - 1) * recordsPerPage);
         query.setMaxResults(recordsPerPage);
-        List <T> BeansPerSinglePage = query.getResultList();
+        List<T> BeansPerSinglePage = query.getResultList();
         return BeansPerSinglePage;
     }
 

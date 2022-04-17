@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 
 <!-- molla/login.html  22 Nov 2019 10:04:03 GMT -->
@@ -41,6 +44,14 @@
         <%@ include file="includes/header.jsp" %>
 
         <main class="main">
+            <c:if test="${!empty errorMessage}">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center">
+                    <strong>Error</strong> ${errorMessage}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
@@ -56,16 +67,19 @@
             		<div class="form-box">
             			<div class="form-tab">
 	            			<ul class="nav nav-pills nav-fill" role="tablist">
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="true">Sign In</a>
+                                </li>
 							    <li class="nav-item">
-							        <a class="nav-link" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false">Sign In</a>
+							        <a class="nav-link " id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="false">Register</a>
 							    </li>
-							    <li class="nav-item">
-							        <a class="nav-link active" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
-							    </li>
+
+
 							</ul>
 							<div class="tab-content">
-							    <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-							    	<form action="login" method="POST">
+							    <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+							    	<form action="login" method="POST" id="loginform">
 							    		<div class="form-group">
 							    			<label for="signup-email-2">email address *</label>
 							    			<input type="text" class="form-control" id="signup-email-2" name="signup-email" required>
@@ -83,7 +97,7 @@
 			                				</button>
 
 			                				<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="signin-remember-2">
+												<input type="checkbox" class="custom-control-input" id="signin-remember-2" name="rememberMe">
 												<label class="custom-control-label" for="signin-remember-2">Remember Me</label>
 											</div><!-- End .custom-checkbox -->
 
@@ -107,8 +121,8 @@
 								    		</div><!-- End .col-6 -->
 								    	</div><!-- End .row -->
 							    	</div><!-- End .form-choice -->
-							    </div><!-- .End .tab-pane -->
-							    <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
+							    </div>
+							    <div class="tab-pane fade " id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
 							    	<form action="registration" method="POST">
                                         <div class="form-group">
                                             <label for="register-name-2">name *</label>
@@ -175,7 +189,7 @@
 								    		</div><!-- End .col-6 -->
 								    	</div><!-- End .row -->
 							    	</div><!-- End .form-choice -->
-							    </div><!-- .End .tab-pane -->
+							    </div>
 							</div><!-- End .tab-content -->
 						</div><!-- End .form-tab -->
             		</div><!-- End .form-box -->
@@ -371,11 +385,12 @@
                     <div class="form-box">
                         <div class="form-tab">
                             <ul class="nav nav-pills nav-fill" role="tablist">
+
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                                    <a class="nav-link active" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                                    <a class="nav-link " id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="tab-content-5">
@@ -484,6 +499,34 @@
     <script src="assets/js/main.js"></script>
 </body>
 
+<script src="assets/js/amazonya/cookie-checker.js"></script>
+<script>
+    window.onload = (event) => {
+        if(!navigator.cookieEnabled) {
+            window.location.href = "un-enabled-cookie";
+        }else{
+            addToCart(-1);
+            addToWishList(-1);
+            insertCartInForm();
+        }
 
-<!-- molla/login.html  22 Nov 2019 10:04:03 GMT -->
+    };
+
+    function insertCartInForm() {
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less verbose if you use one.
+        const form = document.getElementById('loginform');
+
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = 'cart';
+        hiddenField.value =  localStorage.getItem("cartItems");
+
+        form.appendChild(hiddenField);
+
+
+    }
+</script>
+
 </html>

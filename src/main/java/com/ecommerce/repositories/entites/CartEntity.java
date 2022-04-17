@@ -13,6 +13,14 @@ public class CartEntity {
 
     private int quantity;
 
+    public CartEntity(){}
+
+    public CartEntity(UserEntity userEntity, ProductEntity productEntity, int quantity){
+        this.product = productEntity;
+        this.user = userEntity;
+        this.quantity = quantity;
+    }
+
     @ManyToOne
     @MapsId("userId")
     @JoinColumn(name = "user_id")

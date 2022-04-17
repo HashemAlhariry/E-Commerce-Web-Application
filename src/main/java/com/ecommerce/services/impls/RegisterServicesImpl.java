@@ -12,22 +12,34 @@ import com.ecommerce.utils.mappers.UserMapper;
 public class RegisterServicesImpl implements RegisterServices {
 
 
-    private final static RegisterServicesImpl INSTANCE = new RegisterServicesImpl();
-    private final UserRepository userRepository = UserRepositoryImpl.getInstance();
+    private final UserRepository userRepository;
 
-
-    public static RegisterServicesImpl getInstance() {
-        return INSTANCE;
+    public RegisterServicesImpl(String reqId) {
+        userRepository = new UserRepositoryImpl(reqId);
     }
 
 
     @Override
     public SignUpBean registerUser(SignUpBean signUpBean) {
+        UserEntity user1 = UserMapper.INSTANCE.userRegBeanToEntity(signUpBean);
+        String email = user1.getEmail();
+        UserEntity user = userRepository.findByEmail(email);
+        if (user == null) {
+            UserEntity userSaved = userRepository.saveUser(user1);
+            SignUpBean userDTO1 = UserMapper.INSTANCE.userRegEntityToBean(userSaved);
+            System.out.println("From Service " + userSaved);
+            return userDTO1;
+        } else {
+            return null;
+        }
 
-        UserEntity user = UserMapper.INSTANCE.userRegBeanToEntity(signUpBean);
-        UserEntity userSaved = userRepository.saveUser(user);
-        SignUpBean userDTO1 = UserMapper.INSTANCE.userRegEntityToBean(userSaved);
-        System.out.println("From Service " + userSaved);
-        return userDTO1;
+//
+//        UserEntity user = UserMapper.INSTANCE.userRegBeanToEntity(signUpBean);
+//        UserEntity userSaved = userRepository.saveUser(user);
+//        SignUpBean userDTO1 = UserMapper.INSTANCE.userRegEntityToBean(userSaved);
+//        System.out.println("From Service " + userSaved);
+//        return userDTO1;
     }
+
+
 }
