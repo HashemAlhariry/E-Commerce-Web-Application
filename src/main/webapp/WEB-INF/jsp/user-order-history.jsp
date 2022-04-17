@@ -42,21 +42,70 @@
     <%@ include file="includes/header.jsp" %>
 
     <main class="main">
-        <center>
-            <form action="AcceptPaymentServlet" method="POST">
-                <script
-                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_51KmFuOJKNiBLygtkyrLQtjXf9p2BqxMmRR2miQElRuUeFWe9bN3BCx5zZz2KIfCxnV0ryIp1R1jMGsHYvIAfRSt900kuf0CNie"
-                        data-amount="${total}"
-                        data-name="Amazonya"
-                        data-description="your online store"
-                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                        data-locale="auto"
-                        data-currency="egp">
-                </script>
-            </form>
-        </center>
+        <br>
+        <div class="summary summary-cart">
+            <h2>Orders</h2>
 
+            <table class="table table-cart table-mobile">
+                <tbody>
+                <c:forEach items="${orderHistoryList}" var="orderHistory">
+                    <tr>
+                        <td class="product-col">
+                            <h3>Order Number:  &ensp; ${orderHistory.orderId}</h3>
+                            <br>
+
+
+                            <div class="product">
+                                <h6   >Order State: &ensp; ${orderHistory.state}</h6>
+                            </div>
+                            <br>
+                            <div class="product">
+                                <h6>Total Price: &ensp; ${orderHistory.totalPrice} </h6>
+
+                            </div>
+                            <br>
+                            <div class="product">
+                                <h6>Email: &ensp; ${orderHistory.email} </h6>
+
+                            </div>
+                            <br>
+                            <div class="product">
+                                <h6>Date: &ensp;  ${orderHistory.dateTime} </h6>
+
+                            </div>
+                            <br>
+                            <div class="product">
+                                <h6>Phone Number: &ensp; ${orderHistory.phoneNumber} </h6>
+
+                            </div>
+                            <br>
+                            <div class="product">
+                                <h6>address: &ensp; ${orderHistory.address} </h6>
+                            </div>
+                            <br>
+                            <c:forEach items="${orderHistory.orderDetailsBeanList}" var="orderDetails">
+                            <div class="product">
+                                <figure class="product-media">
+                                    <a  href="single-product-page?productId=${orderDetails.product.id}">
+                                        <img src="${orderDetails.product.mainImage}" alt="Product image">
+                                    </a>
+                                </figure>
+
+                                <h3 class="product-title">
+                                    <a href="single-product-page?productId=${orderDetails.product.id}">
+                                            ${orderDetails.product.name} &ensp;
+                                    ${orderDetails.product.price}  X ${orderDetails.quantity}</a>
+                                </h3>
+                            </div><br>
+                            </c:forEach>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
     </main>
 
     <%@ include file="includes/footer.jsp" %><!-- End .footer -->

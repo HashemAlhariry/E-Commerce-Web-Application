@@ -3,6 +3,8 @@ package com.ecommerce.services.impls;
 import com.ecommerce.handlers.Connector;
 import com.ecommerce.presentation.beans.OrderBean;
 import com.ecommerce.presentation.beans.OrderDetailsBean;
+import com.ecommerce.presentation.beans.OrderHistoryBean;
+import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.OrderDetailsRepository;
 import com.ecommerce.repositories.OrderRepository;
 import com.ecommerce.repositories.ProductRepository;
@@ -14,9 +16,11 @@ import com.ecommerce.repositories.impl.ProductRepositoryImpl;
 import com.ecommerce.repositories.impl.UserRepositoryImpl;
 import com.ecommerce.services.OrderService;
 import com.ecommerce.utils.mappers.OrderMapper;
+import com.ecommerce.utils.mappers.ProductMapper;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderDetailsRepository orderDetailsRepository;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+
 
 
     public OrderServiceImpl(String reqId) {
@@ -119,7 +124,6 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
-
     private UserEntity getUserByEmail(OrderBean orderBean, String email) {
 
         // get User if logged in or ann user
@@ -136,5 +140,54 @@ public class OrderServiceImpl implements OrderService {
 
         return userEntity;
     }
+
+    public List<OrderHistoryBean> getUserOrderHistory(String userEmail){
+
+        List<OrderEntity> orderEntityList = orderRepository.getAllUserOrder(userEmail);
+        List<OrderHistoryBean> orderHistoryBeans = new ArrayList<>();
+
+        for (OrderEntity orderEntity: orderEntityList) {
+
+            // get all products attached with order
+            List<OrderDetailsEntity>  orderDetailsEntityList = orderDetailsRepository.findAllById(orderEntity.getId());
+
+            List<OrderDetailsBean> orderDetailsBeanList = mapOrderDetailsEntityToOrderDetailsBean(orderDetailsEntityList);
+
+            OrderHistoryBean orderHistoryBean = new OrderHistoryBean(
+                    orderEntity.getId(),
+                    orderEntity.getAddress(),
+                    orderEntity.getDateTime(),
+                    orderEntity.getPhoneNumber(),
+                    orderEntity.getState(),
+                    orderEntity.getTotalPrice(),
+                    orderEntity.getEmail(),
+                    orderDetailsBeanList);
+
+
+            // add order details with order entity into order history beans
+            orderHistoryBeans.add(orderHistoryBean);
+
+        }
+
+        return orderHistoryBeans;
+    }
+
+    private List<OrderDetailsBean> mapOrderDetailsEntityToOrderDetailsBean(List<OrderDetailsEntity> orderDetailsEntityList){
+
+        //(int orderId, ProductBean product, int userId, BigDecimal price, int quantity)
+
+        List<OrderDetailsBean> orderDetailsBeanList = new ArrayList<>();
+        for (OrderDetailsEntity orderDetailsEntity: orderDetailsEntityList) {
+            ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(orderDetailsEntity.getProduct());
+            orderDetailsBeanList.add(new OrderDetailsBean(orderDetailsEntity.getId().getOrderId(),
+                    productBean,
+                    orderDetailsEntity.getId().getUserId(),
+                    orderDetailsEntity.getPrice(),
+                    orderDetailsEntity.getQuantity()));
+
+        }
+        return  orderDetailsBeanList;
+    }
+
 
 }

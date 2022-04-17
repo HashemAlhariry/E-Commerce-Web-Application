@@ -41,6 +41,7 @@
                                                 <ul>
                                                     <li><a >${sessionScope.userBean.email}</a></li>
                                                     <li><a href="updateprofile">Profile</a></li>
+                                                    <li><a href="userorderhistory">Orders History</a></li>
                                                     <li style="font-family: Arial"><a onclick="logout()">Logout</a></li>
                                                 </ul>
                                             </div><!-- End .header-menu -->
