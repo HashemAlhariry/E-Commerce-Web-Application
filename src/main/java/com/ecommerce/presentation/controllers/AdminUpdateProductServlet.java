@@ -33,14 +33,14 @@ import java.util.List;
 public class AdminUpdateProductServlet extends HttpServlet {
 
     private ServletContext servletContext;
-    ProductService productService;
-    CategoryServices categoryServices;
+//    ProductService productService;
+//    CategoryServices categoryServices;
 
     @Override
     public void init(ServletConfig config) {
         servletContext = config.getServletContext();
-        productService= ProductServiceImpl.getInstance();
-        categoryServices= CategoryServicesImpl.getInstance();
+//        productService= ProductServiceImpl.getInstance();
+//        categoryServices= CategoryServicesImpl.getInstance();
 
     }
 
@@ -53,7 +53,8 @@ public class AdminUpdateProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         List<String> messages = new ArrayList<>();
-
+        ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
+        CategoryServices categoryServices = new CategoryServicesImpl((String) req.getAttribute("reqId"));
         Long productID = Long.parseLong(req.getParameter("productId"));
         ProductEntity productEntity = productService.findById(productID);
 
