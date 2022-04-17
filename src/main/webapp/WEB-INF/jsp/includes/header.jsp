@@ -200,11 +200,11 @@
                             <a href="home" class="our-sf-with-ul">Home</a>
 
                                 </li>
-                        <c:if test="${(!empty userBean)&&(fn:containsIgnoreCase(userBean.role,'ADMIN'))}">
-                            <li class="megamenu-container ">
-                                <a href="admin" class="our-sf-with-ul">Admin</a>
-                            </li>
-                        </c:if>
+                                    <c:if test="${(!empty userBean)&&(fn:containsIgnoreCase(userBean.role,'ADMIN'))}">
+                                        <li class="megamenu-container ">
+                                            <a href="admin" class="our-sf-with-ul">Admin</a>
+                                        </li>
+                                    </c:if>
 
                                 <li>
                                     <a href="shop" class="our-sf-with-ul">Shop</a>
