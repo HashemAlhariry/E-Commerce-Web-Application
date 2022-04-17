@@ -525,6 +525,9 @@
             document.getElementById("checkoutButton").style.visibility= 'hidden';
         }
         document.getElementById("cartItemsNumber").textContent =  cartItems.length;
+        if(cartItems.length===0){
+            window.location.href= "cart"  // TODO With Ajax
+        }
 
     }
     const radioButtons = document.querySelectorAll('input[name="shipping"]');
