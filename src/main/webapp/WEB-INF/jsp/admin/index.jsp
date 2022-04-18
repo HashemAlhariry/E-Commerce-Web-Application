@@ -127,6 +127,7 @@
               </div>
             </div>
           </div>
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -161,6 +162,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/admin/js/dashboard.js"></script>
+
   <!-- End custom js for this page-->
 </body>
 

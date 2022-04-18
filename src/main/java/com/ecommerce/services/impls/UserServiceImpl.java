@@ -31,6 +31,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean checkUserEmail(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        return userEntity != null ;
+    }
+
+    @Override
     public UserBean getUserByEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
         if(userEntity != null){

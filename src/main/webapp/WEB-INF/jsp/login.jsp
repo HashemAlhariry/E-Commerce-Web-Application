@@ -125,27 +125,32 @@
 							    	</div><!-- End .form-choice -->
 							    </div>
 							    <div class="tab-pane fade " id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
-							    	<form action="registration" method="POST">
+							    	<form action="registration" id="regster-form" method="POST">
                                         <div class="form-group">
                                             <label for="register-name-2">name *</label>
-                                            <input type="text" class="form-control" id="register-name-2" name="register-name" required>
+                                            <input type="text" class="form-control" id="register-name-2" name="register_name" required>
                                         </div><!-- End .form-group -->
 
                                         <div class="form-group">
                                             <label for="register-birthday-2">birthday date *</label>
-                                            <input type="date" class="form-control" id="register-birthday-2" name="register-birthday" required>
+                                            <input type="date" class="form-control" id="register-birthday-2" name="register_birthday" required>
                                         </div><!-- End .form-group -->
 
 							    		<div class="form-group">
 							    			<label for="register-email-2">email *</label>
-							    			<input type="email" class="form-control" id="register-email-2" name="register-email" required>
+							    			<input type="email" class="form-control" id="register-email-2" name="register_email" required>
 							    		</div><!-- End .form-group -->
 
 
 							    		<div class="form-group">
 							    			<label for="register-password-2">Password *</label>
-							    			<input type="password" class="form-control" id="register-password-2" name="register-password" required>
+							    			<input type="password" class="form-control" id="register-password-2" name="register_password" required>
 							    		</div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-password-2">Confirm Password *</label>
+                                            <input type="password" class="form-control" id="confirm-register-password-2" name="confirm_register_password" required>
+                                        </div><!-- End .form-group -->
 
 <%--                                        <div class="form-group">--%>
 <%--                                            <label for="register-jop-2">job *</label>--%>
@@ -154,8 +159,9 @@
 
                                         <div class="form-group">
                                             <label for="register-address-2">address *</label>
-                                            <input type="text" class="form-control" id="register-address-2" name="register-address" required>
+                                            <input type="text" class="form-control" id="register-address-2" name="register_address" required>
                                         </div><!-- End .form-group -->
+
 
 <%--                                        <div class="form-group">--%>
 <%--                                            <label for="register-credit limit-2">credit limit *</label>--%>
@@ -163,16 +169,21 @@
 <%--                                        </div><!-- End .form-group -->--%>
 
                                         <div class="form-footer">
-							    			<button type="submit" class="btn btn-outline-primary-2">
+							    			<button type="button" id="register-submit" class="btn btn-outline-primary-2">
 			                					<span>SIGN UP</span>
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
 
 			                				<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="register-policy-2" required>
+												<input type="checkbox" class="custom-control-input" name="agree" id="register-policy-2" required>
 												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>
 											</div><!-- End .custom-checkbox -->
 							    		</div><!-- End .form-footer -->
+
+                                        <div class="form-group">
+                                            <ul id="errorMessage"></ul>
+                                        </div><!-- End .form-group -->
+
 							    	</form>
 							    	<div class="form-choice">
 								    	<p class="text-center">or sign in with</p>
@@ -240,16 +251,40 @@
             </div><!-- End .modal-content -->
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
+    <div class="modal fade bd-example-modal-sm" id="loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="loader-demo-box">
+                    <div class="pixel-loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- plugins:js -->
+    <!-- plugins:js -->
+    <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="assets/admin/js/off-canvas.js"></script>
+    <script src="assets/admin/js/hoverable-collapse.js"></script>
+    <script src="assets/admin/js/misc.js"></script>
+    <script src="assets/admin/js/settings.js"></script>
+    <script src="assets/admin/js/todolist.js"></script>
+    <script src="assets/app-js/register-ajax.js"></script>
 
+    <!-- endinject -->
     <!-- Plugins JS File -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/superfish.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
+<%--    <script src="assets/js/jquery.min.js"></script>--%>
+<%--    <script src="assets/js/bootstrap.bundle.min.js"></script>--%>
+<%--    <script src="assets/js/jquery.hoverIntent.min.js"></script>--%>
+<%--    <script src="assets/js/jquery.waypoints.min.js"></script>--%>
+<%--    <script src="assets/js/superfish.min.js"></script>--%>
+<%--    <script src="assets/js/owl.carousel.min.js"></script>--%>
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/register-validation.js"></script>
+
 </body>
 
 <script src="assets/js/amazonya/cookie-checker.js"></script>

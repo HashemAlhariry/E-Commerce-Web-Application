@@ -1,5 +1,6 @@
 package com.ecommerce.presentation.controllers;
 
+import com.ecommerce.presentation.beans.AddProductBean;
 import com.ecommerce.presentation.beans.ProductBean;
 import com.ecommerce.repositories.entites.ProductEntity;
 import com.ecommerce.services.ProductService;
@@ -33,6 +34,8 @@ public class AdminEditProductServlet extends HttpServlet {
         ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
         Long idNumber = Long.parseLong(req.getParameter("productId"));
         ProductEntity productEntity = productService.findById(idNumber);
+        int cId= productEntity.getCategory().getCategoryId();
+        req.setAttribute("productCategoryId",cId);
         ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(productEntity);
         req.setAttribute("editProduct", productBean);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "admin/pages/forms/edit_product.jsp");

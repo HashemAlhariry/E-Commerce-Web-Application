@@ -5,9 +5,7 @@
     headerTag: "h3",
     bodyTag: "section",
     transitionEffect: "slideLeft",
-    onFinished: function(event, currentIndex) {
-      alert("hena 3ayz a5las");
-    }
+
   });
   var validationForm = $("#example-validation-form");
   validationForm.val({
