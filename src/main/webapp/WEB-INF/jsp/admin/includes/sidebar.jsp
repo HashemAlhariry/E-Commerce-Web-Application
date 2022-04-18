@@ -31,10 +31,11 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" onclick="logout()">
-                <i class="fas fa-minus-square menu-icon"></i>
-                <span class="menu-title">Logout</span>
-            </a>
+           <button onclick="logout()">
+               <i class="fas fa-power-off menu-icon"></i>
+               <span class="menu-title">Logout</span>
+           </button>
+
         </li>
     </ul>
 </nav>
