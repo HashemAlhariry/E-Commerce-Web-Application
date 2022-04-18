@@ -1,9 +1,12 @@
 package com.ecommerce.presentation.controllers;
 
+import com.ecommerce.presentation.beans.ResponseMessageBean;
 import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.services.UserService;
 import com.ecommerce.services.impls.UserServiceImpl;
 import com.ecommerce.utils.MailUtil;
+import com.google.gson.Gson;
+import jakarta.persistence.NoResultException;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -32,19 +35,28 @@ public class ForgotPasswordServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String receiverEmail =  request.getParameter("recoveryEmail");
-        UserBean userBean = userService.getUserByEmail(receiverEmail);
-        if(userBean != null){
-            MailUtil mailUtil = MailUtil.getInstance();
-            try {
-                mailUtil.sendForgottenPassword("ahmdashrf0097@gmail.com", userBean.getPass());
-                out.println("Email Address has been already sent to you, Check your MailBox to recover your password ");
-            } catch (EmailException e) {
-                out.println(e.getMessage());
+        try{
+            UserBean userBean = userService.getUserByEmail(receiverEmail);
+            if(userBean != null){
+                MailUtil mailUtil = MailUtil.getInstance();
+                try {
+                    mailUtil.sendForgottenPassword("ahmdashrf0097@gmail.com", userBean.getPass());
+                    String message  = "Email Address has been already sent to you, Check your MailBox to recover your password";
+                    out.println(new Gson().toJson(message));
+                } catch (EmailException e) {
+                    String message  = "We couldn't send email to you right now , please try again";
+                    out.println(new Gson().toJson(message));
+                }
             }
-        }
-        else{
-            out.println("The Email Address is Wrongly Entered, you might need to check it again");
-        }
+            else{
+                String message = "The Email Address is Wrongly Entered, you might need to check it again";
+                out.println(new Gson().toJson(message));
+
+            }
+
+        }catch(NoResultException e){
+            String message  = "We couldn't find this email address in our system";
+            out.println(new Gson().toJson(message));        }
 
     }
 }

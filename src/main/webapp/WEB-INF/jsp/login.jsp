@@ -211,12 +211,12 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="returnForm()">
                         <span aria-hidden="true"><i class="icon-close"></i></span>
                     </button>
 
-                    <div class="form-box">
-                        <div class="form-tab" id="form">
+                    <div class="form-box" id="form">
+                        <div class="form-tab" >
                             <div class="tab-content" id="tab-content-5">
                                 <div class="tab-pane fade show active" id="recover-password" role="tabpanel" aria-labelledby="recovery-tab">
                                     <form action="forgotPassword" method="post" id="myForm">
@@ -226,7 +226,7 @@
                                         </div><!-- End .form-group -->
 
                                         <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
+                                            <button type="submit" class="btn btn-outline-primary-2" id="sendEmailButton">
                                                 <span>Send Email</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
@@ -260,29 +260,59 @@
 
             var actionUrl = $(this).attr('action');
             var formData = $(this).serialize();
-            $("#form").replaceWith("<div class='d-flex justify-content-center' id='spinner'>" +
+            var sendElementButton = document.getElementById("sendEmailButton");
+            sendElementButton.disabled = true;
+            $("#form").append("<div class='d-flex justify-content-center' id='spinner'>" +
             "<div class='spinner-border' role='status'>" +
             "<span class='sr-only'>Loading...</span>" +
             "</div>" +
-            "</div>")
+            "</div>");
+            var form = document.getElementById("form");
             $.ajax({
                 url: actionUrl,
                 method: 'POST',
                 dataType: 'json',
                 data: formData,
                 success: function(data) {
+                    $('#form').children().last().remove();
+                    $('#form')
+                        .contents()
+                        .filter(function() {
+                            return this.nodeType == 3; //Node.TEXT_NODE
+                        }).remove();
+
+                    $('#form').append(data+'\n');
+                    // $('#form').append("<div>"+data+"</div>");
+                    document.getElementById("sendEmailButton").disabled = false;
                     console.log(data);
                 },
                 error: function (request, error){
-                    $("#spinner").replaceWith("<div class='d-flex justify-content-center' id='errorResponse'>" +
-                        "<div>" +
-                        "<span > Server Error </span>" +
-                        "</div>" +
-                        "</div>")
+                    $('#form').children().last().remove();
+                    document.getElementById("sendEmailButton").disabled = false;
+
+
+                    // form.append("<div class='d-flex justify-content-center' id='errorResponse' hidden=true style='padding-top: 20px;'>" +
+                    // "<div>" +
+                    // "<span > Server Error </span>" +
+                    // "</div>" +
+                    // "</div>");
                 }
             });
         });
     });
+    function returnForm(){
+        var form = document.getElementById("form");
+        var sendEmailButton = document.getElementById("sendEmailButton");
+        sendEmailButton.disabled = false;
+        //("#spinner").remove();
+        // $('#form').children().last().remove();
+        $('#form')
+            .contents()
+            .filter(function() {
+                return this.nodeType == 3; //Node.TEXT_NODE
+            }).remove();
+
+    }
     window.onload = (event) => {
         if(!navigator.cookieEnabled) {
             window.location.href = "un-enabled-cookie";
