@@ -93,7 +93,7 @@
                               <td>
                                   <button  class="btn btn-outline-primary" onclick="orderDetailView(${order.id})">View Details</button>
                                   <button  class="btn btn-outline-primary" onclick="">Update Status</button>
-                                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-3">Click for demo<i class="fa fa-play-circle ml-1"></i></button>
+                                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal-3">Update Status</button>
 
                               </td>
                           </tr>
