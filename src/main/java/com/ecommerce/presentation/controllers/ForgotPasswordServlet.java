@@ -35,28 +35,22 @@ public class ForgotPasswordServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String receiverEmail =  request.getParameter("recoveryEmail");
-        try{
-            UserBean userBean = userService.getUserByEmail(receiverEmail);
-            if(userBean != null){
-                MailUtil mailUtil = MailUtil.getInstance();
-                try {
-                    mailUtil.sendForgottenPassword("ahmdashrf0097@gmail.com", userBean.getPass());
-                    String message  = "Email Address has been already sent to you, Check your MailBox to recover your password";
-                    out.println(new Gson().toJson(message));
-                } catch (EmailException e) {
-                    String message  = "We couldn't send email to you right now , please try again";
-                    out.println(new Gson().toJson(message));
-                }
-            }
-            else{
-                String message = "The Email Address is Wrongly Entered, you might need to check it again";
+        UserBean userBean = userService.getUserByEmail(receiverEmail.trim());
+        if(userBean != null){
+            MailUtil mailUtil = MailUtil.getInstance();
+            try {
+                mailUtil.sendForgottenPassword(userBean.getEmail(), userBean.getPass());
+                String message  = "Email Address has been already sent to you, Check your MailBox to recover your password";
                 out.println(new Gson().toJson(message));
-
+            } catch (EmailException e) {
+                String message  = "We couldn't send email to you right now , please try again";
+                out.println(new Gson().toJson(message));
             }
+        }
+        else{
+            String message = "The Email Address is Wrongly Entered, you might need to check it again";
+            out.println(new Gson().toJson(message));
 
-        }catch(NoResultException e){
-            String message  = "We couldn't find this email address in our system";
-            out.println(new Gson().toJson(message));        }
-
+        }
     }
 }

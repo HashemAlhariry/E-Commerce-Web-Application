@@ -28,7 +28,7 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
     @Override
     public UserEntity findByEmail(String email) {
         return (UserEntity) entityManager.createNamedQuery("user.findByEmail")
-                .setParameter("email", email).getSingleResult();
+                .setParameter("email", email.trim()).getResultList().stream().findFirst().orElse(null);
     }
 
 
