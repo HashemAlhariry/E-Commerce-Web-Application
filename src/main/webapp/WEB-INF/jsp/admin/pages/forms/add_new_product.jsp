@@ -148,9 +148,7 @@
 
                                             </div>
                                         </div>
-
                                         <input class="btn btn-primary" type="button" id="submitBtn" value="Submit">
-
                                     </fieldset>
                                 </form>
                             </div>

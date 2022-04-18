@@ -62,6 +62,7 @@
                             <th>Phone Number</th>
                             <th>Total Price</th>
                             <th>State</th>
+                            <th>View Details</th>
                             <th>More Action</th>
 
                         </tr>
@@ -92,7 +93,15 @@
                               </td>
                               <td>
                                   <button  class="btn btn-outline-primary" onclick="orderDetailView(${order.id})">View Details</button>
-                                  <button  class="btn btn-outline-primary" onclick="">Update Status</button>
+
+                              </td>
+                              <td>
+                                  <select class="js-example-basic-single w-100 btn-outline-secondary">
+                                      <option value="PENDING">PENDING</option>
+                                      <option value="PROCESSING">PROCESSING</option>
+                                      <option value="ARRIVED">ARRIVED</option>
+                                      <option value="CANCELLED">CANCELLED</option>
+                                  </select>
                                   <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal-3">Update Status</button>
 
                               </td>
