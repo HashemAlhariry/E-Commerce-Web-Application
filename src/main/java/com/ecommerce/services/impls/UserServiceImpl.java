@@ -1,5 +1,7 @@
 package com.ecommerce.services.impls;
 
+import com.ecommerce.exceptions.FoundBeforeException;
+import com.ecommerce.presentation.beans.SignUpBean;
 import com.ecommerce.presentation.beans.UserViewBean;
 import com.ecommerce.repositories.UserRepository;
 import com.ecommerce.repositories.entites.UserEntity;
@@ -30,8 +32,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean registerUser(SignUpBean signUpBean) throws FoundBeforeException {
+        UserEntity user1 = UserMapper.INSTANCE.userRegBeanToEntity(signUpBean);
+        System.out.println(user1);
+        String email = user1.getEmail();
+        if (userRepository.findByEmail(email) == null) {
+            userRepository.saveUser(user1);
+            return true;
+        } else {
+            throw new FoundBeforeException("this email found before");
+        }
+    }
+
+    @Override
     public boolean checkUserEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
-        return userEntity != null ;
+        return userEntity != null;
     }
 }

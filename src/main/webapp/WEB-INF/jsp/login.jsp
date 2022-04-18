@@ -518,6 +518,9 @@
     <script src="assets/admin/js/misc.js"></script>
     <script src="assets/admin/js/settings.js"></script>
     <script src="assets/admin/js/todolist.js"></script>
+    <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="assets/admin/js/alerts.js"></script>
     <script src="assets/app-js/register-ajax.js"></script>
 
     <!-- endinject -->

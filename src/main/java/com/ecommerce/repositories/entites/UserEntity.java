@@ -14,7 +14,7 @@ import java.util.Set;
 
 @NamedQueries({
         @NamedQuery(name = "user.findByEmail", query = "SELECT u from UserEntity u where u.email=:email"),
-        @NamedQuery(name = "user.findById",query = "select u from UserEntity u where  u.id = :id")
+        @NamedQuery(name = "user.findById", query = "select u from UserEntity u where  u.id = :id")
 
 })
 
@@ -38,9 +38,9 @@ public class UserEntity {
     private Role role = Role.CUSTOMER;
     @Column(nullable = false)
     private BigDecimal creditLimit = new BigDecimal(0);
-
+    private UserState state;
     @OneToMany(mappedBy = "user")
-    private Set<CartEntity>cart;
+    private Set<CartEntity> cart;
 
     @OneToMany(mappedBy = "user")
     private Set<OrderDetailsEntity> orderDetails = new HashSet<>();
