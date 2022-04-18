@@ -62,7 +62,7 @@
                             <th>Phone Number</th>
                             <th>Total Price</th>
                             <th>State</th>
-                            <th>View More</th>
+                            <th>More Action</th>
 
                         </tr>
                       </thead>
@@ -92,6 +92,7 @@
                               </td>
                               <td>
                                   <button  class="btn btn-outline-primary" onclick="orderDetailView(${order.id})">View Details</button>
+                                  <button  class="btn btn-outline-primary" onclick="">Update Status</button>
                               </td>
                           </tr>
                       </c:forEach>

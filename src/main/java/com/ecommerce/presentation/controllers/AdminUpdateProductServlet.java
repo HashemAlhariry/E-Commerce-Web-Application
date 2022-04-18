@@ -70,7 +70,10 @@ public class AdminUpdateProductServlet extends HttpServlet {
         productEntity.setName(req.getParameter("productName"));
         productEntity.setQuantity(Integer.parseInt(req.getParameter("productQuantity")));
         productEntity.setDescription(req.getParameter("productDescription"));
-
+        if(Integer.parseInt(req.getParameter("productQuantity"))==0)
+        {
+            productEntity.setState(ProductState.valueOf("OUT_OF_STOCK"));
+        }
         productService.update(productEntity);
 
         messages.add("Updated Successfully");
