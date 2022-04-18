@@ -102,7 +102,8 @@
                                       <option value="ARRIVED">ARRIVED</option>
                                       <option value="CANCELLED">CANCELLED</option>
                                   </select>
-                                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal-3">Update Status</button>
+<%--                              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal-3">Update Status</button>--%>
+                                  <button type="button" class="btn btn-success btn-fw" onclick="showSuccessToast()">Success</button>
 
                               </td>
                           </tr>
@@ -165,6 +166,8 @@
   <!-- Custom js for this page-->
   <script src="assets/admin/js/data-table.js"></script>
   <script src="assets/admin/js/modal-demo.js"></script>
+  <script src="assets/admin/js/toastDemo.js"></script>
+
 
   <!-- End custom js for this page-->
 <script>
