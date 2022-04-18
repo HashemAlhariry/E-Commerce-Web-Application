@@ -60,8 +60,8 @@
                             <th>Address</th>
                             <th>Date & Time</th>
                             <th>Phone Number</th>
-                            <th>State</th>
                             <th>Total Price</th>
+                            <th>State</th>
                             <th>View More</th>
 
                         </tr>
