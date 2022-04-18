@@ -18,4 +18,5 @@ public interface OrderService {
      boolean submitOrder(OrderBean orderBean, List<OrderDetailsBean> orderDetailsBeanList,String email);
 
      List<OrderHistoryBean> getUserOrderHistory(String userEmail);
+
 }

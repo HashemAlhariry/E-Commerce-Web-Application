@@ -67,6 +67,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderEntity update(OrderEntity entity) {
+        OrderState orderState = entity.getState();
+        entity=orderRepository.findById(entity.getId());
+        entity.setState(orderState);
+        orderRepository.update(entity);
         return null;
     }
 
