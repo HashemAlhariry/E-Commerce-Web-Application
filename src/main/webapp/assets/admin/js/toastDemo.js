@@ -4,12 +4,16 @@
     resetToastPosition();
     $.toast({
       heading: 'Success',
-      text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
+      text: 'The Order Status Updating now successfully',
       showHideTransition: 'slide',
       icon: 'success',
       loaderBg: '#f96868',
       position: 'top-right'
     })
+    setTimeout(
+        function()
+        {location.reload()}, 5000);
+
   };
   showInfoToast = function() {
     'use strict';
