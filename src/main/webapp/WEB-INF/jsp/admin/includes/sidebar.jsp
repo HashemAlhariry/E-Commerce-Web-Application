@@ -30,5 +30,37 @@
                 <span class="menu-title">Users</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" onclick="logout()">
+                <i class="fas fa-minus-square menu-icon"></i>
+                <span class="menu-title">Logout</span>
+            </a>
+        </li>
     </ul>
 </nav>
+
+<script>
+    function logout(){
+        console.log("logging Out");
+        var cartItems = localStorage.getItem("cartItems")
+        var cartJson = {"cartItems":cartItems}
+        var signUpElement = document.getElementById("signupElement").firstElementChild;
+        console.log(signUpElement);
+        $.ajax({
+            url: 'logout',
+            type: 'POST',
+            contentType: 'application/x-www-form-urlencoded',
+            data: cartJson,
+            dataType: 'json',
+            success: function (data) {
+                localStorage.setItem("cartItems",JSON.stringify(data));
+                // $("#profileIcon").html("<li><a href="login" id="singupElement" >Sign in / Sign up</a></li>");
+                if(window.location.href.endsWith('updateprofile')){
+                    window.location.href = "login";
+                }else{document.getElementById("profileIcon").firstElementChild.replaceWith(signUpElement);}
+                addToCart(-1);
+                addToWishList(-1);
+            }
+        })
+    };
+</script>

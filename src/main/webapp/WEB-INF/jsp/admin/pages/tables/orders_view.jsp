@@ -104,7 +104,8 @@
                                   </select>
 <%--                              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal-3">Update Status</button>--%>
 <%--                                  <button type="button" class="btn btn-success btn-fw" onclick="showSuccessToast()">Success</button>--%>
-                                  <input id="btn-submit" class="btn btn-success" type="button" value="update">
+                                  <input id="btn-submit" class="btn btn-success" onclick="orderDetailView(${order.id})" type="button" value="update">
+
 
                               </td>
                           </tr>
@@ -177,6 +178,15 @@
         var orderId = document.getElementById(id).innerHTML;
         var url = "admin-order-detail-view?orderId="+id;
         window.location.href = url;
+    }
+    function updateOrder(id)
+    {
+        const x = document.getElementById(id);
+        const y = x.getElementsByTagName("select");
+        console.log(y.value);
+        // var orderId = document.getElementById(id).innerHTML;
+        // var url = "admin-order-detail-view?orderId="+id;
+        // window.location.href = url;
     }
 </script>
 </body>
