@@ -2,6 +2,6 @@ package com.ecommerce.repositories.entites;
 
 public enum UserState {
     ARCHIVED,
-    PENDING,
+    IN_ACTIVE,
     ACTIVE
 }

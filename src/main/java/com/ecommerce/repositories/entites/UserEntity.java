@@ -38,6 +38,7 @@ public class UserEntity {
     private Role role = Role.CUSTOMER;
     @Column(nullable = false)
     private BigDecimal creditLimit = new BigDecimal(0);
+    @Enumerated(EnumType.STRING)
     private UserState state;
     @OneToMany(mappedBy = "user")
     private Set<CartEntity> cart;

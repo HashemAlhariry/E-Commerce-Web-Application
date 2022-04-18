@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolationException;
+import org.apache.commons.mail.EmailException;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,12 +45,13 @@ public class SignUpServlet extends HttpServlet {
 
         try {
             SignUpBean userRegistrationBean = new SignUpBean(userName, dateOfBirth, email, pass, address);
-            userService.registerUser(userRegistrationBean);
+            String domain = getBaseUrl(req);
+            userService.registerUser(userRegistrationBean, domain);
             messages.add("Created Successfully");
             messages.add("Check mail to verify");
             ResponseMessageBean responseMessageBean = new ResponseMessageBean("success", messages);
             out.println(new Gson().toJson(responseMessageBean));
-        } catch (FoundBeforeException | ConstraintViolationException e) {
+        } catch (FoundBeforeException | EmailException | ConstraintViolationException e) {
             e.printStackTrace();
             messages.add(e.getMessage());
             ResponseMessageBean responseMessageBean = new ResponseMessageBean("failed", messages);
@@ -61,5 +63,13 @@ public class SignUpServlet extends HttpServlet {
         // SignUpBean signUpBean =
         // registerServicesImpl.registerUser(userRegistrationBean);
         // req.getSession().setAttribute("userDto", signUpBean);
+    }
+
+    private String getBaseUrl(HttpServletRequest request) {
+        String scheme = request.getScheme() + "://";
+        String serverName = request.getServerName();
+        String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
+        String contextPath = request.getContextPath();
+        return scheme + serverName + serverPort + contextPath;
     }
 }

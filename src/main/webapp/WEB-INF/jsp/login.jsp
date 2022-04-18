@@ -172,10 +172,10 @@
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
 
-			                				<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" name="agree" id="register-policy-2" required>
-												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>
-											</div><!-- End .custom-checkbox -->
+<%--			                				<div class="custom-control custom-checkbox">--%>
+<%--												<input type="checkbox" class="custom-control-input" name="agree" id="register-policy-2" required>--%>
+<%--												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>--%>
+<%--											</div><!-- End .custom-checkbox -->--%>
 							    		</div><!-- End .form-footer -->
 
                                         <div class="form-group">
