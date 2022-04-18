@@ -93,12 +93,34 @@
                               <td>
                                   <button  class="btn btn-outline-primary" onclick="orderDetailView(${order.id})">View Details</button>
                                   <button  class="btn btn-outline-primary" onclick="">Update Status</button>
+                                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-3">Click for demo<i class="fa fa-play-circle ml-1"></i></button>
+
                               </td>
                           </tr>
                       </c:forEach>
 
                       </tbody>
                     </table>
+                      <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-3" aria-hidden="true">
+                          <div class="modal-dialog modal-sm" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel-3">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p>Modal body text goes here.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-success">Submit</button>
+                                      <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Modal Ends -->
                   </div>
                 </div>
               </div>
@@ -133,6 +155,8 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/admin/js/data-table.js"></script>
+  <script src="assets/admin/js/modal-demo.js"></script>
+
   <!-- End custom js for this page-->
 <script>
     var req = null;
