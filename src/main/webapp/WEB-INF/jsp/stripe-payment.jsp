@@ -42,6 +42,51 @@
     <%@ include file="includes/header.jsp" %>
 
     <main class="main">
+        <br>
+        <div class="summary summary-cart">
+            <h3 class="summary-title">User Details</h3>
+            <table class="table table-cart table-mobile">
+                <tbody>
+
+                    <tr>
+                        <td class="product-col">
+                            <div class="product">
+
+
+
+                                <h3 class="product-title">
+                                  Mobile Number: &ensp;  ${mobileNumber}
+                                </h3>
+
+
+                            </div>
+                        </td>
+                    </tr>
+                        <td class="product-col">
+                            <div class="product">
+
+                                <h3 class="product-title">
+                                 Total Number:   &ensp;  ${total}
+                                </h3>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="product-col">
+                            <div class="product">
+
+                                <h3 class="product-title">
+                                    Address:   &ensp;  ${userAddress}
+                                </h3>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <br>
         <center>
             <form action="AcceptPaymentServlet" method="POST">
                 <script
@@ -56,6 +101,7 @@
                 </script>
             </form>
         </center>
+        <br>
 
     </main>
 
