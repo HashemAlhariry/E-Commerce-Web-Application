@@ -393,8 +393,10 @@
             success: function (data) {
                 localStorage.setItem("cartItems",JSON.stringify(data));
                 // $("#profileIcon").html("<li><a href="login" id="singupElement" >Sign in / Sign up</a></li>");
-                if(window.location.href.endsWith('updateprofile')){
+                if(window.location.href.endsWith('updateprofile')||window.location.href.endsWith('userorderhistory')){
                     window.location.href = "login";
+                }else if(window.location.href.endsWith('cart')){
+                    window.location.href = "cart";
                 }else{document.getElementById("profileIcon").firstElementChild.replaceWith(signUpElement);}
                 addToCart(-1);
                 addToWishList(-1);
