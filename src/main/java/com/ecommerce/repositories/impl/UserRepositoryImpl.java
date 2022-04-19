@@ -25,7 +25,7 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
     }
 
     @Override
-    public UserEntity findByEmail(String email) throws NoResultException {
+    public UserEntity findByEmail(String email) {
         return (UserEntity) entityManager.createNamedQuery("user.findByEmail")
                 .setParameter("email", email.trim()).getResultList().stream().findFirst().orElse(null);
     }

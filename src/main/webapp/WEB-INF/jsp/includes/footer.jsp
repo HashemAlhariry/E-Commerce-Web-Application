@@ -5,12 +5,12 @@
             <div class="row justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-6">
                     <div class="cta-heading text-center">
-                        <h3 class="cta-title text-white">Get The Latest Deals</h3><!-- End .cta-title -->
-                        <p class="cta-desc text-white">and receive <span class="font-weight-normal">$20
-                                coupon</span> for first shopping</p><!-- End .cta-desc -->
+                        <h3 class="cta-title text-white">Get The Latest News</h3><!-- End .cta-title -->
+<%--                        <p class="cta-desc text-white">and receive <span class="font-weight-normal">$20--%>
+<%--                                coupon</span> for first shopping</p><!-- End .cta-desc -->--%>
                     </div><!-- End .text-center -->
 
-                    <form action="#">
+                    <form action="subscribe">
                         <div class="input-group input-group-round">
                             <input type="email" class="form-control form-control-white"
                                 placeholder="Enter your Email Address" aria-label="Email Adress" required>

@@ -10,6 +10,8 @@ public class ResponseMessageBean {
     private String state;
     private List<String> messages;
 
+    public ResponseMessageBean(){}
+
     public ResponseMessageBean(String state, List<String> messages) {
         this.state = state;
         this.messages = messages;

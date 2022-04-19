@@ -3,6 +3,7 @@ package com.ecommerce.services.impls;
 import com.ecommerce.exceptions.FoundBeforeException;
 import com.ecommerce.exceptions.NotFoundException;
 import com.ecommerce.presentation.beans.SignUpBean;
+import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.presentation.beans.UserViewBean;
 import com.ecommerce.repositories.CodeRepo;
 import com.ecommerce.repositories.UserRepository;
@@ -77,5 +78,14 @@ public class UserServiceImpl implements UserService {
     public boolean checkUserEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
         return userEntity != null;
+    }
+
+    @Override
+    public UserBean getUserByEmail(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        if(userEntity != null){
+            return UserMapper.INSTANCE.userEntityToUserBean(userEntity);
+        }
+        return null;
     }
 }
