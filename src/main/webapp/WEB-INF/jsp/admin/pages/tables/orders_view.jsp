@@ -184,10 +184,10 @@
         const x = document.getElementById(id);
         const y = x.children[7];
         const z = y.children[0];
-        console.log(z.value());
+        console.log(z.value);
         // var orderId = document.getElementById(id).innerHTML;
-        // var url = "admin-order-detail-view?orderId="+id;
-        // window.location.href = url;
+         var url = "admin-order-detail-view?orderId="+id;
+         window.location.href = url;
     }
 </script>
 </body>
