@@ -52,17 +52,17 @@
                         <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
                     </ol>
 
-                    <nav class="product-pager ml-auto" aria-label="Product">
-                        <a class="product-pager-link product-pager-prev" href="/amazonya/single-product-page?productId=${singleProduct.id-1}" aria-label="Previous" tabindex="-1">
-                            <i class="icon-angle-left"></i>
-                            <span>Prev</span>
-                        </a>
+<%--                    <nav class="product-pager ml-auto" aria-label="Product">--%>
+<%--                        <a class="product-pager-link product-pager-prev" href="/amazonya/single-product-page?productId=${singleProduct.id-1}" aria-label="Previous" tabindex="-1">--%>
+<%--                            <i class="icon-angle-left"></i>--%>
+<%--                            <span>Prev</span>--%>
+<%--                        </a>--%>
 
-                        <a class="product-pager-link product-pager-next" href="/amazonya/single-product-page?productId=${singleProduct.id+1}" aria-label="Next" tabindex="-1">
-                            <span>Next</span>
-                            <i class="icon-angle-right"></i>
-                        </a>
-                    </nav><!-- End .pager-nav -->
+<%--                        <a class="product-pager-link product-pager-next" href="/amazonya/single-product-page?productId=${singleProduct.id+1}" aria-label="Next" tabindex="-1">--%>
+<%--                            <span>Next</span>--%>
+<%--                            <i class="icon-angle-right"></i>--%>
+<%--                        </a>--%>
+<%--                    </nav><!-- End .pager-nav -->--%>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
 
