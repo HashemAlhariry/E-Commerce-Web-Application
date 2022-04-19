@@ -96,7 +96,7 @@
 
                               </td>
                               <td>
-                                  <select class="js-example-basic-single w-100 btn-outline-secondary">
+                                  <select class="js-example-basic-single w-100 btn-outline-secondary selector">
                                       <option value="PENDING">PENDING</option>
                                       <option value="PROCESSING">PROCESSING</option>
                                       <option value="ARRIVED">ARRIVED</option>
@@ -182,8 +182,9 @@
     function updateOrder(id)
     {
         const x = document.getElementById(id);
-        const y = x.getElementsByTagName("select").options[select.selectedIndex].value  ;
-        console.log(y);
+        const y = x.children[7];
+        const z = y.children[0];
+        console.log(z);
         // var orderId = document.getElementById(id).innerHTML;
         // var url = "admin-order-detail-view?orderId="+id;
         // window.location.href = url;
