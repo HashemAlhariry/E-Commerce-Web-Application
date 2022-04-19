@@ -40,7 +40,8 @@ public class CartServiceImpl implements CartService {
         for (ViewCartItem viewCartItem : viewCartItems) {
             ProductEntity productEntity = productRepository.findById(viewCartItem.getId());
             ProductBean productBean = productMapper.productEntityToBean(productEntity);
-            CartItemBean cartItemBean = new CartItemBean(productBean, viewCartItem.getQuantity());
+            int cartItemBeanQuantity = productEntity.getQuantity()<viewCartItem.getQuantity()? productEntity.getQuantity():viewCartItem.getQuantity();
+            CartItemBean cartItemBean = new CartItemBean(productBean, cartItemBeanQuantity);
             cartItemBeans.add(cartItemBean);
         }
         return cartItemBeans;
