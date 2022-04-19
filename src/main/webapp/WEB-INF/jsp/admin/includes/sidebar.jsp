@@ -1,6 +1,12 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
+            <a class="nav-link" href="home">
+                <i class="fas fa-minus-square menu-icon"></i>
+                <span class="menu-title">Home Page</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="admin">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
@@ -30,19 +36,7 @@
                 <span class="menu-title">Users</span>
             </a>
         </li>
-        <li class="nav-item">
-           <button onclick="logout()">
-               <i class="fas fa-power-off menu-icon"></i>
-               <span class="menu-title">Logout</span>
-           </button>
 
-        </li>
     </ul>
 </nav>
 
-<script>
-    function logout() {
-        var url = "admin-logout";
-        window.location.href = url;
-    }
-</script>
