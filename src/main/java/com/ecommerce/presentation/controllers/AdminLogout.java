@@ -3,14 +3,18 @@ package com.ecommerce.presentation.controllers;
 import com.ecommerce.presentation.beans.UserBean;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.impls.CartServiceImpl;
+import com.ecommerce.utils.CommonString;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+@WebServlet(name = "admin-logout", urlPatterns = {"/admin-logout"})
 
 public class AdminLogout extends HttpServlet {
 
@@ -26,26 +30,16 @@ public class AdminLogout extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CartService cartService=new CartServiceImpl((String) request.getAttribute("reqId"));
-        PrintWriter out = response.getWriter();
-        String cartJson = request.getParameter("cartItems");
-        System.out.println(cartJson+"cartJson");
         HttpSession session = request.getSession();
 
         UserBean userBean = (UserBean) session.getAttribute("userBean");
-        System.out.println(userBean);
-        System.out.println(userBean.getId());
-        cartService.saveUserCart(cartJson , userBean.getId()); //Do Not Delete This Line -- TODO
+
         Cookie[] cookies = request.getCookies();
         session.invalidate();
         removeCookies(cookies, response);
 
-
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(new ArrayList<>());
-        out.print(json);
-
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("home");
+        requestDispatcher.forward(request, response);
 
     }
 
