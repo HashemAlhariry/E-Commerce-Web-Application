@@ -13,14 +13,20 @@ public class StatisticsBean {
     private int waitingOrder;
     private int statisticsUsers;
     private int allProducts;
+    private int newProduct;
+    private int ArchivedProduct;
 
 
-    public StatisticsBean ( int completedOrders, int notCompletedOrders, int waitingOrder, int statisticsUsers, int allProducts) {
+
+    public StatisticsBean (int ArchivedProduct , int newProduct, int completedOrders, int notCompletedOrders, int waitingOrder, int statisticsUsers, int allProducts) {
         this.completedOrders = completedOrders;
         this.notCompletedOrders = notCompletedOrders;
         this.waitingOrder = waitingOrder;
         this.statisticsUsers = statisticsUsers;
         this.allProducts = allProducts;
+        this.newProduct = newProduct;
+        this.ArchivedProduct = ArchivedProduct;
+
     }
 
 
