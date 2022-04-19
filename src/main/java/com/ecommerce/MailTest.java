@@ -10,10 +10,17 @@ public class MailTest {
         try {
 //            MailUtil.getInstance().sendAddContactMail("ahmedosamam03@gmail.com","015");
 
-            MailUtil.getInstance().sendConfirmationMail("http://localhost:9595/amazonya/","ahmedosamam03@gmail.com","015");
+//            MailUtil.getInstance().sendConfirmationMail("http://localhost:9595/amazonya/","ahmedosamam03@gmail.com","015");
+//        } catch (EmailException e) {
+//            e.printStackTrace();
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            MailUtil.getInstance().sendAddContactMail("ahmedosamam03@gmail.com","015");
+
+            MailUtil.getInstance().sendForgottenPassword("ahmdashrf0097@gmail.com","1234");
         } catch (EmailException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }

@@ -6,7 +6,6 @@ import com.ecommerce.repositories.entites.UserEntity;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> implements UserRepository {
@@ -25,15 +24,10 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
         return user;
     }
 
-    public UserEntity findByEmail(String email) throws NoResultException {
-        // update later to get user from DB Directly
-        List<UserEntity> resultList = (ArrayList<UserEntity>) entityManager.createNamedQuery("user.findByEmail")
-                .setParameter("email", email).getResultList();
-        for (UserEntity user : resultList) {
-            if (user.getEmail().equals(email))
-                return user;
-        }
-        return null;
+    @Override
+    public UserEntity findByEmail(String email) {
+        return (UserEntity) entityManager.createNamedQuery("user.findByEmail")
+                .setParameter("email", email.trim()).getResultList().stream().findFirst().orElse(null);
     }
 
 

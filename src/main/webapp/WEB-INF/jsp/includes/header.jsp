@@ -42,7 +42,7 @@
                                                     <li><a >${sessionScope.userBean.email}</a></li>
                                                     <li><a href="updateprofile">Profile</a></li>
                                                     <li><a href="userorderhistory">Orders History</a></li>
-                                                    <li style="font-family: Arial"><a onclick="logout()">Logout</a></li>
+                                                    <li style="font-family: Arial;cursor: pointer"><a onclick="logout()">Logout</a></li>
                                                 </ul>
                                             </div><!-- End .header-menu -->
                                         </div>
@@ -105,7 +105,7 @@
                 <div class="dropdown cart-dropdown">
 
                         <a  onclick="post('cart','post')" id="cartIcon" class="dropdown-toggle" role="button"  aria-haspopup="false"
-                           aria-expanded="false" data-display="static"> <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
+                           aria-expanded="false" data-display="static" style="cursor: pointer;" > <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
                             <div class="icon">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="cart-count" id="cartItemsNumber">0</span>

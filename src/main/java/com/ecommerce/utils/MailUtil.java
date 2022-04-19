@@ -49,6 +49,13 @@ public class MailUtil {
         htmlEmail.send();
         logger.info("Register confirmation sent");
     }
+    public void sendForgottenPassword(String mailReceiver, String userPassword) throws EmailException{
+        config();
+        htmlEmail.setSubject("Amazonya Account Password Recovery");
+        htmlEmail.addTo(mailReceiver);
+        htmlEmail.setHtmlMsg("Hello,\nyour password is : "+userPassword+" copy it and go back to Login Page");
+        htmlEmail.send();
+    }
 
     private String getConfirmationMail(String appUrl, String code) {
         return "<!DOCTYPE html>\n" +
