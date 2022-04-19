@@ -166,6 +166,43 @@
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Area chart</h4>
+                  <canvas id="areaChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Doughnut chart</h4>
+                  <canvas id="doughnutChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Pie chart</h4>
+                  <canvas id="pieChart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Scatter chart</h4>
+                  <canvas id="scatterChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -199,6 +236,7 @@
   <script src="assets/admin/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="assets/admin/js/chart.js"></script>
   <script src="assets/admin/js/c3.js"></script>
   <script src="assets/admin/js/dashboard.js"></script>
   <script src="assets/admin/js/morris.js"></script>
