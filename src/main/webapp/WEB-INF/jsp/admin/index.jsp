@@ -58,7 +58,8 @@
                     </div>
                     <div class="statistics-item">
                       <p>
-                        <i class="icon-sm fas fa-hourglass-half mr-2"></i>
+                        <i class="icon-sm fas fa-check-circle mr-2"></i>
+<%--                        <i class="icon-sm fas fa-hourglass-half mr-2"></i>--%>
                           completed Orders
                       </p>
                       <h2>${statisticsBean.completedOrders}</h2>
@@ -74,7 +75,8 @@
                     </div>
                     <div class="statistics-item">
                       <p>
-                        <i class="icon-sm fas fa-check-circle mr-2"></i>
+<%--                        <i class="icon-sm fas fa-check-circle mr-2"></i>--%>
+  <i class="icon-sm fas fa-hourglass-half mr-2"></i>
                           not Completed Orders
                       </p>
                       <h2>${statisticsBean.notCompletedOrders}</h2>
@@ -107,7 +109,9 @@
                 <div class="card-body">
                   <h4 class="card-title">
                     <i class="fas fa-gift"></i>
-                    Orders
+                    Total products
+                    <h2>${statisticsBean.allProducts} products </h2>
+<%--                    <h2 class="mb-5">${statisticsBean.ArchivedProduct} <span class="text-muted h4 font-weight-normal">products</span></h2>--%>
                   </h4>
                   <canvas id="orders-chart"></canvas>
                   <div id="orders-chart-legend" class="orders-chart-legend"></div>
@@ -119,9 +123,9 @@
                 <div class="card-body">
                   <h4 class="card-title">
                     <i class="fas fa-chart-line"></i>
-                    products
+                     New products
                   </h4>
-                  <h2 class="mb-5">${statisticsBean.allProducts} <span class="text-muted h4 font-weight-normal">products</span></h2>
+                  <h2 class="mb-5">${statisticsBean.newProduct} products</h2>
                   <canvas id="sales-chart"></canvas>
                 </div>
               </div>
