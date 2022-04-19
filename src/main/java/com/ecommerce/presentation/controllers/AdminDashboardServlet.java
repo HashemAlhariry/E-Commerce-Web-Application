@@ -54,26 +54,6 @@ public class AdminDashboardServlet extends HttpServlet {
         @Override
         protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//            int completedOrders = adminDashoardServices.getCompletedOrders();
-//            int notCompletedOrders = adminDashoardServices.getNotCompletedOrders();
-//            int waitingOrder = adminDashoardServices.getWaitingOrders();
-//            int statisticsUsers = adminDashoardServices.getStatisticsUsers();
-//            int allProducts = adminDashoardServices.getAllProducts();
-//
-//
-//            statisticsBean.setCompletedOrders(completedOrders);
-//            statisticsBean.setNotCompletedOrders(notCompletedOrders);
-//            statisticsBean.setWaitingOrder(waitingOrder);
-//            statisticsBean.setAllProducts(allProducts);
-//            statisticsBean.setStatisticsUsers(statisticsUsers);
-//
-//            System.out.println("bbbbbbbbbbbbbbb");
-//            System.out.println(statisticsBean);
-//            System.out.println("aaaaaaaaaaaaaa");
-//
-//
-//            req.setAttribute("statisticsBean",statisticsBean);
-
         }
 }
 
