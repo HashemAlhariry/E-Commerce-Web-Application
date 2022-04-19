@@ -22,23 +22,25 @@ public class ConfirmRegisterServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String code = req.getParameter("code");
         UserService userService = new UserServiceImpl((String) req.getAttribute("reqId"));
-        String stat="";
+        boolean isSuccess=false;
         String confMsg="";
         try {
             if(userService.confirmRegister(code)){
-                stat="success";
+                isSuccess=true;
                 confMsg="This account has been verified successfully";
             }
 
         } catch (NotFoundException e) {
-            stat="failed";
             confMsg="This code is invalid";
         }
-        req.setAttribute("confState",stat);
-        req.setAttribute("confMsg",confMsg);
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "login.jsp");
         requestDispatcher.include(req, resp);
-        out.println("<script>alert('"+confMsg+"');</script>");
+        if(isSuccess)
+            out.println("<script>showSwal('success-message','"+confMsg+"');</script>");
+        else
+            out.println("<script>showSwal('warning-message-and-cancel','"+confMsg+"');</script>");
+
 
 
     }

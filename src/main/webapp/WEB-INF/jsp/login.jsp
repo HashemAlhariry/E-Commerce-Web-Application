@@ -171,11 +171,6 @@
 			                					<span>SIGN UP</span>
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
-
-<%--			                				<div class="custom-control custom-checkbox">--%>
-<%--												<input type="checkbox" class="custom-control-input" name="agree" id="register-policy-2" required>--%>
-<%--												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>--%>
-<%--											</div><!-- End .custom-checkbox -->--%>
 							    		</div><!-- End .form-footer -->
 
                                         <div class="form-group">
@@ -183,23 +178,6 @@
                                         </div><!-- End .form-group -->
 
 							    	</form>
-							    	<div class="form-choice">
-								    	<p class="text-center">or sign in with</p>
-								    	<div class="row">
-								    		<div class="col-sm-6">
-								    			<a href="#" class="btn btn-login btn-g">
-								    				<i class="icon-google"></i>
-								    				Login With Google
-								    			</a>
-								    		</div><!-- End .col-6 -->
-								    		<div class="col-sm-6">
-								    			<a href="#" class="btn btn-login  btn-f">
-								    				<i class="icon-facebook-f"></i>
-								    				Login With Facebook
-								    			</a>
-								    		</div><!-- End .col-6 -->
-								    	</div><!-- End .row -->
-							    	</div><!-- End .form-choice -->
 							    </div>
 							</div><!-- End .tab-content -->
 						</div><!-- End .form-tab -->
