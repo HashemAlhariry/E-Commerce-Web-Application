@@ -104,7 +104,7 @@
                                   </select>
 <%--                              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal-3">Update Status</button>--%>
 <%--                                  <button type="button" class="btn btn-success btn-fw" onclick="showSuccessToast()">Success</button>--%>
-                                  <input id="btn-submit" class="btn btn-success" onclick="orderDetailView(${order.id})" type="button" value="update">
+                                  <input id="btn-submit" class="btn btn-success" onclick="updateOrder(${order.id})" type="button" value="update">
 
 
                               </td>
