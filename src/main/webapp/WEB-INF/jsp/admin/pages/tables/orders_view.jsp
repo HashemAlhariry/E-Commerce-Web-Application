@@ -182,8 +182,8 @@
     function updateOrder(id)
     {
         const x = document.getElementById(id);
-        const y = x.getElementsByTagName("select");
-        console.log(y.value);
+        const y = x.getElementsByTagName("select").options[select.selectedIndex].value  ;
+        console.log(y);
         // var orderId = document.getElementById(id).innerHTML;
         // var url = "admin-order-detail-view?orderId="+id;
         // window.location.href = url;
