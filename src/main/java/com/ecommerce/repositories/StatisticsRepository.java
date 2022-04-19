@@ -7,6 +7,8 @@ public interface StatisticsRepository {
         int getWaitingOrders();
         int getStatisticsUsers();
         int getAllProducts();
+        int getNewProduct();
+        int getArchivedProduct();
 
 
 }

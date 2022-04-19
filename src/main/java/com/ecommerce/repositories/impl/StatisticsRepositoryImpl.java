@@ -2,10 +2,7 @@ package com.ecommerce.repositories.impl;
 
 import com.ecommerce.handlers.EntityMangerUtil;
 import com.ecommerce.repositories.StatisticsRepository;
-import com.ecommerce.repositories.entites.OrderEntity;
-import com.ecommerce.repositories.entites.OrderState;
-import com.ecommerce.repositories.entites.ProductEntity;
-import com.ecommerce.repositories.entites.UserEntity;
+import com.ecommerce.repositories.entites.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
@@ -77,6 +74,34 @@ public class StatisticsRepositoryImpl implements StatisticsRepository {
         if (!resultList.isEmpty()) {
             for (OrderEntity order : resultList) {
                 if (order.getState().equals(OrderState.PENDING))
+                    counter++;
+            }
+
+        }
+        return counter;
+    }
+
+    @Override
+    public int getNewProduct() {
+        List<ProductEntity> resultList = entityManager.createQuery("SELECT o FROM ProductEntity o").getResultList();
+        int counter = 0;
+        if (!resultList.isEmpty()) {
+            for (ProductEntity product : resultList) {
+                if (product.getState().equals(ProductState.NEW))
+                    counter++;
+            }
+
+        }
+        return counter;
+    }
+
+    @Override
+    public int getArchivedProduct() {
+        List<ProductEntity> resultList = entityManager.createQuery("SELECT o FROM ProductEntity o").getResultList();
+        int counter = 0;
+        if (!resultList.isEmpty()) {
+            for (ProductEntity product : resultList) {
+                if (product.getState().equals(ProductState.OUT_OF_STOCK))
                     counter++;
             }
 
