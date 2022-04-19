@@ -7,6 +7,8 @@ public interface AdminDashoardServices {
     int getWaitingOrders();
     int getStatisticsUsers();
     int getAllProducts ();
+    int getNewProducts();
+    int getArchivedProduct();
 
 
 }

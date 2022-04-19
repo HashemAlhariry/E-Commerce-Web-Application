@@ -41,4 +41,14 @@ public class AdminDashoardServicesImpl implements AdminDashoardServices {
     }
 
 
+    @Override
+    public int getNewProducts() {
+        return statisticsRepository.getNewProduct();
+    }
+
+    @Override
+    public int getArchivedProduct() {
+        return statisticsRepository.getArchivedProduct();
+    }
+
 }
