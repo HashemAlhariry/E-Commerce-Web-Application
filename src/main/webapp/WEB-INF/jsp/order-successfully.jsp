@@ -61,7 +61,7 @@
             <center>
                 <div class="col-lg-6 mb-3 mb-lg-0">
 
-                    <p><h4> congratulation your order is added successfully </h4></p>
+                    <p><h4> Your order paid with credit card </h4></p>
                     <br>
                     <p><h4>Thank you. </h4></p>
 

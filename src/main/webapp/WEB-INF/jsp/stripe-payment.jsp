@@ -43,6 +43,9 @@
 
     <main class="main">
         <br>
+        <center> <h4>  congratulation your order is placed successfully </h4></center>
+
+        <br>
         <div class="summary summary-cart">
             <h3 class="summary-title">User Details</h3>
             <table class="table table-cart table-mobile">
@@ -100,6 +103,11 @@
                         data-currency="egp">
                 </script>
             </form>
+        </center>
+
+        <br>
+        <center>
+            <a href="home">Or Cash On Delivery</a>
         </center>
         <br>
 

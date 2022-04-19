@@ -120,7 +120,6 @@
 
             <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                 <span>SUBMIT ORDER</span>
-
             </button>
 
         </div>
@@ -181,6 +180,8 @@
         hiddenField.value =  localStorage.getItem("cartItems");
 
         form.appendChild(hiddenField);
+        localStorage.removeItem("cartItems");
+
         form.submit();
 
     }

@@ -108,8 +108,14 @@ public class OrderServiceImpl implements OrderService {
                 orderDetailsRepository.save(orderDetailsEntity);
 
                 // updating product details quantity and get total purchases number
+
+
                 productEntity.setQuantity(productEntity.getQuantity() - orderDetailsBean.getQuantity());
                 productEntity.setTotalPurchasesNumber(productEntity.getTotalPurchasesNumber() + 1);
+                if(productEntity.getQuantity()==0){
+                    productEntity.setState(ProductState.OUT_OF_STOCK);
+                }
+
                 productRepository.update(productEntity);
             }
 
