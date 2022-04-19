@@ -37,9 +37,10 @@ public class AdminLogout extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         session.invalidate();
         removeCookies(cookies, response);
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("home");
-        requestDispatcher.forward(request, response);
+        System.out.println("d5l hena");
+        response.sendRedirect("/home");
+//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home");
+//        requestDispatcher.forward(request, response);
 
     }
 
