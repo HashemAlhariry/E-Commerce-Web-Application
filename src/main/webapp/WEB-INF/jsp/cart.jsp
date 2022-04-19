@@ -43,6 +43,14 @@
     <%@ include file="includes/header.jsp" %>
 
     <main class="main">
+        <c:if test="${!empty errorMessage}">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align: center">
+                <strong>Warning </strong> ${errorMessage}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </c:if>
         <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
             <div class="container">
                 <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
