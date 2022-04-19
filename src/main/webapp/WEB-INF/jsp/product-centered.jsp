@@ -146,7 +146,7 @@
                                     <div class="product-details-footer">
                                         <div class="product-cat">
                                             <span>Category:</span>
-                                            <a href="/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a>
+                                            <a href="/amazonya/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a>
                                         </div><!-- End .product-cat -->
 
                                         <div class="social-icons social-icons-sm">
