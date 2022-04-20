@@ -71,8 +71,7 @@
 
                 <div>
                 </div>
-            </div><!-- End .col-lg-6 -->
-
+            </div>
 
         </div>
         -->
