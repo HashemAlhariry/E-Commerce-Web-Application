@@ -109,10 +109,7 @@
                     <i class="fas fa-gift"></i>
                     Orders
                   </h4>
-                  <canvas id="orders-chart"></canvas>
-                  <div id="orders-chart-legend" class="orders-chart-legend"></div>
                   <canvas id="barChart"></canvas>
-
                 </div>
               </div>
             </div>
