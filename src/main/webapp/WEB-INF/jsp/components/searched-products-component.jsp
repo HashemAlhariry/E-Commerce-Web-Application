@@ -54,12 +54,20 @@
                 <div class="product-action-vertical">
                     <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                 </div><!-- End .product-action -->
-                <div class="product-action">
-                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
-                        <%--<a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>--%>
-
-                    <a href="quickView?productId=${product.id}" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                </div><!-- End .product-action -->
+                <c:choose>
+                    <c:when test="${product.quantity>0}">
+                        <div class="product-action">
+                            <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
+                            <a href="quickView?productId=${product.id}" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                        </div><!-- End .product-action -->
+                    </c:when>
+                    <c:otherwise>
+                        <div class="product-action">
+                            <a class="btn-product btn-cart" style="cursor: default"><span style="color: red">Out Of Stock</span></a>
+                            <a href="quickView?productId=${product.id}" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                        </div><!-- End .product-action -->
+                    </c:otherwise>
+                </c:choose>
             </figure><!-- End .product-media -->
 
             <div class="product-body">
