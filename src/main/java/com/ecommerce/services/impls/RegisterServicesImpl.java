@@ -27,7 +27,6 @@ public class RegisterServicesImpl implements RegisterServices {
         if (user == null) {
             UserEntity userSaved = userRepository.saveUser(user1);
             SignUpBean userDTO1 = UserMapper.INSTANCE.userRegEntityToBean(userSaved);
-            System.out.println("From Service " + userSaved);
             return userDTO1;
         } else {
             return null;
@@ -37,7 +36,6 @@ public class RegisterServicesImpl implements RegisterServices {
 //        UserEntity user = UserMapper.INSTANCE.userRegBeanToEntity(signUpBean);
 //        UserEntity userSaved = userRepository.saveUser(user);
 //        SignUpBean userDTO1 = UserMapper.INSTANCE.userRegEntityToBean(userSaved);
-//        System.out.println("From Service " + userSaved);
 //        return userDTO1;
     }
 

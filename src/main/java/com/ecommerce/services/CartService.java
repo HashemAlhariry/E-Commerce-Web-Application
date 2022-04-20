@@ -11,6 +11,6 @@ public interface CartService {
     public List<CartItemBean> getCartItemBeans(List<ViewCartItem> viewCartItems);
     public List<CartItemBean> getUserCartFromDataBase(int userId);
     public List<CartEntity> getCartEntitiesFromJson(String cartJson, int userId) throws JsonProcessingException;
-
+    public List<ViewCartItem> getViewCartItemsFromCartItemBeans(List<CartItemBean> cartItemBeans);
     void saveUserCart(String cartJson, int userId) throws JsonProcessingException;
 }

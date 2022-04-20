@@ -123,7 +123,6 @@ public class OrderServiceImpl implements OrderService {
                 productRepository.update(productEntity);
             }
 
-            System.out.println("Order placed");
 
             return true;
 

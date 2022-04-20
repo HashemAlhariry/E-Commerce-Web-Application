@@ -109,8 +109,7 @@
                     <i class="fas fa-gift"></i>
                     Orders
                   </h4>
-                  <canvas id="orders-chart"></canvas>
-                  <div id="orders-chart-legend" class="orders-chart-legend"></div>
+                  <canvas id="barChart"></canvas>
                 </div>
               </div>
             </div>
@@ -122,7 +121,7 @@
                     products
                   </h4>
                   <h2 class="mb-5">${statisticsBean.allProducts} <span class="text-muted h4 font-weight-normal">products</span></h2>
-                  <canvas id="sales-chart"></canvas>
+                  <div id="morris-donut-example"></div>
                 </div>
               </div>
             </div>
@@ -148,8 +147,8 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
-  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
+  <script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
@@ -162,9 +161,90 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/admin/js/dashboard.js"></script>
+  <script src="assets/admin/js/c3.js"></script>
+<%--  <script src="assets/admin/js/morris.js"></script>--%>
 
   <!-- End custom js for this page-->
-</body>
 
+<script>
+  var options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+        radius: 0
+      }
+    }
+
+  };
+
+  var data = {
+    labels: ["PENDING", "PROCESSING", "ARRIVED", "CANCELLED"],
+    datasets: [{
+      label: '# of Status',
+      data: [${orderPENDING}, ${orderPROCESSING}, ${orderARRIVED}, ${orderCANCELLED}],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1,
+      fill: false
+    }]
+  };
+
+  $(document).ready(function () {
+    'use strict';
+    var barChartCanvas = $("#barChart").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart = new Chart(barChartCanvas, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
+  });
+
+  $(document).ready(function () {
+    'use strict';
+
+    Morris.Donut({
+      element: 'morris-donut-example',
+      colors: ['#76C1FA', '#F36368', '#63CF72', '#FABA66'],
+      data: [{
+        label: "New",
+        value: ${newProduct}
+      },
+        {
+          label: "Out Of Stock",
+          value: '${outOfStock}'
+        },
+        {
+          label: "Best Seller",
+          value: ${bestSeller}
+        }
+      ]
+    });
+  });
+</script>
+</body>
 
 </html>

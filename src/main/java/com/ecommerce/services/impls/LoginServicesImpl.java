@@ -16,12 +16,10 @@ public class LoginServicesImpl implements LoginServices {
 
     public UserBean findUserByEmail(String email) {
         UserEntity user = userRepository.findByEmail(email);
-        System.out.println(user);
         if (user == null)
             return null;
         else {
             UserBean userBean = UserMapper.INSTANCE.userEntityToUserBean(user);
-            System.out.println(userBean);
             return userBean;
         }
     }

@@ -46,6 +46,12 @@ public class CartServiceImpl implements CartService {
         }
         return cartItemBeans;
     }
+    @Override
+    public List<ViewCartItem> getViewCartItemsFromCartItemBeans(List<CartItemBean> cartItemBeans){
+        List<ViewCartItem> cartItems = new ArrayList<>();
+        cartItemBeans.forEach(cartBean->cartItems.add(new ViewCartItem(cartBean.getProductBean().getId(),cartBean.getRequiredQuantity())));
+        return cartItems;
+    }
 
     @Override
     public List<CartItemBean> getUserCartFromDataBase(int userId) {
@@ -75,10 +81,8 @@ public class CartServiceImpl implements CartService {
         ObjectMapper jacksonMapper = new ObjectMapper();
         List<ViewCartItem> viewCartItems = jacksonMapper.readValue(cartJson, new TypeReference<List<ViewCartItem>>() {
         });
-        System.out.println(viewCartItems);
         if (viewCartItems.size() > 0) {
             cartEntities.addAll(getCartEntitiesFromViewCartItems(viewCartItems, userId));
-            System.out.println(cartEntities);
         }
         return cartEntities;
     }

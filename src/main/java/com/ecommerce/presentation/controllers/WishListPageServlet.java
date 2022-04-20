@@ -46,7 +46,6 @@ public class WishListPageServlet extends HttpServlet {
         Type listType = new TypeToken<ArrayList<Long>>() {
         }.getType();
         List<Long> wishListProductsIds = new Gson().fromJson(jsonString, listType);
-        System.out.println(wishListProductsIds.size());
         List<ProductBean> wishListProductBeans = productService.getAllProductBeans(wishListProductsIds);
 
         request.setAttribute("wishlistBeans", wishListProductBeans);

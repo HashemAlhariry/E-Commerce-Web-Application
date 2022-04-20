@@ -58,13 +58,11 @@ public class FiltrationServlet extends HttpServlet {
 
         }else{
             int pageNumber = Integer.parseInt(pageNumberAsString);
-            System.out.println("pageNumber"+pageNumber);
             filteredProductsBeans = productService.getFilteredProductsBeans(pageNumber,countOfProductsPerPage,categoriesIds);
             request.setAttribute("currentPageNumber", pageNumber);
         }
 
         if(filteredProductsBeans != null){
-            System.out.println(filteredProductsBeans);
             request.setAttribute("allProducts",filteredProductsBeans);
             request.setAttribute("totalCount",totalCount);
             request.setAttribute("numberOfPages", numberOfPages);

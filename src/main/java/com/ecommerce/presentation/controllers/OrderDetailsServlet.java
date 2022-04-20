@@ -53,8 +53,6 @@ public class OrderDetailsServlet extends HttpServlet {
             if(viewCartItems.size()>0){
 
                 cartItemBeans = cartService.getCartItemBeans(viewCartItems);
-                System.out.println(cartItemBeans);
-
             }
 
             //check if required quantity available or not
@@ -73,7 +71,6 @@ public class OrderDetailsServlet extends HttpServlet {
                 }
             }
 
-            System.out.println(subtotal);
 
             request.setAttribute("availabilityProducts",availabilityProducts);
             request.setAttribute("subTotal",subtotal);

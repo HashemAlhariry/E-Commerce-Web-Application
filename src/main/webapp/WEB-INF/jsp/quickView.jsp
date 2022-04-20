@@ -65,7 +65,9 @@
                     <div class="details-action-wrapper">
                         <a onclick="addToWishList(${product.id})" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
                     </div><!-- End .details-action-wrapper -->
-                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+					<c:if test="${product.quantity>0}">
+                    		<a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
+					</c:if>
                 </div>
 
                 <div class="product-details-footer">

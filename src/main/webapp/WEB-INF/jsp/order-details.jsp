@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Molla - Bootstrap eCommerce Template</title>
+    <title>Amazonya - eCommerce Website</title>
     <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="description" content="Amazonya - eCommerce Website">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
@@ -18,8 +18,8 @@
     <link rel="manifest" href="assets/images/icons/site.html">
     <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#666666">
     <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
-    <meta name="apple-mobile-web-app-title" content="Molla">
-    <meta name="application-name" content="Molla">
+    <meta name="apple-mobile-web-app-title" content="Amazonya">
+    <meta name="application-name" content="Amazonya">
     <meta name="msapplication-TileColor" content="#cc9966">
     <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
@@ -95,10 +95,19 @@
                             <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="userEmail">email *</label>
-                            <input type="email" class="form-control" id="userEmail" name="userEmail" required>
-                        </div>
+
+                    <c:choose>
+                        <c:when test="${sessionScope.loggedIn != null}">
+
+                        </c:when>
+                        <c:otherwise>
+                            <div class="form-group">
+                                <label for="userEmail">email *</label>
+                                <input type="email" class="form-control" id="userEmail" name="userEmail" required>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
 
                         <div class="form-group">
                             <label for="userAddress">address *</label>

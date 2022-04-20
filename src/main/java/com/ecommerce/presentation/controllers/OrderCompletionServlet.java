@@ -1,10 +1,7 @@
 
 package com.ecommerce.presentation.controllers;
 
-import com.ecommerce.presentation.beans.CartItemBean;
-import com.ecommerce.presentation.beans.OrderBean;
-import com.ecommerce.presentation.beans.OrderDetailsBean;
-import com.ecommerce.presentation.beans.ViewCartItem;
+import com.ecommerce.presentation.beans.*;
 import com.ecommerce.repositories.entites.OrderState;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.OrderService;
@@ -46,14 +43,19 @@ public class OrderCompletionServlet extends HttpServlet {
 
         // update here to get user id from logged in user
         int userId = -1;
-
+        HttpSession session = request.getSession(false);
         // maybe used for admin statistics or sending vouchers to users
         String email = request.getParameter("userEmail");
+        if(email==null){
+            UserBean userBean =(UserBean) session.getAttribute("userBean");
+            email=userBean.getEmail();
+        }
+
         String address = request.getParameter("userAddress");
         String phoneNumber = request.getParameter("phoneNumber");
         String jsonString = request.getParameter("cart");
         String paymentMethod = request.getParameter("paymentMethod");
-        HttpSession session = request.getSession();
+
 
         if (jsonString != null) {
 
@@ -61,7 +63,6 @@ public class OrderCompletionServlet extends HttpServlet {
             List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString,
                     new TypeReference<List<ViewCartItem>>() {
                     });
-            System.out.println(viewCartItems.size());
             List<CartItemBean> cartItemBeans;
             // to remove product with quantity 0
             List<CartItemBean> cartItemBeansUpdated = new ArrayList<>();
@@ -80,8 +81,6 @@ public class OrderCompletionServlet extends HttpServlet {
                 BigDecimal total = Util.getTotalPrice(cartItemBeans);
                 OrderBean orderBean = new OrderBean(address, new Date(), phoneNumber, OrderState.PENDING, total, email);
                 List<OrderDetailsBean> orderDetailsBeanList = Util.getOrderDetailsBeans(cartItemBeansUpdated, userId);
-                System.out.println(orderBean);
-                System.out.println(orderDetailsBeanList);
 
                 orderAddedToDB = orderService.submitOrder(orderBean, orderDetailsBeanList, email);
 

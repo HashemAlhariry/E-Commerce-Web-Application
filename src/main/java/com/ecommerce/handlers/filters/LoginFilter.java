@@ -39,12 +39,10 @@ public class LoginFilter implements Filter {
 
     private Cookie getCookieByName(Cookie[] cookies, String cookieName) {
         Cookie cookie;
-        System.out.println("from getCookie method");
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
                 if (cookies[i].getName().equalsIgnoreCase(cookieName)) {
                     cookie = cookies[i];
-                    System.out.println("from getCookie method in if condition");
                     return cookie;
                 }
             }

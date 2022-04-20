@@ -32,7 +32,6 @@ public class AdminViewUsersServlets extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserService userService = new UserServiceImpl((String) req.getAttribute("reqId"));
         List<UserViewBean> allUsers = userService.viewAll();
-        System.out.println(allUsers.toString());
         req.setAttribute("allUsers", allUsers);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "admin/pages/tables/users_view.jsp");

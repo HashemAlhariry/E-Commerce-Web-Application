@@ -26,9 +26,7 @@ public class AdminDeleteProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductService productService=new ProductServiceImpl((String) req.getAttribute("reqId"));
-        System.out.println("delete id request param = "+req.getParameter("productId"));
         Long idNumber=Long.parseLong(req.getParameter("productId"));
-        System.out.println("long number"+idNumber);
 
         productService.delete(productService.findById(idNumber));
 

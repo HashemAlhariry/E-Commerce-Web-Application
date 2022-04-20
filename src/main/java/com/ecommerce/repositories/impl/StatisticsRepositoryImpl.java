@@ -25,7 +25,6 @@ public class StatisticsRepositoryImpl implements StatisticsRepository {
     public int getStatisticsUsers() {
         Query query = entityManager.createQuery(" SELECT u FROM UserEntity u");
         List<UserEntity> resultList = query.getResultList();
-        System.out.println(resultList.size());
         return resultList.size();
 
     }
@@ -34,7 +33,6 @@ public class StatisticsRepositoryImpl implements StatisticsRepository {
     public int getAllProducts() {
         Query query = entityManager.createQuery("SELECT p FROM ProductEntity p");
         List<ProductEntity> resultList = query.getResultList();
-        System.out.println(resultList.size());
         return resultList.size();
 
     }

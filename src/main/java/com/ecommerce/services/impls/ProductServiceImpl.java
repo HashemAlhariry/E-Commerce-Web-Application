@@ -114,7 +114,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductEntity update(ProductEntity entity) {
-        System.out.println("inside th repo");
         return productRepository.update(entity);
     }
 
