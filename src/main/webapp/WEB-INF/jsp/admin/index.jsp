@@ -122,7 +122,7 @@
                     products
                   </h4>
                   <h2 class="mb-5">${statisticsBean.allProducts} <span class="text-muted h4 font-weight-normal">products</span></h2>
-                  <canvas id="sales-chart"></canvas>
+                  <div id="c3-donut-chart"></div>
                 </div>
               </div>
             </div>
@@ -148,8 +148,8 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
-  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
+  <script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
@@ -162,6 +162,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/admin/js/dashboard.js"></script>
+  <script src="assets/admin/js/c3.js"></script>
 
   <!-- End custom js for this page-->
 </body>
