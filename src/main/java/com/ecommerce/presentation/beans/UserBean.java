@@ -2,6 +2,7 @@ package com.ecommerce.presentation.beans;
 
 import com.ecommerce.repositories.entites.CartEntity;
 import com.ecommerce.repositories.entites.OrderDetailsEntity;
+import com.ecommerce.repositories.entites.UserState;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class UserBean {
     private LocalDate dateOfBirth;
     private String role;
     private BigDecimal creditLimit;
+    private UserState state;
     private Set<CartEntity> cart;
     private Set<OrderDetailsEntity> orderDetails ;
 

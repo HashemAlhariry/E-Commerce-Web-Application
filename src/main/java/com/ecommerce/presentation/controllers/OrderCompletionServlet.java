@@ -91,6 +91,7 @@ public class OrderCompletionServlet extends HttpServlet {
                     session.setAttribute("userEmail", email);
                     session.setAttribute("total", total.intValue() * 100);
                     session.setAttribute("mobileNumber", phoneNumber);
+                    session.setAttribute("userAddress",address);
 
                     RequestDispatcher requestDispatcher = request
                             .getRequestDispatcher(CommonString.HOME_URL + "stripe-payment.jsp");

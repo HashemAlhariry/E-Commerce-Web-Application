@@ -47,22 +47,10 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container d-flex align-items-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/amazonya">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/amazonya/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
+                        <li class="breadcrumb-item"><a href="home">Home</a></li>
+                        <li class="breadcrumb-item"><a href="categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">${singleProduct.name}</li>
                     </ol>
-
-                    <nav class="product-pager ml-auto" aria-label="Product">
-                        <a class="product-pager-link product-pager-prev" href="/amazonya/single-product-page?productId=${singleProduct.id-1}" aria-label="Previous" tabindex="-1">
-                            <i class="icon-angle-left"></i>
-                            <span>Prev</span>
-                        </a>
-
-                        <a class="product-pager-link product-pager-next" href="/amazonya/single-product-page?productId=${singleProduct.id+1}" aria-label="Next" tabindex="-1">
-                            <span>Next</span>
-                            <i class="icon-angle-right"></i>
-                        </a>
-                    </nav><!-- End .pager-nav -->
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
 
@@ -116,21 +104,19 @@
 
                                     <div class="product-details-action">
                                         <div class="details-action-col">
-                                            <div class="product-details-quantity">
-                                                <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                            </div><!-- End .product-details-quantity -->
+
                                             <c:choose>
                                                 <c:when test="${singleProduct.state=='NEW'}">
-                                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <a onclick="addToCart(${singleProduct.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                                                 </c:when>
                                                 <c:when test="${singleProduct.state=='OUT_OF_STOCK'}">
                                                     <span class="badge-outline-danger text-danger text-xl-center">OUT OF STOCK</span>
                                                 </c:when>
                                                 <c:when test="${singleProduct.state=='ON_SALE'}">
-                                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <a onclick="addToCart(${singleProduct.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                                                 </c:when>
                                                 <c:when test="${singleProduct.state=='BEST_SELLER'}">
-                                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <a onclick="addToCart(${singleProduct.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                                                 </c:when>
                                                 <c:when test="${singleProduct.state=='ARCHIVED'}">
                                                     <label class="badge badge-secondary">ARCHIVED</label>
@@ -139,14 +125,14 @@
                                         </div><!-- End .details-action-col -->
 
                                         <div class="details-action-wrapper">
-                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+                                            <a onclick="addToWishList(${singleProduct.id})" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
                                         </div><!-- End .details-action-wrapper -->
                                     </div><!-- End .product-details-action -->
 
                                     <div class="product-details-footer">
                                         <div class="product-cat">
                                             <span>Category:</span>
-                                            <a href="/categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a>
+                                            <a href="categorized-product?categoryId=${category.categoryId}">${category.categoryName}</a>
                                         </div><!-- End .product-cat -->
 
                                         <div class="social-icons social-icons-sm">
@@ -298,17 +284,17 @@
                                 <div class="product product-7 text-center">
                                     <figure class="product-media">
                                         <span class="product-label label-top">${product.state}</span>
-                                        <a href="/single-product-page?productId=${product.id}">
+                                        <a href="single-product-page?productId=${product.id}">
                                             <img src="${product.mainImage}" alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                                            <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                            <a href="quickView?productId=${product.id}"  class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                                         </div><!-- End .product-action-vertical -->
 
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                            <a onclick="addToCart(${product.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 

@@ -6,7 +6,6 @@ import com.ecommerce.repositories.entites.UserEntity;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> implements UserRepository {

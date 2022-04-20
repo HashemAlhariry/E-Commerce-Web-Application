@@ -67,6 +67,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderEntity update(OrderEntity entity) {
+        OrderState orderState = entity.getState();
+        entity=orderRepository.findById(entity.getId());
+        entity.setState(orderState);
+        orderRepository.update(entity);
         return null;
     }
 
@@ -108,8 +112,14 @@ public class OrderServiceImpl implements OrderService {
                 orderDetailsRepository.save(orderDetailsEntity);
 
                 // updating product details quantity and get total purchases number
+
+
                 productEntity.setQuantity(productEntity.getQuantity() - orderDetailsBean.getQuantity());
                 productEntity.setTotalPurchasesNumber(productEntity.getTotalPurchasesNumber() + 1);
+                if(productEntity.getQuantity()==0){
+                    productEntity.setState(ProductState.OUT_OF_STOCK);
+                }
+
                 productRepository.update(productEntity);
             }
 

@@ -164,11 +164,6 @@
 			                					<span>SIGN UP</span>
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
-
-			                				<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" name="agree" id="register-policy-2" required>
-												<label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>
-											</div><!-- End .custom-checkbox -->
 							    		</div><!-- End .form-footer -->
 
                                         <div class="form-group">
@@ -220,6 +215,9 @@
     <script src="assets/admin/js/misc.js"></script>
     <script src="assets/admin/js/settings.js"></script>
     <script src="assets/admin/js/todolist.js"></script>
+    <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/admin/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="assets/admin/js/alerts.js"></script>
     <script src="assets/app-js/register-ajax.js"></script>
 
     <!-- endinject -->
