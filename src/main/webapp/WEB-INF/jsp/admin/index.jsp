@@ -122,8 +122,8 @@
                     products
                   </h4>
                   <h2 class="mb-5">${statisticsBean.allProducts} <span class="text-muted h4 font-weight-normal">products</span></h2>
-                  <div id="c3-donut-chart"></div>
                   <div id="morris-donut-example"></div>
+                  <button id="refresh" class="btn btn-outline-primary">Refresh</button>
                 </div>
               </div>
             </div>
@@ -164,10 +164,33 @@
   <!-- Custom js for this page-->
   <script src="assets/admin/js/dashboard.js"></script>
   <script src="assets/admin/js/c3.js"></script>
-  <script src="assets/admin/js/morris.js"></script>
+<%--  <script src="assets/admin/js/morris.js"></script>--%>
 
   <!-- End custom js for this page-->
-</body>
 
+<script>
+  $(document).ready(function () {
+    'use strict';
+
+    Morris.Donut({
+      element: 'morris-donut-example',
+      colors: ['#76C1FA', '#F36368', '#63CF72', '#FABA66'],
+      data: [{
+        label: "New",
+        value: ${newProduct}
+      },
+        {
+          label: "Out Of Stock",
+          value: '${outOfStock}'
+        },
+        {
+          label: "Best Seller",
+          value: ${bestSeller}
+        }
+      ]
+    });
+  });
+</script>
+</body>
 
 </html>
