@@ -52,17 +52,8 @@
                     </button>
                 </div>
             </c:if>
-            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
-                <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Login</li>
-                    </ol>
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
 
-            <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('assets/images/backgrounds/login-bg.jpg')">
+            <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('assets/images/backgrounds/login-bg2.jpg')">
             	<div class="container">
             		<div class="form-box">
             			<div class="form-tab">
@@ -106,23 +97,23 @@
                                             <a href="#forgot-password-modal" data-toggle="modal" class="forgot-link">Forgot Your Password?</a>
                                         </div>
 							    	</form>
-							    	<div class="form-choice">
-								    	<p class="text-center">or sign in with</p>
-								    	<div class="row">
-								    		<div class="col-sm-6">
-								    			<a href="#" class="btn btn-login btn-g">
-								    				<i class="icon-google"></i>
-								    				Login With Google
-								    			</a>
-								    		</div><!-- End .col-6 -->
-								    		<div class="col-sm-6">
-								    			<a href="#" class="btn btn-login btn-f">
-								    				<i class="icon-facebook-f"></i>
-								    				Login With Facebook
-								    			</a>
-								    		</div><!-- End .col-6 -->
-								    	</div><!-- End .row -->
-							    	</div><!-- End .form-choice -->
+<%--							    	<div class="form-choice">--%>
+<%--								    	<p class="text-center">or sign in with</p>--%>
+<%--								    	<div class="row">--%>
+<%--								    		<div class="col-sm-6">--%>
+<%--								    			<a href="#" class="btn btn-login btn-g">--%>
+<%--								    				<i class="icon-google"></i>--%>
+<%--								    				Login With Google--%>
+<%--								    			</a>--%>
+<%--								    		</div><!-- End .col-6 -->--%>
+<%--								    		<div class="col-sm-6">--%>
+<%--								    			<a href="#" class="btn btn-login btn-f">--%>
+<%--								    				<i class="icon-facebook-f"></i>--%>
+<%--								    				Login With Facebook--%>
+<%--								    			</a>--%>
+<%--								    		</div><!-- End .col-6 -->--%>
+<%--								    	</div><!-- End .row -->--%>
+<%--							    	</div><!-- End .form-choice -->--%>
 							    </div>
 							    <div class="tab-pane fade " id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
 							    	<form action="registration" id="regster-form" method="POST">
@@ -185,23 +176,23 @@
                                         </div><!-- End .form-group -->
 
 							    	</form>
-							    	<div class="form-choice">
-								    	<p class="text-center">or sign in with</p>
-								    	<div class="row">
-								    		<div class="col-sm-6">
-								    			<a href="#" class="btn btn-login btn-g">
-								    				<i class="icon-google"></i>
-								    				Login With Google
-								    			</a>
-								    		</div><!-- End .col-6 -->
-								    		<div class="col-sm-6">
-								    			<a href="#" class="btn btn-login  btn-f">
-								    				<i class="icon-facebook-f"></i>
-								    				Login With Facebook
-								    			</a>
-								    		</div><!-- End .col-6 -->
-								    	</div><!-- End .row -->
-							    	</div><!-- End .form-choice -->
+<%--							    	<div class="form-choice">--%>
+<%--								    	<p class="text-center">or sign in with</p>--%>
+<%--								    	<div class="row">--%>
+<%--								    		<div class="col-sm-6">--%>
+<%--								    			<a href="#" class="btn btn-login btn-g">--%>
+<%--								    				<i class="icon-google"></i>--%>
+<%--								    				Login With Google--%>
+<%--								    			</a>--%>
+<%--								    		</div><!-- End .col-6 -->--%>
+<%--								    		<div class="col-sm-6">--%>
+<%--								    			<a href="#" class="btn btn-login  btn-f">--%>
+<%--								    				<i class="icon-facebook-f"></i>--%>
+<%--								    				Login With Facebook--%>
+<%--								    			</a>--%>
+<%--								    		</div><!-- End .col-6 -->--%>
+<%--								    	</div><!-- End .row -->--%>
+<%--							    	</div><!-- End .form-choice -->--%>
 							    </div>
 							</div><!-- End .tab-content -->
 						</div><!-- End .form-tab -->
@@ -218,48 +209,6 @@
     <%@ include file="includes/sideMobileMenu.jsp" %><!-- End .mobile-menu-container -->
 
     <!-- Sign in / Register Modal -->
-    <div class="modal fade" id="forgot-password-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="returnForm()">
-                        <span aria-hidden="true"><i class="icon-close"></i></span>
-                    </button>
-
-                    <div class="form-box" id="form">
-                        <div class="form-tab" >
-                            <div class="tab-content" id="tab-content-5">
-                                <div class="tab-pane fade show active" id="recover-password" role="tabpanel" aria-labelledby="recovery-tab">
-                                    <form action="forgotPassword" method="post" id="myForm">
-                                        <div class="form-group">
-                                            <label for="recoveryEmail">Email address *</label>
-                                            <input type="text" class="form-control" id="recoveryEmail" name="recoveryEmail" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2" id="sendEmailButton">
-                                                <span>Send Email</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                </div><!-- .End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .form-tab -->
-                    </div><!-- End .form-box -->
-                </div><!-- End .modal-body -->
-            </div><!-- End .modal-content -->
-        </div><!-- End .modal-dialog -->
-    </div><!-- End .modal -->
-    <div class="modal fade bd-example-modal-sm" id="loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="loader-demo-box">
-                    <div class="pixel-loader"></div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- plugins:js -->
     <!-- plugins:js -->
     <script src="assets/admin/vendors/js/vendor.bundle.base.js"></script>
