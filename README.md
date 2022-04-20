@@ -1,5 +1,5 @@
 # E-Commerce-Web-Application
-![Chatty](https://user-images.githubusercontent.com/73137611/155671623-28ee713f-1778-4284-87f6-34a56fb4d26c.png)
+![amazonya_logo](https://user-images.githubusercontent.com/75912564/164245665-363a9bf6-5e8e-408f-9d90-9c261a7e36a6.png)
 >A desktop chatting application built using JavaFX and RMI as our first project at the Information Technology Institute. It takes full advantage of JavaFX's reactive programming model, using property binding to synchronize Models with Views.
 
 # 🏛 Architecture
