@@ -73,21 +73,21 @@ public class AdminDashboardServlet extends HttpServlet {
 
             List<OrderEntity> orderEntityList = orderService.findAll();
             for (OrderEntity order:orderEntityList) {
-                if(order.getState().equals(OrderState.valueOf("NEW")))
+                if(order.getState().equals(OrderState.valueOf("PENDING")))
                 {
-                    newProduct=newProduct+1;
+                    orderPENDING=orderPENDING+1;
                 }
-                else if (order.getState().equals(OrderState.valueOf("OUT_OF_STOCK")))
+                else if (order.getState().equals(OrderState.valueOf("PROCESSING")))
                 {
-                    outOfStock = outOfStock+1;
+                    orderPROCESSING = orderPROCESSING+1;
                 }
-                else if (order.getState().equals(OrderState.valueOf("BEST_SELLER")))
+                else if (order.getState().equals(OrderState.valueOf("ARRIVED")))
                 {
-                    bestSeller = bestSeller+1;
+                    orderARRIVED = orderARRIVED+1;
                 }
-                else if (order.getState().equals(OrderState.valueOf("BEST_SELLER")))
+                else if (order.getState().equals(OrderState.valueOf("CANCELLED")))
                 {
-                    bestSeller = bestSeller+1;
+                    orderCANCELLED = orderCANCELLED+1;
                 }
             }
 
