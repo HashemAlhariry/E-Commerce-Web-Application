@@ -1,10 +1,7 @@
 
 package com.ecommerce.presentation.controllers;
 
-import com.ecommerce.presentation.beans.CartItemBean;
-import com.ecommerce.presentation.beans.OrderBean;
-import com.ecommerce.presentation.beans.OrderDetailsBean;
-import com.ecommerce.presentation.beans.ViewCartItem;
+import com.ecommerce.presentation.beans.*;
 import com.ecommerce.repositories.entites.OrderState;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.OrderService;
@@ -46,14 +43,19 @@ public class OrderCompletionServlet extends HttpServlet {
 
         // update here to get user id from logged in user
         int userId = -1;
-
+        HttpSession session = request.getSession(false);
         // maybe used for admin statistics or sending vouchers to users
         String email = request.getParameter("userEmail");
+        if(email==null){
+            UserBean userBean =(UserBean) session.getAttribute("userBean");
+            email=userBean.getEmail();
+        }
+
         String address = request.getParameter("userAddress");
         String phoneNumber = request.getParameter("phoneNumber");
         String jsonString = request.getParameter("cart");
         String paymentMethod = request.getParameter("paymentMethod");
-        HttpSession session = request.getSession();
+
 
         if (jsonString != null) {
 

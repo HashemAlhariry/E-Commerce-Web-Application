@@ -95,10 +95,19 @@
                             <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="userEmail">email *</label>
-                            <input type="email" class="form-control" id="userEmail" name="userEmail" required>
-                        </div>
+
+                    <c:choose>
+                        <c:when test="${sessionScope.loggedIn != null}">
+
+                        </c:when>
+                        <c:otherwise>
+                            <div class="form-group">
+                                <label for="userEmail">email *</label>
+                                <input type="email" class="form-control" id="userEmail" name="userEmail" required>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+
 
                         <div class="form-group">
                             <label for="userAddress">address *</label>
