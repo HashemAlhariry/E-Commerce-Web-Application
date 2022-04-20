@@ -1,5 +1,5 @@
 ![logo](https://user-images.githubusercontent.com/36333141/164304926-ff40e561-0867-436d-be92-58c823e5174e.jpeg)
->An e-commerce website built using JSP and Servlets. It is responsive web design the will be automatically adjusted for different screen sizes.
+>An e-commerce website built using JSP and Servlets a responsive web design that will be automatically adjusted for different screen sizes.
 # 🏛 Architecture
 This software project was built using a layered architecture. The following diagram demonstrates an example use case that goes through all the layers. 
 
@@ -32,6 +32,7 @@ This software project was built using a layered architecture. The following diag
 * Logback
 * Lombok
 * MySQL
+* Stripe
 
 # 🛠 How to run
 **Docker**
