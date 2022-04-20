@@ -219,10 +219,7 @@
                                             <a href="aboutUs" class="our-sf-with-ul">About</a>
                                         </li>
 
-                                        <li>
-                                            <a href="contactUs" class="our-sf-with-ul">Contact</a>
-
-                                        </li>
+                           
 
                                         <li>
                                             <a href="qs">FAQs</a>

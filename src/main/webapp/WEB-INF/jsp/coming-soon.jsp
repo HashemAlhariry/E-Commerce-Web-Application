@@ -55,7 +55,7 @@
 <%--                <h1 class="page-title text-white">Coming Soon <span class="text-white"></span></h1>--%>
             </div><!-- End .page-header -->
         </div><!-- End .container -->
-
+        <!--
         <div class="page-content pb-0">
             <div class="container">
                 <div class="row">
@@ -73,8 +73,9 @@
                 </div>
             </div><!-- End .col-lg-6 -->
 
-        </div><!-- End .container -->
 
+        </div>
+        -->
         <%--            <div class="bg-light-2 pt-6 pb-5 mb-6 mb-lg-8">--%>
         <%--                <div class="container">--%>
         <%--                    <div class="row">--%>
