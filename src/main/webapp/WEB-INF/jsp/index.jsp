@@ -190,11 +190,22 @@
                                             <a onclick="addToWishList(${product.id})" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
                                         </div><!-- End .product-action -->
 
-                                        <div class="product-action">
-                                            <a onclick="addToCart(${product.id})" class="btn-product btn-cart" title="Add to cart"><span>add tocart</span></a>
-                                            <a href="quickView?productId=${product.id}" class="btn-product btn-quickview"
-                                               title="Quick view"><span>quick view</span></a>
-                                        </div><!-- End .product-action -->
+                                        <c:choose>
+                                            <c:when test="${product.quantity>0}">
+                                                <div class="product-action">
+                                                    <a onclick="addToCart(${product.id})" class="btn-product btn-cart" style="cursor: pointer"><span>add to cart</span></a>
+                                                    <a href="quickView?productId=${product.id}" class="btn-product btn-quickview"
+                                                       title="Quick view"><span>quick view</span></a>
+                                                </div><!-- End .product-action -->
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="product-action">
+                                                    <a href="quickView?productId=${product.id}" class="btn-product btn-quickview"
+                                                       title="Quick view"><span>quick view</span></a>
+                                                </div><!-- End .product-action -->
+                                            </c:otherwise>
+                                        </c:choose>
+
                                     </figure><!-- End .product-media -->
 
 
