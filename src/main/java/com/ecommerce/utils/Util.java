@@ -66,15 +66,17 @@ public class Util {
     //parse Json from local storage to get list of cart item beans
     public static List<CartItemBean> parseCartJsonToCartItemBeans(String jsonString, CartService cartService) throws JsonProcessingException {
         if(jsonString!=null) {
-            ObjectMapper jacksonMapper = new ObjectMapper();
-            List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>() {});
-            System.out.println(viewCartItems);
-            List<CartItemBean> cartItemBeans = new ArrayList<>();
-            if (viewCartItems.size() > 0) {
-                cartItemBeans = cartService.getCartItemBeans(viewCartItems);
-                System.out.println(cartItemBeans);
+            if(!jsonString.isEmpty()){
+                ObjectMapper jacksonMapper = new ObjectMapper();
+                List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>() {});
+                System.out.println(viewCartItems);
+                List<CartItemBean> cartItemBeans = new ArrayList<>();
+                if (viewCartItems.size() > 0) {
+                    cartItemBeans = cartService.getCartItemBeans(viewCartItems);
+                    System.out.println(cartItemBeans);
+                }
+                return cartItemBeans;
             }
-            return cartItemBeans;
         }
         return new ArrayList<>();
     }

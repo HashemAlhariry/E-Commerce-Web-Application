@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "illegal", urlPatterns = {"/500"})
+@WebServlet(name = "internalServerError", urlPatterns = {"/500"})
 public class InternalServerErrorServlet  extends HttpServlet {
 
     private ServletContext servletContext;

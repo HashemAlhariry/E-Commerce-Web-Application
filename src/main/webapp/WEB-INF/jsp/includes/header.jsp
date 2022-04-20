@@ -35,14 +35,14 @@
                                         <div class="header-dropdown" >
 <%--                                            <a>Profile</a>--%>
                                             <div class="icon">
-                                                <i class='fas fa-user-alt sf-with-ul' style='font-size:24px'></i>
+                                                <i class='fas fa-user-alt sf-with-ul' style='font-size:24px;margin-right: auto;margin-left: auto;margin-top: auto'><span style="color: darkgray;font-size: small;margin-left: 10px;font-family: 'Poppins'">${userBean.userName}</span></i>
                                             </div>
                                             <div class="header-menu">
                                                 <ul>
-                                                    <li><a >${sessionScope.userBean.email}</a></li>
+                                                    <li style=" color:orange;cursor: default"><a >${sessionScope.userBean.email}</a></li>
                                                     <li><a href="updateprofile">Profile</a></li>
                                                     <li><a href="userorderhistory">Orders History</a></li>
-                                                    <li style="font-family: Arial;cursor: pointer"><a onclick="logout()">Logout</a></li>
+                                                    <li onMouseOver="this.style.color='orange'"onMouseOut="this.style.color='#777'" style="font-family: Arial;cursor: pointer;"><a onclick="logout()">Logout</a></li>
                                                 </ul>
                                             </div><!-- End .header-menu -->
                                         </div>
@@ -93,7 +93,7 @@
             <div class="header-right">
 
                 <div class="wishlist">
-                    <a onclick= "postWishList('wishlist','post')" title="Wishlist" id="wishList">
+                    <a onclick= "postWishList('wishlist','post')" title="Wishlist" id="wishList" onMouseOver="this.style.color='orange'"onMouseOut="this.style.color='#777'" style="cursor: pointer">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
                             <span class="wishlist-count badge" id="wishListItemsNumber">0</span>
@@ -105,7 +105,7 @@
                 <div class="dropdown cart-dropdown">
 
                         <a  onclick="post('cart','post')" id="cartIcon" class="dropdown-toggle" role="button"  aria-haspopup="false"
-                           aria-expanded="false" data-display="static" style="cursor: pointer;" > <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
+                           aria-expanded="false" data-display="static" onMouseOver="this.style.color='orange'"onMouseOut="this.style.color='#777'" style="cursor: pointer;" > <!-- data-toggle="dropdown"  attribute to be added in case you want dropdown to operate-->
                             <div class="icon">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="cart-count" id="cartItemsNumber">0</span>
@@ -255,6 +255,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <script>
+    if(PerformanceNavigationTiming.type ==="back_forward") location.reload();
 
     function CartItem(id, quantity) {
         this.id = id;
@@ -393,8 +394,10 @@
             success: function (data) {
                 localStorage.setItem("cartItems",JSON.stringify(data));
                 // $("#profileIcon").html("<li><a href="login" id="singupElement" >Sign in / Sign up</a></li>");
-                if(window.location.href.endsWith('updateprofile')){
+                if(window.location.href.endsWith('updateprofile')||window.location.href.endsWith('userorderhistory')){
                     window.location.href = "login";
+                }else if(window.location.href.endsWith('cart')){
+                    window.location.href = "cart";
                 }else{document.getElementById("profileIcon").firstElementChild.replaceWith(signUpElement);}
                 addToCart(-1);
                 addToWishList(-1);
