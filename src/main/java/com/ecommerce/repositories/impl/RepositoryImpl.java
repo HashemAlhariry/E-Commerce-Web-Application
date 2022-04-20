@@ -48,7 +48,6 @@ public abstract class RepositoryImpl<T, I> implements Repository<T, I> {
 
     @Override
     public T update(T entity) {
-        System.out.println("inside Repo Impl");
         entityManager.getTransaction().begin();
         entityManager.merge(entity);
         entityManager.getTransaction().commit();

@@ -49,11 +49,20 @@
               </ol>
             </nav>
           </div>
+          <div class="modal fade bd-example-modal-sm" id="loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="loader-demo-box">
+                  <div class="pixel-loader"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">jquery-steps wizard</h4>
+                  <h4 class="card-title">Edit Product</h4>
                   <form id="example-form" class="signupForm" method="get" action="admin-update-product">
                     <div>
                       <h3>Product Details</h3>
@@ -82,64 +91,31 @@
                         </div>
                         <div class="form-group">
                           <label>Description</label>
-                          <textarea class="form-control" name="productDescription" rows="3">${editProduct.description}</textarea>
+                          <textarea id="productDescription" class="form-control" name="productDescription" rows="3">${editProduct.description}</textarea>
                         </div>
-                      </section>
-                      <h3>Imgaes</h3>
-                      <section>
-                        <h4>Image</h4>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-lg-4 grid-margin stretch-card">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">Profile Image</h4>
-                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-4 grid-margin stretch-card">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">Image2</h4>
-                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-4 grid-margin stretch-card">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">Image 3</h4>
-                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-4 grid-margin stretch-card">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h4 class="card-title">Image 4</h4>
-                                  <input type="file" class="dropify" name="productImage" data-max-file-size="30kb" />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
                       </section>
                       <h3>Category</h3>
                       <section>
                         <h4>Category</h4>
                         <div class="form-group">
                           <label>Single select box using select 2</label>
-                          <select name="productCategory" class="js-example-basic-single w-100">
-                            <option value="1">Mobile</option>
-                            <option value="2">Smart Watches</option>
-                            <option value="3">LapTop</option>
+                          <select id="productCategory" name="productCategory" class="js-example-basic-single w-100">
+                            <c:forEach items="${currentCategories}" var="category">
+                              <c:if test="${category.categoryId eq productCategoryId}">
+                                <option value="${category.categoryId}">${category.categoryName}</option>
+                              </c:if>
+                            </c:forEach>
+                            <c:forEach items="${currentCategories}" var="category">
+                              <c:if test="${category.categoryId ne productCategoryId}">
+                                <option value="${category.categoryId}">${category.categoryName}</option>
+                              </c:if>
+                            </c:forEach>
+
                           </select>
                         </div>
                           <h4>State</h4>
                           <div class="form-group">
-                            <select name="productState" class="js-example-basic-single w-100" data-value="${editProduct.state}">
+                            <select id="productState" name="productState" class="js-example-basic-single w-100" data-value="${editProduct.state}">
                               <option value="NEW">NEW</option>
                               <option value="OUT_OF_STOCK">OUT OF STOKE</option>
                               <option value="ON_SALE">ON SALE</option>
@@ -148,18 +124,8 @@
                             </select>
                           </div>
                       </section>
-                      <h3>Finish</h3>
-                      <section>
-                        <h4>Finish</h4>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input class="checkbox" type="checkbox">
-                            I agree with the Terms and Conditions.
-                          </label>
-                        </div>
-                      </section>
                     </div>
-                    <input class="btn btn-success" type="submit" value="update">
+                    <input id="btn-submit" class="btn btn-success" type="button" value="update">
                   </form>
                 </div>
               </div>
@@ -195,9 +161,11 @@
   <script src="assets/admin/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="assets/admin/app-js/edit-new-prod.js"></script>
   <script src="assets/admin/js/edit-product-validation.js"></script>
   <script src="assets/admin/js/wizard.js"></script>
   <script src="assets/admin/js/dropify.js"></script>
+  <script src="assets/admin/js/alerts.js"></script>
   <script src="assets/admin/js/jquery-file-upload.js"></script>
 
   <!-- End custom js for this page-->

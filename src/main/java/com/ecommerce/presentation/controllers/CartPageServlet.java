@@ -45,15 +45,21 @@ public class CartPageServlet extends HttpServlet {
 
         String jsonString = request.getParameter("cart");
         List<CartItemBean> cartItemBeans = Util.parseCartJsonToCartItemBeans(jsonString, cartService);
+        checkProductsAvailability(cartItemBeans,request);
 
         for (CartItemBean cartItem : cartItemBeans) {
             subtotal = subtotal.add(cartItem.getProductBean().getPrice().multiply(new BigDecimal(cartItem.getRequiredQuantity())));
         }
-
         request.setAttribute("cartItemBeans", cartItemBeans);
         request.setAttribute("subTotal", subtotal);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");
         requestDispatcher.forward(request, response);
+    }
+
+    private void checkProductsAvailability(List<CartItemBean> cartItemBeans, HttpServletRequest request) {
+        int originalProductsNumber = cartItemBeans.size();
+        cartItemBeans.removeIf(cartItemBean -> cartItemBean.getRequiredQuantity()==0);
+        if(originalProductsNumber> cartItemBeans.size()) request.setAttribute("errorMessage","Some Products have been removed according to the stock availability");
     }
 
 }

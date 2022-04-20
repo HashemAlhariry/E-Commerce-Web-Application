@@ -60,18 +60,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 mb-3 mb-lg-0">
-                        <h2 class="title">Our Vision</h2><!-- End .title -->
+                        <h2 class="title">Our Vision</h2>
                         <br>
-                        <p>E-commerce (electronic commerce) is the activity of electronically buying or selling of products on online services or over the Internet. E-commerce draws on technologies such as mobile commerce, electronic funds transfer, supply chain management, Internet marketing, online transaction processing, electronic data interchange (EDI), inventory management systems, and automated data collection systems. E-commerce is in turn driven by the technological advances of the semiconductor industry, and is the largest sector of the electronics industry. </p>
+                            <p>E-commerce (electronic commerce) is the activity of electronically buying or selling of products on online services or over the Internet. offering Categories smart phones, smart watches ,Laptops and our vision to keep customer happy.  </p>
                         </br>
-                        <h2 class="title">Our mission</h2><!-- End .title -->
 
-                        <br>
-                        <p> Even though Israel is a small country it is always in the news.  The news continues to report on Jews moving to Israel, on the technology invented there, but also on conflict, wars and tensions with surrounding people.  Why? A look at Israel’s history in the book of Genesis in the Bible reveals that 4000 years ago a man, who is now very well known, went on a camping trip in that part of the world.  The Bible says that his story affects our future.</p>
-                    </br>
                     </div>
                     </div>
-                    </div><!-- End .col-lg-6 -->
+                    </div>
 
             </div><!-- End .container -->
 
@@ -180,8 +176,8 @@
 
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
-                                        <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
-                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <h3 class="member-title">Ahmed Ashraf<span>Software Engineer</span></h3><!-- End .member-title -->
+                                        <p>Software Engineer</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -191,7 +187,7 @@
                                 </figcaption><!-- End .member-overlay -->
                             </figure><!-- End .member-media -->
                             <div class="member-content">
-                                <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3><!-- End .member-title -->
+                                <h3 class="member-title">Ahmed Ashraf<span>Software Engineer</span></h3><!-- End .member-title -->
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
@@ -203,8 +199,8 @@
 
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
-                                        <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
-                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <h3 class="member-title">Osama - Khattab<span>CTO - CEO</span></h3><!-- End .member-title -->
+                                        <p>They Dreamed to build a website for all people to serve in the IT field</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -214,7 +210,7 @@
                                 </figcaption><!-- End .member-overlay -->
                             </figure><!-- End .member-media -->
                             <div class="member-content">
-                                <h3 class="member-title">Bruce Sutton<span>Sales & Marketing Manager</span></h3><!-- End .member-title -->
+                                <h3 class="member-title">Osama-Khattab<span>Sales & Marketing Manager</span></h3>
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
@@ -226,8 +222,8 @@
 
                                 <figcaption class="member-overlay">
                                     <div class="member-overlay-content">
-                                        <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
-                                        <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
+                                        <h3 class="member-title">Marwa<span>Software Engineer</span></h3>
+                                        <p>Software Engineer</p>
                                         <div class="social-icons social-icons-simple">
                                             <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
@@ -237,7 +233,7 @@
                                 </figcaption><!-- End .member-overlay -->
                             </figure><!-- End .member-media -->
                             <div class="member-content">
-                                <h3 class="member-title">Janet Joy<span>Product Manager</span></h3><!-- End .member-title -->
+                                <h3 class="member-title">marwa<span>Software Engineer</span></h3><!-- End .member-title -->
                             </div><!-- End .member-content -->
                         </div><!-- End .member -->
                     </div><!-- End .col-md-4 -->
