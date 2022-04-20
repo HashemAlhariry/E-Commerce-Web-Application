@@ -101,6 +101,10 @@ public class AdminDashboardServlet extends HttpServlet {
             req.setAttribute("outOfStock",outOfStock);
             req.setAttribute("newProduct",newProduct);
             req.setAttribute("bestSeller",bestSeller);
+            req.setAttribute("orderCANCELLED",orderCANCELLED);
+            req.setAttribute("orderARRIVED",orderARRIVED);
+            req.setAttribute("orderPENDING",orderPENDING);
+            req.setAttribute("orderPROCESSING",orderPROCESSING);
             req.setAttribute("statisticsBean",statisticsBean);
 
             requestDispatcher.forward(req, resp);
