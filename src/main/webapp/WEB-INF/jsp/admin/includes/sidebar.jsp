@@ -7,17 +7,19 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="home">
+                <i class="fa fa-store menu-icon"></i>
+                <span class="menu-title">Home Page</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="admin-product">
                 <i class="fas fa-shopping-cart menu-icon"></i>
                 <span class="menu-title">Products</span>
             </a>
         </li>
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" href="pages/tables/category_view.html">--%>
-<%--                <i class="fab fa-wpforms menu-icon"></i>--%>
-<%--                <span class="menu-title">Category</span>--%>
-<%--            </a>--%>
-<%--        </li>--%>
+
         <li class="nav-item">
             <a class="nav-link" href="admin-order-view">
                 <i class="fas fa-bell menu-icon"></i>
