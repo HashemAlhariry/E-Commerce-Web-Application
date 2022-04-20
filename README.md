@@ -1,6 +1,5 @@
-![amazonya_logo ](https://user-images.githubusercontent.com/36333141/164297423-f4ae8e99-19da-4722-89c1-18e8730a3089.png)
->A desktop chatting application built using JavaFX and RMI as our first project at the Information Technology Institute. It takes full advantage of JavaFX's reactive programming model, using property binding to synchronize Models with Views.
-
+![logo](https://user-images.githubusercontent.com/36333141/164304926-ff40e561-0867-436d-be92-58c823e5174e.jpeg)
+>An e-commerce website built using JSP and Servlets. It is responsive web design the will be automatically adjusted for different screen sizes.
 # 🏛 Architecture
 This software project was built using a layered architecture. The following diagram demonstrates an example use case that goes through all the layers. 
 
@@ -8,52 +7,51 @@ This software project was built using a layered architecture. The following diag
 
 # ⚙ Features
 * Registration and login
-* One to one and group chats
-* File transfer
-* Server statistics and management 
+* Chat bot and chat with admin
+* View products
+* Filter products viewing by name nad category
 * Updating user profiles
-* AIML chatbot
-* Auto-detect any available server using a UDP discovery protocol
-* Voice chat
-* Save messages to database
+* Add to cart
+* Add to wish list
+* Purchase products via stripe 
+* Admin dash board
+* Admin CRUD operations to products
 
 ![Animation](https://user-images.githubusercontent.com/73137611/155806535-92e5a736-0b30-4e19-b5f1-371c91970736.gif)
 ![Animation2](https://user-images.githubusercontent.com/73137611/155806878-b4b497cd-5821-4420-9a9d-e95340aa4ff2.gif)
 
 # ⚙ Technologies used
 * Maven
-* JDBC
-* Sockets
-* RMI
-* JavaFX
-* IO / NIO
+* ORM
+* Servlets
+* Jsp
+* Docker
+* Apache mail
 * Bean Validation (Hibernate Validator)
 * MapStruct
 * Logback
-* HikariCP
+* Lombok
 * MySQL
-* Spring Security Crypto
 
 # 🛠 How to run
-**Maven**
-* Download version 0.0.4.3 of the chatbot dependency from [here](https://code.google.com/archive/p/program-ab/downloads).
-* Install it using the following maven command:
+**Docker**
+* Go to the project root folder
+* Packge the project using this command:
+```maven
+mvn clean package
+``` 
+* To create an image from docker file write this command:
+```docker
+docker image build -t amazonya .
 ```
-mvn install:install-file -Df`ile=Ab.jar -DgroupId=com.google -DartifactId=Ab -Dversion=0.0.4.3 -Dpackaging=jar
+* To run the project write the the following commands:
+```docker
+docker network create amazonya_network
+docker run --name amazonya_db --network amazonya_network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=amazonya -d mysql:8.0.28
+docker container run --name amzonya_server --network amazonya_network -p 80:8080 -d amazonya
 ```
-* Run the `mvn install` phase from the chatty-parent directory to create the shaded executable jars in the `target/` directory
-* Run the jars using the `java -jar` command
 
-**MySQL**
-* Use the chatty.sql script to create the database using MySQL 8.0.28
-* Create a database user using MySQL Commandline 8.0 using the following commands:
-```sql
-CREATE USER 'chattyuser'@'localhost' IDENTIFIED BY 'P@$$word';
-GRANT ALL PRIVILEGES ON chatty . * TO 'chattyuser'@'localhost';
-FLUSH PRIVILEGES;
-```
-
-# 👷‍♀️ Contributors
+# 👷🏽 Contributors
 * [Abdelrahman Khattab](https://github.com/abdelrahman-khattab)
 * [Ahmed Ashraf](https://github.com/ahmedashrfhassan)
 * [Ahmed Osama](https://github.com/AhmedOsama123)
