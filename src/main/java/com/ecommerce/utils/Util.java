@@ -69,11 +69,9 @@ public class Util {
             if(!jsonString.isEmpty()){
                 ObjectMapper jacksonMapper = new ObjectMapper();
                 List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString, new TypeReference<List<ViewCartItem>>() {});
-                System.out.println(viewCartItems);
                 List<CartItemBean> cartItemBeans = new ArrayList<>();
                 if (viewCartItems.size() > 0) {
                     cartItemBeans = cartService.getCartItemBeans(viewCartItems);
-                    System.out.println(cartItemBeans);
                 }
                 return cartItemBeans;
             }

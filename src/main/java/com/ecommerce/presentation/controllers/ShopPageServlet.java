@@ -31,14 +31,12 @@ public class ShopPageServlet extends HttpServlet {
         ProductService productService = new ProductServiceImpl((String) request.getAttribute("reqId"));
         List<ProductBean> allProductsBeans;
         String pageNumberAsString = request.getParameter("pageNumber");
-        System.out.println("pageNumberAsString " + pageNumberAsString);
         if (pageNumberAsString == null) {
             allProductsBeans = productService.getProductsOfPage(1);
             request.setAttribute("currentPageNumber", 1);
 
         } else {
             int pageNumber = Integer.parseInt(pageNumberAsString.trim());
-            System.out.println("pageNumber" + pageNumber);
             allProductsBeans = productService.getProductsOfPage(pageNumber);
             request.setAttribute("currentPageNumber", pageNumber);
         }
@@ -46,7 +44,6 @@ public class ShopPageServlet extends HttpServlet {
         int countOfProductsPerPage = 12;
         int numberOfPages = (int) Math.ceil((float) totalCount / countOfProductsPerPage);
         if (allProductsBeans != null) {
-            System.out.println(allProductsBeans);
             request.setAttribute("allProducts", allProductsBeans);
             request.setAttribute("totalCount", totalCount);
             request.setAttribute("numberOfPages", numberOfPages);

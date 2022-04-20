@@ -41,9 +41,6 @@ public class AdminDashboardServlet extends HttpServlet {
             statisticsBean.setAllProducts(allProducts);
             statisticsBean.setStatisticsUsers(statisticsUsers);
 
-            System.out.println("bbbbbbbbbbbbbbb");
-            System.out.println(statisticsBean);
-            System.out.println("aaaaaaaaaaaaaa");
 
 
             req.setAttribute("statisticsBean",statisticsBean);
@@ -67,9 +64,6 @@ public class AdminDashboardServlet extends HttpServlet {
 //            statisticsBean.setAllProducts(allProducts);
 //            statisticsBean.setStatisticsUsers(statisticsUsers);
 //
-//            System.out.println("bbbbbbbbbbbbbbb");
-//            System.out.println(statisticsBean);
-//            System.out.println("aaaaaaaaaaaaaa");
 //
 //
 //            req.setAttribute("statisticsBean",statisticsBean);

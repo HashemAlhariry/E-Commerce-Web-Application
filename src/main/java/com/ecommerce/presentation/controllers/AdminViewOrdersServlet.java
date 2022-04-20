@@ -40,9 +40,7 @@ public class AdminViewOrdersServlet extends HttpServlet {
         } else {
             allOrders = orderService.findAll();
         }
-        System.out.println(allOrders.toString());
         List<AdminOrderBean> allOrdersBeans = AdminOrderMapper.INSTANCE.listEntitiesToBeans(allOrders);
-        System.out.println(allOrdersBeans);
         req.setAttribute("allOrders", allOrdersBeans);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "admin/pages/tables/orders_view.jsp");
         requestDispatcher.forward(req, resp);

@@ -33,11 +33,9 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
 
     @Override
     public UserEntity saveUser(UserEntity user) {
-        //System.out.println("saveUser" + user.getEmail());
         entityManager.getTransaction().begin();
         entityManager.persist(user);
         entityManager.getTransaction().commit();
-        System.out.println("User saved " + user);
         return user;
     }
 
@@ -45,13 +43,10 @@ public class UserRepositoryImpl extends RepositoryImpl<UserEntity, Integer> impl
     @Override
     public UserEntity updateUser(UserEntity user) {
         int id = user.getId();
-        System.out.println(id);
         UserEntity userid = findById(id);
-        System.out.println(userid);
         entityManager.getTransaction().begin();
         UserEntity userUpdated = entityManager.merge(userid);
         entityManager.getTransaction().commit();
-        System.out.println("User updated " + userUpdated);
         return userUpdated;
 
     }

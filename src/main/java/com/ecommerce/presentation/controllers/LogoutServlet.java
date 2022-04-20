@@ -31,12 +31,9 @@ public class LogoutServlet extends HttpServlet {
         CartService cartService=new CartServiceImpl((String) request.getAttribute("reqId"));
         PrintWriter out = response.getWriter();
         String cartJson = request.getParameter("cartItems");
-        System.out.println(cartJson+"cartJson");
         HttpSession session = request.getSession();
 
         UserBean userBean = (UserBean) session.getAttribute("userBean");
-        System.out.println(userBean);
-        System.out.println(userBean.getId());
         cartService.saveUserCart(cartJson , userBean.getId());
         Cookie[] cookies = request.getCookies();
         session.invalidate();

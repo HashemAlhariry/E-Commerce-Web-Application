@@ -34,8 +34,6 @@ public class HomePageServlet extends HttpServlet {
         ProductService productService = new ProductServiceImpl((String) req.getAttribute("reqId"));
         List<ProductEntity> newArrivals = productService.getLast10();
         List<NewArrivalProductBean> newArrivalsBeans = NewArrivalProductMapper.INSTANCE.listEntitiesToBeans(newArrivals);
-        System.out.println(newArrivals);
-        System.out.println(newArrivalsBeans);
         req.setAttribute("newArrivals", newArrivalsBeans);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "index.jsp");

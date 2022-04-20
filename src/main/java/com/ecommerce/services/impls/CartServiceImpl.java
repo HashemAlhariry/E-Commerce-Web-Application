@@ -81,10 +81,8 @@ public class CartServiceImpl implements CartService {
         ObjectMapper jacksonMapper = new ObjectMapper();
         List<ViewCartItem> viewCartItems = jacksonMapper.readValue(cartJson, new TypeReference<List<ViewCartItem>>() {
         });
-        System.out.println(viewCartItems);
         if (viewCartItems.size() > 0) {
             cartEntities.addAll(getCartEntitiesFromViewCartItems(viewCartItems, userId));
-            System.out.println(cartEntities);
         }
         return cartEntities;
     }

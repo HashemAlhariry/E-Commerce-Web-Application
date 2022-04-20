@@ -64,7 +64,6 @@ public class CategoryProductsServlet extends HttpServlet {
             if (categorizedProductsBeans == null || categorizedProductsBeans.isEmpty()) {
                 out.write("noMore");
             } else {
-                System.out.println(categorizedProductsBeans.size());
                 req.setAttribute("categorizedProducts", categorizedProductsBeans);
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "components/category-products-component.jsp");
                 requestDispatcher.include(req, resp);

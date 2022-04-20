@@ -34,8 +34,6 @@ public class QuickViewProductServlet extends HttpServlet {
         Long productId = Long.parseLong(req.getParameter("productId"));
         ProductEntity productEntity = productService.findById(productId);
         ProductBean productBean = ProductMapper.INSTANCE.productEntityToBean(productEntity);
-        System.out.println("aaa "+productEntity);
-        System.out.println("ASDASDASdASDASDasdaSDASDASd   "+productBean);
         req.setAttribute("product", productBean);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(CommonString.HOME_URL + "quickView.jsp");

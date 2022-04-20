@@ -61,7 +61,6 @@ public class OrderCompletionServlet extends HttpServlet {
             List<ViewCartItem> viewCartItems = jacksonMapper.readValue(jsonString,
                     new TypeReference<List<ViewCartItem>>() {
                     });
-            System.out.println(viewCartItems.size());
             List<CartItemBean> cartItemBeans;
             // to remove product with quantity 0
             List<CartItemBean> cartItemBeansUpdated = new ArrayList<>();
@@ -80,8 +79,6 @@ public class OrderCompletionServlet extends HttpServlet {
                 BigDecimal total = Util.getTotalPrice(cartItemBeans);
                 OrderBean orderBean = new OrderBean(address, new Date(), phoneNumber, OrderState.PENDING, total, email);
                 List<OrderDetailsBean> orderDetailsBeanList = Util.getOrderDetailsBeans(cartItemBeansUpdated, userId);
-                System.out.println(orderBean);
-                System.out.println(orderDetailsBeanList);
 
                 orderAddedToDB = orderService.submitOrder(orderBean, orderDetailsBeanList, email);
 
