@@ -61,7 +61,7 @@ docker container run --name amzonya_server --network amazonya_network -p 80:8080
 
 # 👷🏽 Contributors
 * [Abdelrahman Khattab](https://github.com/abdelrahman-khattab)
-* [Marwa Adel](https://github.com/marwaadel12)
+* [Marwa Abdul-karim](https://github.com/marwaadel12)
 * [Ahmed Ashraf](https://github.com/ahmedashrfhassan)
 * [Ahmed Osama](https://github.com/AhmedOsama123)
 * [Hashem Alhariry](https://github.com/HashemAlhariry)
