@@ -17,8 +17,11 @@ This software project was built using a layered architecture. The following diag
 * Admin dash board
 * Admin CRUD operations to products
 
-![Animation](https://user-images.githubusercontent.com/73137611/155806535-92e5a736-0b30-4e19-b5f1-371c91970736.gif)
-![Animation2](https://user-images.githubusercontent.com/73137611/155806878-b4b497cd-5821-4420-9a9d-e95340aa4ff2.gif)
+# ⚙ Client
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/45319166/164311567-bac9b6e3-a82f-4a41-9ead-8f494e819d94.gif)
+# ⚙ Admin
+![ezgif com-gif-maker-2](https://user-images.githubusercontent.com/45319166/164312129-3e00d0c0-5316-4529-9d9a-794ad21112cc.gif)
+
 
 # ⚙ Technologies used
 * Maven
