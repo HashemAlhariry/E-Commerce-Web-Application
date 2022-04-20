@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 <!-- molla/cart.html  22 Nov 2019 09:55:06 GMT -->
 <head>
     <meta charset="UTF-8">
@@ -200,7 +202,11 @@
                 </c:if>
             </div><!-- End .cart -->
         </div><!-- End .page-content -->
+        <c:if test="${!empty jsonCart}">
+            <div id="hiddenJsonCart" hidden>${jsonCart}</div>
+        </c:if>
     </main><!-- End .main -->
+
 
     <%@ include file="includes/footer.jsp" %><!-- End .footer -->
 </div><!-- End .page-wrapper -->
@@ -221,6 +227,13 @@
 <script src="assets/js/main.js"></script>
 </body>
 <script>
+    window.onload = (event) => {
+        var jsonCart  = document.getElementById("hiddenJsonCart").textContent;
+        localStorage.setItem("cartItems",jsonCart);
+        addToCart(-1);
+        addToWishList(-1);
+
+    };
     function removeProduct(productId , productPrice){
         console.log(productId+" awl marra ");
         var localStorageContent = localStorage.getItem("cartItems");

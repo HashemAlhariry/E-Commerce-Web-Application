@@ -1,10 +1,12 @@
 package com.ecommerce.presentation.controllers;
 
 import com.ecommerce.presentation.beans.CartItemBean;
+import com.ecommerce.presentation.beans.ViewCartItem;
 import com.ecommerce.services.CartService;
 import com.ecommerce.services.impls.CartServiceImpl;
 import com.ecommerce.utils.CommonString;
 import com.ecommerce.utils.Util;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
@@ -15,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "cart", urlPatterns = {"/cart"})
@@ -37,9 +40,7 @@ public class CartPageServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CartService cartService = new CartServiceImpl((String) request.getAttribute("reqId"));
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-        response.setDateHeader("Expires", 0); // Proxies.
+
 
         BigDecimal subtotal = BigDecimal.ZERO;
 
@@ -50,6 +51,11 @@ public class CartPageServlet extends HttpServlet {
         for (CartItemBean cartItem : cartItemBeans) {
             subtotal = subtotal.add(cartItem.getProductBean().getPrice().multiply(new BigDecimal(cartItem.getRequiredQuantity())));
         }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<ViewCartItem> viewCartItems = cartService.getViewCartItemsFromCartItemBeans(cartItemBeans);
+        String jsonCart = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(viewCartItems);
+        request.getSession().setAttribute("jsonCart", jsonCart);
         request.setAttribute("cartItemBeans", cartItemBeans);
         request.setAttribute("subTotal", subtotal);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(CommonString.HOME_URL + "cart.jsp");

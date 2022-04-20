@@ -46,6 +46,12 @@ public class CartServiceImpl implements CartService {
         }
         return cartItemBeans;
     }
+    @Override
+    public List<ViewCartItem> getViewCartItemsFromCartItemBeans(List<CartItemBean> cartItemBeans){
+        List<ViewCartItem> cartItems = new ArrayList<>();
+        cartItemBeans.forEach(cartBean->cartItems.add(new ViewCartItem(cartBean.getProductBean().getId(),cartBean.getRequiredQuantity())));
+        return cartItems;
+    }
 
     @Override
     public List<CartItemBean> getUserCartFromDataBase(int userId) {
