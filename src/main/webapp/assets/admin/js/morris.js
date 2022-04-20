@@ -140,8 +140,8 @@ $(function() {
       element: 'morris-donut-example',
       colors: ['#76C1FA', '#F36368', '#63CF72', '#FABA66'],
       data: [{
-          label: "Download Sales",
-          value: 12
+          label: "Mobile Sales",
+          value: 60
         },
         {
           label: "In-Store Sales",
