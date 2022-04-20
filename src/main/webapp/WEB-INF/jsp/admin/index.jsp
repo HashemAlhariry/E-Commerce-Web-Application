@@ -123,7 +123,6 @@
                   </h4>
                   <h2 class="mb-5">${statisticsBean.allProducts} <span class="text-muted h4 font-weight-normal">products</span></h2>
                   <div id="morris-donut-example"></div>
-                  <button id="refresh" class="btn btn-outline-primary">Refresh</button>
                 </div>
               </div>
             </div>
