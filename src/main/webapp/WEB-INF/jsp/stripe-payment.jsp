@@ -117,6 +117,8 @@
 
     <%@ include file="includes/footer.jsp" %><!-- End .footer -->
 </div><!-- End .page-wrapper -->
+<!-- Mobile Menu -->
+<%@ include file="includes/sideMobileMenu.jsp" %><!-- End .mobile-menu-container -->
 
 <!-- Plugins JS File -->
 <script src="assets/js/jquery.min.js"></script>

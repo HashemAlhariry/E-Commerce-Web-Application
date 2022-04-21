@@ -91,10 +91,7 @@
 <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
-
-<%@ include file="includes/mobile-header-sidemenu.jsp" %>
-<!-- End .mobile-menu-container -->
+<%@ include file="includes/sideMobileMenu.jsp" %><!-- End .mobile-menu-container -->
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
