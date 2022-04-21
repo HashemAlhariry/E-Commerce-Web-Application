@@ -3,7 +3,9 @@
 <%@page isErrorPage="true" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 <head>
     <meta charset="UTF-8">
@@ -74,8 +76,8 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
-    <%@ include file="includes/mobile-header-sidemenu.jsp" %>
-    <!-- End .mobile-menu-container -->
+    <!-- Mobile Menu -->
+    <%@ include file="includes/sideMobileMenu.jsp" %><!-- End .mobile-menu-container -->
 
     <!-- Sign in / Register Modal -->
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">

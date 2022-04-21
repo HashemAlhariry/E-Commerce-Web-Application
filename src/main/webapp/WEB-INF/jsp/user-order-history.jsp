@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 
 <head>
@@ -111,6 +113,9 @@
     <%@ include file="includes/footer.jsp" %><!-- End .footer -->
 </div><!-- End .page-wrapper -->
 
+<!-- Mobile Menu -->
+<%@ include file="includes/sideMobileMenu.jsp" %><!-- End .mobile-menu-container -->
+
 <!-- Plugins JS File -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -204,6 +209,10 @@
     function callStripeScript(){
 
     }
+        if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+
 </script>
 
 

@@ -40,7 +40,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             MailUtil mailUtil = MailUtil.getInstance();
             try {
                 mailUtil.sendForgottenPassword(userBean.getEmail(), userBean.getPass());
-                String message  = "Email Address has been already sent to you, Check your MailBox to recover your password";
+                String message  = "Email has been already sent to you, Check your MailBox to recover your password";
                 out.println(new Gson().toJson(message));
             } catch (EmailException e) {
                 String message  = "We couldn't send email to you right now , please try again";
@@ -48,7 +48,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             }
         }
         else{
-            String message = "The Email Address is Wrongly Entered, you might need to check it again";
+            String message = "The Email Address is Wrongly Entered or you don't have an account, you might need to check it again";
             out.println(new Gson().toJson(message));
 
         }

@@ -3,7 +3,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+  response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 <!-- Mirrored from www.urbanui.com/melody/template/pages/forms/wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:08:25 GMT -->
 
@@ -11,7 +13,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Melody Admin</title>
+  <title>Amazonya Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="assets/admin/vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css">
@@ -22,8 +24,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="assets/admin/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="assets/admin/images/favicon.png" />
-  <link rel="shortcut icon" href="http://www.urbanui.com/" />
+  <link rel="shortcut icon" href="assets/admin/images/favicon.png"/>
 
 </head>
 
