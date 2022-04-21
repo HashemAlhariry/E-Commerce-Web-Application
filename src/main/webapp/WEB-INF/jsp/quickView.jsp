@@ -80,3 +80,9 @@
 		</div>
 	</div>
 </div>
+<script>
+	window.onload= (event) => {
+		console.log("on documentLoad")
+		if (!navigator.cookieEnabled) window.location.href = "un-enabled-cookie";
+	}
+</script>
