@@ -3,7 +3,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 <!-- Mirrored from www.urbanui.com/melody/template/pages/samples/invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:10:26 GMT -->
 <head>

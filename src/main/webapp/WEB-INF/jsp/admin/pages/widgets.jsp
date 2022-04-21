@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+  response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 <!-- Mirrored from www.urbanui.com/melody/template/pages/widgets.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:10:41 GMT -->
 <head>

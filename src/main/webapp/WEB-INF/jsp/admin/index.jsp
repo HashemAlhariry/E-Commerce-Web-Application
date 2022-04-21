@@ -3,7 +3,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+  response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 <head>
   <!-- Required meta tags -->
