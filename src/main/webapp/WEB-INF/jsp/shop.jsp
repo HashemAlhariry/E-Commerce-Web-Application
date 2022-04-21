@@ -4,7 +4,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 
 <head>

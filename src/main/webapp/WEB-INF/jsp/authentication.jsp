@@ -8,7 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 
 
 <head>
