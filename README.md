@@ -2,7 +2,8 @@
 >An e-commerce website built using JSP and Servlets a responsive web design that will be automatically adjusted for different screen sizes.
 # 🏛 Architecture
 This software project was built using a layered architecture. The following diagram demonstrates an example use case that goes through all the layers. 
-![image](https://user-images.githubusercontent.com/73137611/155808282-0a0ee1ab-9d35-4258-a953-c9ccad72f707.png)
+![layer](https://user-images.githubusercontent.com/36333141/164351708-f3be4a50-4d52-42b0-b651-b746a1393a06.png)
+
 
 # 🏭 Sequence
 ![sequance1](https://user-images.githubusercontent.com/36333141/164316416-9f5f92ff-b594-4465-90be-9c82ae7ecfd3.png) ![sequance2](https://user-images.githubusercontent.com/36333141/164319528-1aa9ad58-89ce-4e51-bb96-5239117512fc.png)
