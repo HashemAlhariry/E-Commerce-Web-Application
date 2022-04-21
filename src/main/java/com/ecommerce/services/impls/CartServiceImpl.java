@@ -79,8 +79,10 @@ public class CartServiceImpl implements CartService {
     public List<CartEntity> getCartEntitiesFromJson(String cartJson, int userId) throws JsonProcessingException {
         List<CartEntity> cartEntities = new ArrayList<>();
         ObjectMapper jacksonMapper = new ObjectMapper();
-        List<ViewCartItem> viewCartItems = jacksonMapper.readValue(cartJson, new TypeReference<List<ViewCartItem>>() {
-        });
+        List<ViewCartItem> viewCartItems= new ArrayList<>();
+        if(!cartJson.isEmpty()){
+            viewCartItems = jacksonMapper.readValue(cartJson, new TypeReference<List<ViewCartItem>>() {});
+        }
         if (viewCartItems.size() > 0) {
             cartEntities.addAll(getCartEntitiesFromViewCartItems(viewCartItems, userId));
         }
