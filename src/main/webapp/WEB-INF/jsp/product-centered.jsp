@@ -107,22 +107,14 @@
                                     <div class="product-details-action">
                                         <div class="details-action-col">
 
+
                                             <c:choose>
-                                                <c:when test="${singleProduct.state=='NEW'}">
+                                                <c:when test="${roduct.quantity>0}">
                                                     <a onclick="addToCart(${singleProduct.id})" class="btn-product btn-cart"><span>add to cart</span></a>
                                                 </c:when>
-                                                <c:when test="${singleProduct.state=='OUT_OF_STOCK'}">
-                                                    <span class="badge-outline-danger text-danger text-xl-center">OUT OF STOCK</span>
-                                                </c:when>
-                                                <c:when test="${singleProduct.state=='ON_SALE'}">
-                                                    <a onclick="addToCart(${singleProduct.id})" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                </c:when>
-                                                <c:when test="${singleProduct.state=='BEST_SELLER'}">
-                                                    <a onclick="addToCart(${singleProduct.id})" class="btn-product btn-cart"><span>add to cart</span></a>
-                                                </c:when>
-                                                <c:when test="${singleProduct.state=='ARCHIVED'}">
-                                                    <label class="badge badge-secondary">ARCHIVED</label>
-                                                </c:when>
+                                                <c:otherwise>
+                                                    <a  onMouseOver="this.style.color='red'"onMouseOut="this.style.color='#777'"style="cursor: default;"><span style="color:'red'">Out Of Stock</span></a>
+                                                </c:otherwise>
                                             </c:choose>
                                         </div><!-- End .details-action-col -->
 
