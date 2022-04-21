@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+%>
 <!-- Internal Server Error -->
 <head>
     <meta charset="UTF-8">
